@@ -1,0 +1,2 @@
+PASS: 1715 assertions
+Fishing, relic uniqueness, stat caps, reward scaling, save roundtrip and recovery.

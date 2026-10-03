@@ -1,0 +1,93 @@
+PASS UI action: 海洋图鉴
+PASS UI action: 返回港口
+PASS UI action: 设置
+PASS UI action: 保存并返回
+PASS runtime bootstrap and camera
+PASS start button exists and is interactive
+PASS new voyage starts at fishing ground
+PASS pause freezes gameplay
+PASS broken fishing line returns to retry state
+PASS stage 1 cast
+PASS stage 1 fishing completes
+PASS hostile damage reduces health
+PASS telegraphed strike damages a stationary player
+PASS dash invulnerability blocks an incoming strike
+PASS real camera raycast damages enemy
+PASS stage 1 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS checkpoint serialization
+PASS resume restores shop checkpoint
+PASS stage 2 cast
+PASS stage 2 fishing completes
+PASS stage 2 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS shotgun equip
+PASS checkpoint serialization
+PASS stage 3 cast
+PASS stage 3 fishing completes
+PASS stage 3 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS checkpoint serialization
+PASS stage 4 cast
+PASS stage 4 fishing completes
+PASS stage 4 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS checkpoint serialization
+PASS stage 5 cast
+PASS stage 5 fishing completes
+PASS stage 5 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS harpoon equip
+PASS checkpoint serialization
+PASS stage 6 cast
+PASS stage 6 fishing completes
+PASS stage 6 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS checkpoint serialization
+PASS stage 7 cast
+PASS stage 7 fishing completes
+PASS stage 7 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS checkpoint serialization
+PASS stage 8 cast
+PASS stage 8 fishing completes
+PASS stage 8 combat clear
+PASS three distinct relic choices
+PASS reward enters shop
+PASS purchase subtracts exact price
+PASS insufficient funds cannot buy gear
+PASS checkpoint serialization
+PASS stage 9 cast
+PASS stage 9 fishing completes
+PASS stage 9 combat clear
+PASS rare bait unlocks Kraken encounter
+PASS stage 10 cast
+PASS stage 10 fishing completes
+PASS stage 10 combat clear
+PASS complete campaign and optional Kraken
+PASS shooting integration observed
+PASS rare signal unlocks white whale alternative
+PASS white whale combat and victory
+PASS death enters defeat screen
+PASS defeat clears current run save

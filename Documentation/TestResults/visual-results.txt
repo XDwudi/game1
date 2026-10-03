@@ -1,0 +1,6 @@
+PASS UI action: 海洋图鉴
+PASS UI action: 返回港口
+PASS UI action: 设置
+PASS UI action: 保存并返回
+PASS UI action: 船长手册
+PASS UI action: 返回

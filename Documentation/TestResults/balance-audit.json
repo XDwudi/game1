@@ -1,0 +1,39 @@
+{
+  "assumptions": "70% accuracy, base 8% critical chance, no weakpoint bonus, estimated 60% vulnerability uptime, upgrades as listed in script; movement and target reacquisition excluded.",
+  "weapons": [
+    {
+      "weapon": "潮汐左轮",
+      "base_sustained_dps_all_hits": 50.0
+    },
+    {
+      "weapon": "礁石霰弹枪",
+      "base_sustained_dps_all_hits": 74.04
+    },
+    {
+      "weapon": "雷鸣鱼叉",
+      "base_sustained_dps_all_hits": 58.57
+    }
+  ],
+  "pacing": [
+    {
+      "boss": "铁壳领主",
+      "pistol_body_only_seconds": 21.5
+    },
+    {
+      "boss": "噬光灯笼鱼",
+      "pistol_body_only_seconds": 27.7
+    },
+    {
+      "boss": "风暴利维坦",
+      "pistol_body_only_seconds": 30.9
+    },
+    {
+      "boss": "克拉肯",
+      "pistol_body_only_seconds": 47.6
+    },
+    {
+      "boss": "幽海白鲸",
+      "pistol_body_only_seconds": 41.6
+    }
+  ]
+}
