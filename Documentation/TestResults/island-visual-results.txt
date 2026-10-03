@@ -1,0 +1,22 @@
+PASS player stands on island terrain
+PASS walk from island onto pier with ground collision
+PASS workshop counter blocks the character at -6.52
+PASS pause freezes voyage time
+PASS land casts are rejected
+PASS excess line tension returns to retry state
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS throw restores rigidbody velocity
+PASS stow adds catch to persistent bag
+PASS sale pays exact appraised value and empties bag
+PASS insufficient coins cannot buy an upgrade
+PASS gear purchase charges exact coin price
+PASS random perk requires payment
+PASS sold out perk cannot be bought twice
+PASS coast geometry switches to region 1
+PASS coast geometry switches to region 2

@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "command": "projects",
+  "data": {
+    "project": "E:\\agent_workspace\\gpt\\game1\\Tidebreak",
+    "ok": true,
+    "checks": [
+      "META_MISSING",
+      "META_ORPHAN",
+      "GUID_DUPLICATE",
+      "CONFLICT_MARKERS",
+      "MANIFEST_INVALID",
+      "EDITOR_VERSION_DRIFT"
+    ],
+    "findings": [],
+    "summary": {
+      "errors": 0,
+      "warnings": 0,
+      "filesScanned": 187,
+      "unverifiable": 0
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

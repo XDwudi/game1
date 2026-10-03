@@ -1,39 +1,97 @@
 {
-  "assumptions": "70% accuracy, base 8% critical chance, no weakpoint bonus, estimated 60% vulnerability uptime, upgrades as listed in script; movement and target reacquisition excluded.",
+  "version": "0.2.0",
+  "limits": "Analytical model, not player telemetry. DPS excludes movement and reacquisition. Shotgun values assume every pellet hits within 10 m; 35 m damage is 36% before missed pellets.",
+  "boss_assumptions": "70% accuracy, 8% crit, no weakpoint hits, no damage perks, 60% exposed / 40% guarded; upgrades explicitly listed. Body-shot output time excludes all downtime.",
   "weapons": [
     {
       "weapon": "潮汐左轮",
-      "base_sustained_dps_all_hits": 50.0
+      "auto_reload_dps_all_hits": 45.77,
+      "prompt_manual_reload_dps_all_hits": 50.0
     },
     {
       "weapon": "礁石霰弹枪",
-      "base_sustained_dps_all_hits": 74.04
+      "auto_reload_dps_all_hits": 63.64,
+      "prompt_manual_reload_dps_all_hits": 74.04
     },
     {
       "weapon": "雷鸣鱼叉",
-      "base_sustained_dps_all_hits": 58.57
+      "auto_reload_dps_all_hits": 59.52,
+      "prompt_manual_reload_dps_all_hits": 73.89
     }
   ],
-  "pacing": [
+  "boss_pacing": [
     {
-      "boss": "铁壳领主",
-      "pistol_body_only_seconds": 21.5
+      "boss": "Crab",
+      "health": 750,
+      "weapon_upgrade_level": 1,
+      "damage_perks": 0,
+      "潮汐左轮_output_seconds": 21.3,
+      "雷鸣鱼叉_output_seconds": 16.4
     },
     {
-      "boss": "噬光灯笼鱼",
-      "pistol_body_only_seconds": 27.7
+      "boss": "Angler",
+      "health": 1400,
+      "weapon_upgrade_level": 3,
+      "damage_perks": 0,
+      "潮汐左轮_output_seconds": 30.4,
+      "雷鸣鱼叉_output_seconds": 23.4
     },
     {
-      "boss": "风暴利维坦",
-      "pistol_body_only_seconds": 30.9
+      "boss": "Leviathan",
+      "health": 2200,
+      "weapon_upgrade_level": 4,
+      "damage_perks": 0,
+      "潮汐左轮_output_seconds": 42.8,
+      "雷鸣鱼叉_output_seconds": 32.9
     },
     {
-      "boss": "克拉肯",
-      "pistol_body_only_seconds": 47.6
+      "boss": "Kraken",
+      "health": 3300,
+      "weapon_upgrade_level": 4,
+      "damage_perks": 0,
+      "潮汐左轮_output_seconds": 64.2,
+      "雷鸣鱼叉_output_seconds": 49.4
     },
     {
-      "boss": "幽海白鲸",
-      "pistol_body_only_seconds": 41.6
+      "boss": "WhiteWhale",
+      "health": 2900,
+      "weapon_upgrade_level": 4,
+      "damage_perks": 0,
+      "潮汐左轮_output_seconds": 56.4,
+      "雷鸣鱼叉_output_seconds": 43.4
     }
-  ]
+  ],
+  "economy_assumptions": "10,000 deterministic seeds; only the 24 required normal fish and 3 bosses; all Shoal routes; no fortune perk; all catches sold. Excludes initial 25 coins, healing expense, extra fishing and rare bosses. Base final-hit bonuses also apply to boss contracts in the runtime.",
+  "economy": [
+    {
+      "scenario": "no_execution_bonus",
+      "air_kill_chance": 0,
+      "weak_kill_chance": 0,
+      "earned_p10": 2166,
+      "earned_median": 2305.0,
+      "earned_p90": 2479
+    },
+    {
+      "scenario": "mixed_execution",
+      "air_kill_chance": 0.2,
+      "weak_kill_chance": 0.35,
+      "earned_p10": 2337,
+      "earned_median": 2505.0,
+      "earned_p90": 2712
+    }
+  ],
+  "fixed_shop_costs": {
+    "all_5_weapon_levels": 825,
+    "all_3_rod_levels": 315,
+    "all_3_armor_levels": 390,
+    "both_extra_weapons": 410,
+    "kraken_bait": 180,
+    "all_above": 2120,
+    "heal_40_hp": 25,
+    "one_random_perk_by_act": [
+      80,
+      110,
+      140
+    ]
+  }
 }

@@ -10,11 +10,11 @@ namespace Tidebreak
         public void Init()
         {
             effects=gameObject.AddComponent<AudioSource>();music=gameObject.AddComponent<AudioSource>();sea=gameObject.AddComponent<AudioSource>();
-            foreach(string n in new[]{"shot","shotgun","harpoon","reload","ready","dash","hurt","splash","coin","select","boss","cast","bite","win","lose"})clips[n]=Synthesize(n);
+            foreach(string n in new[]{"shot","shotgun","harpoon","reload","ready","dash","hurt","splash","coin","select","boss","cast","bite","win","lose","step","reel","catch"})clips[n]=Synthesize(n);
             music.clip=MakeMusic();music.loop=true;music.volume=.15f;music.Play();
             sea.clip=MakeSea();sea.loop=true;sea.volume=.12f;sea.Play();
         }
-        public void Cue(string name){AudioClip clip;if(clips.TryGetValue(name,out clip))effects.PlayOneShot(clip,name=="shot"?.26f:.38f);}
+        public void Cue(string name){AudioClip clip;if(clips.TryGetValue(name,out clip))effects.PlayOneShot(clip,name=="step"?.1f:name=="reel"?.045f:name=="shot"?.3f:.38f);}
         public void SetCombat(bool combat){if(music)music.pitch=combat?1.07f:1;}
         static AudioClip Synthesize(string name)
         {
@@ -23,6 +23,9 @@ namespace Tidebreak
             for(int i=0;i<data.Length;i++) {
                 float t=(float)i/rate;float env=Mathf.Pow(1-t/duration,2);float freq=440;float noise=0;
                 switch(name) {
+                    case "step":freq=70;noise=.94f;env*=Mathf.Exp(-t*24);break;
+                    case "reel":freq=2600;noise=.9f;env*=Mathf.Max(0,Mathf.Sin(t*180))*Mathf.Exp(-t*16);break;
+                    case "catch":freq=680+t*700;noise=.12f;break;
                     case "shot":freq=150-300*t;noise=.7f;break;
                     case "shotgun":freq=90;noise=.9f;break;
                     case "harpoon":freq=850-2100*t;noise=.2f;break;

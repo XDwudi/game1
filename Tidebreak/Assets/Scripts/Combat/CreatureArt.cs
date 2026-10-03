@@ -4,97 +4,92 @@ namespace Tidebreak
 {
     public static class CreatureArt
     {
-        public static Transform Build(Transform parent, CreatureKind kind, bool elite)
+        public static Transform Build(Transform parent,CreatureKind kind,bool elite)
         {
-            var rig=new GameObject("Creature silhouette").transform; rig.SetParent(parent,false);
-            var coral=new Color(.95f,.33f,.23f); var teal=new Color(.15f,.63f,.65f); var dark=new Color(.09f,.15f,.23f);
-            Color c=kind==CreatureKind.Snapper?coral:kind==CreatureKind.Puffer?new Color(.89f,.65f,.21f):teal;
-            if(elite)c=new Color(.7f,.28f,.72f);
-            if(kind==CreatureKind.Kraken)
-            {
-                c=new Color(.32f,.2f,.51f);
-                Shape.Rock(rig,new Vector3(0,1.3f,0),new Vector3(2.4f,3.4f,2.3f),c,12);
-                Shape.Part("Mantle",PrimitiveType.Sphere,rig,Vector3.zero,new Vector3(4.5f,3.8f,4),c,true);
-                Eyes(rig,1.35f,.5f,1.55f,1);
-                for(int i=0;i<8;i++) {
-                    var arm=new GameObject("Tentacle "+i).transform; arm.SetParent(rig,false); arm.localRotation=Quaternion.Euler(0,i*45,0);
-                    var a=new Vector3(1.5f,-.4f,0);
-                    for(int j=0;j<5;j++) {
-                        var b=new Vector3(2+j*.83f,-.65f+Mathf.Sin(j*.8f)*1.9f,Mathf.Sin(j*.55f)*.7f);
-                        Shape.Beam(arm,a,b,.85f-j*.14f,c);
-                        Shape.Part("Sucker",PrimitiveType.Sphere,arm,b+Vector3.forward*.17f,Vector3.one*(.3f-j*.035f),new Color(.68f,.48f,.7f));
-                        a=b;
-                    }
-                }
-                WeakPoint(rig,new Vector3(0,.25f,2),.8f);
-            }
-            else if(kind==CreatureKind.Crab)
-            {
-                c=new Color(.84f,.32f,.15f);
-                Shape.Rock(rig,Vector3.zero,new Vector3(2.5f,1.4f,1.85f),c,10);
-                Shape.Part("Armored body",PrimitiveType.Sphere,rig,Vector3.zero,new Vector3(4.4f,2.1f,3),c,true);
-                for(int s=-1;s<=1;s+=2) {
-                    for(int i=0;i<3;i++) {
-                        var a=new Vector3(s*1.5f,-.2f,-.9f+i*.75f); var b=new Vector3(s*3,-.4f,-1.8f+i*1.3f);
-                        Shape.Beam(rig,a,b,.23f,c); Shape.Beam(rig,b,b+new Vector3(s*.4f,-1.1f,.3f),.16f,c);
-                    }
-                    Shape.Beam(rig,new Vector3(s*1.7f,.1f,1),new Vector3(s*3,.5f,2.8f),.45f,c);
-                    Shape.Rock(rig,new Vector3(s*3,.6f,3),new Vector3(.8f,.8f,1.2f),new Color(.96f,.49f,.23f));
-                    Shape.Beam(rig,new Vector3(s*.8f,.7f,.9f),new Vector3(s*.8f,1.7f,1.1f),.17f,c);
-                }
-                Eyes(rig,.8f,1.7f,1.1f,.45f); WeakPoint(rig,new Vector3(0,.45f,1.55f),.65f);
-            }
-            else
-            {
-                bool boss=kind>=CreatureKind.Angler;
-                float size=boss?2.6f:1;
-                if(kind==CreatureKind.Angler)c=new Color(.17f,.3f,.44f);
-                if(kind==CreatureKind.Leviathan)c=new Color(.14f,.43f,.5f);
-                if(kind==CreatureKind.WhiteWhale)c=new Color(.83f,.88f,.81f);
-                var fish=new GameObject("Fish anatomy").transform; fish.SetParent(rig,false); fish.localScale=Vector3.one*size;
-                Shape.Part("Body",PrimitiveType.Sphere,fish,Vector3.zero,new Vector3(1.5f,1.5f,kind==CreatureKind.Puffer?1.5f:2.6f),c,true);
-                Shape.Part("Belly",PrimitiveType.Sphere,fish,new Vector3(0,-.25f,.2f),new Vector3(1.35f,.8f,2),Color.Lerp(c,Color.white,.48f));
-                Shape.MeshObject("Tail fin",fish,new[]{new Vector3(0,0,-1),new Vector3(-1,.7f,-2),new Vector3(1,.7f,-2),new Vector3(0,-.3f,-1.7f)},new[]{0,1,2,0,3,1,0,2,3},Color.Lerp(c,dark,.25f));
-                Shape.MeshObject("Dorsal fin",fish,new[]{new Vector3(0,.4f,.5f),new Vector3(0,1.65f,-.25f),new Vector3(0,.4f,-1)},new[]{0,1,2,2,1,0},Color.Lerp(c,dark,.4f));
-                for(int s=-1;s<=1;s+=2)
-                    Shape.MeshObject("Pectoral fin",fish,new[]{new Vector3(s*.5f,0,.3f),new Vector3(s*1.5f,-.2f,-.4f),new Vector3(s*.5f,-.3f,-.8f)},new[]{0,1,2,2,1,0},c);
-                Eyes(fish,.51f,.3f,.9f,.42f);
-                Shape.Part("Mouth",PrimitiveType.Sphere,fish,new Vector3(0,-.17f,1.21f),new Vector3(.9f,.65f,.25f),dark);
-                for(int i=0;i<5;i++) {
-                    float x=(i-2)*.14f;
-                    Shape.MeshObject("Tooth",fish,new[]{new Vector3(x-.06f,.09f,1.35f),new Vector3(x+.06f,.09f,1.35f),new Vector3(x,-.18f,1.4f)},new[]{0,1,2,2,1,0},new Color(1,.95f,.8f));
-                }
-                if(kind==CreatureKind.Puffer || elite) for(int i=0;i<12;i++) {
-                    float a=i*Mathf.PI*2/12;
-                    var p=new Vector3(Mathf.Cos(a)*.8f,Mathf.Sin(a)*.8f,0);
-                    Shape.Beam(fish,p,p*1.4f,.11f,new Color(1,.84f,.4f));
-                }
-                if(kind==CreatureKind.Angler) {
-                    Shape.Beam(fish,new Vector3(0,.6f,.2f),new Vector3(0,1.8f,.4f),.07f,c);
-                    Shape.Beam(fish,new Vector3(0,1.8f,.4f),new Vector3(0,1.8f,1.4f),.07f,c);
-                    Shape.Part("Lure",PrimitiveType.Sphere,fish,new Vector3(0,1.55f,1.4f),Vector3.one*.45f,new Color(.3f,1,.84f),false,true);
-                }
-                if(kind==CreatureKind.WhiteWhale) {
-                    fish.localScale=new Vector3(3.2f,2.5f,3.8f);
-                    Shape.Beam(fish,new Vector3(0,.35f,1),new Vector3(0,.45f,2.9f),.065f,new Color(.48f,1,1),true);
-                    Shape.MeshObject("Moon flukes",fish,new[]{new Vector3(0,0,-1.4f),new Vector3(-1.9f,0,-2.6f),new Vector3(0,.2f,-2.2f),new Vector3(1.9f,0,-2.6f)},new[]{0,1,2,0,2,3,2,1,0,3,2,0},c);
-                }
-                WeakPoint(fish,new Vector3(0,.05f,1.4f),boss?.3f:.21f);
-            }
+            var rig=new GameObject("Creature anatomy").transform;rig.SetParent(parent,false);
+            if(kind==CreatureKind.Kraken)Kraken(rig);
+            else if(kind==CreatureKind.Crab)Crab(rig);
+            else Fish(rig,kind,elite);
             return rig;
         }
-        static void Eyes(Transform p,float x,float y,float z,float size)
+        static void Fish(Transform rig,CreatureKind kind,bool elite)
         {
-            for(int s=-1;s<=1;s+=2) {
-                Shape.Part("Eye",PrimitiveType.Sphere,p,new Vector3(s*x,y,z),Vector3.one*size,new Color(1,.84f,.41f),false,true);
-                Shape.Part("Pupil",PrimitiveType.Sphere,p,new Vector3(s*x,y,z+size*.4f),new Vector3(size*.22f,size*.7f,size*.3f),new Color(.035f,.075f,.1f));
+            Color back=kind==CreatureKind.Snapper?new Color(.66f,.27f,.14f):kind==CreatureKind.Puffer?new Color(.43f,.48f,.2f):new Color(.17f,.34f,.37f);
+            if(kind==CreatureKind.Angler)back=new Color(.19f,.27f,.29f);if(kind==CreatureKind.WhiteWhale)back=new Color(.7f,.76f,.73f);if(elite)back=new Color(.42f,.24f,.49f);
+            Color belly=Color.Lerp(back,new Color(.92f,.87f,.64f),.65f),fin=back*.72f;fin.a=1;
+            var root=new GameObject("Fish body").transform;root.SetParent(rig,false);
+            bool boss=kind>=CreatureKind.Angler;root.localScale=Vector3.one*(boss?3.1f:.8f);
+            if(kind==CreatureKind.WhiteWhale)root.localScale=new Vector3(3.7f,3.1f,4.3f);
+            bool puffer=kind==CreatureKind.Puffer;
+            float[] z={-1.43f,-1.16f,-.87f,-.38f,.15f,.58f,.9f,1.1f,1.17f};
+            float[] radius={.045f,.12f,.31f,.48f,.51f,.46f,.31f,.17f,.015f};
+            var m=new CoastalMesh();const int sides=14;
+            for(int k=0;k<z.Length-1;k++)for(int j=0;j<sides;j++) {
+                float a=j*Mathf.PI*2/sides,b=(j+1)*Mathf.PI*2/sides;
+                float squash=puffer?1.3f:1;
+                var aa=new Vector3(Mathf.Cos(a)*radius[k]*squash,Mathf.Sin(a)*radius[k],z[k]);
+                var ab=new Vector3(Mathf.Cos(b)*radius[k]*squash,Mathf.Sin(b)*radius[k],z[k]);
+                var ba=new Vector3(Mathf.Cos(a)*radius[k+1]*squash,Mathf.Sin(a)*radius[k+1],z[k+1]);
+                var bb=new Vector3(Mathf.Cos(b)*radius[k+1]*squash,Mathf.Sin(b)*radius[k+1],z[k+1]);
+                Color color=Color.Lerp(belly,back,Mathf.Clamp01((Mathf.Sin(a)+.35f)*1.05f));
+                if(j%7==0)color=Color.Lerp(color,new Color(.87f,.66f,.31f),.4f);
+                if(k%2==0&&j<7)color*=.91f;
+                color.a=1;m.Quad(aa,ab,bb,ba,color);
             }
+            var body=m.Build("Faceted scales",root);var col=body.AddComponent<CapsuleCollider>();col.direction=2;col.radius=.49f;col.height=2.4f;col.center=new Vector3(0,0,-.1f);
+            var tail=new GameObject("Tail fin").transform;tail.SetParent(root,false);tail.localPosition=new Vector3(0,0,-1.22f);
+            Fin(tail,new[]{Vector3.zero,new Vector3(0,.66f,-.83f),new Vector3(0,.15f,-.71f),new Vector3(0,0,-.53f),new Vector3(0,-.53f,-.84f),new Vector3(0,-.09f,-.36f)},fin);
+            Fin(root,new[]{new Vector3(0,.3f,-.96f),new Vector3(0,.68f,-.83f),new Vector3(0,.99f,-.31f),new Vector3(0,.75f,.15f),new Vector3(0,.45f,.48f)},fin);
+            for(int s=-1;s<=1;s+=2) {
+                Fin(root,new[]{new Vector3(s*.36f,-.08f,.38f),new Vector3(s*.94f,-.32f,-.22f),new Vector3(s*.84f,-.39f,-.66f),new Vector3(s*.37f,-.19f,-.23f)},fin);
+                Shape.Part("Silver eye",PrimitiveType.Sphere,root,new Vector3(s*.32f,.14f,.78f),new Vector3(.19f,.2f,.13f),new Color(.91f,.83f,.55f));
+                Shape.Part("Dark pupil",PrimitiveType.Sphere,root,new Vector3(s*.38f,.14f,.824f),new Vector3(.09f,.115f,.068f),new Color(.024f,.035f,.028f));
+                var gills=new Vector3[]{new Vector3(s*.4f,.21f,.56f),new Vector3(s*.45f,.01f,.48f),new Vector3(s*.38f,-.24f,.48f)};
+                CoastalMesh.Tube("Gill slit",root,gills,new[]{.012f,.017f,.008f},fin,fin,5);
+            }
+            Shape.Part("Mouth",PrimitiveType.Sphere,root,new Vector3(0,-.055f,1.1f),new Vector3(.26f,.16f,.05f),new Color(.1f,.09f,.075f));
+            if(puffer)for(int i=0;i<22;i++){float a=i*2.39996f,y=-.7f+1.4f*i/22;Vector3 dir=new Vector3(Mathf.Cos(a)*Mathf.Sqrt(1-y*y),y,Mathf.Sin(a)*Mathf.Sqrt(1-y*y));CoastalMesh.Tube("Puffer spine",root,new[]{dir*.46f,dir*.71f},new[]{.043f,0},belly,back,5);}
+            if(kind==CreatureKind.Angler){var pts=new[]{new Vector3(0,.42f,.2f),new Vector3(0,1.02f,.38f),new Vector3(0,1.35f,.94f),new Vector3(0,1.15f,1.36f)};CoastalMesh.Tube("Angler lure",root,pts,new[]{.045f,.037f,.026f,.015f},back,back,7);Shape.Part("Bioluminescent lure",PrimitiveType.Sphere,root,pts[3],Vector3.one*.25f,new Color(.4f,.95f,.62f),false,true);}
+            if(kind==CreatureKind.Leviathan)for(int i=0;i<6;i++)CoastalMesh.Tube("Storm spine",root,new[]{new Vector3(0,.4f,-.9f+i*.27f),new Vector3(0,.94f,-1.1f+i*.27f)},new[]{.12f,0},new Color(.37f,.75f,.75f),fin,5);
+            if(kind==CreatureKind.WhiteWhale)Fin(root,new[]{new Vector3(0,0,-1.25f),new Vector3(-1.25f,.05f,-1.94f),new Vector3(-.42f,0,-2),new Vector3(0,0,-1.5f),new Vector3(.42f,0,-2),new Vector3(1.25f,.05f,-1.94f)},back);
+            WeakPoint(root,new Vector3(0,.17f,1.075f),boss?.17f:.095f);
         }
-        static void WeakPoint(Transform p,Vector3 pos,float radius)
+        static void Fin(Transform p,Vector3[] outline,Color c)
         {
-            var g=Shape.Part("Glowing weak point",PrimitiveType.Sphere,p,pos,Vector3.one*radius*2,new Color(.45f,1,.83f),true,true);
-            g.AddComponent<HitRegion>();
+            var m=new CoastalMesh();for(int i=1;i<outline.Length-1;i++){m.Tri(outline[0],outline[i],outline[i+1],c);m.Tri(outline[0],outline[i+1],outline[i],c*.85f);}m.Build("Webbed fin",p);
+            for(int i=1;i<outline.Length;i++)Shape.Beam(p,outline[0],outline[i],.007f,Color.Lerp(c,Color.white,.15f));
         }
+        static void Kraken(Transform rig)
+        {
+            Color skin=new Color(.31f,.18f,.32f),light=new Color(.6f,.37f,.39f);
+            CoastalMesh.Tube("Tapered mantle",rig,new[]{new Vector3(0,-1,0),Vector3.zero,new Vector3(0,1.5f,-.3f),new Vector3(0,3.7f,-.8f),new Vector3(0,5,-1.2f)},new[]{.8f,2.1f,2.35f,1.5f,0},skin,light,16);
+            var body=rig.gameObject.AddComponent<SphereCollider>();body.radius=2.3f;body.center=Vector3.up*1.3f;
+            for(int s=-1;s<=1;s+=2){Shape.Part("Old gold eye",PrimitiveType.Sphere,rig,new Vector3(s*1.4f,.72f,1.6f),new Vector3(.86f,.68f,.28f),new Color(.83f,.59f,.19f));Shape.Part("Slit pupil",PrimitiveType.Sphere,rig,new Vector3(s*1.4f,.72f,1.75f),new Vector3(.2f,.58f,.09f),new Color(.04f,.02f,.04f));}
+            for(int i=0;i<8;i++) {
+                var arm=new GameObject("Tentacle "+i).transform;arm.SetParent(rig,false);arm.localRotation=Quaternion.Euler(0,i*45,0);
+                var points=new Vector3[12];var radii=new float[12];
+                for(int j=0;j<12;j++){float t=j/11f;points[j]=new Vector3(1.2f+t*6.6f,-.7f+Mathf.Sin(t*4)*1.5f,t*t*1.6f);radii[j]=Mathf.Lerp(.65f,.035f,t);}
+                CoastalMesh.Tube("Continuous curling arm",arm,points,radii,skin,light,9);
+                for(int j=1;j<10;j++)for(int s=-1;s<=1;s+=2){float t=j/11f;CoastalMesh.Ring(arm,points[j]+new Vector3(0,.12f,s*radii[j]*.7f),radii[j]*.37f,.045f,light,Quaternion.Euler(70,0,0));}
+            }
+            WeakPoint(rig,new Vector3(0,.1f,1.85f),.48f);
+        }
+        static void Crab(Transform rig)
+        {
+            Color shell=new Color(.56f,.25f,.13f),rim=new Color(.83f,.45f,.21f);
+            Shape.Rock(rig,new Vector3(0,.25f,0),new Vector3(2.25f,1.35f,1.65f),shell,12);
+            var c=rig.gameObject.AddComponent<BoxCollider>();c.size=new Vector3(4.2f,1.6f,3.1f);c.center=Vector3.up*.35f;
+            for(int s=-1;s<=1;s+=2) {
+                for(int i=0;i<4;i++){Vector3 a=new Vector3(s*1.5f,0,-1.1f+i*.6f),b=new Vector3(s*(2.7f+i*.1f),.3f,-2+i*1.1f),d=b+new Vector3(s*.55f,-1.1f,.2f);CoastalMesh.Tube("Articulated leg",rig,new[]{a,b,d},new[]{.25f,.17f,.035f},shell,rim,7);}
+                CoastalMesh.Tube("Claw arm",rig,new[]{new Vector3(s*1.6f,.15f,.8f),new Vector3(s*2.7f,.2f,2),new Vector3(s*2.4f,.55f,3.05f)},new[]{.34f,.38f,.44f},shell,rim,9);
+                CoastalMesh.Tube("Upper pincer",rig,new[]{new Vector3(s*2.4f,.55f,2.9f),new Vector3(s*2.8f,.65f,3.7f),new Vector3(s*2.45f,.6f,4.2f)},new[]{.46f,.3f,.015f},rim,shell,8);
+                CoastalMesh.Tube("Lower pincer",rig,new[]{new Vector3(s*2.4f,.4f,2.9f),new Vector3(s*2,.32f,3.5f),new Vector3(s*2.3f,.42f,3.9f)},new[]{.3f,.2f,0},rim,shell,7);
+                Shape.Beam(rig,new Vector3(s*.85f,.75f,1),new Vector3(s*.85f,1.5f,1.1f),.12f,shell);
+                Shape.Part("Eye",PrimitiveType.Sphere,rig,new Vector3(s*.85f,1.5f,1.1f),Vector3.one*.36f,new Color(.93f,.76f,.35f));Shape.Part("Pupil",PrimitiveType.Sphere,rig,new Vector3(s*.85f,1.5f,1.27f),Vector3.one*.17f,new Color(.06f,.07f,.035f));
+            }
+            WeakPoint(rig,new Vector3(0,.3f,1.62f),.38f);
+        }
+        static void WeakPoint(Transform p,Vector3 pos,float radius){var g=Shape.Part("Weak point",PrimitiveType.Sphere,p,pos,Vector3.one*radius*2,new Color(.6f,.9f,.61f),true,true);g.AddComponent<HitRegion>();}
     }
     public class HitRegion : MonoBehaviour { }
 }

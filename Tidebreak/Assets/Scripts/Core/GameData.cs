@@ -12,14 +12,20 @@ namespace Tidebreak
     [Serializable]
     public class RunData
     {
-        public int seed, stage = 1, coins = 55, kills, catches, bossKills, earned;
+        public int seed, stage = 1, coins = 25, kills, catches, bossKills, earned;
+        public int landed, sold, shopMask;
+        public bool bossCleared;
+        public List<CatchData> bag=new List<CatchData>();
+        public int BagValue {get {int n=0;if(bag!=null)foreach(var f in bag)n+=f.value;return n;}}
+        public int Quota {get{return BossStage?1:3+Act;}}
+        public bool RouteReady {get{return BossStage?bossCleared:landed>=Quota;}}
         public float health = 100, elapsed;
         public int weaponLevel, rodLevel, hullLevel, damageRelics, hasteRelics, criticalRelics;
         public int leechRelics, fortuneRelics, dodgeRelics, magazineRelics, shieldRelics;
         public bool shotgun, harpoon, abyssBait, krakenDefeated, whaleDefeated, rareSignal, easy;
         public RouteKind route;
         public int selectedWeapon;
-        public int checkpointVersion = 1;
+        public int checkpointVersion = 2;
         public bool betweenEncounters;
         public float MaxHealth { get { return 100 + hullLevel * 25; } }
         public float DamageMultiplier { get { return (1 + .18f * weaponLevel) * (1 + .14f * damageRelics); } }
@@ -45,7 +51,7 @@ namespace Tidebreak
         public static readonly WeaponSpec[] Weapons = {
             new WeaponSpec("潮汐左轮", 23, .34f, 1.3f, 8, 1, .003f),
             new WeaponSpec("礁石霰弹枪", 11, .85f, 1.8f, 5, 7, .055f),
-            new WeaponSpec("雷鸣鱼叉", 82, 1.05f, 2.1f, 3, 1, .001f)
+            new WeaponSpec("雷鸣鱼叉", 100, .98f, 2.1f, 3, 1, .001f)
         };
         public static readonly string[] Seas = { "日光浅滩", "风暴群礁", "幽光深渊" };
         public static readonly string[] SeaCaptions = { "SUNLIT SHOALS", "TEMPEST REEF", "THE LUMINOUS DEEP" };
@@ -53,15 +59,15 @@ namespace Tidebreak
         public static float Health(CreatureKind kind, int stage, bool elite)
         {
             float basis = kind == CreatureKind.Snapper ? 45 : kind == CreatureKind.Puffer ? 65 : 80;
-            if (kind == CreatureKind.Crab) return 900;
-            if (kind == CreatureKind.Angler) return 1700;
-            if (kind == CreatureKind.Leviathan) return 2600;
-            if (kind == CreatureKind.Kraken) return 4000;
-            if (kind == CreatureKind.WhiteWhale) return 3500;
+            if (kind == CreatureKind.Crab) return 750;
+            if (kind == CreatureKind.Angler) return 1400;
+            if (kind == CreatureKind.Leviathan) return 2200;
+            if (kind == CreatureKind.Kraken) return 3300;
+            if (kind == CreatureKind.WhiteWhale) return 2900;
             return basis * (1 + (stage - 1) * .11f) * (elite ? 1.8f : 1);
         }
         public static int Bounty(CreatureKind kind, int stage, bool elite)
-        { return kind >= CreatureKind.Crab ? 90 + stage * 10 : (elite ? 28 : 13) + stage * 2; }
+        { return kind >= CreatureKind.Crab ? 150 + stage * 15 : (elite ? 52 : 26) + stage * 3; }
         public static string CreatureName(CreatureKind kind)
         {
             switch(kind) {
@@ -80,6 +86,16 @@ namespace Tidebreak
         { return holding ? (surge ? .075f : .2f) * (1 + rod * .24f) : -.018f; }
         public static float TensionGain(bool holding, bool surge, int rod)
         { return holding ? (surge ? .44f : .12f) / (1 + rod * .22f) : -.5f; }
+    }
+
+    [Serializable]
+    public class CatchData
+    {
+        public CreatureKind kind;
+        public int value,quality;
+        public float weight;
+        public bool elite,airshot,weakshot;
+        public string Label {get{return (quality==2?"金鳞 · ":quality==1?"巨型 · ":elite?"精英 · ":"")+Balance.CreatureName(kind);}}
     }
 
     public class Relic

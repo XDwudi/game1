@@ -8,6 +8,8 @@ namespace Tidebreak
     {
         public int voyages, victories, krakens, bestStage, totalKills;
         public bool[] discovered = new bool[8];
+        public bool[] goldDiscovered = new bool[8];
+        public float[] heaviest = new float[8];
         public float volume = .65f, sensitivity = 1;
         public bool shake = true, easy;
     }

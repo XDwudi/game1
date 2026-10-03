@@ -1,0 +1,252 @@
+PASS player stands on island terrain
+PASS walk from island onto pier with ground collision
+PASS workshop counter blocks the character at -6.52
+PASS pause freezes voyage time
+PASS land casts are rejected
+PASS excess line tension returns to retry state
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS throw restores rigidbody velocity
+PASS stow adds catch to persistent bag
+PASS sale pays exact appraised value and empties bag
+PASS insufficient coins cannot buy an upgrade
+PASS gear purchase charges exact coin price
+PASS random perk requires payment
+PASS sold out perk cannot be bought twice
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS stage 1 commission unlocks travel
+PASS coins, bag and commission persist
+PASS resume returns to island with completed commission
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS stage 2 commission unlocks travel
+PASS coins, bag and commission persist
+PASS enemy damage affects the player
+PASS telegraphed ground strike deals actual damage
+PASS dash invulnerability prevents damage
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS stage 3 commission unlocks travel
+PASS coins, bag and commission persist
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS stage 4 commission unlocks travel
+PASS coins, bag and commission persist
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS stage 5 commission unlocks travel
+PASS coins, bag and commission persist
+PASS enemy damage affects the player
+PASS telegraphed ground strike deals actual damage
+PASS dash invulnerability prevents damage
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS stage 6 commission unlocks travel
+PASS coins, bag and commission persist
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS stage 7 commission unlocks travel
+PASS coins, bag and commission persist
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS water cast accepted
+PASS reeling launches a physical fish
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS ordinary kill does not mint coins before selling
+PASS dead fish remains as a physical catch
+PASS catch can be picked up
+PASS stow adds catch to persistent bag
+PASS stage 8 commission unlocks travel
+PASS coins, bag and commission persist
+PASS enemy damage affects the player
+PASS telegraphed ground strike deals actual damage
+PASS dash invulnerability prevents damage
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS nine-stage island campaign completes
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS optional Kraken encounter completes
+PASS camera raycast damages a live target
+PASS combat can be completed with equipped weapon
+PASS rare white whale alternative completes
+PASS permadeath clears current run
