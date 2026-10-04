@@ -8,3 +8,4 @@
 *.zip binary
 # Unity writes a trailing space for empty serialized lists.
 *.unity whitespace=-blank-at-eol
+*.meta whitespace=-blank-at-eol
