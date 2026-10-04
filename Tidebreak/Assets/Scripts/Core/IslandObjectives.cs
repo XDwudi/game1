@@ -9,6 +9,22 @@ namespace Tidebreak
     {
         GameObject missionRoot;
         Transform missionActor;
+        Vector3[] missionRoute=new Vector3[0];
+        int missionRouteIndex;
+        float missionRouteLength,missionRouteTravelled;
+        public Vector3[] MissionPath {get{return missionRoute;}}
+        Vector3 MissionRoutePoint(float progress)
+        {
+            if(missionRoute.Length==0)return SitePoint(0);
+            float remaining=missionRouteLength*Mathf.Clamp01(progress);
+            for(int i=1;i<missionRoute.Length;i++){float distance=Vector3.Distance(missionRoute[i-1],missionRoute[i]);if(remaining<=distance){Vector3 p=Vector3.Lerp(missionRoute[i-1],missionRoute[i],remaining/Mathf.Max(.001f,distance));p.y=World.GroundAt(p);return p;}remaining-=distance;}
+            return missionRoute[missionRoute.Length-1];
+        }
+        void BuildMissionRoute()
+        {
+            missionRoute=World.NavigationRoute(SitePoint(0),SitePoint(1));missionRouteIndex=1;missionRouteLength=missionRouteTravelled=0;
+            for(int i=1;i<missionRoute.Length;i++)missionRouteLength+=Vector3.Distance(missionRoute[i-1],missionRoute[i]);
+        }
         readonly List<EncounterTarget> missionTargets=new List<EncounterTarget>();
         readonly List<Vector3> warmStations=new List<Vector3>();
         AudioSource melodySource;
@@ -95,7 +111,7 @@ namespace Tidebreak
 
         public void ResetIslandMission()
         {
-            missionRunning=missionGoal=false;missionAge=missionProgress=0;missionPhase=missionWave=0;
+            missionRunning=missionGoal=false;missionAge=missionProgress=0;missionPhase=missionWave=0;missionRoute=new Vector3[0];missionRouteIndex=0;missionRouteLength=missionRouteTravelled=0;
             foreach(var t in missionTargets)if(t)Destroy(t.gameObject);missionTargets.Clear();
             if(missionRoot)Destroy(missionRoot);missionRoot=null;missionActor=null;missionIsland=0;warmStations.Clear();
             melodyPlaying=false;melodyStep=0;melodyGeneration++;Array.Clear(AstrolabeAxes,0,AstrolabeAxes.Length);
@@ -119,10 +135,11 @@ namespace Tidebreak
                     Shape.Beam(missionRoot.transform,at-Vector3.up*1.5f,at,.17f,new Color(.2f,.32f,.1f));
                 }
             }
+            if(Run.stage==3||Run.stage==6||Run.stage==7)BuildMissionRoute();
             if(Run.stage==6){
-                for(int i=1;i<=2;i++){Vector3 p=Vector3.Lerp(SitePoint(0),SitePoint(1),i/3f);p.z+=i==1?4:-3;p.y=World.GroundAt(p);warmStations.Add(p);MissionMarker("救援暖炉",p,new Color(1,.57f,.2f),1.7f);}
+                foreach(float along in new[]{.43f,.84f}){Vector3 p=MissionRoutePoint(along);warmStations.Add(p);MissionMarker("救援暖炉",p,new Color(1,.57f,.2f),1.7f);}
             }
-            if(Run.stage==7){Vector3 p=Vector3.Lerp(SitePoint(0),SitePoint(1),.5f);p.y=World.GroundAt(p);MissionMarker("接地环",p,Color.cyan,2.3f);}
+            if(Run.stage==7){Vector3 p=MissionRoutePoint(.5f);MissionMarker("接地环",p,Color.cyan,2.3f);}
             if(Run.stage==8){MissionMarker("添火阀",ForgeValve(0),new Color(1,.35f,.12f),1.2f);MissionMarker("泄压阀",ForgeValve(1),new Color(.3f,.85f,.95f),1.2f);}
             if(Run.stage==9){for(int i=0;i<2;i++)MissionMarker("逆潮锚",SitePoint(i),new Color(.45f,.85f,.95f),2.7f);}
         }
@@ -262,6 +279,7 @@ namespace Tidebreak
         public Enemy SpawnMissionEnemy(int variation,bool elite,Vector3 at)
         {
             if(Enemies.Count>=4)return null;
+            if(at.z<2&&World.GroundAt(at)<.6f)at=World.Layout.ProjectToRoute(at);
             at.y=World.GroundAt(at)+1.1f;
             int id=(Mathf.Clamp(Run.stage,1,9)-1)*12+Mathf.Abs(variation)%12;
             return SpawnSpecies(ExpeditionContent.Species[id],elite,at,true);
@@ -270,15 +288,21 @@ namespace Tidebreak
         void TickEscort(float dt)
         {
             if(!missionActor){FailIslandMission("净水舟停航 · 回净水阀重新启动");return;}
-            Vector3 target=SitePoint(1);Vector3 pos=missionActor.position;
+            if(missionRoute.Length<2)BuildMissionRoute();
+            Vector3 final=SitePoint(1);Vector3 pos=missionActor.position;
+            Vector3 target=missionRoute[Mathf.Clamp(missionRouteIndex,0,missionRoute.Length-1)];target.y=pos.y;
             bool near=FlatDistance(Player.transform.position,pos)<8;
-            if(near){Vector3 next=Vector3.MoveTowards(pos,target,dt*1.35f);next.y=World.GroundAt(next)+.25f;missionActor.position=next;Vector3 d=target-pos;d.y=0;if(d.sqrMagnitude>.1f)missionActor.rotation=Quaternion.Slerp(missionActor.rotation,Quaternion.LookRotation(d),dt*3);}
+            if(near){
+                Vector3 next=Vector3.MoveTowards(pos,target,dt*1.35f);missionRouteTravelled+=FlatDistance(pos,next);next.y=World.GroundAt(next)+.25f;missionActor.position=next;
+                Vector3 d=target-pos;d.y=0;if(d.sqrMagnitude>.1f)missionActor.rotation=Quaternion.Slerp(missionActor.rotation,Quaternion.LookRotation(d),dt*3);
+                if(FlatDistance(next,target)<.3f&&missionRouteIndex<missionRoute.Length-1)missionRouteIndex++;
+            }
             foreach(var e in Enemies)if(e&&FlatDistance(e.transform.position,pos)<5)missionIntegrity-=dt*3;
-            missionProgress=1-Mathf.Clamp01(FlatDistance(pos,target)/Mathf.Max(1,FlatDistance(SitePoint(0),target)));
+            missionProgress=Mathf.Clamp01(missionRouteTravelled/Mathf.Max(1,missionRouteLength));
             if(missionProgress>.28f&&missionWave==0){missionWave++;SpawnMissionEnemy(7,false,pos+Vector3.forward*7);}
             if(missionProgress>.65f&&missionWave==1){missionWave++;SpawnMissionEnemy(2,true,pos+Vector3.forward*8);}
             if(missionIntegrity<=0)FailIslandMission("净水舟遭腐蚀停航 · 清理敌人后可在净水阀重新启动");
-            else if(FlatDistance(pos,target)<1.3f)ReachMissionGoal();
+            else if(missionRouteIndex>=missionRoute.Length-1&&FlatDistance(pos,final)<1.3f)ReachMissionGoal();
         }
 
         void TickRescue(float dt)
@@ -300,7 +324,7 @@ namespace Tidebreak
         {
             if(Time.time>missionNextHazard){missionNextHazard=Time.time+Mathf.Max(2.7f,5-DeliveredCharges*.8f);Warn(Player.transform.position,2.1f,1.35f,17);}
             if(missionPhase!=1)return;
-            var ground=Vector3.Lerp(SitePoint(0),SitePoint(1),.5f);
+            var ground=MissionRoutePoint(.5f);
             if(missionProgress==0&&FlatDistance(Player.transform.position,ground)<2.7f){missionDeadline+=4;missionProgress=1;Audio.Cue("sonar");Notice("接地完成 · 电荷稳定时间 +4 秒",2);}
             if(Time.time>missionDeadline){missionPhase=0;Notice("电荷耗尽 · 已送达轮次保留，回西阵列重新取电",4);}
         }

@@ -6,12 +6,17 @@ namespace Tidebreak
     {
         public string id,name,description;public int category,island,cost,max;
         public Func<RunData,int> level;public Action<RunData> apply;
+        public Func<RunData,string> describe;
         public ShopOffer(string key,string title,string desc,int tab,int gate,int price,int limit,Func<RunData,int> read,Action<RunData> buy){id=key;name=title;description=desc;category=tab;island=gate;cost=price;max=limit;level=read;apply=buy;}
         public int Price(RunData r){return level(r)>=max?-1:cost+(max>1&&max<=5?level(r)*40:0);}
+        public string Description(RunData r){return describe!=null?describe(r):description;}
     }
     public static class ShopCatalog
     {
-        public static readonly ShopOffer[] All={
+        public static readonly ShopOffer[] All=Build();
+        static ShopOffer[] Build()
+        {
+            var offers=new List<ShopOffer>{
             new ShopOffer("weapon","枪械改装","所有武器基础伤害 +11%\n升级上限随主线许可证提升",0,1,85,5,r=>r.weaponLevel,r=>r.weaponLevel++),
             new ShopOffer("shotgun","礁石霰弹枪","七发散射 · 近距离爆发\n按 3 切换",0,2,150,1,r=>r.shotgun?1:0,r=>r.shotgun=true),
             new ShopOffer("carbine","港卫卡宾枪","22 发弹匣 · 全自动\n按 5 切换；连续开火散布扩大",0,3,230,1,r=>r.carbine?1:0,r=>r.carbine=true),
@@ -34,11 +39,42 @@ namespace Tidebreak
             new ShopOffer("frost","冰封瓶","V 投掷，减速附近怪物\n为装填或撤退创造窗口",2,5,50,9,r=>r.frostbombs,r=>r.frostbombs++),
             new ShopOffer("sonar","便携声呐","C 使用，标记附近探索地点\n已完成地点不会重复标记",2,2,25,9,r=>r.sonarCharges,r=>r.sonarCharges++),
             new ShopOffer("boots","防寒行靴","每级移速 +6%\n缩短冰霜减速时间",2,5,95,2,r=>r.bootsLevel,r=>r.bootsLevel++),
-            new ShopOffer("tonic","乘风药剂","G 使用，12 秒冲刺冷却加快\n提高移速，适合探索与撤退",2,6,35,9,r=>r.tonics,r=>r.tonics++)
-        };
+            new ShopOffer("tonic","乘风药剂","G 使用，12 秒冲刺冷却加快\n提高移速，适合探索与撤退",2,6,35,9,r=>r.tonics,r=>r.tonics++),
+            new ShopOffer("reload","快拆弹匣","每级装填速度 +8%\n缩短暴露时间，适合持续交战",0,1,55,3,r=>r.reloadLevel,r=>r.reloadLevel++),
+            new ShopOffer("handling","回正握把","每级连续开火散布恢复 +20%\n短点射之间更快回到精准状态",0,2,50,3,r=>r.handlingLevel,r=>r.handlingLevel++),
+            new ShopOffer("precision","装填导轨","每级精准装填窗口两侧各 +2.5%\n成功仍需在窗口中按 R",0,2,60,3,r=>r.precisionReloadLevel,r=>r.precisionReloadLevel++),
+            new ShopOffer("bearing","卸力线轴","每级松线降张力速度 +18%\n危险浪涌时更快化解断线风险",1,1,40,3,r=>r.reelBearingLevel,r=>r.reelBearingLevel++),
+            new ShopOffer("salvage","精英样本箱","每级自然钓获的精英售价 +10%\n只有真实钓上岸的精英享受加价",1,3,65,3,r=>r.salvageLevel,r=>r.salvageLevel++),
+            new ShopOffer("dressing","压缩救护袋","每级随身急救包恢复量 +8\n急救包仍需另行购买",2,2,45,3,r=>r.fieldDressingLevel,r=>r.fieldDressingLevel++)
+            };
+            for(int i=0;i<9;i++){
+                int island=i;
+                var offer=new ShopOffer("mastery"+i,IslandMastery.Names[i],"",5,i+1,55+i*8,3,r=>IslandMastery.Level(r,island),r=>IslandMastery.Upgrade(r,island));
+                offer.describe=r=>IslandMastery.Description(r,island);offers.Add(offer);
+            }
+            offers.Find(x=>x.id=="medkit").describe=r=>"Z 使用，恢复 "+r.MedkitRecovery+" 生命\n救护袋研究可提高恢复量";
+            foreach(var offer in offers)if(offer.id=="reload"||offer.id=="handling"||offer.id=="precision"||offer.id=="bearing"||offer.id=="salvage"||offer.id=="dressing"){
+                var selected=offer;selected.describe=r=>UpgradeDescription(selected,r);
+            }
+            return offers.ToArray();
+        }
+        static string UpgradeDescription(ShopOffer offer,RunData run)
+        {
+            int level=offer.level(run),next=Math.Min(3,level+1);
+            string prefix=level>=3?"已达到 III 级 · ":"当前 → 下一阶 · ";
+            switch(offer.id){
+                case "reload":return prefix+"装填 +"+(level*8)+"% → +"+(next*8)+"%\n所有枪械均生效";
+                case "handling":return prefix+"散布恢复 +"+(level*20)+"% → +"+(next*20)+"%\n卡宾枪短点射更快回正";
+                case "precision":return prefix+"窗口两侧 +"+(level*2.5f)+"% → +"+(next*2.5f)+"%\n仍需在窗口中再次按 R";
+                case "bearing":return prefix+"卸张力 +"+(level*18)+"% → +"+(next*18)+"%\n松开收线键时生效";
+                case "salvage":return prefix+"精英售价 +"+(level*10)+"% → +"+(next*10)+"%\n仅真实钓获精英，召唤无效";
+                default:return prefix+"急救包 "+(45+level*8)+" → "+(45+next*8)+" 生命\n补给品仍需另行购买";
+            }
+        }
         public static ShopOffer Find(string id){return Array.Find(All,x=>x.id==id);}
         public static string Lock(RunData r,ShopOffer offer)
         {
+            if(offer.category==5)return IslandMastery.Lock(r,offer.island-1);
             if(r.maxIsland<offer.island)return "抵达 "+ExpeditionContent.Islands[offer.island-1].name+" 解锁";
             int cap=offer.id=="weapon"?Math.Min(5,1+(r.maxIsland-1)/2):offer.id=="rod"?Math.Min(3,1+(r.maxIsland-1)/3):3;
             if((offer.id=="weapon"||offer.id=="rod")&&offer.level(r)>=cap&&offer.level(r)<offer.max)return "后续岛屿开放下一等级";

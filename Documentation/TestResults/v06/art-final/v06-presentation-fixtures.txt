@@ -1,0 +1,4 @@
+Visual-only synthetic fixtures; not natural combat or balance passes.
+Each resolution: real pier camera, normal DeckWarning geometry/countdown, explicit damage source, explicit weak-hit HUD marker, real Fire and Reload APIs.
+The weak-hit number is a HUD fixture, not claimed enemy damage. Test loadout grants carbine ownership.
+Temporary warnings, health changes and loadout are discarded by StartVoyage before the existing presentation suite.

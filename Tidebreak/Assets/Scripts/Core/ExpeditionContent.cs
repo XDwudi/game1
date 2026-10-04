@@ -7,6 +7,7 @@ namespace Tidebreak
     public enum BodyFamily { Perch, Puffer, Eel, Ray, Crab, Jelly, Turtle, Squid, Swordfish, Seahorse, Urchin, Shark }
     public enum AttackStyle { Bite, Charge, Fan, Mortar, Ring, Beam, Mine, Leap, Spiral, Pull, Heal, Split, Boomerang, Burrow }
     public enum SeaTrait { None, Armored, Venom, Frost, Electric, Frenzy, Leech, Volatile, Blinker }
+    public enum EcologyStyle { TideRunner, ReefSentinel, RootStalker, DuneBurrower, WreckScavenger, FrostDrifter, StormConductor, CinderHunter, MirrorDancer }
     [Serializable] public class IslandProgress
     {
         public int step,landed,explored,shopMask,eventMask;
@@ -41,10 +42,11 @@ namespace Tidebreak
     }
     public class SpeciesDefinition
     {
-        public int id,island,lure;public string name,lore;
+        public int id,island,lure,habitat;public string name,lore,ecologyMark;
+        public EcologyStyle ecology;public bool endemic;
         public BodyFamily body;public AttackStyle attack;public SeaTrait trait;
         public Color color;public float hp,speed,size,tempo;public int value;public bool boss;
-        public string Hint {get{return ExpeditionContent.Islands[island].name+" · "+ExpeditionContent.Lures[lure]+" · "+ExpeditionContent.AttackNames[(int)attack];}}
+        public string Hint {get{return ExpeditionContent.Islands[island].name+" · "+(endemic?"岛屿专属 · ":"")+ExpeditionContent.Lures[lure]+" · "+ExpeditionContent.AttackNames[(int)attack];}}
     }
     public static class ExpeditionContent
     {
@@ -75,6 +77,7 @@ namespace Tidebreak
             "镜鳞幻鲈|星芒虚鲀|时隙长鳗|月幕梦鳐|星砂灵蟹|星河冠母|纪元古龟|夜幕八腕|断潮剑鱼|回声海龙|零点星胆|吞梦巨鲨"
         };
         public static readonly SpeciesDefinition[] Species=BuildSpecies();
+        public static readonly string[] EcologyMarks={"帆鳍 / 潮线突进","珊瑚冠 / 护礁横移","根须 / 潜伏突袭","日轮鳍 / 沙纹游走","铆甲 / 沉物伏击","晶棱 / 冰线漂游","导流角 / 雷步绕行","熔裂甲 / 蓄热追猎","双月鳍 / 镜像侧移"};
         public static IslandDefinition Island(int stage){return Islands[Mathf.Clamp(stage-1,0,8)];}
         static SpeciesDefinition[] BuildSpecies()
         {
@@ -83,9 +86,9 @@ namespace Tidebreak
                 var names=Names[island].Split('|');
                 for(int k=0;k<12;k++){
                     int attack=(k+island*3)%14;SeaTrait trait=island==0&&k<6?SeaTrait.None:(SeaTrait)((k+island)%9);
-                    all.Add(new SpeciesDefinition{id=all.Count,island=island,name=names[k],body=(BodyFamily)k,attack=(AttackStyle)attack,trait=trait,lure=k<6?0:k<9?1:k<11?2:3,
+                    all.Add(new SpeciesDefinition{id=all.Count,island=island,name=names[k],body=(BodyFamily)k,attack=(AttackStyle)attack,trait=trait,lure=k<6?0:k<9?1:k<11?2:3,habitat=k%3,ecology=(EcologyStyle)island,endemic=k==0||k==5,ecologyMark=EcologyMark(island),
                         color=Color.Lerp(Islands[island].accent,Color.HSVToRGB((k*.071f+island*.043f)%1,.48f,.72f),.52f),hp=(64+k*5)*(1+island*.19f),speed=3.1f+(k%4)*.55f,size=.7f+(k%3)*.13f+island*.016f,tempo=3.25f-(k%3)*.22f,value=25+island*7+k*2,
-                        lore=Islands[island].name+"的"+new[]{"潮池居民","礁缝伏击者","浅海巡游者","夜间觅食者"}[k%4]+"。"+Counters[attack]+"；"+TraitNames[(int)trait]+"。"});
+                        lore=Islands[island].name+"的"+new[]{"潮池居民","礁缝伏击者","浅海巡游者","夜间觅食者"}[k%4]+"。"+EcologyMark(island)+"。"+Counters[attack]+"；"+TraitNames[(int)trait]+"。"+(k==0||k==5?"只栖息于本岛；自然钓起并击败后可研究专属能力。":"" )});
                 }
             }
             BodyFamily[] forms={BodyFamily.Crab,BodyFamily.Ray,BodyFamily.Eel,BodyFamily.Turtle,BodyFamily.Squid,BodyFamily.Swordfish,BodyFamily.Jelly,BodyFamily.Crab,BodyFamily.Shark};
@@ -95,11 +98,32 @@ namespace Tidebreak
         }
         public static SpeciesDefinition Roll(RunData run,System.Random random)
         {
-            int start=Mathf.Clamp(run.stage-1,0,8)*12;var pool=new List<SpeciesDefinition>();
-            for(int i=start;i<start+12;i++)if(Species[i].lure<=run.selectedLure)pool.Add(Species[i]);
+            var pool=IslandPool(run.stage,run.selectedLure);
             // Prefer an uncollected local species, so the main story never relies on repeated unlucky rolls.
             if(random.NextDouble()<.62){var fresh=pool.FindAll(s=>!run.islandCaught.Contains(s.id));if(fresh.Count>0)pool=fresh;}
             return pool[random.Next(pool.Count)];
+        }
+        static string EcologyMark(int island)
+        {
+            // BuildSpecies runs during static initialization, before later fields.
+            switch(island){case 0:return "帆鳍 / 潮线突进";case 1:return "珊瑚冠 / 护礁横移";case 2:return "根须 / 潜伏突袭";case 3:return "日轮鳍 / 沙纹游走";case 4:return "铆甲 / 沉物伏击";case 5:return "晶棱 / 冰线漂游";case 6:return "导流角 / 雷步绕行";case 7:return "熔裂甲 / 蓄热追猎";default:return "双月鳍 / 镜像侧移";}
+        }
+        public static List<SpeciesDefinition> IslandPool(int stage,int lure,int habitat=-1)
+        {
+            int island=Mathf.Clamp(stage-1,0,8),tier=Mathf.Clamp(lure,0,3);
+            var pool=new List<SpeciesDefinition>();
+            for(int k=0;k<12;k++){
+                var s=Species[island*12+k];
+                if(s.lure<=tier&&(habitat<0||s.habitat==habitat))pool.Add(s);
+            }
+            // Only ordinary neighbouring migrants cross a current. No endemic
+            // specimen travels, and every lure tier retains >70% native species.
+            int neighbour=(island+8)%9;
+            for(int m=0;m<3;m++)if(tier>=m){
+                var s=Species[neighbour*12+1+m];
+                if(habitat<0||s.habitat==habitat)pool.Add(s);
+            }
+            return pool;
         }
     }
 }

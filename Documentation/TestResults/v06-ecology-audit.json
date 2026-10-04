@@ -1,0 +1,947 @@
+{
+  "model": "v0.6 finite ecology and conservative first-rank economy",
+  "checks": 342,
+  "passed": true,
+  "limitations": [
+    "Independent design model; the runtime pool must also be tested in Unity.",
+    "Income assumes winning, collecting and selling catches, excludes healing costs.",
+    "Affordable choices are not evidence of human-perceived fun or encounter difficulty."
+  ],
+  "source_sha256": {
+    "Tidebreak/Assets/Scripts/Core/ExpeditionContent.cs": "3441bd9a5ab6dbe3546fb06aabf0eb3711f50949ee5e4d28cb8409c295a74ef0",
+    "Tidebreak/Assets/Scripts/Core/CoastalResearch.cs": "3588662b8313c9124b55f608965a3e78539532edf10b22754b1004a8febafd9c",
+    "Tidebreak/Assets/Scripts/Core/IslandMastery.cs": "817e7c620493461dab62e39e168325b5c7558b4fa94d70b69bff4466cdb0f810",
+    "Tidebreak/Assets/Scripts/Core/ShopCatalog.cs": "b919348bdb07349cf1c436c65c92795bb8350d23f22d3e8fd41e0b602e612efa"
+  },
+  "ecology": [
+    {
+      "island": 1,
+      "lure": 0,
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        97
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 1,
+      "lure": 1,
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        97,
+        98
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 1,
+      "lure": 2,
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        97,
+        98,
+        99
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 1,
+      "lure": 3,
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        97,
+        98,
+        99
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 2,
+      "lure": 0,
+      "ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        1
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 2,
+      "lure": 1,
+      "ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        1,
+        2
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 2,
+      "lure": 2,
+      "ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        1,
+        2,
+        3
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 2,
+      "lure": 3,
+      "ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        1,
+        2,
+        3
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 3,
+      "lure": 0,
+      "ids": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        13
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 3,
+      "lure": 1,
+      "ids": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        13,
+        14
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 3,
+      "lure": 2,
+      "ids": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        13,
+        14,
+        15
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 3,
+      "lure": 3,
+      "ids": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        13,
+        14,
+        15
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 4,
+      "lure": 0,
+      "ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        25
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 4,
+      "lure": 1,
+      "ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        25,
+        26
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 4,
+      "lure": 2,
+      "ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        25,
+        26,
+        27
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 4,
+      "lure": 3,
+      "ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        25,
+        26,
+        27
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 5,
+      "lure": 0,
+      "ids": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        37
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 5,
+      "lure": 1,
+      "ids": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        37,
+        38
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 5,
+      "lure": 2,
+      "ids": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        37,
+        38,
+        39
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 5,
+      "lure": 3,
+      "ids": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        37,
+        38,
+        39
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 6,
+      "lure": 0,
+      "ids": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        49
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 6,
+      "lure": 1,
+      "ids": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        49,
+        50
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 6,
+      "lure": 2,
+      "ids": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        49,
+        50,
+        51
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 6,
+      "lure": 3,
+      "ids": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        49,
+        50,
+        51
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 7,
+      "lure": 0,
+      "ids": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        61
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 7,
+      "lure": 1,
+      "ids": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        61,
+        62
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 7,
+      "lure": 2,
+      "ids": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        61,
+        62,
+        63
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 7,
+      "lure": 3,
+      "ids": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        61,
+        62,
+        63
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 8,
+      "lure": 0,
+      "ids": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        73
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 8,
+      "lure": 1,
+      "ids": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        73,
+        74
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 8,
+      "lure": 2,
+      "ids": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        73,
+        74,
+        75
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 8,
+      "lure": 3,
+      "ids": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        73,
+        74,
+        75
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    },
+    {
+      "island": 9,
+      "lure": 0,
+      "ids": [
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        85
+      ],
+      "native_fraction": 0.8571428571428571,
+      "max_overlap": 0.14285714285714285
+    },
+    {
+      "island": 9,
+      "lure": 1,
+      "ids": [
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        85,
+        86
+      ],
+      "native_fraction": 0.8181818181818182,
+      "max_overlap": 0.18181818181818182
+    },
+    {
+      "island": 9,
+      "lure": 2,
+      "ids": [
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        85,
+        86,
+        87
+      ],
+      "native_fraction": 0.7857142857142857,
+      "max_overlap": 0.21428571428571427
+    },
+    {
+      "island": 9,
+      "lure": 3,
+      "ids": [
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        85,
+        86,
+        87
+      ],
+      "native_fraction": 0.8,
+      "max_overlap": 0.2
+    }
+  ],
+  "economy": [
+    {
+      "island": 1,
+      "catches": 2,
+      "base_income": 60,
+      "mastery_rank_one": 55,
+      "mastery_and_bearing": 95,
+      "surplus_after_mastery": 5
+    },
+    {
+      "island": 1,
+      "catches": 4,
+      "base_income": 120,
+      "mastery_rank_one": 55,
+      "mastery_and_bearing": 95,
+      "surplus_after_mastery": 65
+    },
+    {
+      "island": 1,
+      "catches": 6,
+      "base_income": 180,
+      "mastery_rank_one": 55,
+      "mastery_and_bearing": 95,
+      "surplus_after_mastery": 125
+    },
+    {
+      "island": 2,
+      "catches": 2,
+      "base_income": 74,
+      "mastery_rank_one": 63,
+      "mastery_and_bearing": 103,
+      "surplus_after_mastery": 11
+    },
+    {
+      "island": 2,
+      "catches": 4,
+      "base_income": 148,
+      "mastery_rank_one": 63,
+      "mastery_and_bearing": 103,
+      "surplus_after_mastery": 85
+    },
+    {
+      "island": 2,
+      "catches": 6,
+      "base_income": 222,
+      "mastery_rank_one": 63,
+      "mastery_and_bearing": 103,
+      "surplus_after_mastery": 159
+    },
+    {
+      "island": 3,
+      "catches": 2,
+      "base_income": 88,
+      "mastery_rank_one": 71,
+      "mastery_and_bearing": 111,
+      "surplus_after_mastery": 17
+    },
+    {
+      "island": 3,
+      "catches": 4,
+      "base_income": 176,
+      "mastery_rank_one": 71,
+      "mastery_and_bearing": 111,
+      "surplus_after_mastery": 105
+    },
+    {
+      "island": 3,
+      "catches": 6,
+      "base_income": 264,
+      "mastery_rank_one": 71,
+      "mastery_and_bearing": 111,
+      "surplus_after_mastery": 193
+    },
+    {
+      "island": 4,
+      "catches": 2,
+      "base_income": 102,
+      "mastery_rank_one": 79,
+      "mastery_and_bearing": 119,
+      "surplus_after_mastery": 23
+    },
+    {
+      "island": 4,
+      "catches": 4,
+      "base_income": 204,
+      "mastery_rank_one": 79,
+      "mastery_and_bearing": 119,
+      "surplus_after_mastery": 125
+    },
+    {
+      "island": 4,
+      "catches": 6,
+      "base_income": 306,
+      "mastery_rank_one": 79,
+      "mastery_and_bearing": 119,
+      "surplus_after_mastery": 227
+    },
+    {
+      "island": 5,
+      "catches": 2,
+      "base_income": 116,
+      "mastery_rank_one": 87,
+      "mastery_and_bearing": 127,
+      "surplus_after_mastery": 29
+    },
+    {
+      "island": 5,
+      "catches": 4,
+      "base_income": 232,
+      "mastery_rank_one": 87,
+      "mastery_and_bearing": 127,
+      "surplus_after_mastery": 145
+    },
+    {
+      "island": 5,
+      "catches": 6,
+      "base_income": 348,
+      "mastery_rank_one": 87,
+      "mastery_and_bearing": 127,
+      "surplus_after_mastery": 261
+    },
+    {
+      "island": 6,
+      "catches": 2,
+      "base_income": 130,
+      "mastery_rank_one": 95,
+      "mastery_and_bearing": 135,
+      "surplus_after_mastery": 35
+    },
+    {
+      "island": 6,
+      "catches": 4,
+      "base_income": 260,
+      "mastery_rank_one": 95,
+      "mastery_and_bearing": 135,
+      "surplus_after_mastery": 165
+    },
+    {
+      "island": 6,
+      "catches": 6,
+      "base_income": 390,
+      "mastery_rank_one": 95,
+      "mastery_and_bearing": 135,
+      "surplus_after_mastery": 295
+    },
+    {
+      "island": 7,
+      "catches": 2,
+      "base_income": 144,
+      "mastery_rank_one": 103,
+      "mastery_and_bearing": 143,
+      "surplus_after_mastery": 41
+    },
+    {
+      "island": 7,
+      "catches": 4,
+      "base_income": 288,
+      "mastery_rank_one": 103,
+      "mastery_and_bearing": 143,
+      "surplus_after_mastery": 185
+    },
+    {
+      "island": 7,
+      "catches": 6,
+      "base_income": 432,
+      "mastery_rank_one": 103,
+      "mastery_and_bearing": 143,
+      "surplus_after_mastery": 329
+    },
+    {
+      "island": 8,
+      "catches": 2,
+      "base_income": 158,
+      "mastery_rank_one": 111,
+      "mastery_and_bearing": 151,
+      "surplus_after_mastery": 47
+    },
+    {
+      "island": 8,
+      "catches": 4,
+      "base_income": 316,
+      "mastery_rank_one": 111,
+      "mastery_and_bearing": 151,
+      "surplus_after_mastery": 205
+    },
+    {
+      "island": 8,
+      "catches": 6,
+      "base_income": 474,
+      "mastery_rank_one": 111,
+      "mastery_and_bearing": 151,
+      "surplus_after_mastery": 363
+    },
+    {
+      "island": 9,
+      "catches": 2,
+      "base_income": 172,
+      "mastery_rank_one": 119,
+      "mastery_and_bearing": 159,
+      "surplus_after_mastery": 53
+    },
+    {
+      "island": 9,
+      "catches": 4,
+      "base_income": 344,
+      "mastery_rank_one": 119,
+      "mastery_and_bearing": 159,
+      "surplus_after_mastery": 225
+    },
+    {
+      "island": 9,
+      "catches": 6,
+      "base_income": 516,
+      "mastery_rank_one": 119,
+      "mastery_and_bearing": 159,
+      "surplus_after_mastery": 397
+    }
+  ]
+}

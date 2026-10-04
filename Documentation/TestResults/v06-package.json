@@ -1,0 +1,46 @@
+{
+  "version": "0.6.0",
+  "package": "Tidebreak-v0.6.0-Windows-x64.zip",
+  "bytes": 37502024,
+  "sha256": "25D547A2E32C0019CC2C2D42EB68273EE862A488A4DE156C8005630869EB94F8",
+  "archive_entries": 154,
+  "crc_check": "passed",
+  "required_files": [
+    "Release/Tidebreak.exe",
+    "Release/UnityPlayer.dll",
+    "Release/Tidebreak_Data/Managed/Assembly-CSharp.dll",
+    "Release/Tidebreak_Data/globalgamemanagers",
+    "Release/开始游戏.txt",
+    "Release/OFL-NotoSans.txt"
+  ],
+  "assembly_sha256": "DBCE8EBFA734FE4EFF000600D469E77E8AEA3A19507D526286C321FD19FAD66A",
+  "exe_sha256": "C0EDE71D5ED303D3603A1C9722F8D31C832268D34248BFF7E1E2CAC448C6BCF6",
+  "runtime_evidence": {
+    "final-all": {
+      "pass": 739,
+      "fail": 0,
+      "assembly_sha256": "DBCE8EBFA734FE4EFF000600D469E77E8AEA3A19507D526286C321FD19FAD66A"
+    },
+    "art-final": {
+      "pass": 135,
+      "fail": 0,
+      "assembly_sha256": "DBCE8EBFA734FE4EFF000600D469E77E8AEA3A19507D526286C321FD19FAD66A"
+    },
+    "bosses": {
+      "pass": 76,
+      "fail": 0,
+      "assembly_sha256": "DBCE8EBFA734FE4EFF000600D469E77E8AEA3A19507D526286C321FD19FAD66A"
+    },
+    "negative": {
+      "pass": 88,
+      "fail": 0,
+      "assembly_sha256": "DBCE8EBFA734FE4EFF000600D469E77E8AEA3A19507D526286C321FD19FAD66A"
+    },
+    "story-campaign": {
+      "pass": 49,
+      "fail": 0,
+      "assembly_sha256": "DBCE8EBFA734FE4EFF000600D469E77E8AEA3A19507D526286C321FD19FAD66A"
+    }
+  },
+  "verified_utc": "2026-10-04T21:07:33.361756+00:00"
+}

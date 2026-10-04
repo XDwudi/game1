@@ -41,6 +41,7 @@ namespace Tidebreak
     public class BuildSynergy : MonoBehaviour
     {
         AnglerController player;GameDirector game;int rhythm,hitCount,steamHits,thunderHits;float dashUntil,steamReady,thunderReady,healReady,counterReady;bool precision,counter;
+        IslandMasteryCombat mastery;
         public int Rhythm {get{return rhythm;}}
         public int SteamHits {get{return steamHits;}}
         public int ThunderHits {get{return thunderHits;}}
@@ -52,20 +53,25 @@ namespace Tidebreak
             if(game.Run.HasKeystone(7))status+="  热雷 "+thunderHits+" / 7"+(Time.time<thunderReady?" · 充电":"");
             if(Time.time<dashUntil&&game.Run.HasKeystone(2))status+="  踏浪增伤";
             if(game.Run.HasKeystone(3)&&game.Run.health<game.Run.MaxHealth*.35f)status+="  猎约 +45%";
+            if(mastery!=null&&mastery.Status!="")status+="  "+mastery.Status;
             return status.Trim();
         }}
-        public void Init(AnglerController p){player=p;game=p.game;}
-        public void Reset(){rhythm=hitCount=steamHits=thunderHits=0;dashUntil=steamReady=thunderReady=healReady=counterReady=0;precision=counter=false;}
-        public void Dash(){dashUntil=Time.time+3;}
+        public void Init(AnglerController p){player=p;game=p.game;mastery=new IslandMasteryCombat(p);}
+        public void Reset(){rhythm=hitCount=steamHits=thunderHits=0;dashUntil=steamReady=thunderReady=healReady=counterReady=0;precision=counter=false;if(mastery!=null)mastery.Reset();}
+        public void Dash(){dashUntil=Time.time+3;if(mastery!=null)mastery.Dash();}
+        public float TargetDamageMultiplier(Enemy enemy,bool weak){return mastery!=null?mastery.TargetDamageMultiplier(enemy,weak):1;}
+        public float IncomingDamageMultiplier(){return mastery!=null?mastery.IncomingDamageMultiplier():1;}
+        public void ReloadCompleted(bool precise){if(mastery!=null)mastery.ReloadCompleted(precise);}
         public float ReloadSpeed {get{return Time.time<dashUntil&&game.Run.HasKeystone(2)?1.25f:1;}}
         public float ShotMultiplier()
         {
-            float m=1;if(precision){m*=1.85f;precision=false;}if(counter){m*=1.7f;counter=false;}
+            float m=mastery!=null?mastery.ShotMultiplier():1;if(precision){m*=1.85f;precision=false;}if(counter){m*=1.7f;counter=false;}
             if(Time.time<dashUntil&&game.Run.HasKeystone(2))m*=1.25f;
             if(game.Run.HasKeystone(3)&&game.Run.health<game.Run.MaxHealth*.35f)m*=1.45f;return m;
         }
         public void AvoidedAttack()
         {
+            if(mastery!=null)mastery.AvoidedAttack();
             if(!game.Run.HasKeystone(5)||Time.time<counterReady)return;counterReady=Time.time+3;counter=true;game.Run.health=Mathf.Min(game.Run.MaxHealth,game.Run.health+5);game.Notice("完美闪避 · 守潮反击已充能",2);
         }
         public void RegisterShot(bool hit,bool weak)
@@ -77,6 +83,7 @@ namespace Tidebreak
         }
         public void OnHit(Enemy e,bool weak,float damage)
         {
+            if(mastery!=null)mastery.OnHit(e,weak,damage);
             if(weak&&game.Run.HasKeystone(8)&&Time.time>=healReady){healReady=Time.time+2;game.Run.health=Mathf.Min(game.Run.MaxHealth,game.Run.health+3);}
             hitCount++;bool chain=game.Run.HasKeystone(4)&&hitCount%6==0;
             if(game.Run.HasKeystone(1))steamHits=Mathf.Min(5,steamHits+1);

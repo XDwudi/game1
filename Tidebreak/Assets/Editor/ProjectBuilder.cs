@@ -17,7 +17,7 @@ namespace Tidebreak.Editor
         {
             AssetDatabase.Refresh();
             BuildFont();
-            PlayerSettings.companyName="XDwudi";PlayerSettings.productName="Tidebreak";PlayerSettings.bundleVersion="0.5.0";
+            PlayerSettings.companyName="XDwudi";PlayerSettings.productName="Tidebreak";PlayerSettings.bundleVersion="0.6.0";
             PlayerSettings.defaultScreenWidth=1600;PlayerSettings.defaultScreenHeight=900;
             PlayerSettings.fullScreenMode=FullScreenMode.Windowed;PlayerSettings.resizableWindow=true;PlayerSettings.runInBackground=true;
             PlayerSettings.colorSpace=ColorSpace.Linear;
@@ -77,8 +77,14 @@ namespace Tidebreak.Editor
             check(ExpeditionContent.Species.Select(s=>s.name).Distinct().Count()==119,"unique catalog identities");
             for(int island=1;island<=9;island++){
                 r=new RunData{stage=island,maxIsland=island,selectedLure=3};var ids=new System.Collections.Generic.HashSet<int>();var rng=new System.Random(991+island);
-                for(int cast=0;cast<500;cast++){var fish=ExpeditionContent.Roll(r,rng);check(fish.island==island-1&&!fish.boss,"local habitat");ids.Add(fish.id);}
-                check(ids.Count==12,"every local species is catchable with full lure license");
+                var pool=ExpeditionContent.IslandPool(island,3);
+                for(int cast=0;cast<500;cast++){var fish=ExpeditionContent.Roll(r,rng);check(pool.Contains(fish)&&!fish.boss,"catch belongs to this island native/migrant pool");ids.Add(fish.id);}
+                check(ids.Count(id=>ExpeditionContent.Species[id].island==island-1)==12,"every local species is catchable with full lure license");
+                for(int lure=0;lure<4;lure++){
+                    var available=ExpeditionContent.IslandPool(island,lure);check(available.Count(f=>f.island==island-1)/(float)available.Count>.7f,"more than seventy percent native species at every bait tier");
+                    check(available.Where(f=>f.endemic).All(f=>f.island==island-1),"endemic species never migrate");
+                    for(int other=1;other<=9;other++)if(other!=island)check(available.Select(f=>f.id).Intersect(ExpeditionContent.IslandPool(other,lure).Select(f=>f.id)).Count()/(float)available.Count<.3f,"less than thirty percent species overlap between any two islands");
+                }
                 r.selectedLure=0;for(int cast=0;cast<50;cast++)check(ExpeditionContent.Roll(r,rng).lure==0,"basic bait does not bypass progression");
                 foreach(var offer in ShopCatalog.All)if(offer.island>island)check(ShopCatalog.Lock(r,offer)!="","future gear gate");
             }

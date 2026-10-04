@@ -1,0 +1,289 @@
+PASS v06 recognized independent test mode World
+PASS island 1 has its own looping layout and meaningful height change
+PASS route 1/market supplies explicit navigation waypoints
+PASS island 1 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_market supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 1/workshop supplies explicit navigation waypoints
+PASS island 1 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_workshop supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 1/guide supplies explicit navigation waypoints
+PASS island 1 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_guide supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 1/objective_a supplies explicit navigation waypoints
+PASS island 1 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_objective_a supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 1/objective_b supplies explicit navigation waypoints
+PASS island 1 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_objective_b supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 1/evidence supplies explicit navigation waypoints
+FAIL island 1 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_evidence supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 1/mission_connection_a supplies explicit navigation waypoints
+PASS island 1 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 1/mission_connection_b supplies explicit navigation waypoints
+PASS island 1 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 1/final_return supplies explicit navigation waypoints
+PASS island 1 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 1 route test never grants immunity
+PASS island 2 has its own looping layout and meaningful height change
+PASS route 2/market supplies explicit navigation waypoints
+PASS island 2 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_market supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 2/workshop supplies explicit navigation waypoints
+PASS island 2 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_workshop supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 2/guide supplies explicit navigation waypoints
+FAIL island 2 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_guide supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 2/objective_a supplies explicit navigation waypoints
+FAIL island 2 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_objective_a supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 2/objective_b supplies explicit navigation waypoints
+FAIL island 2 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_objective_b supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 2/evidence supplies explicit navigation waypoints
+FAIL island 2 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_evidence supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 2/mission_connection_a supplies explicit navigation waypoints
+FAIL island 2 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 2/mission_connection_b supplies explicit navigation waypoints
+FAIL island 2 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 2/final_return supplies explicit navigation waypoints
+PASS island 2 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 2 route test never grants immunity
+PASS island 3 has its own looping layout and meaningful height change
+PASS route 3/market supplies explicit navigation waypoints
+PASS island 3 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_market supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 3/workshop supplies explicit navigation waypoints
+PASS island 3 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_workshop supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 3/guide supplies explicit navigation waypoints
+FAIL island 3 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_guide supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 3/objective_a supplies explicit navigation waypoints
+FAIL island 3 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_objective_a supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 3/objective_b supplies explicit navigation waypoints
+FAIL island 3 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_objective_b supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 3/evidence supplies explicit navigation waypoints
+FAIL island 3 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_evidence supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 3/mission_connection_a supplies explicit navigation waypoints
+FAIL island 3 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 3/mission_connection_b supplies explicit navigation waypoints
+FAIL island 3 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 3/final_return supplies explicit navigation waypoints
+PASS island 3 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 3 route test never grants immunity
+PASS island 4 has its own looping layout and meaningful height change
+PASS route 4/market supplies explicit navigation waypoints
+PASS island 4 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_market supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 4/workshop supplies explicit navigation waypoints
+PASS island 4 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_workshop supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 4/guide supplies explicit navigation waypoints
+PASS island 4 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_guide supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 4/objective_a supplies explicit navigation waypoints
+PASS island 4 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_objective_a supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 4/objective_b supplies explicit navigation waypoints
+PASS island 4 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_objective_b supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 4/evidence supplies explicit navigation waypoints
+PASS island 4 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_evidence supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 4/mission_connection_a supplies explicit navigation waypoints
+PASS island 4 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 4/mission_connection_b supplies explicit navigation waypoints
+PASS island 4 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 4/final_return supplies explicit navigation waypoints
+PASS island 4 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 4 route test never grants immunity
+PASS island 5 has its own looping layout and meaningful height change
+PASS route 5/market supplies explicit navigation waypoints
+PASS island 5 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_market supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 5/workshop supplies explicit navigation waypoints
+PASS island 5 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_workshop supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 5/guide supplies explicit navigation waypoints
+FAIL island 5 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_guide supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 5/objective_a supplies explicit navigation waypoints
+FAIL island 5 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_objective_a supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 5/objective_b supplies explicit navigation waypoints
+FAIL island 5 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_objective_b supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 5/evidence supplies explicit navigation waypoints
+FAIL island 5 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_evidence supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 5/mission_connection_a supplies explicit navigation waypoints
+FAIL island 5 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 5/mission_connection_b supplies explicit navigation waypoints
+FAIL island 5 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 5/final_return supplies explicit navigation waypoints
+PASS island 5 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 5 route test never grants immunity
+PASS island 6 has its own looping layout and meaningful height change
+PASS route 6/market supplies explicit navigation waypoints
+PASS island 6 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_market supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 6/workshop supplies explicit navigation waypoints
+PASS island 6 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_workshop supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 6/guide supplies explicit navigation waypoints
+PASS island 6 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_guide supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 6/objective_a supplies explicit navigation waypoints
+PASS island 6 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_objective_a supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 6/objective_b supplies explicit navigation waypoints
+FAIL island 6 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_objective_b supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 6/evidence supplies explicit navigation waypoints
+PASS island 6 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_evidence supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 6/mission_connection_a supplies explicit navigation waypoints
+PASS island 6 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 6/mission_connection_b supplies explicit navigation waypoints
+PASS island 6 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 6/final_return supplies explicit navigation waypoints
+FAIL island 6 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 6 route test never grants immunity
+PASS island 7 has its own looping layout and meaningful height change
+PASS route 7/market supplies explicit navigation waypoints
+PASS island 7 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_market supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 7/workshop supplies explicit navigation waypoints
+PASS island 7 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_workshop supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 7/guide supplies explicit navigation waypoints
+FAIL island 7 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_guide supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 7/objective_a supplies explicit navigation waypoints
+PASS island 7 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_objective_a supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 7/objective_b supplies explicit navigation waypoints
+FAIL island 7 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_objective_b supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 7/evidence supplies explicit navigation waypoints
+PASS island 7 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_evidence supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 7/mission_connection_a supplies explicit navigation waypoints
+PASS island 7 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 7/mission_connection_b supplies explicit navigation waypoints
+PASS island 7 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 7/final_return supplies explicit navigation waypoints
+FAIL island 7 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 7 route test never grants immunity
+PASS island 8 has its own looping layout and meaningful height change
+PASS route 8/market supplies explicit navigation waypoints
+PASS island 8 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_market supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 8/workshop supplies explicit navigation waypoints
+PASS island 8 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_workshop supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 8/guide supplies explicit navigation waypoints
+PASS island 8 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_guide supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 8/objective_a supplies explicit navigation waypoints
+PASS island 8 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_objective_a supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 8/objective_b supplies explicit navigation waypoints
+FAIL island 8 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_objective_b supplies explicit navigation waypoints
+FAIL island 8 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 8/evidence supplies explicit navigation waypoints
+FAIL island 8 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_evidence supplies explicit navigation waypoints
+FAIL island 8 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 8/mission_connection_a supplies explicit navigation waypoints
+PASS island 8 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 8/mission_connection_b supplies explicit navigation waypoints
+PASS island 8 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 8/final_return supplies explicit navigation waypoints
+FAIL island 8 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 8 route test never grants immunity
+PASS island 9 has its own looping layout and meaningful height change
+PASS route 9/market supplies explicit navigation waypoints
+PASS island 9 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_market supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 9/workshop supplies explicit navigation waypoints
+PASS island 9 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_workshop supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 9/guide supplies explicit navigation waypoints
+FAIL island 9 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_guide supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 9/objective_a supplies explicit navigation waypoints
+FAIL island 9 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_objective_a supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 9/objective_b supplies explicit navigation waypoints
+FAIL island 9 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_objective_b supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 9/evidence supplies explicit navigation waypoints
+FAIL island 9 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_evidence supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 9/mission_connection_a supplies explicit navigation waypoints
+FAIL island 9 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 9/mission_connection_b supplies explicit navigation waypoints
+FAIL island 9 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 9/final_return supplies explicit navigation waypoints
+PASS island 9 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 9 route test never grants immunity

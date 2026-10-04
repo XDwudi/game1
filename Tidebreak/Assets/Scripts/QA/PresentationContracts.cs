@@ -13,6 +13,7 @@ namespace Tidebreak
         // presentation checks, not player skill, balance, or commercial performance tests.
         IEnumerator PresentationContracts()
         {
+            yield return V06PresentationContracts();
             Time.timeScale = 1;
             var notes = new List<string> {
                 "Presentation-only fixtures; synthetic setup, no claim of human playtesting.",
@@ -76,6 +77,22 @@ namespace Tidebreak
                     Check(boss.Motion && (Vector3.Distance(beforeScale, rig.localScale) > .00001f ||
                         Quaternion.Angle(beforeRotation, rig.localRotation) > .001f),
                         "boss " + id + " CreatureMotion changes its living pose at " + suffix);
+                    if(id==118){
+                        // Sonar-locked white whale deliberately submerges below the
+                        // pier. Earn its real exposure before testing the shooting sightline.
+                        var mechanism=boss.Encounter.Mechanism;
+                        v05Heating=false;v05DashUntil=0;
+                        float deadline=Time.realtimeSinceStartup+90;
+                        while(boss&&!boss.dead&&mechanism&&mechanism.Active&&g.State==VoyageState.Combat&&Time.realtimeSinceStartup<deadline){
+                            V05Operate(mechanism);
+                            yield return null;
+                        }
+                        if(mechanism)mechanism.SetActionHeld(false);
+                        Check(boss&&!boss.dead&&mechanism&&!mechanism.Active&&mechanism.CompletedActions>=mechanism.RequiredActions&&boss.Encounter.DamageFactor>0,
+                            "boss 118 completes real sonar observations and opens exposure before presentation sightline at "+suffix);
+                        notes.Add("White whale "+suffix+": normal V05Operate sonar/movement driver earns exposure; then presentation fixture returns the captain to the actual pier and waits 1.8 seconds for the normal surfacing animation. No boss health, phase or Active override.");
+                        if(boss){At(new Vector3(0,0,23),boss.transform.position+Vector3.up*1.5f);yield return new WaitForSeconds(1.8f);}
+                    }
                     var weak = boss.GetComponentsInChildren<HitRegion>().FirstOrDefault(h => h.GetComponent<Collider>() && h.GetComponent<Collider>().enabled);
                     Check(weak != null, "boss " + id + " retains a shootable weak point");
                     if (weak)
@@ -138,7 +155,7 @@ namespace Tidebreak
             var texture = new Texture2D(width, height, TextureFormat.RGB24, false);
             try
             {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = camera; canvas.planeDistance = .2f;
+                canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = camera; canvas.planeDistance = camera.nearClipPlane + .002f;
                 camera.targetTexture = rt; Canvas.ForceUpdateCanvases(); camera.Render(); RenderTexture.active = rt;
                 texture.ReadPixels(new Rect(0, 0, width, height), 0, 0); texture.Apply();
                 File.WriteAllBytes(Path.Combine(output, name + ".png"), texture.EncodeToPNG());

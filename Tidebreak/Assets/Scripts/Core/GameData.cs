@@ -97,6 +97,8 @@ namespace Tidebreak
         public CreatureKind kind;
         public int speciesId=-1;
         public int habitat=-1;
+        public int caughtIsland=-1;
+        public bool naturalHook;
         public bool fieldSample;
         public int value,quality;
         public float weight;

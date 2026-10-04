@@ -3,17 +3,7 @@ namespace Tidebreak
 {
     public partial class SeaWorld
     {
-        bool ClearTrail(float x,float z)
-        {
-            var p=new Vector2(x,z);if(Mathf.Abs(x)<3.5f||Mathf.Abs(x)<11&&z> -12)return true;
-            var routeStart=new Vector2(Definition.site1.x,Definition.site1.z);var routeEnd=new Vector2(Definition.site2.x,Definition.site2.z);var routeDelta=routeEnd-routeStart;
-            float routeT=Mathf.Clamp01(Vector2.Dot(p-routeStart,routeDelta)/Mathf.Max(.1f,routeDelta.sqrMagnitude));
-            if(Vector2.Distance(p,routeStart+routeDelta*routeT)<2.3f)return true;
-            foreach(var v in new[]{SellPoint,ShopPoint,QuestPoint,Definition.site1,Definition.site2,Definition.site3}){
-                var b=new Vector2(v.x,v.z);if(Vector2.Distance(p,b)<6)return true;
-                var a=new Vector2(0,2);var d=b-a;float t=Mathf.Clamp01(Vector2.Dot(p-a,d)/d.sqrMagnitude);if(Vector2.Distance(p,a+d*t)<1.8f)return true;
-            }return false;
-        }
+        bool ClearTrail(float x,float z){return Layout.IsTrail(x,z,1.2f)||z>2&&Mathf.Abs(x)<29;}
         void BuildGuide()
         {
             Vector3 p=QuestPoint;p.y=Height(p.x,p.z);
@@ -62,30 +52,53 @@ namespace Tidebreak
         {
             for(int i=0;i<3;i++){
                 var p=SitePoints[i];p.y=Height(p.x,p.z);var root=new GameObject("Exploration site "+i).transform;root.SetParent(transform);root.position=p;
-                Box("Relic pedestal",root,new Vector3(0,.35f,0),new Vector3(1.3f,.7f,1.3f),Color.Lerp(Definition.accent,iron,.65f),true);
-                var item=Shape.Part(i==2?"Secret rune chest":"Navigation relic",i==0?PrimitiveType.Cylinder:PrimitiveType.Cube,root,new Vector3(0,1.1f,0),new Vector3(.48f,.35f,.48f),Definition.accent,false,true);
-                CoastalMesh.Ring(root,new Vector3(0,.8f,0),.7f,.035f,Definition.accent,Quaternion.Euler(90,0,0));
+                var display=new GameObject("Investigation equipment alcove").transform;display.SetParent(root,false);display.localPosition=Layout.DecorationOffset(5+i);
+                Transform item=BuildInvestigationProp(display,i);
+                if(Region==5&&i==1)root.gameObject.AddComponent<RescuePodVisibility>().ClosedShell=display.gameObject;
                 var chapter=NarrativeContent.Chapter(Region+1);
-                Sign(root,p+new Vector3(0,2.4f,-.3f),i==0?chapter.siteA:i==1?chapter.siteB:Definition.secret,i==2?"SECRET / E":"INVESTIGATE / E",0,3.3f);
-                var marker=root.gameObject.AddComponent<IslandMarker>();marker.Index=i;marker.Object=item.transform;
-                var gl=item.AddComponent<Light>();gl.color=Definition.accent;gl.range=4;gl.intensity=.65f;
+                Sign(root,p+new Vector3(0,3.8f,-.3f),i==0?chapter.siteA:i==1?chapter.siteB:Definition.secret,i==2?"SECRET / E":"INVESTIGATE / E",0,3.3f);
+                var marker=root.gameObject.AddComponent<IslandMarker>();marker.Index=i;marker.Object=item;
+                var gl=item.gameObject.AddComponent<Light>();gl.color=Definition.accent;gl.range=4;gl.intensity=.65f;
                 // Sparse stepping stones expose a walkable route to each objective.
-                Vector3 from=new Vector3(0,0,1);for(int k=3;k<18;k++){Vector3 at=Vector3.Lerp(from,p,k/18f);at.y=Height(at.x,at.z)+.035f;Box("Trail stone",Scenery,at,new Vector3(.4f,.06f,.32f),Color.Lerp(ivory,Definition.ground,.4f));}
+                // Branches and bridges are authored by IslandLayouts; no radial trail crosses a lagoon.
             }
         }
         void ThemePlant(Transform parent,Vector3 p,float height)
         {
             Color trunk=new Color(.35f,.26f,.17f);var m=new CoastalMesh();
-            if(Region==1){m.Cone(p,.17f,height*.75f,trunk,7,.08f);m.Build("Palm trunk",parent);for(int i=0;i<7;i++){float a=i*Mathf.PI*2/7;Vector3 v=new Vector3(Mathf.Cos(a),0,Mathf.Sin(a));var leaves=new CoastalMesh();var top=p+Vector3.up*height*.75f;leaves.Tri(top,top+v*height*.42f+Vector3.down*.5f,top+Quaternion.Euler(0,18,0)*v*height*.35f+Vector3.up*.3f,new Color(.3f,.52f,.3f));leaves.Build("Palm frond",parent);}return;}
+            if(Region==1){CoastalVegetation.Palm(parent,p,height,parent==Scenery);return;}
             if(Region==2){m.Cone(p,.25f,height*.7f,trunk,8,.13f);for(int i=0;i<5;i++){float a=i*Mathf.PI*.4f;Shape.Beam(parent,p+Vector3.up*1.4f,p+new Vector3(Mathf.Cos(a)*1.3f,0,Mathf.Sin(a)*1.3f),.13f,trunk);}m.Build("Mangrove trunk",parent);for(int i=0;i<3;i++)Shape.Rock(parent,p+new Vector3((i-1)*.9f,height*.63f,0),new Vector3(height*.3f,height*.2f,height*.28f),new Color(.19f,.36f,.26f),9);return;}
             if(Region==3){m.Cone(p,.3f,height*.5f,new Color(.34f,.43f,.27f),7,.23f);m.Build("Salt cactus",parent);Shape.Beam(parent,p+Vector3.up*height*.23f,p+new Vector3(.9f,height*.3f,0),.25f,new Color(.34f,.43f,.27f));Shape.Beam(parent,p+new Vector3(.9f,height*.3f,0),p+new Vector3(.9f,height*.48f,0),.25f,new Color(.34f,.43f,.27f));return;}
             if(Region==4){m.Cone(p,.2f,height*.8f,trunk*.7f,7,.045f);m.Build("Dead mast tree",parent);for(int i=0;i<3;i++)Shape.Beam(parent,p+Vector3.up*height*(.35f+i*.15f),p+new Vector3((i%2==0?-1:1)*1.3f,height*(.65f+i*.1f),.4f),.12f,trunk*.7f);return;}
-            Color c=Region==7?new Color(.22f,.19f,.2f):Color.Lerp(Definition.accent,iron,.35f);
-            m.Cone(p,height*.15f,height*.65f,c,5,0);m.Cone(p+Vector3.right*.5f,height*.09f,height*.4f,c*.8f,5,0);m.Build(Region==7?"Basalt columns":"Resonant crystal",parent);
+            Color c=Region==7?new Color(.22f,.19f,.2f):Color.Lerp(Definition.accent,iron,.45f);
+            if(Region==6){
+                // Wind-sheared trees tell the prevailing storm direction.
+                var stem=new[]{p,p+new Vector3(-.18f,height*.3f,0),p+new Vector3(.8f,height*.62f,0),p+new Vector3(2,height*.77f,.2f)};
+                CoastalMesh.Tube("Storm-bent ironwood",parent,stem,new[]{.22f,.17f,.1f,.02f},trunk*.7f,trunk*.55f,7);
+                for(int i=0;i<3;i++){Vector3 a=p+new Vector3(.4f,height*(.38f+i*.12f),0);Shape.Beam(parent,a,a+new Vector3(1.8f+i*.25f,.6f,.4f*(i-1)),.075f,trunk*.6f);}
+                return;
+            }
+            if(Region==7){
+                for(int n=0;n<3;n++){
+                    Vector3 at=p+new Vector3((n-1)*.6f,0,Mathf.Sin(n)*.35f);float top=height*(.35f+n*.13f);
+                    m.Cone(at,.42f,top,c*(.87f+n*.06f),6,.36f);
+                    for(int seam=1;seam<4;seam++)CoastalMesh.Ring(parent,at+Vector3.up*(top*seam/4),.385f,.02f,Definition.accent*.7f,Quaternion.Euler(90,0,0));
+                }
+                m.Build("Hexagonal cooled basalt organ",parent);return;
+            }
+            // Mirror-reed fans have broad reflective faces rather than identical
+            // pine silhouettes. A fractured crown points toward the temple.
+            for(int n=0;n<5;n++){
+                float angle=(n-2)*23;Quaternion q=Quaternion.Euler(0,n*37,angle);
+                Vector3 a=p+q*new Vector3(-.22f,0,0),b=p+q*new Vector3(.22f,0,0),tip=p+q*Vector3.up*height*(.47f+Mathf.Sin(n)*.09f);
+                Color face=Color.Lerp(c,Definition.accent,.25f+n*.08f);m.Tri(a,tip,b,face);m.Tri(b,tip,a,face*.7f);
+                Shape.Beam(parent,p,tip,.035f,ivory*.65f);
+            }
+            m.Build("Fractured mirror-reed fan",parent);
         }
         void BuildLandmark()
         {
-            var root=new GameObject(Definition.name+" landmark").transform;root.SetParent(Scenery);root.position=new Vector3(0,Height(0,-34),-34);
+            var root=new GameObject(Definition.name+" landmark").transform;root.SetParent(Scenery);root.position=Layout.Landmark;root.position=new Vector3(root.position.x,Height(root.position.x,root.position.z),root.position.z);
             Color stone=Color.Lerp(Definition.ground,iron,.4f),accent=Definition.accent;
             switch(Region){
                 case 0:
@@ -94,7 +107,7 @@ namespace Tidebreak
                 case 1:
                     for(int side=-1;side<=1;side+=2)for(int j=0;j<5;j++){Vector3 at=new Vector3(side*(4-j*.65f),j*1.4f,0);Shape.Rock(root,at,new Vector3(1.1f,1.6f,1.1f),accent,7);CoastalMesh.Ring(root,at+Vector3.forward*.5f,.55f,.18f,new Color(.85f,.69f,.51f),Quaternion.identity);}Shape.Rock(root,new Vector3(0,7.4f,0),new Vector3(2.8f,.85f,1.5f),accent);break;
                 case 2:
-                    for(int side=-1;side<=1;side+=2)Shape.Beam(root,new Vector3(side*3,0,0),new Vector3(side*3,7,0),.8f,wood);Box("Treehouse deck",root,new Vector3(0,5,0),new Vector3(8,.25f,6),wood,true);for(int i=0;i<7;i++)Box("Suspended bridge plank",root,new Vector3(0,1+i*.5f,9-i),new Vector3(2,.2f,.9f),wood,true);Shack(root.position+Vector3.up*5,0,false);break;
+                    for(int side=-1;side<=1;side+=2)Shape.Beam(root,new Vector3(side*3,0,0),new Vector3(side*3,7,0),.8f,wood);Box("Treehouse deck",root,new Vector3(0,5,0),new Vector3(8,.25f,6),wood,true);Shack(root.position+Vector3.up*5,0,false);break;
                 case 3:
                     for(int j=0;j<5;j++)Box("Temple step",root,new Vector3(0,j*.5f,0),new Vector3(10-j*1.3f,.5f,8-j),stone,true);for(int side=-1;side<=1;side+=2){Shape.Part("Temple column",PrimitiveType.Cylinder,root,new Vector3(side*3,5,0),new Vector3(1.1f,3,1.1f),ivory,true).layer=8;Shape.Rock(root,new Vector3(side*7,1,2),new Vector3(1,6,1),accent,4);}Box("Temple lintel",root,new Vector3(0,8,0),new Vector3(8,1.2f,2),stone,true);break;
                 case 4:
@@ -110,9 +123,14 @@ namespace Tidebreak
             }
         }
     }
+    public sealed class RescuePodVisibility : MonoBehaviour
+    {
+        public GameObject ClosedShell;
+        void Update(){var g=GameDirector.Instance;if(!g||!ClosedShell||g.Run==null)return;bool opened=g.Run.stage==6&&g.Run.questStep>=3;ClosedShell.SetActive(!opened);}
+    }
     public class IslandMarker : MonoBehaviour
     {
         public int Index;public Transform Object;
-        void Update(){if(!Object)return;var g=GameDirector.Instance;if(!g)return;bool complete=(g.Run.exploredMask&(1<<Index))!=0;Object.gameObject.SetActive(!complete);Object.localRotation=Quaternion.Euler(0,Time.time*30,0);Object.localPosition=new Vector3(0,1.1f+Mathf.Sin(Time.time*2)*.1f,0);}
+        void Update(){if(!Object)return;var g=GameDirector.Instance;if(!g)return;bool complete=(g.Run.exploredMask&(1<<Index))!=0;Object.gameObject.SetActive(!complete);Object.localRotation=Quaternion.Euler(0,Time.time*30,0);Object.localPosition=new Vector3(0,2.8f+Mathf.Sin(Time.time*2)*.1f,0);}
     }
 }

@@ -13,6 +13,7 @@ namespace Tidebreak
         readonly List<AudioClip> fallbackClips=new List<AudioClip>();
         readonly System.Random pitchRng=new System.Random(5051);
         readonly AudioSource[] music=new AudioSource[2],percussion=new AudioSource[2],effects=new AudioSource[12];
+        readonly AudioSource[] tells=new AudioSource[4];int nextTell;float tellAt;
         readonly float[] blend=new float[2],effectGains=new float[12];
         AudioSource ambience,priority,mechanismTone;
         int activeBank,nextEffect;
@@ -32,6 +33,7 @@ namespace Tidebreak
             if(initialized)return;initialized=true;game=GameDirector.Instance;
             for(int i=0;i<2;i++){music[i]=Source("Music crossfade "+i,true,170);percussion[i]=Source("Boss percussion "+i,true,160);}
             for(int i=0;i<effects.Length;i++)effects[i]=Source("Action voice "+i,false,100);
+            for(int i=0;i<tells.Length;i++){tells[i]=Source("Spatial enemy warning "+i,false,55);tells[i].spatialBlend=.8f;tells[i].rolloffMode=AudioRolloffMode.Linear;tells[i].minDistance=4;tells[i].maxDistance=35;}
             priority=Source("Critical feedback",false,40);mechanismTone=Source("Mechanism musical language",false,32);
             ambience=Source("Coastal atmosphere",true,220);ambience.clip=Resources.Load<AudioClip>("Audio/Ambience/coastal_air");if(ambience.clip)ambience.Play();
             foreach(string name in CueNames){var clip=Resources.Load<AudioClip>("Audio/Effects/"+name);clips[name]=clip?clip:Fallback(name);}
@@ -84,6 +86,13 @@ namespace Tidebreak
             blend[incoming]=immediate?1:0;activeBank=incoming;profile=name;switchAfter=Time.unscaledTime+.35f;
         }
         public void SetCombat(bool combat){combatRequested=combat;}
+        public void ThreatTell(Vector3 position,bool elite)
+        {
+            if(!initialized||Time.unscaledTime<tellAt)return;tellAt=Time.unscaledTime+.3f;
+            AudioClip clip;if(!clips.TryGetValue("danger",out clip)||!clip)return;
+            var source=tells[nextTell++%tells.Length];source.transform.position=position;source.clip=clip;
+            source.pitch=elite?1.13f:1.38f;source.volume=Mathf.Clamp01(game.Log.effectsVolume)*(elite?.24f:.14f);source.Play();
+        }
         public void DuckMusic(float seconds,float amount=.25f)
         {
             if(Time.unscaledTime>=duckUntil)duckGain=1;duckUntil=Mathf.Max(duckUntil,Time.unscaledTime+Mathf.Max(0,seconds));duckGain=Mathf.Min(duckGain,Mathf.Clamp01(amount));

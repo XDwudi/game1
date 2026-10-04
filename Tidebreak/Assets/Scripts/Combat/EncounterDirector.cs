@@ -169,20 +169,27 @@ namespace Tidebreak
         public string Label;
         public float Health,Maximum;
         public bool Dead {get;private set;}
-        GameDirector game;Action<EncounterTarget> destroyed;Transform crystal;float age;
+        GameDirector game;Action<EncounterTarget> destroyed;Transform crystal;float age;Material coreMaterial;
         public static EncounterTarget Create(GameDirector game,Vector3 p,string name,float hp,Color color,Action<EncounterTarget> onBreak)
         {
             var root=new GameObject(name);root.transform.position=p;
             var t=root.AddComponent<EncounterTarget>();t.game=game;t.Label=name;t.Health=t.Maximum=hp;t.destroyed=onBreak;
-            var part=Shape.Part("Breakable core",PrimitiveType.Sphere,root.transform,Vector3.zero,new Vector3(.85f,1.2f,.85f),color,true,true);t.crystal=part.transform;
-            CoastalMesh.Ring(root.transform,Vector3.zero,.7f,.055f,color,Quaternion.identity);
+            // Keep the original aiming hull and bobbing motion. A framed, smaller
+            // crystal replaces the full-bright sphere, so nearby targets don't fill the view.
+            var part=Shape.Part("Breakable core",PrimitiveType.Sphere,root.transform,Vector3.zero,new Vector3(.85f,1.2f,.85f),color,true,false);t.crystal=part.transform;
+            part.GetComponent<MeshRenderer>().enabled=false;
+            Color pigment=Color.Lerp(new Color(.3f,.59f,.52f),color,.21f);
+            var jewel=CreatureSurfaceArt.Facet(part.transform,"Layered sea crystal",Vector3.zero,new Vector3(.63f,.72f,.63f),pigment);
+            t.coreMaterial=new Material(Shape.Mat(pigment));t.coreMaterial.SetColor("_EmissionColor",pigment*.075f);t.coreMaterial.SetFloat("_Glossiness",.38f);t.coreMaterial.SetFloat("_Metallic",.12f);
+            jewel.GetComponent<MeshRenderer>().sharedMaterial=t.coreMaterial;
+            CoastalMesh.Ring(part.transform,Vector3.zero,.28f,.023f,new Color(.81f,.68f,.39f),Quaternion.Euler(90,0,0));
             BuildSilhouette(root.transform,name,color);
-            var light=root.AddComponent<Light>();light.color=color;light.intensity=1.2f;light.range=4;
+            var light=root.AddComponent<Light>();light.color=pigment;light.intensity=.33f;light.range=2.2f;
             return t;
         }
         static void BuildSilhouette(Transform root,string label,Color color)
         {
-            Color shell=Color.Lerp(color,new Color(.15f,.2f,.22f),.6f);
+            Color shell=Color.Lerp(new Color(.12f,.19f,.21f),color,.13f);
             if(label.Contains("触腕")){
                 var points=new Vector3[20];var widths=new float[20];
                 Vector3 a=new Vector3(-1.1f,-1.65f,0),b=new Vector3(-2,1.8f,0),c=new Vector3(1.6f,1.9f,.3f),d=new Vector3(.6f,-.3f,.1f);
@@ -194,10 +201,19 @@ namespace Tidebreak
             }else if(label.Contains("钳锁")){
                 for(int s=-1;s<=1;s+=2){Shape.Beam(root,new Vector3(s*.7f,-1.5f,0),new Vector3(s*.85f,.6f,0),.2f,shell);Shape.Beam(root,new Vector3(s*.85f,.6f,0),new Vector3(s*.25f,.9f,0),.24f,shell);}
             }else{
-                Shape.Part("Anchor plinth",PrimitiveType.Cylinder,root,new Vector3(0,-1.3f,0),new Vector3(1.3f,.2f,1.3f),shell);
-                Shape.Beam(root,new Vector3(0,-1.2f,0),new Vector3(0,-.5f,0),.16f,shell);
-                for(int s=-1;s<=1;s+=2)Shape.Beam(root,new Vector3(s*.7f,-.7f,0),new Vector3(s*.7f,.65f,0),.09f,shell);
-                if(label.Contains("阀"))CoastalMesh.Ring(root,new Vector3(0,0,.35f),.8f,.09f,shell,Quaternion.identity);
+                Color brass=new Color(.58f,.42f,.23f),rim=new Color(.75f,.64f,.42f);
+                Shape.Part("Lantern heel",PrimitiveType.Cylinder,root,new Vector3(0,-.59f,0),new Vector3(.81f,.055f,.81f),shell);
+                Shape.Part("Lantern crown",PrimitiveType.Cylinder,root,new Vector3(0,.57f,0),new Vector3(.8f,.065f,.8f),shell);
+                CreatureSurfaceArt.Facet(root,"Ventilated lantern cap",new Vector3(0,.67f,0),new Vector3(.66f,.19f,.66f),shell);
+                CoastalMesh.Ring(root,new Vector3(0,-.54f,0),.39f,.022f,brass,Quaternion.Euler(90,0,0));
+                CoastalMesh.Ring(root,new Vector3(0,.5f,0),.39f,.022f,rim,Quaternion.Euler(90,0,0));
+                for(int i=0;i<4;i++){
+                    float a=(45+i*90)*Mathf.Deg2Rad;Vector3 side=new Vector3(Mathf.Cos(a),0,Mathf.Sin(a));
+                    CoastalMesh.Tube("Lantern protective rib",root,new[]{side*.3f+Vector3.down*.56f,side*.46f+Vector3.down*.32f,side*.46f+Vector3.up*.29f,side*.3f+Vector3.up*.55f},new[]{.033f,.024f,.024f,.033f},brass,shell,7);
+                    Shape.Part("Lantern rivet",PrimitiveType.Sphere,root,side*.32f+Vector3.up*.59f,Vector3.one*.055f,rim);
+                }
+                CoastalMesh.Ring(root,new Vector3(0,.86f,0),.1f,.018f,brass,Quaternion.identity);
+                if(label.Contains("阀"))CoastalMesh.Ring(root,new Vector3(0,0,.42f),.61f,.055f,brass,Quaternion.identity);
             }
         }
         public void Hit(float damage)
@@ -206,5 +222,6 @@ namespace Tidebreak
             if(Health>0)return;Dead=true;destroyed?.Invoke(this);game.Effect(transform.position,Color.cyan,20,.13f);Destroy(gameObject);
         }
         void Update(){if(!game||game.Paused)return;age+=Time.deltaTime;crystal.localRotation=Quaternion.Euler(10,age*42,0);crystal.localPosition=Vector3.up*Mathf.Sin(age*2)*.08f;}
+        void OnDestroy(){if(coreMaterial)Destroy(coreMaterial);}
     }
 }

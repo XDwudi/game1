@@ -15,7 +15,7 @@ namespace Tidebreak
             string key=c.ToString()+glow;
             Material m;
             if(materials.TryGetValue(key,out m) && m) return m;
-            m=new Material(Shader.Find("Standard")); m.color=c;
+            m=new Material(Resources.Load<Shader>("CoastalLit")); m.color=c;
             m.SetFloat("_Glossiness",.22f);
             if(glow) { m.EnableKeyword("_EMISSION"); m.SetColor("_EmissionColor", c*1.8f); }
             materials[key]=m; return m;

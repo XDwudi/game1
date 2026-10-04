@@ -7,7 +7,7 @@ namespace Tidebreak
 {
     public partial class SeaHUD : MonoBehaviour
     {
-        static readonly Color Ink=new Color(.035f,.09f,.13f), Panel=new Color(.045f,.13f,.17f,.97f), Cream=new Color(.94f,.92f,.82f), Muted=new Color(.55f,.72f,.72f), Mint=new Color(.37f,.9f,.75f), Gold=new Color(1,.71f,.35f);
+        static readonly Color Ink=new Color(.025f,.065f,.085f), Panel=new Color(.055f,.115f,.135f,.97f), Cream=new Color(.96f,.93f,.82f), Muted=new Color(.58f,.73f,.72f), Mint=new Color(.39f,.87f,.77f), Gold=new Color(.98f,.72f,.39f);
         GameDirector game;
         RectTransform root,hud,modal,fishPanel,bossPanel,crosshair,dangerPanel,noticePanel,compassPanel,targetPanel;
         TMP_FontAsset font;
@@ -27,18 +27,18 @@ namespace Tidebreak
             root=Rect("Safe canvas",c.transform,0,0,1600,900);root.anchorMin=root.anchorMax=new Vector2(.5f,.5f);root.pivot=new Vector2(.5f,.5f);root.anchoredPosition=Vector2.zero;
             if(!FindObjectOfType<EventSystem>())new GameObject("UI input",typeof(EventSystem),typeof(StandaloneInputModule));
             hud=Full("Voyage HUD",root);
-            voyageInfoBackground=Box(hud,26,23,410,155,new Color(Ink.r,Ink.g,Ink.b,.78f));
-            seaTitle=Text(hud,44,31,450,31,"",23,Cream);
-            objective=Text(hud,44,66,375,76,"",15,Mint);
+            voyageInfoBackground=Box(hud,26,23,348,148,new Color(Ink.r,Ink.g,Ink.b,.78f));
+            seaTitle=Text(hud,44,31,317,31,"",23,Cream);
+            objective=Text(hud,44,69,312,65,"",15,Mint);
             objective.overflowMode=TextOverflowModes.Ellipsis;
-            inventory=Text(hud,44,149,400,28,"",14,Cream);
+            inventory=Text(hud,44,140,314,27,"",14,Cream);
             compassPanel=Rect("Bearing panel",hud,525,16,550,35);Box(compassPanel,0,0,550,35,new Color(Ink.r,Ink.g,Ink.b,.7f));
             compass=Text(compassPanel,0,2,550,30,"",14,Cream,TextAlignmentOptions.Center);
             Box(hud,1350,25,222,62,new Color(Ink.r,Ink.g,Ink.b,.84f));
             money=Text(hud,1370,37,180,34,"",25,Gold,TextAlignmentOptions.Right);
-            noticePanel=Rect("Voyage notification",hud,460,135,800,66);
-            Box(noticePanel,0,0,800,66,new Color(Ink.r,Ink.g,Ink.b,.88f));
-            notice=Text(noticePanel,16,6,768,54,"",19,Cream,TextAlignmentOptions.Center);
+            noticePanel=Rect("Voyage notification",hud,440,118,720,58);
+            Box(noticePanel,0,0,720,58,new Color(Ink.r,Ink.g,Ink.b,.88f));
+            notice=Text(noticePanel,16,6,688,46,"",17,Cream,TextAlignmentOptions.Center);
             notice.fontStyle=FontStyles.Bold;
             Box(hud,26,749,295,120,new Color(Ink.r,Ink.g,Ink.b,.82f));
             Text(hud,44,761,140,25,"船长生命",15,Muted);healthText=Text(hud,171,757,129,30,"",22,Cream,TextAlignmentOptions.Right);
@@ -49,9 +49,9 @@ namespace Tidebreak
             ammoText=Text(hud,1437,755,112,44,"",29,Gold,TextAlignmentOptions.Right);
             Text(hud,1258,801,291,24,"1 鱼竿 · 2–7 武器 · B 拟饵",13,Muted,TextAlignmentOptions.Right);
             Text(hud,1258,831,291,24,"R 装填   ·   右键瞄准",14,Muted,TextAlignmentOptions.Right);
-            Box(hud,350,750,860,59,new Color(.035f,.09f,.13f,.82f));
-            hint=Text(hud,363,762,834,45,"",18,Cream,TextAlignmentOptions.Center);
-            Text(hud,357,846,820,27,"WASD 移动    SPACE 跳跃    E 交互    F 收纳    Q 抛出    TAB 鱼篓",14,Muted,TextAlignmentOptions.Center);
+            Box(hud,464,778,672,43,new Color(.035f,.09f,.13f,.82f));
+            hint=Text(hud,478,786,644,29,"",16,Cream,TextAlignmentOptions.Center);
+            explorationKeys=Text(hud,370,848,860,24,"WASD 移动  ·  SPACE 跳跃  ·  E 交互  ·  F 收纳  ·  TAB 鱼篓",12,Muted,TextAlignmentOptions.Center);
             status=Text(hud,470,867,660,21,"",11,Muted,TextAlignmentOptions.Center);
             crosshair=Rect("Crosshair",hud,780,430,40,40);
             Box(crosshair,17,1,3,10,Cream);Box(crosshair,17,27,3,10,Cream);Box(crosshair,1,17,10,3,Cream);Box(crosshair,27,17,10,3,Cream);Box(crosshair,17,17,3,3,Mint);
@@ -59,19 +59,19 @@ namespace Tidebreak
             damageNumber=Text(hud,816,418,130,40,"",23,Gold);
             targetPanel=Rect("Target identity",hud,495,487,610,58);targetBackdrop=Box(targetPanel,0,0,610,58,new Color(Ink.r,Ink.g,Ink.b,.82f));
             targetName=Text(targetPanel,10,4,590,50,"",17,Cream,TextAlignmentOptions.Center);
-            dangerPanel=Rect("Incoming strike warning",hud,505,637,590,57);
-            Box(dangerPanel,0,0,590,57,new Color(.53f,.1f,.11f,.94f));dangerText=Text(dangerPanel,12,10,566,38,"",19,Cream,TextAlignmentOptions.Center);
+            dangerPanel=Rect("Incoming strike warning",hud,530,667,540,43);
+            dangerBack=Box(dangerPanel,0,0,540,43,new Color(.53f,.1f,.11f,.9f));dangerText=Text(dangerPanel,12,9,516,28,"",17,Cream,TextAlignmentOptions.Center);
             fishPanel=Rect("Fishing instrument",hud,495,610,610,126);Box(fishPanel,0,0,610,126,Panel);
             fishingTitle=Text(fishPanel,22,13,565,29,"",20,Cream);
             Text(fishPanel,22,52,85,20,"收线进度",13,Muted);progressFill=Bar(fishPanel,113,58,472,7,Mint);
             Text(fishPanel,22,81,85,20,"鱼线张力",13,Muted);tensionFill=Bar(fishPanel,113,87,472,7,Gold);
             fishingHint=Text(fishPanel,22,103,565,21,"",11,Muted);
-            bossPanel=Rect("Boss life",hud,442,30,716,90);
-            Box(bossPanel,0,0,716,90,new Color(Ink.r,Ink.g,Ink.b,.87f));
-            bossName=Text(bossPanel,20,10,535,30,"",24,Cream);bossHealth=Text(bossPanel,546,11,149,28,"",17,Gold,TextAlignmentOptions.Right);
-            bossFill=Bar(bossPanel,20,54,675,8,new Color(.94f,.42f,.35f));
-            bossInstruction=Text(bossPanel,20,69,675,18,"",11,Muted,TextAlignmentOptions.Center);
-            damageOverlay=Box(root,0,0,1600,900,Color.clear);damageOverlay.raycastTarget=false;
+            bossPanel=Rect("Boss life",hud,460,25,680,75);
+            Box(bossPanel,0,0,680,75,new Color(Ink.r,Ink.g,Ink.b,.87f));
+            bossName=Text(bossPanel,18,10,490,30,"",21,Cream);bossHealth=Text(bossPanel,515,12,147,26,"",17,Gold,TextAlignmentOptions.Right);
+            bossFill=Bar(bossPanel,18,48,644,6,new Color(.94f,.42f,.35f));
+            bossInstruction=Text(bossPanel,18,59,644,14,"",11,Muted,TextAlignmentOptions.Center);
+            damageOverlay=Box(root,0,0,1600,900,Color.clear);damageOverlay.raycastTarget=false;InitImpactPresentation();
         }
         public void ShowState()
         {
@@ -97,7 +97,7 @@ namespace Tidebreak
             else Button(p,60,646,245,50,"船长手册",ShowManual);
             Button(p,320,646,245,50,"海洋图鉴",ShowJournal);
             Button(p,60,710,245,50,"设置",()=>ShowSettings(false));Button(p,320,710,245,50,"退出游戏",game.Quit);
-            Text(p,60,807,510,44,"九岛纪事 · 生态探索 · 十一种巨物反制\nWIN 64   /   v0.5.0",13,Muted);
+            Text(p,60,807,510,44,"九岛异境 · 岛屿专研 · 十一种巨物反制\nWIN 64   /   v0.6.0",13,Muted);
             Text(p,1075,741,452,38,"PINEHAVEN",27,Cream,TextAlignmentOptions.Right).characterSpacing=4;
             Text(p,1075,786,452,43,"松风港  /  钓猎远征\n完成 "+game.Log.victories+" 次远征  ·  克拉肯 "+game.Log.krakens+" 次",15,Cream,TextAlignmentOptions.Right);
         }
@@ -181,10 +181,10 @@ namespace Tidebreak
             }
             Enemy boss=null;foreach(var e in game.Enemies)if(e&&e.IsBoss){boss=e;break;}compassPanel.gameObject.SetActive(boss==null);
             bossPanel.gameObject.SetActive(boss!=null&&game.State==VoyageState.Combat);
-            noticePanel.anchoredPosition=new Vector2(460,boss?-285:-135);
-            if(boss&&(game.Message.StartsWith("第 ")||game.Message.StartsWith("破招成功")||game.Message.StartsWith(boss.DisplayName+" 苏醒")))noticePanel.gameObject.SetActive(false);
-            inventory.gameObject.SetActive(!boss);voyageInfoBackground.rectTransform.sizeDelta=new Vector2(410,boss?100:155);
-            if(boss){seaTitle.text="作战笔记   /   第 "+boss.phase+" 阶段";bossName.text=boss.DisplayName+"  /  阶段 "+boss.phase+" · "+(activeMechanism&&activeMechanism.Active?"反制":"破绽");bossFill.fillAmount=boss.health/boss.maxHealth;bossHealth.text=Mathf.CeilToInt(boss.health)+" / "+Mathf.CeilToInt(boss.maxHealth);objective.text=activeMechanism&&activeMechanism.Active?MechanismStrategies[activeMechanism.BossIndex]:"反制完成，核心可以攻击。\n保留闪避，应对反扑。";bossInstruction.text="圆环：跳跃  /  宽带：横移  /  落点：离开  /  漩涡：向外冲刺";}
+            noticePanel.anchoredPosition=new Vector2(440,boss?-115:-118);
+            if(boss&&(game.Message.StartsWith("远航手记")||game.Message.StartsWith("第 ")||game.Message.StartsWith("破招成功")||game.Message.StartsWith(boss.DisplayName+" 苏醒")))noticePanel.gameObject.SetActive(false);
+            inventory.gameObject.SetActive(!boss);objective.gameObject.SetActive(!boss);explorationKeys.gameObject.SetActive(game.State!=VoyageState.Combat);voyageInfoBackground.rectTransform.sizeDelta=new Vector2(348,boss?47:148);
+            if(boss){seaTitle.text=game.Island.name+"  /  首领战";bossName.text=boss.DisplayName+"  /  阶段 "+boss.phase+" · "+(activeMechanism&&activeMechanism.Active?"反制":"破绽");bossFill.fillAmount=boss.health/boss.maxHealth;bossHealth.text=Mathf.CeilToInt(boss.health)+" / "+Mathf.CeilToInt(boss.maxHealth);objective.text=activeMechanism&&activeMechanism.Active?MechanismStrategies[activeMechanism.BossIndex]:"反制完成，核心可以攻击。\n保留闪避，应对反扑。";bossInstruction.text="圆环：跳跃  /  宽带：横移  /  落点：离开  /  漩涡：向外冲刺";}
             crosshair.gameObject.SetActive(game.IsPlaying&&!game.Paused);
             float danger=-1;string dangerResponse="";
             if(game.State==VoyageState.Combat)for(int i=0;i<game.Hazards.childCount;i++) {
@@ -202,7 +202,7 @@ namespace Tidebreak
                 RaycastHit rayHit;
                 if(Physics.Raycast(game.Player.View.transform.position,game.Player.View.transform.forward,out rayHit,100)) {
                     var enemy=rayHit.collider.GetComponentInParent<Enemy>();
-                    if(enemy)targetName.text=enemy.IsBoss?(enemy.Encounter&&enemy.Encounter.DamageFactor<=0?"◆ 核心封锁":rayHit.collider.GetComponent<HitRegion>()?"◇ 弱点":"装甲部位"):(rayHit.collider.GetComponent<HitRegion>()?"<color=#8CFFD1>弱点 · </color>":"")+(enemy.elite?"精英 · ":"")+enemy.DisplayName+"   "+Mathf.CeilToInt(enemy.health)+" / "+Mathf.CeilToInt(enemy.maxHealth)+"\n<color=#FFC06A>"+enemy.Telegraph+"</color>";
+                    if(enemy)targetName.text=enemy.IsBoss?(enemy.Encounter&&enemy.Encounter.DamageFactor<=0?"◆ 核心封锁":rayHit.collider.GetComponent<HitRegion>()?"◇ 弱点":"装甲部位"):(rayHit.collider.GetComponent<HitRegion>()?"<color=#8CFFD1>弱点 · </color>":"")+(enemy.elite?"精英 · ":"")+(enemy.Spec.endemic?"专属 · ":"")+enemy.DisplayName+"   "+Mathf.CeilToInt(enemy.health)+" / "+Mathf.CeilToInt(enemy.maxHealth);
                 }
             }
             bool compactTarget=boss&&targetName.text.IndexOf('\n')<0;
@@ -211,13 +211,14 @@ namespace Tidebreak
             targetBackdrop.rectTransform.sizeDelta=targetPanel.sizeDelta;
             targetName.rectTransform.sizeDelta=new Vector2(compactTarget?200:590,compactTarget?25:50);targetName.fontSize=compactTarget?15:17;
             if(Time.unscaledTime>hitUntil){hit.color=Color.clear;damageNumber.text="";}
-            damageOverlay.color=new Color(.8f,.12f,.08f,Mathf.Clamp01((damageUntil-Time.unscaledTime)/.4f)*.25f);
+            damageOverlay.color=Color.clear;UpdateImpactPresentation(danger);
             UpdateCombatReadability();
             targetPanel.gameObject.SetActive(!string.IsNullOrEmpty(targetName.text)&&game.IsPlaying);
             if(SaveStore.LastError!=null&&game.Paused&&!settings)notice.text="保存失败：请确保存档目录可写";
         }
-        public void HitMarker(bool critical,float damage){hit.color=damage<=0?Muted:critical?Gold:Mint;hitUntil=Time.unscaledTime+.13f;damageNumber.text=damage<=0?"封锁":Mathf.RoundToInt(damage)+(critical?"!":"");}
-        public void DamageFlash(){damageUntil=Time.unscaledTime+.4f;}
+        public void HitMarker(bool critical,float damage,bool killed=false){ShowImpactMarker(critical,damage,killed);}
+        public void DamageFlash(){damageUntil=Time.unscaledTime+.55f;damageDirectionKnown=false;}
+        public void DamageFlash(Vector3 source){DamageFlash();damageDirection=source;damageDirectionKnown=true;}
         RectTransform Full(string name,Transform parent){var g=new GameObject(name,typeof(RectTransform));var r=g.GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;return r;}
         RectTransform Rect(string name,Transform parent,float x,float y,float w,float h)
         {var g=new GameObject(name,typeof(RectTransform));var r=g.GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);r.anchoredPosition=new Vector2(x,-y);r.sizeDelta=new Vector2(w,h);return r;}
@@ -230,7 +231,9 @@ namespace Tidebreak
             var im=Box(p,x,y,w,h,accent?Mint:new Color(.1f,.22f,.26f));im.raycastTarget=true;
             var b=im.gameObject.AddComponent<UnityEngine.UI.Button>();b.targetGraphic=im;b.interactable=enabled;
             var colors=b.colors;colors.normalColor=Color.white;colors.highlightedColor=new Color(1.12f,1.12f,1.12f);colors.pressedColor=new Color(.72f,.86f,.8f);colors.disabledColor=new Color(.6f,.6f,.6f,.5f);b.colors=colors;
-            Text(im.transform,15,3,w-30,h-6,label,20,accent?Ink:Cream,TextAlignmentOptions.Midline);
+            Box(im.transform,0,0,3,h,accent?Gold:new Color(Gold.r,Gold.g,Gold.b,.3f));
+            Box(im.transform,3,0,w-3,1,new Color(Cream.r,Cream.g,Cream.b,.09f));
+            var title=Text(im.transform,15,3,w-30,h-6,label,w<180?16:20,accent?Ink:Cream,TextAlignmentOptions.Midline);title.overflowMode=TextOverflowModes.Ellipsis;
             b.onClick.AddListener(()=>{game.Audio.Cue("select");action();});
         }
         UnityEngine.UI.Image Bar(Transform p,float x,float y,float w,float h,Color color)

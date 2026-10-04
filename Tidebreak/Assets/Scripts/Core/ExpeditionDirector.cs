@@ -127,7 +127,7 @@ namespace Tidebreak
         public void UseUtility(string id)
         {
             if(!IsPlaying||Paused)return;
-            if(id=="medkit"&&Run.medkits>0&&Run.health<Run.MaxHealth){Run.medkits--;Run.health=Mathf.Min(Run.MaxHealth,Run.health+45);Audio.Cue("heal");Notice("急救包 · 恢复 45 生命",2);}
+            if(id=="medkit"&&Run.medkits>0&&Run.health<Run.MaxHealth){Run.medkits--;Run.health=Mathf.Min(Run.MaxHealth,Run.health+Run.MedkitRecovery);Audio.Cue("heal");Notice("急救包 · 恢复 "+Run.MedkitRecovery+" 生命",2);}
             else if(id=="sonar"&&Run.sonarCharges>0){Run.sonarCharges--;SonarUntil=Time.time+30;Audio.Cue("sonar");Notice("声呐回波 · 30 秒内显示探索地点的方向与距离",3);}
             else if(id=="tonic"&&Run.tonics>0){Run.tonics--;TonicUntil=Time.time+12;Audio.Cue("heal");Notice("乘风药剂 · 12 秒加速与快速冲刺",3);}
             else if((id=="bomb"&&Run.bombs>0||id=="frost"&&Run.frostbombs>0)&&State==VoyageState.Combat){if(id=="bomb")Run.bombs--;else Run.frostbombs--;ThrownUtility.Create(this,id=="frost");}
@@ -149,7 +149,7 @@ namespace Tidebreak
                 float ground=World.GroundAt(candidate);if(ground<.1f)continue;p=candidate;p.y=ground+1;break;
             }
             p.y=World.GroundAt(p)+1;
-            var minion=SpawnSpecies(ExpeditionContent.Species[owner.Spec.island*12],false,p,true);minion.health=minion.maxHealth*=.35f;minion.transform.localScale*=.6f;
+            var minion=SpawnSpecies(ExpeditionContent.Species[owner.Spec.island*12],false,p,true);minion.Minion=true;minion.InheritCombatBudget(owner);minion.health=minion.maxHealth*=.35f;minion.transform.localScale*=.6f;
         }
         public void ShowMap(){if(State!=VoyageState.Sailing)return;SetState(VoyageState.Route);}
     }

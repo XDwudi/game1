@@ -1,0 +1,12 @@
+kind,id,seed,weapon,weapon_rank,hull_rank,seconds,incoming_damage,health,medkits_used,shots,phase_mask,actions,failures,outcome
+boss,108,41108,Revolver,1,0,32.59,0.00,100.00,0,63,7,5,1,cleared
+boss,109,41109,Revolver,1,0,26.21,0.00,100.00,0,49,7,12,0,cleared
+boss,110,41110,Carbine,2,1,50.81,142.06,97.94,2,237,7,8,0,cleared
+boss,111,41111,Harpoon,2,1,20.42,0.00,125.00,0,14,7,9,0,cleared
+boss,112,41112,Harpoon,3,1,30.69,0.00,125.00,0,21,7,6,0,cleared
+boss,113,41113,Harpoon,3,2,70.49,0.00,150.00,0,46,7,9,0,cleared
+boss,114,41114,Harpoon,4,2,25.20,0.00,150.00,0,16,7,6,0,cleared
+boss,115,41115,Harpoon,4,2,36.88,174.80,90.20,2,26,7,21,0,cleared
+boss,116,41116,Harpoon,5,3,24.62,39.00,161.00,0,18,7,12,0,cleared
+boss,117,41117,Harpoon,5,3,78.83,0.00,175.00,0,19,7,6,0,cleared
+boss,118,41118,Harpoon,5,3,68.55,0.00,175.00,0,48,7,7,0,cleared

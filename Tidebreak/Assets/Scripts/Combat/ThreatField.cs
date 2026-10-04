@@ -47,14 +47,14 @@ namespace Tidebreak
             if(type==0){Vector3 a=transform.position,b=end;a.y=game.World.GroundAt(a)+.13f;b.y=game.World.GroundAt(b)+.13f;
                 line.startWidth=line.endWidth=age<delay?Mathf.Lerp(.04f,radius*.35f,Mathf.Clamp01(age/delay)):radius*.85f;
                 Vector3 axis=b-a;axis.y=0;
-                if(age>=delay&&!hit){Vector3 flat=p-a;flat.y=0;float t=axis.sqrMagnitude>.01f?Mathf.Clamp01(Vector3.Dot(flat,axis)/axis.sqrMagnitude):0;bool threatened=(flat-axis*t).magnitude<radius;hit=true;if(threatened&&p.y-game.World.GroundAt(p)<2.8f)player.TakeDamage(damage);game.Audio.Cue("beam");}if(age>delay+.3f)Destroy(gameObject);return;}
+                if(age>=delay&&!hit){Vector3 flat=p-a;flat.y=0;float t=axis.sqrMagnitude>.01f?Mathf.Clamp01(Vector3.Dot(flat,axis)/axis.sqrMagnitude):0;bool threatened=(flat-axis*t).magnitude<radius;hit=true;if(threatened&&p.y-game.World.GroundAt(p)<2.8f)player.TakeDamage(damage,transform.position);game.Audio.Cue("beam");}if(age>delay+.3f)Destroy(gameObject);return;}
             float r=type==1?Mathf.Max(.2f,(age-delay)*6):radius;
             for(int i=0;i<48;i++){float a=i*Mathf.PI*2/48+ (type==3?age*1.5f:0);Vector3 at=transform.position+new Vector3(Mathf.Cos(a)*r,0,Mathf.Sin(a)*r);at.y=game.World.GroundAt(at)+.09f;line.SetPosition(i,at);}
             float distance=GameDirector.FlatDistance(p,transform.position);
             if(age<delay)return;
             line.startWidth=line.endWidth=type==1?.2f:.11f;
-            if(type==1){float feet=p.y-1.6f;if(!hit&&Mathf.Abs(distance-r)<.6f&&feet<game.World.GroundAt(p)+.5f){hit=true;player.TakeDamage(damage);}if(r>40)Destroy(gameObject);}
-            else {if(distance<radius){if(type==3&&player.Motor.enabled){Vector3 toward=transform.position-p;toward.y=0;player.Motor.Move(toward.normalized*Time.deltaTime*2.5f);}if(Time.time>nextTick){nextTick=Time.time+1;float before=game.Run.health;player.TakeDamage(damage);if(type==2&&game.Run.health<before)player.ApplyStatus(status);}}
+            if(type==1){float feet=p.y-1.6f;if(!hit&&Mathf.Abs(distance-r)<.6f&&feet<game.World.GroundAt(p)+.5f){hit=true;player.TakeDamage(damage,transform.position);}if(r>40)Destroy(gameObject);}
+            else {if(distance<radius){if(type==3&&player.Motor.enabled){Vector3 toward=transform.position-p;toward.y=0;player.Motor.Move(toward.normalized*Time.deltaTime*2.5f);}if(Time.time>nextTick){nextTick=Time.time+1;float before=game.Run.health;player.TakeDamage(damage,transform.position);if(type==2&&game.Run.health<before)player.ApplyStatus(status);}}
                 if(age>delay+4.5f)Destroy(gameObject);}
         }
     }

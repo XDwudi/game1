@@ -34,7 +34,7 @@ namespace Tidebreak
             Color c=age<LockTime?new Color(.25f,.8f,1):new Color(1,.45f,.15f);
             foreach(var l in new[]{center,left,right})Shape.TintLine(l,c);
             if(!paintedLock){ThreatField.DrawSurfaceLine(center,game.World,from,to);ThreatField.DrawSurfaceLine(left,game.World,from+side,to+side);ThreatField.DrawSurfaceLine(right,game.World,from-side,to-side);paintedLock=age>=LockTime;}
-            if(age>=StrikeTime&&!struck){struck=true;Vector3 a=origin,b=endpoint+direction*12,p=game.Player.transform.position;a.y=b.y=p.y=0;Vector3 d=b-a;float t=Mathf.Clamp01(Vector3.Dot(p-a,d)/Mathf.Max(.01f,d.sqrMagnitude));bool inLane=Vector3.Distance(p,a+d*t)<Width;bool evaded=!inLane||game.Player.DodgeActive;if(inLane)game.Player.TakeDamage(damage);
+            if(age>=StrikeTime&&!struck){struck=true;Vector3 a=origin,b=endpoint+direction*12,p=game.Player.transform.position;a.y=b.y=p.y=0;Vector3 d=b-a;float t=Mathf.Clamp01(Vector3.Dot(p-a,d)/Mathf.Max(.01f,d.sqrMagnitude));bool inLane=Vector3.Distance(p,a+d*t)<Width;bool evaded=!inLane||game.Player.DodgeActive;if(inLane)game.Player.TakeDamage(damage,origin);
                 center.startWidth=center.endWidth=Width*1.3f;game.Audio.Cue("explosion");for(int i=0;i<12;i++){Vector3 v=Vector3.Lerp(from,to,i/11f);v.y=game.World.GroundAt(v)+.2f;game.Effect(v,Color.cyan,4,.22f);}resolved?.Invoke(evaded);resolved=null;}
             if(age>StrikeTime+.35f)Destroy(gameObject);
         }

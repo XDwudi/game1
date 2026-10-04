@@ -201,15 +201,15 @@ namespace Tidebreak
 
         void Landscape(float seconds, string speaker, string line)
         {
-            Vector3 landmark = Land(0, -34, 4.5f);
+            Vector3 landmark = game.World.Layout.Landmark + Vector3.up * 4.5f;
             Add(new Vector3(34, 20, 28), new Vector3(24, 15, 18), landmark,
                 seconds, 54, speaker, line);
         }
 
         void Landmark(float seconds, string speaker, string line, string document = "")
         {
-            Vector3 target = Land(0, -34, game.World.Region == 0 ? 8 : 5);
-            Add(Land(-12, -16, 11), Land(-9, -19, 9), target, seconds, 48,
+            Vector3 target = game.World.Layout.Landmark + Vector3.up * (game.World.Region == 0 ? 8 : 5);
+            Add(target + new Vector3(-12, 6, 18), target + new Vector3(-9, 5, 14), target, seconds, 48,
                 speaker, line, document);
         }
 
@@ -242,7 +242,7 @@ namespace Tidebreak
         void Opening()
         {
             chapter = "序章  /  灯熄之后";
-            Add(new Vector3(-11, 2.5f, 37), new Vector3(-6, 3.1f, 28), Land(0, -34, 10),
+            Add(new Vector3(-11, 2.5f, 37), new Vector3(-6, 3.1f, 28), game.World.Layout.Landmark + Vector3.up * 10,
                 4.5f, 51, "航海日志 · 第零天", "风暴停了。海面上没有航标，也没有昨天留下的航迹。");
             Landmark(4.5f, "船长", "只有那座灯塔。我记得，离家时它还亮着。");
             Portrait(4.5f, game.Island.npc, "你的船第九次回到这里了。这一次，别只想着活着回来。");
@@ -285,7 +285,7 @@ namespace Tidebreak
             chapter = "第五章 · 证物  /  黑匣航次记录";
             Landmark(4, "北星号黑匣子 · 录音", "这里是北星号。不要把航灯点亮。它不是出口，是诱饵。");
             Portrait(4, game.Island.npc, "声音是你的。可这艘船沉没时，你还没出生。");
-            Add(Land(-9, -18, 6), Land(-6, -22, 5), Land(0, -34, 5), 4, 43,
+            Add(game.World.Layout.Landmark + new Vector3(-9, 6, 18), game.World.Layout.Landmark + new Vector3(-6, 5, 12), game.World.Layout.Landmark + Vector3.up * 5, 4, 43,
                 "黑匣子 · 隐藏航次记录", "第八次尝试：为确保船员存活，归航协议已重置今日。",
                 "北星号 · 最后一页\n\n如果你再次听见自己，\n请相信那个选择出发的人。\n\n不要替我保留今天。");
             Landscape(4, "船长", "我追的不是失踪的船。我在追一场被撤销了八次的告别。");

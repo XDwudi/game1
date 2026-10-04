@@ -94,7 +94,7 @@ namespace Tidebreak
         }
         void BuildLighthouse()
         {
-            var basePoint=Ground(new Vector3(0,0,-34));var lens=Group("Restored lighthouse optical assembly",basePoint+Vector3.up*11.4f);
+            var basePoint=Ground(world.Layout.Landmark);var lens=Group("Restored lighthouse optical assembly",basePoint+Vector3.up*11.4f);
             CoastalMesh.Ring(lens,Vector3.zero,1.12f,.07f,brass,Quaternion.Euler(90,0,0));
             if(level==0){Shape.Beam(lens,new Vector3(-.7f,-.7f,-.75f),new Vector3(.7f,.7f,-.75f),.13f,metal);return;}
             var rotor=Local(lens,"Shore-facing navigation lens",Vector3.zero);

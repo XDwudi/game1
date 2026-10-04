@@ -4,18 +4,19 @@ namespace Tidebreak
 {
     public static class CreatureArt
     {
-        public static Transform Build(Transform parent,CreatureKind kind,bool elite)
+        public static Transform Build(Transform parent,CreatureKind kind,bool elite,Color? palette=null)
         {
             var rig=new GameObject("Creature anatomy").transform;rig.SetParent(parent,false);
             if(kind==CreatureKind.Kraken)Kraken(rig);
-            else if(kind==CreatureKind.Crab)Crab(rig);
-            else Fish(rig,kind,elite);
+            else if(kind==CreatureKind.Crab)Crab(rig,palette);
+            else Fish(rig,kind,elite,palette);
             return rig;
         }
-        static void Fish(Transform rig,CreatureKind kind,bool elite)
+        static void Fish(Transform rig,CreatureKind kind,bool elite,Color? palette)
         {
             Color back=kind==CreatureKind.Snapper?new Color(.66f,.27f,.14f):kind==CreatureKind.Puffer?new Color(.43f,.48f,.2f):new Color(.17f,.34f,.37f);
             if(kind==CreatureKind.Angler)back=new Color(.19f,.27f,.29f);if(kind==CreatureKind.WhiteWhale)back=new Color(.7f,.76f,.73f);if(elite)back=new Color(.42f,.24f,.49f);
+            if(palette.HasValue)back=palette.Value;
             Color belly=Color.Lerp(back,new Color(.92f,.87f,.64f),.65f),fin=back*.72f;fin.a=1;
             var root=new GameObject("Fish body").transform;root.SetParent(rig,false);
             bool boss=kind>=CreatureKind.Angler;root.localScale=Vector3.one*(boss?3.1f:.8f);
@@ -23,7 +24,7 @@ namespace Tidebreak
             bool puffer=kind==CreatureKind.Puffer;
             float[] z={-1.43f,-1.16f,-.87f,-.38f,.15f,.58f,.9f,1.1f,1.17f};
             float[] radius={.045f,.12f,.31f,.48f,.51f,.46f,.31f,.17f,.015f};
-            var m=new CoastalMesh();const int sides=14;
+            var m=new CoastalMesh();const int sides=22;
             for(int k=0;k<z.Length-1;k++)for(int j=0;j<sides;j++) {
                 float a=j*Mathf.PI*2/sides,b=(j+1)*Mathf.PI*2/sides;
                 float squash=puffer?1.3f:1;
@@ -32,8 +33,8 @@ namespace Tidebreak
                 var ba=new Vector3(Mathf.Cos(a)*radius[k+1]*squash,Mathf.Sin(a)*radius[k+1],z[k+1]);
                 var bb=new Vector3(Mathf.Cos(b)*radius[k+1]*squash,Mathf.Sin(b)*radius[k+1],z[k+1]);
                 Color color=Color.Lerp(belly,back,Mathf.Clamp01((Mathf.Sin(a)+.35f)*1.05f));
-                if(j%7==0)color=Color.Lerp(color,new Color(.87f,.66f,.31f),.4f);
-                if(k%2==0&&j<7)color*=.91f;
+                if(j==0||j==10||j==11||j==21)color=Color.Lerp(color,new Color(.87f,.74f,.42f),.35f);
+                if(k%2==0&&j<11)color*=.95f;
                 color.a=1;m.Quad(aa,ab,bb,ba,color);
             }
             var body=m.Build("Faceted scales",root);var col=body.AddComponent<CapsuleCollider>();col.direction=2;col.radius=.49f;col.height=2.4f;col.center=new Vector3(0,0,-.1f);
@@ -48,6 +49,11 @@ namespace Tidebreak
                 CoastalMesh.Tube("Gill slit",root,gills,new[]{.012f,.017f,.008f},fin,fin,5);
             }
             Shape.Part("Mouth",PrimitiveType.Sphere,root,new Vector3(0,-.055f,1.1f),new Vector3(.26f,.16f,.05f),new Color(.1f,.09f,.075f));
+            CoastalMesh.Tube("Defined lower jaw",root,new[]{new Vector3(-.17f,-.08f,1.03f),new Vector3(0,-.15f,1.13f),new Vector3(.17f,-.08f,1.03f)},new[]{.022f,.033f,.022f},belly,back,7);
+            for(int side=-1;side<=1;side+=2)for(int j=0;j<4;j++){
+                float at=-.54f+j*.25f;var curve=new[]{new Vector3(side*.36f,.24f,at),new Vector3(side*.48f,.02f,at-.08f),new Vector3(side*.38f,-.19f,at-.03f)};
+                CoastalMesh.Tube("Scale brush stroke",root,curve,new[]{.01f,.015f,.007f},Color.Lerp(back,belly,.22f),back,5);
+            }
             if(puffer)for(int i=0;i<22;i++){float a=i*2.39996f,y=-.7f+1.4f*i/22;Vector3 dir=new Vector3(Mathf.Cos(a)*Mathf.Sqrt(1-y*y),y,Mathf.Sin(a)*Mathf.Sqrt(1-y*y));CoastalMesh.Tube("Puffer spine",root,new[]{dir*.46f,dir*.71f},new[]{.043f,0},belly,back,5);}
             if(kind==CreatureKind.Angler){var pts=new[]{new Vector3(0,.42f,.2f),new Vector3(0,1.02f,.38f),new Vector3(0,1.35f,.94f),new Vector3(0,1.15f,1.36f)};CoastalMesh.Tube("Angler lure",root,pts,new[]{.045f,.037f,.026f,.015f},back,back,7);Shape.Part("Bioluminescent lure",PrimitiveType.Sphere,root,pts[3],Vector3.one*.25f,new Color(.4f,.95f,.62f),false,true);}
             if(kind==CreatureKind.Leviathan)for(int i=0;i<6;i++)CoastalMesh.Tube("Storm spine",root,new[]{new Vector3(0,.4f,-.9f+i*.27f),new Vector3(0,.94f,-1.1f+i*.27f)},new[]{.12f,0},new Color(.37f,.75f,.75f),fin,5);
@@ -74,10 +80,14 @@ namespace Tidebreak
             }
             WeakPoint(rig,new Vector3(0,.1f,1.85f),.48f);
         }
-        static void Crab(Transform rig)
+        static void Crab(Transform rig,Color? palette)
         {
-            Color shell=new Color(.56f,.25f,.13f),rim=new Color(.83f,.45f,.21f);
-            Shape.Rock(rig,new Vector3(0,.25f,0),new Vector3(2.25f,1.35f,1.65f),shell,12);
+            Color shell=palette??new Color(.56f,.25f,.13f),rim=Color.Lerp(shell,new Color(.96f,.71f,.38f),.46f);
+            CreatureSurfaceArt.Form(rig,"Crab shell",new Vector3(0,.25f,0),new Vector3(4.4f,1.5f,3.3f),shell);
+            for(int side=-1;side<=1;side+=2){
+                CoastalMesh.Tube("Carapace ridge",rig,new[]{new Vector3(side*.2f,.93f,-1.12f),new Vector3(side*.91f,.91f,-.6f),new Vector3(side*1.35f,.76f,.3f),new Vector3(side*.7f,.74f,1.14f)},new[]{.018f,.031f,.033f,.012f},rim,shell,7);
+                for(int j=0;j<3;j++)CoastalMesh.Tube("Carapace edge tooth",rig,new[]{new Vector3(side*1.75f,.52f,-.6f+j*.54f),new Vector3(side*2.22f,.48f,-.78f+j*.57f)},new[]{.16f,.009f},shell,rim,6);
+            }
             var c=rig.gameObject.AddComponent<BoxCollider>();c.size=new Vector3(4.2f,1.6f,3.1f);c.center=Vector3.up*.35f;
             for(int s=-1;s<=1;s+=2) {
                 for(int i=0;i<4;i++){Vector3 a=new Vector3(s*1.5f,0,-1.1f+i*.6f),b=new Vector3(s*(2.7f+i*.1f),.3f,-2+i*1.1f),d=b+new Vector3(s*.55f,-1.1f,.2f);CoastalMesh.Tube("Articulated leg",rig,new[]{a,b,d},new[]{.25f,.17f,.035f},shell,rim,7);}

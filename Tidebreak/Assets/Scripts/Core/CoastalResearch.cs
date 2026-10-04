@@ -7,6 +7,7 @@ namespace Tidebreak
     public partial class RunData
     {
         public int[] habitatRecords = new int[9];
+        public int[] coastalCasts = new int[27];
         public int researchRewards;
     }
 
@@ -35,7 +36,7 @@ namespace Tidebreak
             get {
                 int record = ResearchRecord;
                 if ((Run.researchRewards & (1 << Mathf.Clamp(Run.stage - 1, 0, 8))) != 0)
-                    return "本岛生态笔记已完成 · 升级拟饵可重访寻找深层物种";
+                    return "本岛三生境已记录 · "+IslandMastery.UnlockHint(Run,Mathf.Clamp(Run.stage-1,0,8));
                 for (int i = 0; i < 3; i++) if ((record & (1 << i)) == 0)
                     return "生态笔记 " + ResearchCount + "/3 · " + HabitatClues[i];
                 return "三处钓场已记录 · 生态笔记已收录";
@@ -56,27 +57,31 @@ namespace Tidebreak
         {
             if (Run.habitatRecords == null) Run.habitatRecords = new int[9];
             else if (Run.habitatRecords.Length != 9) Array.Resize(ref Run.habitatRecords, 9);
+            if (Run.coastalCasts == null) Run.coastalCasts = new int[27];
+            else if (Run.coastalCasts.Length != 27) Array.Resize(ref Run.coastalCasts, 27);
         }
         SpeciesDefinition RollCoastalCatch()
         {
             hookedHabitat = HabitatAt(castPoint);
-            int start = Mathf.Clamp(Run.stage - 1, 0, 8) * 12;
-            var pool = new List<SpeciesDefinition>();
-            // Each family has a habitat. At the basic lure there are two species
-            // in every habitat; later lures reveal additional silhouettes there.
-            for (int k = 0; k < 12; k++) {
-                var s = ExpeditionContent.Species[start + k];
-                if (k % 3 == hookedHabitat && s.lure <= Run.selectedLure) pool.Add(s);
-            }
-            var fresh = pool.FindAll(s => !Run.islandCaught.Contains(s.id));
+            EnsureResearch();
+            int island=Mathf.Clamp(Run.stage-1,0,8),visit=++Run.coastalCasts[island*3+hookedHabitat];
+            var pool=ExpeditionContent.IslandPool(Run.stage,Run.selectedLure,hookedHabitat);
+            var endemic=pool.FindAll(s=>s.endemic&&!IslandMastery.IsSpecimenKnown(Run,s.id));
+            // Searching a specimen's habitat twice guarantees a chance to fight
+            // it. The blueprint still requires winning that natural encounter.
+            if(endemic.Count>0&&visit%2==0)return endemic[Rng.Next(endemic.Count)];
+            var natives=pool.FindAll(s=>s.island==island);
+            if(natives.Count>0&&Rng.NextDouble()<.82)pool=natives;
+            var fresh = pool.FindAll(s => Run.islandCaught==null||!Run.islandCaught.Contains(s.id));
             if (fresh.Count > 0 && Rng.NextDouble() < .8) pool = fresh;
             return pool[Rng.Next(pool.Count)];
         }
         void RecordHabitat(CatchData item)
         {
-            if (!item.fieldSample || item.habitat < 0 || item.habitat > 2 || item.speciesId < 0 || item.speciesId >= 108) return;
+            if (!item.fieldSample || !item.naturalHook || item.caughtIsland<0 || item.caughtIsland>8 || item.habitat < 0 || item.habitat > 2 || item.speciesId < 0 || item.speciesId >= 108) return;
+            if(ExpeditionContent.Species[item.speciesId].habitat!=item.habitat)return;
             EnsureResearch();
-            int island = item.speciesId / 12, bit = 1 << item.habitat;
+            int island = item.caughtIsland, bit = 1 << item.habitat;
             if ((Run.habitatRecords[island] & bit) != 0) return;
             Run.habitatRecords[island] |= bit;
             if (Run.habitatRecords[island] == 7 && (Run.researchRewards & (1 << island)) == 0) {
@@ -85,7 +90,7 @@ namespace Tidebreak
                 Run.coins += stipend; Run.earned += stipend;
                 Audio.Cue("discovery");
                 Notice("生态笔记完成 · 三处钓场已记录 · 研究津贴 +35 金币", 5);
-            } else Notice("记录钓场：" + HabitatNames[item.habitat] + " · " + ResearchCount + "/3 · J 查看生态笔记", 4);
+            } else Notice("记录钓场：" + ExpeditionContent.Islands[island].name+" · "+HabitatNames[item.habitat] + " · J 查看生态笔记", 4);
         }
     }
 }

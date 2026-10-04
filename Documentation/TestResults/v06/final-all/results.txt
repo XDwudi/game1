@@ -1,0 +1,739 @@
+PASS v06 recognized independent test mode All
+PASS v06 stable 119 IDs include eighteen endemic species
+PASS island 1 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 1 lure 0 retains two exclusive basic-access specimens
+PASS island 1 lure 0 habitat 0 is accessible and internally consistent
+PASS island 1 lure 0 habitat 1 is accessible and internally consistent
+PASS island 1 lure 0 habitat 2 is accessible and internally consistent
+PASS island 1 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 1 lure 1 retains two exclusive basic-access specimens
+PASS island 1 lure 1 habitat 0 is accessible and internally consistent
+PASS island 1 lure 1 habitat 1 is accessible and internally consistent
+PASS island 1 lure 1 habitat 2 is accessible and internally consistent
+PASS island 1 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 1 lure 2 retains two exclusive basic-access specimens
+PASS island 1 lure 2 habitat 0 is accessible and internally consistent
+PASS island 1 lure 2 habitat 1 is accessible and internally consistent
+PASS island 1 lure 2 habitat 2 is accessible and internally consistent
+PASS island 1 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 1 lure 3 retains two exclusive basic-access specimens
+PASS island 1 lure 3 habitat 0 is accessible and internally consistent
+PASS island 1 lure 3 habitat 1 is accessible and internally consistent
+PASS island 1 lure 3 habitat 2 is accessible and internally consistent
+PASS island 2 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 2 lure 0 retains two exclusive basic-access specimens
+PASS island 2 lure 0 habitat 0 is accessible and internally consistent
+PASS island 2 lure 0 habitat 1 is accessible and internally consistent
+PASS island 2 lure 0 habitat 2 is accessible and internally consistent
+PASS island 2 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 2 lure 1 retains two exclusive basic-access specimens
+PASS island 2 lure 1 habitat 0 is accessible and internally consistent
+PASS island 2 lure 1 habitat 1 is accessible and internally consistent
+PASS island 2 lure 1 habitat 2 is accessible and internally consistent
+PASS island 2 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 2 lure 2 retains two exclusive basic-access specimens
+PASS island 2 lure 2 habitat 0 is accessible and internally consistent
+PASS island 2 lure 2 habitat 1 is accessible and internally consistent
+PASS island 2 lure 2 habitat 2 is accessible and internally consistent
+PASS island 2 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 2 lure 3 retains two exclusive basic-access specimens
+PASS island 2 lure 3 habitat 0 is accessible and internally consistent
+PASS island 2 lure 3 habitat 1 is accessible and internally consistent
+PASS island 2 lure 3 habitat 2 is accessible and internally consistent
+PASS island 3 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 3 lure 0 retains two exclusive basic-access specimens
+PASS island 3 lure 0 habitat 0 is accessible and internally consistent
+PASS island 3 lure 0 habitat 1 is accessible and internally consistent
+PASS island 3 lure 0 habitat 2 is accessible and internally consistent
+PASS island 3 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 3 lure 1 retains two exclusive basic-access specimens
+PASS island 3 lure 1 habitat 0 is accessible and internally consistent
+PASS island 3 lure 1 habitat 1 is accessible and internally consistent
+PASS island 3 lure 1 habitat 2 is accessible and internally consistent
+PASS island 3 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 3 lure 2 retains two exclusive basic-access specimens
+PASS island 3 lure 2 habitat 0 is accessible and internally consistent
+PASS island 3 lure 2 habitat 1 is accessible and internally consistent
+PASS island 3 lure 2 habitat 2 is accessible and internally consistent
+PASS island 3 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 3 lure 3 retains two exclusive basic-access specimens
+PASS island 3 lure 3 habitat 0 is accessible and internally consistent
+PASS island 3 lure 3 habitat 1 is accessible and internally consistent
+PASS island 3 lure 3 habitat 2 is accessible and internally consistent
+PASS island 4 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 4 lure 0 retains two exclusive basic-access specimens
+PASS island 4 lure 0 habitat 0 is accessible and internally consistent
+PASS island 4 lure 0 habitat 1 is accessible and internally consistent
+PASS island 4 lure 0 habitat 2 is accessible and internally consistent
+PASS island 4 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 4 lure 1 retains two exclusive basic-access specimens
+PASS island 4 lure 1 habitat 0 is accessible and internally consistent
+PASS island 4 lure 1 habitat 1 is accessible and internally consistent
+PASS island 4 lure 1 habitat 2 is accessible and internally consistent
+PASS island 4 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 4 lure 2 retains two exclusive basic-access specimens
+PASS island 4 lure 2 habitat 0 is accessible and internally consistent
+PASS island 4 lure 2 habitat 1 is accessible and internally consistent
+PASS island 4 lure 2 habitat 2 is accessible and internally consistent
+PASS island 4 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 4 lure 3 retains two exclusive basic-access specimens
+PASS island 4 lure 3 habitat 0 is accessible and internally consistent
+PASS island 4 lure 3 habitat 1 is accessible and internally consistent
+PASS island 4 lure 3 habitat 2 is accessible and internally consistent
+PASS island 5 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 5 lure 0 retains two exclusive basic-access specimens
+PASS island 5 lure 0 habitat 0 is accessible and internally consistent
+PASS island 5 lure 0 habitat 1 is accessible and internally consistent
+PASS island 5 lure 0 habitat 2 is accessible and internally consistent
+PASS island 5 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 5 lure 1 retains two exclusive basic-access specimens
+PASS island 5 lure 1 habitat 0 is accessible and internally consistent
+PASS island 5 lure 1 habitat 1 is accessible and internally consistent
+PASS island 5 lure 1 habitat 2 is accessible and internally consistent
+PASS island 5 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 5 lure 2 retains two exclusive basic-access specimens
+PASS island 5 lure 2 habitat 0 is accessible and internally consistent
+PASS island 5 lure 2 habitat 1 is accessible and internally consistent
+PASS island 5 lure 2 habitat 2 is accessible and internally consistent
+PASS island 5 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 5 lure 3 retains two exclusive basic-access specimens
+PASS island 5 lure 3 habitat 0 is accessible and internally consistent
+PASS island 5 lure 3 habitat 1 is accessible and internally consistent
+PASS island 5 lure 3 habitat 2 is accessible and internally consistent
+PASS island 6 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 6 lure 0 retains two exclusive basic-access specimens
+PASS island 6 lure 0 habitat 0 is accessible and internally consistent
+PASS island 6 lure 0 habitat 1 is accessible and internally consistent
+PASS island 6 lure 0 habitat 2 is accessible and internally consistent
+PASS island 6 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 6 lure 1 retains two exclusive basic-access specimens
+PASS island 6 lure 1 habitat 0 is accessible and internally consistent
+PASS island 6 lure 1 habitat 1 is accessible and internally consistent
+PASS island 6 lure 1 habitat 2 is accessible and internally consistent
+PASS island 6 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 6 lure 2 retains two exclusive basic-access specimens
+PASS island 6 lure 2 habitat 0 is accessible and internally consistent
+PASS island 6 lure 2 habitat 1 is accessible and internally consistent
+PASS island 6 lure 2 habitat 2 is accessible and internally consistent
+PASS island 6 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 6 lure 3 retains two exclusive basic-access specimens
+PASS island 6 lure 3 habitat 0 is accessible and internally consistent
+PASS island 6 lure 3 habitat 1 is accessible and internally consistent
+PASS island 6 lure 3 habitat 2 is accessible and internally consistent
+PASS island 7 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 7 lure 0 retains two exclusive basic-access specimens
+PASS island 7 lure 0 habitat 0 is accessible and internally consistent
+PASS island 7 lure 0 habitat 1 is accessible and internally consistent
+PASS island 7 lure 0 habitat 2 is accessible and internally consistent
+PASS island 7 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 7 lure 1 retains two exclusive basic-access specimens
+PASS island 7 lure 1 habitat 0 is accessible and internally consistent
+PASS island 7 lure 1 habitat 1 is accessible and internally consistent
+PASS island 7 lure 1 habitat 2 is accessible and internally consistent
+PASS island 7 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 7 lure 2 retains two exclusive basic-access specimens
+PASS island 7 lure 2 habitat 0 is accessible and internally consistent
+PASS island 7 lure 2 habitat 1 is accessible and internally consistent
+PASS island 7 lure 2 habitat 2 is accessible and internally consistent
+PASS island 7 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 7 lure 3 retains two exclusive basic-access specimens
+PASS island 7 lure 3 habitat 0 is accessible and internally consistent
+PASS island 7 lure 3 habitat 1 is accessible and internally consistent
+PASS island 7 lure 3 habitat 2 is accessible and internally consistent
+PASS island 8 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 8 lure 0 retains two exclusive basic-access specimens
+PASS island 8 lure 0 habitat 0 is accessible and internally consistent
+PASS island 8 lure 0 habitat 1 is accessible and internally consistent
+PASS island 8 lure 0 habitat 2 is accessible and internally consistent
+PASS island 8 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 8 lure 1 retains two exclusive basic-access specimens
+PASS island 8 lure 1 habitat 0 is accessible and internally consistent
+PASS island 8 lure 1 habitat 1 is accessible and internally consistent
+PASS island 8 lure 1 habitat 2 is accessible and internally consistent
+PASS island 8 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 8 lure 2 retains two exclusive basic-access specimens
+PASS island 8 lure 2 habitat 0 is accessible and internally consistent
+PASS island 8 lure 2 habitat 1 is accessible and internally consistent
+PASS island 8 lure 2 habitat 2 is accessible and internally consistent
+PASS island 8 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 8 lure 3 retains two exclusive basic-access specimens
+PASS island 8 lure 3 habitat 0 is accessible and internally consistent
+PASS island 8 lure 3 habitat 1 is accessible and internally consistent
+PASS island 8 lure 3 habitat 2 is accessible and internally consistent
+PASS island 9 lure 0 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 9 lure 0 retains two exclusive basic-access specimens
+PASS island 9 lure 0 habitat 0 is accessible and internally consistent
+PASS island 9 lure 0 habitat 1 is accessible and internally consistent
+PASS island 9 lure 0 habitat 2 is accessible and internally consistent
+PASS island 9 lure 1 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 9 lure 1 retains two exclusive basic-access specimens
+PASS island 9 lure 1 habitat 0 is accessible and internally consistent
+PASS island 9 lure 1 habitat 1 is accessible and internally consistent
+PASS island 9 lure 1 habitat 2 is accessible and internally consistent
+PASS island 9 lure 2 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 9 lure 2 retains two exclusive basic-access specimens
+PASS island 9 lure 2 habitat 0 is accessible and internally consistent
+PASS island 9 lure 2 habitat 1 is accessible and internally consistent
+PASS island 9 lure 2 habitat 2 is accessible and internally consistent
+PASS island 9 lure 3 unique runtime pool has >70% native and <30% overlap with every other island
+PASS island 9 lure 3 retains two exclusive basic-access specimens
+PASS island 9 lure 3 habitat 0 is accessible and internally consistent
+PASS island 9 lure 3 habitat 1 is accessible and internally consistent
+PASS island 9 lure 3 habitat 2 is accessible and internally consistent
+PASS v06 workshop contains 23 existing plus 6 general plus 9 research offers
+PASS research 0 cannot be bought before a legitimate specimen record
+PASS specimen 0 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 0 valid provenance records exactly once (data fixture)
+PASS specimen 0 unlocks a paid rank with exact wallet deduction
+PASS research 0 next exploration gate rejects repeated purchase without spending
+PASS specimen 5 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 5 valid provenance records exactly once (data fixture)
+PASS specimen 5 unlocks a paid rank with exact wallet deduction
+PASS research 0 next exploration gate rejects repeated purchase without spending
+PASS research 0 completed three-habitat fixture opens only the third paid rank
+PASS research 0 finite cap cannot consume more coins
+PASS research 1 cannot be bought before a legitimate specimen record
+PASS specimen 12 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 12 valid provenance records exactly once (data fixture)
+PASS specimen 12 unlocks a paid rank with exact wallet deduction
+PASS research 1 next exploration gate rejects repeated purchase without spending
+PASS specimen 17 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 17 valid provenance records exactly once (data fixture)
+PASS specimen 17 unlocks a paid rank with exact wallet deduction
+PASS research 1 next exploration gate rejects repeated purchase without spending
+PASS research 1 completed three-habitat fixture opens only the third paid rank
+PASS research 1 finite cap cannot consume more coins
+PASS research 2 cannot be bought before a legitimate specimen record
+PASS specimen 24 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 24 valid provenance records exactly once (data fixture)
+PASS specimen 24 unlocks a paid rank with exact wallet deduction
+PASS research 2 next exploration gate rejects repeated purchase without spending
+PASS specimen 29 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 29 valid provenance records exactly once (data fixture)
+PASS specimen 29 unlocks a paid rank with exact wallet deduction
+PASS research 2 next exploration gate rejects repeated purchase without spending
+PASS research 2 completed three-habitat fixture opens only the third paid rank
+PASS research 2 finite cap cannot consume more coins
+PASS research 3 cannot be bought before a legitimate specimen record
+PASS specimen 36 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 36 valid provenance records exactly once (data fixture)
+PASS specimen 36 unlocks a paid rank with exact wallet deduction
+PASS research 3 next exploration gate rejects repeated purchase without spending
+PASS specimen 41 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 41 valid provenance records exactly once (data fixture)
+PASS specimen 41 unlocks a paid rank with exact wallet deduction
+PASS research 3 next exploration gate rejects repeated purchase without spending
+PASS research 3 completed three-habitat fixture opens only the third paid rank
+PASS research 3 finite cap cannot consume more coins
+PASS research 4 cannot be bought before a legitimate specimen record
+PASS specimen 48 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 48 valid provenance records exactly once (data fixture)
+PASS specimen 48 unlocks a paid rank with exact wallet deduction
+PASS research 4 next exploration gate rejects repeated purchase without spending
+PASS specimen 53 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 53 valid provenance records exactly once (data fixture)
+PASS specimen 53 unlocks a paid rank with exact wallet deduction
+PASS research 4 next exploration gate rejects repeated purchase without spending
+PASS research 4 completed three-habitat fixture opens only the third paid rank
+PASS research 4 finite cap cannot consume more coins
+PASS research 5 cannot be bought before a legitimate specimen record
+PASS specimen 60 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 60 valid provenance records exactly once (data fixture)
+PASS specimen 60 unlocks a paid rank with exact wallet deduction
+PASS research 5 next exploration gate rejects repeated purchase without spending
+PASS specimen 65 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 65 valid provenance records exactly once (data fixture)
+PASS specimen 65 unlocks a paid rank with exact wallet deduction
+PASS research 5 next exploration gate rejects repeated purchase without spending
+PASS research 5 completed three-habitat fixture opens only the third paid rank
+PASS research 5 finite cap cannot consume more coins
+PASS research 6 cannot be bought before a legitimate specimen record
+PASS specimen 72 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 72 valid provenance records exactly once (data fixture)
+PASS specimen 72 unlocks a paid rank with exact wallet deduction
+PASS research 6 next exploration gate rejects repeated purchase without spending
+PASS specimen 77 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 77 valid provenance records exactly once (data fixture)
+PASS specimen 77 unlocks a paid rank with exact wallet deduction
+PASS research 6 next exploration gate rejects repeated purchase without spending
+PASS research 6 completed three-habitat fixture opens only the third paid rank
+PASS research 6 finite cap cannot consume more coins
+PASS research 7 cannot be bought before a legitimate specimen record
+PASS specimen 84 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 84 valid provenance records exactly once (data fixture)
+PASS specimen 84 unlocks a paid rank with exact wallet deduction
+PASS research 7 next exploration gate rejects repeated purchase without spending
+PASS specimen 89 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 89 valid provenance records exactly once (data fixture)
+PASS specimen 89 unlocks a paid rank with exact wallet deduction
+PASS research 7 next exploration gate rejects repeated purchase without spending
+PASS research 7 completed three-habitat fixture opens only the third paid rank
+PASS research 7 finite cap cannot consume more coins
+PASS research 8 cannot be bought before a legitimate specimen record
+PASS specimen 96 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 96 valid provenance records exactly once (data fixture)
+PASS specimen 96 unlocks a paid rank with exact wallet deduction
+PASS research 8 next exploration gate rejects repeated purchase without spending
+PASS specimen 101 rejects no-source summoned foreign-island and wrong-habitat records
+PASS specimen 101 valid provenance records exactly once (data fixture)
+PASS specimen 101 unlocks a paid rank with exact wallet deduction
+PASS research 8 next exploration gate rejects repeated purchase without spending
+PASS research 8 completed three-habitat fixture opens only the third paid rank
+PASS research 8 finite cap cannot consume more coins
+PASS general upgrade reload rank 1 costs its exact displayed price
+PASS general upgrade reload rank 2 costs its exact displayed price
+PASS general upgrade reload rank 3 costs its exact displayed price
+PASS general upgrade reload has an enforced three-rank cap
+PASS general upgrade handling rank 1 costs its exact displayed price
+PASS general upgrade handling rank 2 costs its exact displayed price
+PASS general upgrade handling rank 3 costs its exact displayed price
+PASS general upgrade handling has an enforced three-rank cap
+PASS general upgrade precision rank 1 costs its exact displayed price
+PASS general upgrade precision rank 2 costs its exact displayed price
+PASS general upgrade precision rank 3 costs its exact displayed price
+PASS general upgrade precision has an enforced three-rank cap
+PASS general upgrade bearing rank 1 costs its exact displayed price
+PASS general upgrade bearing rank 2 costs its exact displayed price
+PASS general upgrade bearing rank 3 costs its exact displayed price
+PASS general upgrade bearing has an enforced three-rank cap
+PASS general upgrade salvage rank 1 costs its exact displayed price
+PASS general upgrade salvage rank 2 costs its exact displayed price
+PASS general upgrade salvage rank 3 costs its exact displayed price
+PASS general upgrade salvage has an enforced three-rank cap
+PASS general upgrade dressing rank 1 costs its exact displayed price
+PASS general upgrade dressing rank 2 costs its exact displayed price
+PASS general upgrade dressing rank 3 costs its exact displayed price
+PASS general upgrade dressing has an enforced three-rank cap
+PASS research specimens paid ranks general upgrades and wallet survive actual checkpoint reload
+PASS legacy null and short research arrays migrate safely without granting abilities
+PASS physical provenance fixture is picked up within normal interaction range
+PASS old fish without v06 origin cannot mint research rewards
+PASS physical provenance fixture is picked up within normal interaction range
+PASS migrating fish records its actual caught island instead of the species native island
+PASS physical provenance fixture is picked up within normal interaction range
+PASS physical provenance fixture is picked up within normal interaction range
+PASS three physical habitat pickups pay exactly one stipend at the actual island
+PASS physical provenance fixture is picked up within normal interaction range
+PASS repeat migrant pickup cannot repeat the stipend
+PASS origin fixture 97 retains native identity and ecology while using the encountered island's combat budget
+PASS origin fixture 97 adjusts HP and appraisal exactly to island 1 without changing a local fish
+PASS origin fixture 1 retains native identity and ecology while using the encountered island's combat budget
+PASS origin fixture 1 adjusts HP and appraisal exactly to island 2 without changing a local fish
+PASS origin fixture 13 retains native identity and ecology while using the encountered island's combat budget
+PASS origin fixture 13 adjusts HP and appraisal exactly to island 2 without changing a local fish
+PASS real fixed-flow cast brings native-island 9 migrant into island 1
+PASS naturally hooked migrant 97 actually enters with local ordinary-fish HP damage tier and base value
+PASS native-island-nine migrant naturally executes Split and creates its real summoned child
+PASS migrating parent's child inherits island-one damage tier and local same-family HP times 0.35
+PASS inherited combat budget does not grant summoned child any natural research provenance
+PASS real summoned-child kill creates no endemic blueprint research source loot or sale coins
+PASS real fixed-flow cast brings native-island 1 migrant into island 2
+PASS naturally hooked migrant 1 actually enters with local ordinary-fish HP damage tier and base value
+PASS direct combat fixtures without a completed fishing cycle cannot claim natural catch provenance
+PASS paid reload training shortens a real reload by its 1.24 speed factor
+PASS precision rail expands the actual shared reload window to 47.5..79.5 percent
+PASS upgraded real medkit restores 69 health and consumes one purchased-use slot
+PASS carbine spread remains during the intentional post-shot recovery delay
+PASS actual paid handling reduces more carbine spread over the same 0.13 second ceasefire
+PASS line bearing increases real released-line tension relief
+PASS pine research actual dash primes exactly one weak-point damage modifier
+PASS coral actual neighbour takes one nonrecursive refraction and respects cooldown
+PASS root extraction runs through real EnemyKilled provenance and heals four (kill fixture)
+PASS sun research recognizes a real elite windup and has a cooldown
+PASS wreck research actual precision reload primes and consumes a single next-shot bonus
+PASS frost research actual dash applies enemy slow in its five-metre radius
+PASS storm research actual avoided damage protects one later injury then expires
+PASS cinder conditional modifier requires wounded target and respects cooldown
+PASS mirror research recognizes the real weapon change and cannot repeat without a cooldown
+PASS elite crab's actual weak-point shots during windup open a temporary breach without cancelling its committed attack
+PASS breached crab still executes its real attack
+PASS crab breach and recovery weak-point bonus expires without more weak-point pressure
+PASS elite 5 deterministic-selection fixture passes through real cast reel and LaunchToward
+PASS elite 5 only creates its symbiosis anchor after actual flight ends
+PASS elite 5 naturally landed anchor is above reachable shore with an unobstructed visible aiming point
+PASS elite 5 visible anchor breaks through real gunfire and releases its protective mechanic
+PASS natural elite 5 and its minions are defeated with real fire movement and finite starting health
+PASS natural elite 5 actual drop appraisal applies exactly the paid 30-percent salvage premium to its real quality weakshot and route factors
+PASS elite 9 deterministic-selection fixture passes through real cast reel and LaunchToward
+PASS elite 9 only creates its symbiosis anchor after actual flight ends
+PASS elite 9 naturally landed anchor is above reachable shore with an unobstructed visible aiming point
+PASS elite 9 visible anchor breaks through real gunfire and releases its protective mechanic
+PASS natural elite 9 and its minions are defeated with real fire movement and finite starting health
+PASS natural elite 9 actual drop appraisal applies exactly the paid 30-percent salvage premium to its real quality weakshot and route factors
+PASS island 1 has its own looping layout and meaningful height change
+PASS route 1/market supplies explicit navigation waypoints
+PASS island 1 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_market supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 1/workshop supplies explicit navigation waypoints
+PASS island 1 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_workshop supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 1/guide supplies explicit navigation waypoints
+PASS island 1 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_guide supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 1/objective_a supplies explicit navigation waypoints
+PASS island 1 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_objective_a supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 1/objective_b supplies explicit navigation waypoints
+PASS island 1 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_objective_b supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 1/evidence supplies explicit navigation waypoints
+PASS island 1 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 1/return_from_evidence supplies explicit navigation waypoints
+PASS island 1 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 1/mission_connection_a supplies explicit navigation waypoints
+PASS island 1 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 1/mission_connection_b supplies explicit navigation waypoints
+PASS island 1 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 1/final_return supplies explicit navigation waypoints
+PASS island 1 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 1 route test never grants immunity
+PASS island 2 has its own looping layout and meaningful height change
+PASS route 2/market supplies explicit navigation waypoints
+PASS island 2 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_market supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 2/workshop supplies explicit navigation waypoints
+PASS island 2 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_workshop supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 2/guide supplies explicit navigation waypoints
+PASS island 2 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_guide supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 2/objective_a supplies explicit navigation waypoints
+PASS island 2 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_objective_a supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 2/objective_b supplies explicit navigation waypoints
+PASS island 2 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_objective_b supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 2/evidence supplies explicit navigation waypoints
+PASS island 2 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 2/return_from_evidence supplies explicit navigation waypoints
+PASS island 2 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 2/mission_connection_a supplies explicit navigation waypoints
+PASS island 2 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 2/mission_connection_b supplies explicit navigation waypoints
+PASS island 2 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 2/final_return supplies explicit navigation waypoints
+PASS island 2 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 2 route test never grants immunity
+PASS island 3 has its own looping layout and meaningful height change
+PASS route 3/market supplies explicit navigation waypoints
+PASS island 3 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_market supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 3/workshop supplies explicit navigation waypoints
+PASS island 3 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_workshop supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 3/guide supplies explicit navigation waypoints
+PASS island 3 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_guide supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 3/objective_a supplies explicit navigation waypoints
+PASS island 3 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_objective_a supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 3/objective_b supplies explicit navigation waypoints
+PASS island 3 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_objective_b supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 3/evidence supplies explicit navigation waypoints
+PASS island 3 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 3/return_from_evidence supplies explicit navigation waypoints
+PASS island 3 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 3/mission_connection_a supplies explicit navigation waypoints
+PASS island 3 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 3/mission_connection_b supplies explicit navigation waypoints
+PASS island 3 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 3/final_return supplies explicit navigation waypoints
+PASS island 3 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 3 route test never grants immunity
+PASS island 4 has its own looping layout and meaningful height change
+PASS route 4/market supplies explicit navigation waypoints
+PASS island 4 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_market supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 4/workshop supplies explicit navigation waypoints
+PASS island 4 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_workshop supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 4/guide supplies explicit navigation waypoints
+PASS island 4 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_guide supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 4/objective_a supplies explicit navigation waypoints
+PASS island 4 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_objective_a supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 4/objective_b supplies explicit navigation waypoints
+PASS island 4 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_objective_b supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 4/evidence supplies explicit navigation waypoints
+PASS island 4 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 4/return_from_evidence supplies explicit navigation waypoints
+PASS island 4 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 4/mission_connection_a supplies explicit navigation waypoints
+PASS island 4 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 4/mission_connection_b supplies explicit navigation waypoints
+PASS island 4 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 4/final_return supplies explicit navigation waypoints
+PASS island 4 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 4 route test never grants immunity
+PASS island 5 has its own looping layout and meaningful height change
+PASS route 5/market supplies explicit navigation waypoints
+PASS island 5 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_market supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 5/workshop supplies explicit navigation waypoints
+PASS island 5 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_workshop supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 5/guide supplies explicit navigation waypoints
+PASS island 5 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_guide supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 5/objective_a supplies explicit navigation waypoints
+PASS island 5 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_objective_a supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 5/objective_b supplies explicit navigation waypoints
+PASS island 5 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_objective_b supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 5/evidence supplies explicit navigation waypoints
+PASS island 5 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 5/return_from_evidence supplies explicit navigation waypoints
+PASS island 5 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 5/mission_connection_a supplies explicit navigation waypoints
+PASS island 5 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 5/mission_connection_b supplies explicit navigation waypoints
+PASS island 5 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 5/final_return supplies explicit navigation waypoints
+PASS island 5 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 5 route test never grants immunity
+PASS island 6 has its own looping layout and meaningful height change
+PASS route 6/market supplies explicit navigation waypoints
+PASS island 6 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_market supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 6/workshop supplies explicit navigation waypoints
+PASS island 6 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_workshop supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 6/guide supplies explicit navigation waypoints
+PASS island 6 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_guide supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 6/objective_a supplies explicit navigation waypoints
+PASS island 6 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_objective_a supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 6/objective_b supplies explicit navigation waypoints
+PASS island 6 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_objective_b supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 6/evidence supplies explicit navigation waypoints
+PASS island 6 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 6/return_from_evidence supplies explicit navigation waypoints
+PASS island 6 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 6/mission_connection_a supplies explicit navigation waypoints
+PASS island 6 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 6/mission_connection_b supplies explicit navigation waypoints
+PASS island 6 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 6/final_return supplies explicit navigation waypoints
+PASS island 6 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 6 route test never grants immunity
+PASS island 7 has its own looping layout and meaningful height change
+PASS route 7/market supplies explicit navigation waypoints
+PASS island 7 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_market supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 7/workshop supplies explicit navigation waypoints
+PASS island 7 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_workshop supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 7/guide supplies explicit navigation waypoints
+PASS island 7 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_guide supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 7/objective_a supplies explicit navigation waypoints
+PASS island 7 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_objective_a supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 7/objective_b supplies explicit navigation waypoints
+PASS island 7 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_objective_b supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 7/evidence supplies explicit navigation waypoints
+PASS island 7 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 7/return_from_evidence supplies explicit navigation waypoints
+PASS island 7 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 7/mission_connection_a supplies explicit navigation waypoints
+PASS island 7 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 7/mission_connection_b supplies explicit navigation waypoints
+PASS island 7 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 7/final_return supplies explicit navigation waypoints
+PASS island 7 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 7 route test never grants immunity
+PASS island 8 has its own looping layout and meaningful height change
+PASS route 8/market supplies explicit navigation waypoints
+PASS island 8 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_market supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 8/workshop supplies explicit navigation waypoints
+PASS island 8 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_workshop supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 8/guide supplies explicit navigation waypoints
+PASS island 8 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_guide supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 8/objective_a supplies explicit navigation waypoints
+PASS island 8 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_objective_a supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 8/objective_b supplies explicit navigation waypoints
+PASS island 8 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_objective_b supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 8/evidence supplies explicit navigation waypoints
+PASS island 8 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 8/return_from_evidence supplies explicit navigation waypoints
+PASS island 8 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 8/mission_connection_a supplies explicit navigation waypoints
+PASS island 8 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 8/mission_connection_b supplies explicit navigation waypoints
+PASS island 8 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 8/final_return supplies explicit navigation waypoints
+PASS island 8 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 8 route test never grants immunity
+PASS island 9 has its own looping layout and meaningful height change
+PASS route 9/market supplies explicit navigation waypoints
+PASS island 9 physically walks market using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_market supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_market using every route waypoint without a water respawn or teleport
+PASS route 9/workshop supplies explicit navigation waypoints
+PASS island 9 physically walks workshop using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_workshop supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_workshop using every route waypoint without a water respawn or teleport
+PASS route 9/guide supplies explicit navigation waypoints
+PASS island 9 physically walks guide using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_guide supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_guide using every route waypoint without a water respawn or teleport
+PASS route 9/objective_a supplies explicit navigation waypoints
+PASS island 9 physically walks objective_a using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_objective_a supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_objective_a using every route waypoint without a water respawn or teleport
+PASS route 9/objective_b supplies explicit navigation waypoints
+PASS island 9 physically walks objective_b using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_objective_b supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_objective_b using every route waypoint without a water respawn or teleport
+PASS route 9/evidence supplies explicit navigation waypoints
+PASS island 9 physically walks evidence using every route waypoint without a water respawn or teleport
+PASS route 9/return_from_evidence supplies explicit navigation waypoints
+PASS island 9 physically walks return_from_evidence using every route waypoint without a water respawn or teleport
+PASS route 9/mission_connection_a supplies explicit navigation waypoints
+PASS island 9 physically walks mission_connection_a using every route waypoint without a water respawn or teleport
+PASS route 9/mission_connection_b supplies explicit navigation waypoints
+PASS island 9 physically walks mission_connection_b using every route waypoint without a water respawn or teleport
+PASS route 9/final_return supplies explicit navigation waypoints
+PASS island 9 physically walks final_return using every route waypoint without a water respawn or teleport
+PASS island 9 route test never grants immunity
+PASS v06 ordinary 0 rank 0 resolves with real starter-weapon shots and finite health
+PASS combat 0 has no permanent test immunity
+PASS v06 ordinary 4 rank 0 resolves with real starter-weapon shots and finite health
+PASS combat 4 has no permanent test immunity
+PASS v06 ordinary 8 rank 0 resolves with real starter-weapon shots and finite health
+PASS combat 8 has no permanent test immunity
+PASS v06 ordinary 0 rank 3 resolves with real starter-weapon shots and finite health
+PASS combat 0 has no permanent test immunity
+PASS v06 ordinary 4 rank 3 resolves with real starter-weapon shots and finite health
+PASS combat 4 has no permanent test immunity
+PASS v06 ordinary 8 rank 3 resolves with real starter-weapon shots and finite health
+PASS combat 8 has no permanent test immunity
+PASS v06 elite 4 rank 0 resolves with real starter-weapon shots and finite health
+PASS elite 4 immediate-fire trial executes attacks and retains meaningful endurance
+PASS combat 4 has no permanent test immunity
+PASS v06 elite 4 rank 3 resolves with real starter-weapon shots and finite health
+PASS elite 4 immediate-fire trial executes attacks and retains meaningful endurance
+PASS combat 4 has no permanent test immunity
+PASS v06 elite 2 rank 0 resolves with real starter-weapon shots and finite health
+PASS elite 2 behavior observation executes attacks and retains meaningful endurance
+PASS combat 2 has no permanent test immunity
+PASS v06 elite 14 rank 0 resolves with real starter-weapon shots and finite health
+PASS elite 14 behavior observation executes attacks and retains meaningful endurance
+PASS combat 14 has no permanent test immunity
+PASS v06 elite 26 rank 1 resolves with real starter-weapon shots and finite health
+PASS elite 26 behavior observation executes attacks and retains meaningful endurance
+PASS combat 26 has no permanent test immunity
+PASS v06 elite 38 rank 1 resolves with real starter-weapon shots and finite health
+PASS elite 38 behavior observation executes attacks and retains meaningful endurance
+PASS combat 38 has no permanent test immunity
+PASS v06 elite 50 rank 2 resolves with real starter-weapon shots and finite health
+PASS elite 50 behavior observation executes attacks and retains meaningful endurance
+PASS combat 50 has no permanent test immunity
+PASS v06 elite 62 rank 2 resolves with real starter-weapon shots and finite health
+PASS elite 62 behavior observation executes attacks and retains meaningful endurance
+PASS combat 62 has no permanent test immunity
+PASS v06 elite 74 rank 3 resolves with real starter-weapon shots and finite health
+PASS elite 74 behavior observation executes attacks and retains meaningful endurance
+PASS combat 74 has no permanent test immunity
+PASS v06 elite 86 rank 3 resolves with real starter-weapon shots and finite health
+PASS elite 86 behavior observation executes attacks and retains meaningful endurance
+PASS combat 86 has no permanent test immunity
+PASS v06 elite 98 rank 4 resolves with real starter-weapon shots and finite health
+PASS elite 98 behavior observation executes attacks and retains meaningful endurance
+PASS combat 98 has no permanent test immunity
+PASS campaign: v06 new expedition starts through the visible harbor button
+PASS campaign: habitat 0 accepts a genuine cast from the walked pier
+PASS campaign: real fishing generates legal provenance and the actual habitat pool species
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: naturally defeating the exclusive catch immediately archives its blueprint
+PASS campaign: natural fish leaves physical saleable loot
+PASS campaign: normal shared pickup preserves natural catch provenance
+PASS campaign: actual market pays the full fish appraisal without fabricated coins
+PASS campaign: habitat 0 accepts a genuine cast from the walked pier
+PASS campaign: real fishing generates legal provenance and the actual habitat pool species
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: naturally defeating the exclusive catch immediately archives its blueprint
+PASS campaign: natural fish leaves physical saleable loot
+PASS campaign: normal shared pickup preserves natural catch provenance
+PASS campaign: actual market pays the full fish appraisal without fabricated coins
+PASS campaign: habitat 2 accepts a genuine cast from the walked pier
+PASS campaign: real fishing generates legal provenance and the actual habitat pool species
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: naturally defeating the exclusive catch immediately archives its blueprint
+PASS campaign: natural fish leaves physical saleable loot
+PASS campaign: normal shared pickup preserves natural catch provenance
+PASS campaign: actual market pays the full fish appraisal without fabricated coins
+PASS campaign: habitat 2 accepts a genuine cast from the walked pier
+PASS campaign: real fishing generates legal provenance and the actual habitat pool species
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: naturally defeating the exclusive catch immediately archives its blueprint
+PASS campaign: natural fish leaves physical saleable loot
+PASS campaign: normal shared pickup preserves natural catch provenance
+PASS campaign: actual market pays the full fish appraisal without fabricated coins
+PASS campaign: habitat 1 accepts a genuine cast from the walked pier
+PASS campaign: real fishing generates legal provenance and the actual habitat pool species
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: naturally defeating the exclusive catch immediately archives its blueprint
+PASS campaign: natural fish leaves physical saleable loot
+PASS campaign: normal shared pickup preserves natural catch provenance
+PASS campaign: actual market pays the full fish appraisal without fabricated coins
+PASS campaign: five naturally hooked fights discover both local specimens and all three real habitats
+PASS campaign: sixth workshop tab exposes the actual research page
+PASS campaign: earned fish sales can pay for the visible unlocked research offer
+PASS campaign: research purchase via UI consumes exact earned gold and gives only one ability rank
+PASS campaign: research campaign saves via the actual pause menu
+PASS campaign: research campaign resumes through the harbor button
+PASS campaign: naturally earned research progression survives save and reload
+PASS campaign: research campaign used physical exploration and finite combat without health gear gold or quest grants

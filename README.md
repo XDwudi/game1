@@ -1,12 +1,12 @@
-# Tidebreak · 潮汐猎手 v0.5
+# Tidebreak · 潮汐猎手 v0.6
 
-单人第一人称 3D 海岛钓猎 roguelike，Windows x64，Unity **2021.3.16f1c1**。本版围绕探索、任务后果、按操作区分的首领机制、金币成长和战斗反馈继续迭代。
+单人第一人称 3D 海岛钓猎 roguelike，Windows x64，Unity **2021.3.16f1c1**。本版重做九岛地形与路径、地域生物战斗、金币研究和画面反馈，让换岛与停留探索都有新收获。
 
-![v0.5 克拉肯 · 红潮换侧牵引与锁定横扫](Documentation/Images/v05-kraken.png)
+![v0.6 松风灯塔海岸与环行道路](Documentation/Images/v06-coast.png)
 
 ## 开始游玩
 
-双击 `Builds/Release/Tidebreak.exe`。分发请使用完整的 `Tidebreak-v0.5.0-Windows-x64.zip`；无需升级 Unity，运行不需要账号或网络。
+双击 `Builds/Release/Tidebreak.exe`。分发请使用完整的 `Tidebreak-v0.6.0-Windows-x64.zip`；无需升级 Unity，运行不需要账号或网络。
 
 1. 找向导按 **E** 接委托，**J** 查看剧情、证据和当前目标。
 2. 码头按 **1** 拿鱼竿，蓄力并松开左键抛竿。咬钩后绿灯收线、红灯松手；鱼跃出水面后用枪击倒。
@@ -15,6 +15,7 @@
 5. 第 **2 / 5 / 8 岛**开放一幕流派专精，每幕三选一，用金币购买、跨幕搭配。
 6. 阅读首领行动栏，使用该场战斗的动作：引钳撞桩、音贝应答、净水造岸、折光、拉钟、护炉、导雷、双阀、逆行足迹、牵腕、声呐追踪。射击不能替代这些动作。
 7. 换钓场能遇到不同鱼类：西岸礁隙、湾心水道、东岸海草。完成三处真实鱼获观察，获得一次 35 金币津贴；升级拟饵后可重访寻找新物种。
+8. 每岛两种专属生物开放本岛三阶研究：击败获得蓝图，再去工坊用金币购买。专研页显示缺失标本、钓场及下一阶效果；基础鱼饵即可开始探索。
 
 | 操作 | 按键 |
 | --- | --- |
@@ -27,7 +28,16 @@
 | 急救 / 震爆弹 / 冰封瓶 / 声呐 / 药剂 | Z / X / V / C / G |
 | 暂停与保存返回 / 跳过过场 | Esc / Space或Esc |
 
-## v0.5 的主要变化
+## v0.6 的主要变化
+
+- **九岛重新规划地形**：岬角、环礁内湾、红树林水道、盐沙台地、残舰湾、峡湾栈桥、雷峰折道、火山环路和镜渊双翼；任务点、商店、证据点与高差分别布置，每岛有环路和捷径。
+- **钓获池区分地域**：每岛十二种原生生物，按拟饵有 78.6%–85.7% 原生种；少量迁徙种保留交叉。两种专属生物不会流入其他岛。普通物种仍由十二个体型家族、攻击和生态组合，并非新增一百套独立模型。
+- **停留探索能改变打法**：九条三阶岛屿研究，涉及冲刺弱点、折射、击杀回复、前摇反制、精准装填、减速、避伤蓄能、残血处决和换枪。两份专属标本与三钓场逐步开放购买条件，金币决定投资顺序；另有六项三阶通用改装。
+- **普通与精英更有压力**：提高基础生命、攻击与出招频率，九种地域行为叠加体型招式。精英抗持续推退，共生灯需落地后击破，弱点打断有次数节奏；根须种子、修复浮标、导电柱、镜像锚等目标需要先处理。
+- **画面和可读性**：重做生物曲面、鳍条与精英饰件，海水随实际水深显露浅滩，统一九岛天空与光照。松树、棕榈、任务设施和共生晶灯有独立轮廓。右侧行动卡让出中心视野，命中、弱点、击杀和受击方向各有反馈。
+- **枪械与危险提示**：枪身、转轮、泵动与装填动作更新，卡宾枪连续射击产生真实散布，停火回正与握把升级有关。火花、喷雾与枪口反馈使用复用粒子；地面危险从蓄势开始显示完整边界、箭头与倒计时弧。
+
+## 保留的远征内容
 
 - **11 种首领解法**：真实的方向、顺序、节拍、携带、护送、控温压、路线记忆与钓线张力。克拉肯后期需要换侧进入牵引圈，同时避腕击和潮环；白鲸需要识别双环回波、引出破冰并成功避开，才能留下观测。
 - **12 类精英反制**：护甲、共生锚、治疗、号令、回旋刃等技能依体型分配。可被弱点打断的种类有冷却，不再靠持续开火永久压制。
@@ -48,18 +58,23 @@
 
 ## 开发与验证
 
-本轮交付与实机截图见 [v0.5 更新说明](Documentation/RELEASE-v05.md)。最终同构建自动回归 **638 通过 / 0 失败**，Windows 分发包与测试程序集一致，完整性及 SHA-256 记录见 [分发校验](Documentation/TestResults/v05-package.json)。
+本轮范围与实机截图见 [v0.6 更新说明](Documentation/RELEASE-v06.md)，具体证据与测试边界见 [验收记录](Documentation/QA-v06.md)。上一版的测试与分发记录保留在 [v0.5 更新说明](Documentation/RELEASE-v05.md)，不作为新版通过证据。
+
+最终同一 Windows 构建通过新版 All 739 项、表现检查 135 项、十一场首领回归 76 项、错误操作回归 88 项，以及首岛至第二岛购买/保存流程 49 项，均无失败。独立生态模型另检查 342 项。各套件用途与自动操作限制分别记录，不能用断言数量代表真人游玩质量；分发包身份见 [打包校验](Documentation/TestResults/v06-package.json)。
 
 Unity Hub 添加 `Tidebreak`，打开 `Assets/Scenes/Tidebreak.unity`。场景由 C# Editor API 生成。
 
 ```powershell
 python -X utf8 Tools/prepare_resources.py
 ./Tools/build.ps1
-./Tools/test_v05.ps1 -Mode All
-python -X utf8 Tools/v05_balance_audit.py
+./Tools/test_v06.ps1 -Mode All
+./Tools/test_v05.ps1 -Mode Bosses
+./Tools/test_v05.ps1 -Mode Negative
+./Tools/test_v05.ps1 -Mode Campaign
+python -X utf8 Tools/v06_ecology_audit.py
 ./Tools/package.ps1
 ```
 
-首领回归使用正常受伤、真实弹药/装填/冲刺和有限补给；自动瞄准、已知解法及隔离任务夹具不代表真人完整试玩。v0.5 的设计与测试边界见 [玩法](Documentation/DESIGN-v05.md)、[剧情](Documentation/STORY-v05.md)、[数值](Documentation/BALANCE-v05.md)、[测试](Documentation/QA-v05.md)、[美术](Documentation/ART-v05.md)、[音频](Documentation/AUDIO-v05.md)。本版仍为持续打磨的可玩开发版本，不把自动检查数量等同于商业品质认证。
+首领回归使用正常受伤、真实弹药/装填/冲刺和有限补给；自动瞄准、已知解法及隔离任务夹具不代表真人完整试玩。v0.6 的新内容见 [生态与经济](Documentation/ECOLOGY-v06.md)、[美术](Documentation/ART-v06.md)，前版 [玩法](Documentation/DESIGN-v05.md)、[剧情](Documentation/STORY-v05.md)、[数值](Documentation/BALANCE-v05.md)、[音频](Documentation/AUDIO-v05.md) 保留为设计历史。本版仍为持续打磨的可玩开发版本，不把自动检查数量等同于商业品质认证。
 
 字体为 Noto Sans SC 子集，遵循 [SIL OFL](ThirdParty/OFL-NotoSans.txt)。[插画生成记录](Documentation/GENERATED-ART.txt) 保存原始提示词与来源。未使用参考游戏的模型、地图、音频或源码。

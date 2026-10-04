@@ -12,7 +12,7 @@ namespace Tidebreak
         RectTransform waypointPanel,navigationPanel;
         void UpdateExpeditionHUD()
         {
-            if(!supplies){navigationPanel=Rect("Voyage navigation",hud,26,185,410,94);Box(navigationPanel,0,0,410,94,new Color(Ink.r,Ink.g,Ink.b,.83f));supplies=Text(hud,353,815,854,28,"",13,Cream,TextAlignmentOptions.Center);navigator=Text(navigationPanel,13,10,382,78,"",15,Gold);navigator.overflowMode=TextOverflowModes.Ellipsis;
+            if(!supplies){navigationPanel=Rect("Voyage navigation",hud,26,181,348,92);Box(navigationPanel,0,0,348,92,new Color(Ink.r,Ink.g,Ink.b,.83f));supplies=Text(hud,338,827,900,21,"",12,Cream,TextAlignmentOptions.Center);navigator=Text(navigationPanel,16,10,316,75,"",15,Gold);navigator.overflowMode=TextOverflowModes.Ellipsis;
                 waypointPanel=Rect("World action bearing",hud,670,354,260,58);Box(waypointPanel,0,0,35,35,new Color(Ink.r,Ink.g,Ink.b,.73f));Box(waypointPanel,38,0,222,54,new Color(Ink.r,Ink.g,Ink.b,.8f));waypointGlyph=Text(waypointPanel,0,0,35,35,"◇",28,Gold,TextAlignmentOptions.Center);waypointLabel=Text(waypointPanel,44,3,210,48,"",14,Cream);waypointLabel.overflowMode=TextOverflowModes.Ellipsis;}
             var r=game.Run;supplies.text="拟饵："+ExpeditionContent.Lures[r.selectedLure]+"    Z 急救 "+r.medkits+"   X 震爆 "+r.bombs+"   V 冰封 "+r.frostbombs+"   C 声呐 "+r.sonarCharges+"   G 加速 "+r.tonics;
             Vector3 goal=game.MissionTarget;string label=game.MissionTargetLabel;
@@ -51,13 +51,14 @@ namespace Tidebreak
         void BuildShopPage()
         {
             var r=game.Run;var p=NewModal();Header(p,"ISLAND WORKSHOP / 金币工坊",game.Island.name+" · 装备许可证 "+r.maxIsland+" / 9","持有 "+r.coins+" 金币   ·   新岛屿开放新商品；所有装备与配件仍需金币购买");
-            string[] tabs={"枪械与配件","钓具与拟饵","防护与补给","本岛随机库存","流派专精"};
-            for(int i=0;i<5;i++){int tab=i;Button(p,80+i*291,266,277,43,tabs[i],()=>{shopTab=tab;BuildShopPage();},shopTab==i);}
+            string[] tabs={"枪械与配件","钓具与拟饵","防护与补给","本岛随机库存","流派专精","岛屿专研"};
+            for(int i=0;i<6;i++){int tab=i;Button(p,80+i*242,266,228,43,tabs[i],()=>{shopTab=tab;BuildShopPage();},shopTab==i);}
+            if(shopTab==5){BuildMasteryStock(p);Button(p,1130,813,390,52,"返回岛屿  ESC",game.CloseShop,true);return;}
             if(shopTab==4){BuildKeystoneStock(p);Button(p,1130,813,390,52,"返回岛屿  ESC",game.CloseShop,true);return;}
             if(shopTab<3){var items=ShopCatalog.All.Where(x=>x.category==shopTab).ToArray();for(int i=0;i<items.Length;i++){
-                var item=items[i];float x=80+i%4*364,y=327+i/4*177;Box(p,x,y,346,161,Panel);Text(p,x+16,y+12,314,31,item.name+(item.max<10&&item.max>1?" "+item.level(r)+" / "+item.max:""),21,Cream);Text(p,x+16,y+49,314,50,item.description,15,Muted);
+                var item=items[i];float x=80+i%4*364,y=327+i/4*158;Box(p,x,y,346,145,Panel);Text(p,x+16,y+12,314,31,item.name+(item.max<10&&item.max>1?" "+item.level(r)+" / "+item.max:""),21,Cream);Text(p,x+16,y+46,314,48,item.Description(r),14,Muted);
                 string locked=ShopCatalog.Lock(r,item);int price=game.Price(item.id);bool can=locked==""&&price>=0&&r.coins>=price;string action=locked!=""?locked:price<0?"已拥有 / 已满":price+" 金币 · "+(can?"购买":"金币不足");
-                Button(p,x+16,y+115,314,34,action,()=>game.Buy(item.id),can,can);
+                Button(p,x+16,y+105,314,32,action,()=>game.Buy(item.id),can,can);
             }}else {for(int i=0;i<3;i++){int slot=i;var relic=game.Choices[i];float x=80+i*485;Box(p,x,340,460,310,Panel);Text(p,x+24,368,410,43,relic.name,30,Gold);Text(p,x+24,430,410,110,relic.description,21,Muted);int price=game.Price("relic"+i);bool can=price>=0&&r.coins>=price;Button(p,x+24,575,410,49,price<0?"已购 / 属性已满":price+" 金币 · "+(can?"购买":"金币不足"),()=>game.Buy("relic"+slot),can,can);}Text(p,80,693,1400,58,"共 20 类随机配件，随航路逐步加入库存。每岛三件限购；返回旧岛不会重置已购记录。",19,Muted);}
             Button(p,1130,813,390,52,"返回岛屿  ESC",game.CloseShop,true);
         }
@@ -104,10 +105,10 @@ namespace Tidebreak
         public void ShowSpecies(int id){codexIsland=id>=117?9:id>=108?id-108:id/12;codexSelected=id;BuildCodex();}
         void BuildCodex()
         {
-            var p=NewModal();var island=ExpeditionContent.Islands[Mathf.Min(8,codexIsland)];bool rare=codexIsland==9;int seen=game.Log.speciesSeen.Count(v=>v);Header(p,"FIELD GUIDE / 海洋图鉴","已发现 "+seen+" / 119 种生物",rare?"传说海域 · 克拉肯与白鲸 · 完成主线后继续追踪":""+island.name+" · 12 种本地生物与 1 位守关巨物 · 变体不计作新物种");
+            var p=NewModal();var island=ExpeditionContent.Islands[Mathf.Min(8,codexIsland)];bool rare=codexIsland==9;int seen=game.Log.speciesSeen.Count(v=>v);Header(p,"FIELD GUIDE / 海洋图鉴","已发现 "+seen+" / 119 种生物",rare?"传说海域 · 克拉肯与白鲸 · 完成主线后继续追踪":""+island.name+" · 12 种原生生物 · 80% 本地池 · 2 种专研标本");
             int[] ids=rare?new[]{117,118}:Enumerable.Range(codexIsland*12,12).Concat(new[]{108+codexIsland}).ToArray();
             if(!ids.Contains(codexSelected))codexSelected=ids[0];
-            for(int i=0;i<ids.Length;i++){int id=ids[i];var spec=ExpeditionContent.Species[id];bool known=game.Log.speciesSeen[id];float x=80+i%4*263,y=278+i/4*113;Box(p,x,y,249,100,Panel);Button(p,x+9,y+9,231,39,known?spec.name:spec.boss?"未知守关巨物":"未发现物种 "+(i+1).ToString("00"),()=>{codexSelected=id;BuildCodex();},id==codexSelected);Text(p,x+15,y+58,221,29,spec.boss?"完成本岛调查":ExpeditionContent.Lures[spec.lure],15,known?Mint:Muted);}
+            for(int i=0;i<ids.Length;i++){int id=ids[i];var spec=ExpeditionContent.Species[id];bool known=game.Log.speciesSeen[id];float x=80+i%4*263,y=278+i/4*113;Box(p,x,y,249,100,Panel);Button(p,x+9,y+9,231,39,known?spec.name:spec.boss?"未知守关巨物":"未发现物种 "+(i+1).ToString("00"),()=>{codexSelected=id;BuildCodex();},id==codexSelected);Text(p,x+15,y+58,221,29,spec.boss?"完成本岛调查":spec.endemic?"专研标本 · "+(IslandMastery.IsSpecimenKnown(game.Run,id)?"已研究":"未研究"):ExpeditionContent.Lures[spec.lure],15,known?Mint:Muted);}
             var selected=ExpeditionContent.Species[codexSelected];bool discovered=game.Log.speciesSeen[codexSelected];Box(p,1155,278,365,451,Panel);RenderSpecimen(p,selected,discovered);
             Text(p,1170,560,332,34,discovered?selected.name:"等待你的发现",22,Gold,TextAlignmentOptions.Center);
             Text(p,1177,611,319,107,discovered?(selected.boss?BossNarrative.Get(selected.id).motive+"\n"+BossNarrative.Teaching(selected.id):ExpeditionContent.AttackNames[(int)selected.attack]+"\n"+ExpeditionContent.Counters[(int)selected.attack]+"\n精英："+EliteTactics.Names[(int)selected.body]):rare?"寻找古神信号或禁忌鱼饵。\n主线完成后，在结局界面\n选择传说海域。":"栖息地："+island.name+"\n拟饵："+ExpeditionContent.Lures[selected.lure]+"\n升级拟饵后可以重访此岛。",15,Muted);

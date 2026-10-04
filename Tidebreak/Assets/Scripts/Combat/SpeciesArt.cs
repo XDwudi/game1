@@ -5,20 +5,22 @@ namespace Tidebreak
     public static partial class SpeciesArt
     {
         static Color skin,belly,dark;
-        static Transform Part(Transform p,string name,Vector3 at,Vector3 scale,Color c,PrimitiveType shape=PrimitiveType.Sphere){return Shape.Part(name,shape,p,at,scale,c).transform;}
+        static Transform Part(Transform p,string name,Vector3 at,Vector3 scale,Color c,PrimitiveType shape=PrimitiveType.Sphere){
+            if(shape==PrimitiveType.Sphere&&(name.Contains("disc")||name.Contains("shell")||name.Contains("bell")||name.Contains("mantle")||name.Contains("head")))return CreatureSurfaceArt.Form(p,name,at,scale,c);
+            if(shape==PrimitiveType.Cube&&!name.Contains("Wreckage")&&(name.Contains("armor")||name.Contains("shard")||name.Contains("shell")||name.Contains("scale")))return CreatureSurfaceArt.Facet(p,name,at,scale,c);
+            return Shape.Part(name,shape,p,at,scale,c).transform;}
         static void Limb(Transform p,string name,Vector3[] points,float width){float[] radii=new float[points.Length];for(int i=0;i<radii.Length;i++)radii[i]=Mathf.Lerp(width,.012f,i/(float)(radii.Length-1));CoastalMesh.Tube(name,p,points,radii,skin,belly,7);}
-        static void Fin(Transform p,Vector3 a,Vector3 b,Vector3 c){var m=new CoastalMesh();m.Tri(a,b,c,skin);m.Tri(c,b,a,belly);m.Build("Fin membrane",p);Shape.Beam(p,a,b,.025f,belly);}
+        static void Fin(Transform p,Vector3 a,Vector3 b,Vector3 c){CreatureSurfaceArt.Membrane(p,a,b,c,skin,belly);}
         public static Transform Build(Transform parent,SpeciesDefinition s,bool elite)
         {
             if(s.id==117){var kraken=CreatureArt.Build(parent,CreatureKind.Kraken,false);kraken.localScale=Vector3.one*1.7f;BossIdentityArt.BuildSignature(kraken,s);return kraken;}
             if(s.id==118){var whale=WhiteWhale(parent);BossIdentityArt.BuildSignature(whale,s);return whale;}
             var root=new GameObject("Anatomy - "+s.body).transform;root.SetParent(parent,false);root.localScale=Vector3.one*s.size*(elite?1.13f:1);
-            skin=elite?Color.Lerp(s.color,new Color(.7f,.23f,.7f),.35f):s.color;belly=Color.Lerp(skin,new Color(.92f,.87f,.68f),.6f);dark=Color.Lerp(skin,Color.black,.65f);
+            skin=elite?Color.Lerp(s.color,new Color(.31f,.16f,.13f),.16f):s.color;belly=Color.Lerp(skin,new Color(.92f,.87f,.68f),.6f);dark=Color.Lerp(skin,Color.black,.65f);
             float variation=1+(s.island%3)*.12f;Vector3 colliderSize=new Vector3(1.25f,1.1f,2.6f),eyeAt=new Vector3(.36f,.25f,.7f),weak=new Vector3(0,.2f,1.05f);
             switch(s.body){
                 case BodyFamily.Perch:case BodyFamily.Puffer:case BodyFamily.Shark:case BodyFamily.Swordfish:
-                    var f=CreatureArt.Build(root,s.body==BodyFamily.Puffer?CreatureKind.Puffer:s.body==BodyFamily.Shark?CreatureKind.Razorfin:CreatureKind.Snapper,false);f.localScale=new Vector3(s.body==BodyFamily.Puffer?1.35f:.95f,variation,s.body==BodyFamily.Shark?1.7f:1.25f);
-                    foreach(var r in f.GetComponentsInChildren<Renderer>()){var block=new MaterialPropertyBlock();block.SetColor("_Color",skin*1.5f);r.SetPropertyBlock(block);}
+                    var f=CreatureArt.Build(root,s.body==BodyFamily.Puffer?CreatureKind.Puffer:s.body==BodyFamily.Shark?CreatureKind.Razorfin:CreatureKind.Snapper,false,skin);f.localScale=new Vector3(s.body==BodyFamily.Puffer?1.35f:.95f,variation,s.body==BodyFamily.Shark?1.7f:1.25f);
                     foreach(var c in f.GetComponentsInChildren<Collider>()){c.enabled=false;Object.Destroy(c);}foreach(var h in f.GetComponentsInChildren<HitRegion>())Object.Destroy(h);
                     if(s.body==BodyFamily.Swordfish)Limb(root,"Sword",new[]{new Vector3(0,0,.9f),new Vector3(0,0,2.1f+variation*.2f)},.075f);
                     if(s.body==BodyFamily.Shark){Fin(root,new Vector3(0,.4f,-.7f),new Vector3(0,1.35f,-.8f),new Vector3(0,.4f,.2f));colliderSize.z=3.4f;}
@@ -28,7 +30,7 @@ namespace Tidebreak
                 case BodyFamily.Ray:
                     Part(root,"Ray disc",Vector3.zero,new Vector3(1.5f,.38f,1.8f),skin);for(int side=-1;side<=1;side+=2)Fin(root,new Vector3(side*.4f,0,.7f),new Vector3(side*(1.9f+s.island*.07f),.12f,-.55f),new Vector3(side*.3f,-.06f,-.8f));Limb(root,"Whip tail",new[]{new Vector3(0,0,-.6f),new Vector3(0,-.07f,-2),new Vector3(.3f,.15f,-3)},.1f);colliderSize=new Vector3(3,.5f,2);eyeAt=new Vector3(.32f,.21f,.47f);weak=new Vector3(0,.16f,.82f);break;
                 case BodyFamily.Crab:
-                    var crab=CreatureArt.Build(root,CreatureKind.Crab,false);crab.localScale=Vector3.one*.33f;foreach(var c in crab.GetComponentsInChildren<Collider>()){c.enabled=false;Object.Destroy(c);}foreach(var h in crab.GetComponentsInChildren<HitRegion>())Object.Destroy(h);colliderSize=new Vector3(1.7f,.65f,1.4f);weak=new Vector3(0,.16f,.62f);eyeAt=new Vector3(.28f,.5f,.36f);break;
+                    var crab=CreatureArt.Build(root,CreatureKind.Crab,false,skin);crab.localScale=Vector3.one*.33f;foreach(var c in crab.GetComponentsInChildren<Collider>()){c.enabled=false;Object.Destroy(c);}foreach(var h in crab.GetComponentsInChildren<HitRegion>())Object.Destroy(h);colliderSize=new Vector3(1.7f,.65f,1.4f);weak=new Vector3(0,.16f,.62f);eyeAt=new Vector3(.28f,.5f,.36f);break;
                 case BodyFamily.Jelly:
                     Part(root,"Jelly bell",new Vector3(0,.4f,0),new Vector3(1.55f,.9f,1.4f),skin);Part(root,"Luminous core",new Vector3(0,.1f,0),Vector3.one*.5f,belly);for(int j=0;j<8;j++){float a=j*Mathf.PI/4;Limb(root,"Tentacle "+j,new[]{new Vector3(Mathf.Cos(a)*.48f,.1f,Mathf.Sin(a)*.48f),new Vector3(Mathf.Cos(a)*.55f,-.6f,Mathf.Sin(a)*.55f),new Vector3(Mathf.Cos(a)*.2f,-1.5f-j%3*.12f,Mathf.Sin(a)*.2f)},.055f);}colliderSize=new Vector3(1.4f,1.1f,1.4f);eyeAt=new Vector3(.28f,.48f,.55f);weak=new Vector3(0,.4f,.69f);break;
                 case BodyFamily.Turtle:
@@ -44,8 +46,9 @@ namespace Tidebreak
             // Island-specific sensory crests change the silhouette, including when seen at a distance.
             for(int j=0;j<s.island%4;j++)Limb(root,"Sensory crest",new[]{new Vector3((j-1)*.16f,.48f,.18f),new Vector3((j-1)*.23f,.9f+j*.12f,-.1f)},.045f);
             BuildEcology(root,s);
+            CreatureSurfaceArt.Finish(root,s,elite,skin,belly);
             // Keep the luminous frontal target outside the solid hull, so a head-on ray can hit it.
-            var col=root.gameObject.AddComponent<BoxCollider>();col.center=Vector3.back*.12f;col.size=new Vector3(colliderSize.x,colliderSize.y,Mathf.Min(colliderSize.z,(weak.z+.02f)*2));
+            var col=root.gameObject.AddComponent<BoxCollider>();col.center=Vector3.back*.12f+Vector3.up*(s.body==BodyFamily.Jelly?.25f:0);col.size=new Vector3(colliderSize.x,colliderSize.y,Mathf.Min(colliderSize.z,(weak.z+.02f)*2));
             var point=Shape.Part("Weak point",PrimitiveType.Sphere,root,weak,Vector3.one*.24f,new Color(.5f,1,.8f),true,true);point.AddComponent<HitRegion>();
             BossIdentityArt.BuildSignature(root,s);
             return root;

@@ -1,0 +1,7 @@
+{
+  "mode": "ArtReview",
+  "pass": 131,
+  "fail": 2,
+  "assembly_sha256": "9419B697581D0DE4D9E8C8DE553FB1DD834CA89DBCD3E081D0B268FCD7F6FE0C",
+  "note": "Whale raycast attempted while its sonar mechanic intentionally submerged it; original failure retained."
+}

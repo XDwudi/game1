@@ -16,6 +16,7 @@ namespace Tidebreak
         public AnglerController Player;
         public SeaHUD UI;
         public SeaAudio Audio;
+        public CombatFeedback Feedback;
         public readonly List<Enemy> Enemies=new List<Enemy>();
         public readonly List<FishLoot> Loot=new List<FishLoot>();
         public Relic[] Choices;
@@ -49,7 +50,7 @@ namespace Tidebreak
             EnsureExpedition();AudioListener.volume=Log.volume;Rng=new System.Random();
             World=new GameObject("Coastal world").AddComponent<SeaWorld>();World.Build();
             Hazards=new GameObject("Encounter effects").transform;
-            Audio=gameObject.AddComponent<SeaAudio>();Audio.Init();
+            Audio=gameObject.AddComponent<SeaAudio>();Audio.Init();Feedback=gameObject.AddComponent<CombatFeedback>();
             Player=new GameObject("Captain").AddComponent<AnglerController>();Player.Init(this);
             UI=gameObject.AddComponent<SeaHUD>();UI.Init(this);SetState(VoyageState.Harbor);
             if(Automation)gameObject.AddComponent<SmokePilot>();
@@ -130,7 +131,7 @@ namespace Tidebreak
             if(old<.75f&&FishingAge>=.75f){Splash(castPoint);Audio.Cue("splash");}
             if(old<1.9f&&FishBiting){Audio.Cue("bite");Notice("咬钩！稳住竿尖，绿灯收线，红灯松手",2.5f);}
             if(FishBiting) {
-                Tension=Mathf.Max(0,Tension+Balance.TensionGain(holding,Surge,Run.rodLevel)*dt);
+                Tension=Mathf.Max(0,Tension+Balance.TensionGain(holding,Surge,Run.rodLevel)*dt*(holding?1:Run.ReelRelease));
                 ReelProgress=Mathf.Max(0,ReelProgress+Balance.ReelGain(holding,Surge,Run.rodLevel)*dt);
                 if(Tension>=1){Notice("鱼线断了 · 不损失鱼饵，红灯时放松鱼线",3);CancelFishing();return;}
                 if(FishingAge>40){Notice("鱼挣脱了 · 尝试在平稳窗口收线",3);CancelFishing();return;}
@@ -148,25 +149,26 @@ namespace Tidebreak
         public void BeginCombat(bool boss=false)
         {
             if(State!=VoyageState.Sailing&&State!=VoyageState.Fishing)return;
+            bool naturalHook=!boss&&State==VoyageState.Fishing&&ReelProgress>=1;
             if(boss&&Run.stage<=9&&(Run.questStep<3||Run.bossCleared)){Notice("先完成向导的调查，取得首领线索",3);return;}
             if(boss&&Run.stage>=10&&!Automation&&(Run.cinematicMask&(1<<Run.stage))==0){PlayCinematic(Run.stage,()=>BeginCombat(true));return;}
             ClearFishing();Charging=false;SetState(VoyageState.Combat);Audio.SetCombat(true);Player.SetRod(false);
             if(boss){var spec=ExpeditionContent.Species[Run.stage<=9?107+Run.stage:Run.stage==10?117:118];SpawnSpecies(spec,false,new Vector3(0,1.1f,38));Splash(new Vector3(0,-.35f,38));Audio.Cue("boss");Notice(spec.name+" 苏醒 · 留意专属蓄势预警",4);}
-            else {var spec=RollCoastalCatch();bool elite=Rng.NextDouble()<.08+Run.stage*.018+(Run.route==RouteKind.Hunt?.18:0);var e=SpawnSpecies(spec,elite,castPoint);e.CaughtHabitat=hookedHabitat;e.LaunchToward(Player.transform.position+Player.transform.forward*3.5f);Notice(spec.name+" 出水！"+ExpeditionContent.Counters[(int)spec.attack],4);}
+            else {var spec=RollCoastalCatch();bool elite=Rng.NextDouble()<.1+Run.stage*.02+(Run.route==RouteKind.Hunt?.18:0);var e=SpawnSpecies(spec,elite,castPoint);e.SetCatchOrigin(World.Region,hookedHabitat,naturalHook);e.LaunchToward(Player.transform.position+Player.transform.forward*3.5f);Notice(spec.name+" 出水！"+ExpeditionContent.Counters[(int)spec.attack],4);}
         }
         Enemy Spawn(CreatureKind kind,bool elite,Vector3 pos)
         {var e=new GameObject(Balance.CreatureName(kind)).AddComponent<Enemy>();e.Init(this,kind,elite,pos);return e;}
         public void EnemyKilled(Enemy enemy)
         {
             if(State!=VoyageState.Combat)return;
-            var item=new CatchData{kind=enemy.kind,speciesId=enemy.Spec.id,elite=enemy.elite,quality=enemy.quality,weight=enemy.weight,airshot=enemy.Airborne,weakshot=enemy.lastWeak,habitat=enemy.CaughtHabitat,fieldSample=enemy.CaughtHabitat>=0};
+            var item=new CatchData{kind=enemy.kind,speciesId=enemy.Spec.id,elite=enemy.elite,quality=enemy.quality,weight=enemy.weight,airshot=enemy.Airborne,weakshot=enemy.lastWeak,habitat=enemy.CaughtHabitat,fieldSample=enemy.NaturalHook&&enemy.CaughtHabitat>=0,caughtIsland=enemy.CaughtIsland,naturalHook=enemy.NaturalHook};
             float bonus=(item.quality==2?2.6f:item.quality==1?1.6f:1)*(item.airshot?1.25f:1)*(item.weakshot?1.15f:1);
-            item.value=Mathf.RoundToInt(enemy.Spec.value*(enemy.elite?1.65f:1)*bonus*(1+Run.fortuneRelics*.15f)*(Run.route==RouteKind.Shoal?1.15f:1));
+            item.value=Mathf.RoundToInt(enemy.CatchValue*(enemy.elite?1.65f:1)*bonus*(1+Run.fortuneRelics*.15f)*(Run.route==RouteKind.Shoal?1.15f:1)*(enemy.elite&&enemy.NaturalHook&&!enemy.Summoned?Run.EliteSalvage:1));
             Run.kills++;Run.health=Mathf.Min(Run.MaxHealth,Run.health+Run.leechRelics*3);Log.totalKills++;
             bool first=!Log.speciesSeen[enemy.Spec.id];Log.speciesSeen[enemy.Spec.id]=true;Log.speciesKills[enemy.Spec.id]++;
             if(enemy.IsBoss){Run.bossKills++;Run.bossCleared=true;Run.bossTrophy=true;Run.coins+=item.value;Run.earned+=item.value;Run.health=Mathf.Min(Run.MaxHealth,Run.health+25);if(Run.stage==10){Run.krakenDefeated=true;Log.krakens++;}if(Run.stage==11)Run.whaleDefeated=true;Notice("获得潮核与悬赏 +"+item.value+" 金币 · 回向导处交付潮核",5);}
             else if(!enemy.Summoned){var g=new GameObject("Catch: "+item.Label);g.transform.position=enemy.transform.position;var loot=g.AddComponent<FishLoot>();loot.Init(this,item,enemy.transform.rotation);Loot.Add(loot);Notice((first?"新物种已收录！ ":"")+item.Label+" · "+item.value+" 金币 · E 拿起，F 收纳",4);}
-            Enemies.Remove(enemy);Audio.Cue(first?"discovery":"catch");
+            OnNaturalKill(enemy);Enemies.Remove(enemy);Audio.Cue(first?"discovery":"catch");
             if(Enemies.Count==0){if(enemy.Spec.trait==SeaTrait.Volatile)StartCoroutine(FinishVolatileEncounter());else FinishEncounter();}
         }
         System.Collections.IEnumerator FinishVolatileEncounter(){yield return new WaitForSeconds(1.25f);if(State==VoyageState.Combat&&Enemies.Count==0)FinishEncounter();}
@@ -256,9 +258,9 @@ namespace Tidebreak
         public void Warn(Vector3 pos,float radius,float delay,float damage){pos.y=World.GroundAt(pos)+.035f;var g=new GameObject("Telegraphed strike");g.transform.SetParent(Hazards);g.transform.position=pos;var w=g.AddComponent<DeckWarning>();w.game=this;w.radius=radius;w.delay=delay;w.damage=damage;w.Init();}
         public void Projectile(Vector3 from,Vector3 to,float speed,float damage,Color color){var g=Shape.Part("Hostile projectile",PrimitiveType.Sphere,Hazards,from,Vector3.one*.4f,color,false,true);var p=g.AddComponent<SeaProjectile>();p.game=this;p.velocity=(to-from).normalized*speed;p.damage=damage;}
         public void Splash(Vector3 point){Effect(point,new Color(.66f,.87f,.83f),20,.1f);var r=new GameObject("Water ripple").AddComponent<SurfaceRipple>();r.transform.position=new Vector3(point.x,-.35f,point.z);}
-        public void Effect(Vector3 point,Color color,int count,float size){for(int i=0;i<count;i++){var g=Shape.Part("Spray",PrimitiveType.Cube,Hazards,point,Vector3.one*size,color);var f=g.AddComponent<Fleck>();f.velocity=UnityEngine.Random.insideUnitSphere*3+Vector3.up*1.5f;f.life=UnityEngine.Random.Range(.3f,.7f);}}
+        public void Effect(Vector3 point,Color color,int count,float size){if(Feedback)Feedback.Burst(point,color,count,size);}
         public void Tracer(Vector3 a,Vector3 b,Color color){var g=new GameObject("Tracer");g.transform.SetParent(Hazards);var l=g.AddComponent<LineRenderer>();l.positionCount=2;l.SetPosition(0,a);l.SetPosition(1,b);l.startWidth=.016f;l.endWidth=.006f;l.material=Shape.Mat(color,true);Destroy(g,.07f);}
-        void ClearHazards(){if(Hazards)for(int i=Hazards.childCount-1;i>=0;i--)Destroy(Hazards.GetChild(i).gameObject);}
+        void ClearHazards(){if(Feedback)Feedback.Clear();if(Hazards)for(int i=Hazards.childCount-1;i>=0;i--)Destroy(Hazards.GetChild(i).gameObject);}
         void ClearEncounter(){ResetIslandMission();Charging=false;ClearFishing();foreach(var e in Enemies)if(e)Destroy(e.gameObject);Enemies.Clear();foreach(var f in Loot)if(f)Destroy(f.gameObject);Loot.Clear();if(Player)Player.HeldFish=null;ClearHazards();}
         void OnApplicationQuit(){CancelCinematic();Time.timeScale=1;if(Player&&(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue)){Player.StowHeld();Checkpoint(false);}SaveStore.Write("captain",Log);}
         public void Quit(){SaveStore.Write("captain",Log);Application.Quit();}

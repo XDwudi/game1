@@ -32,10 +32,9 @@ namespace Tidebreak
         }
         IEnumerator CampaignWalk(Vector3 goal,string label,float distance=2.5f,bool viaHub=true)
         {
-            Vector3 hub=new Vector3(0,0,2);
-            Vector3[] route=viaHub?new[]{hub,goal}:new[]{goal};
+            Vector3[] route=g.World.NavigationRoute(g.Player.transform.position,goal);
             foreach(var point in route){
-                float start=Time.time;float radius=point==goal?distance:1.4f;
+                float start=Time.time;float radius=GameDirector.FlatDistance(point,goal)<.01f?distance:.65f;
                 while(g.IsPlaying&&g.Run.health>0&&GameDirector.FlatDistance(g.Player.transform.position,point)>radius&&Time.time-start<65){
                     Vector3 before=g.Player.transform.position;V05Move(point,false);campaignDistance+=GameDirector.FlatDistance(before,g.Player.transform.position);yield return null;
                 }
@@ -78,7 +77,7 @@ namespace Tidebreak
                 if(boss){var m=boss.Encounter.Mechanism;phaseMask|=1<<(m.Phase-1);if(m.Active)V05Operate(m);if(!m.Active){solvedMask|=1<<(m.Phase-1);if(GameDirector.FlatDistance(g.Player.transform.position,route[waypoint])<.8f)waypoint=(waypoint+1)%route.Length;V05Move(route[waypoint]);}}
                 else {if(GameDirector.FlatDistance(g.Player.transform.position,route[waypoint])<.8f)waypoint=(waypoint+1)%route.Length;V05Move(route[waypoint]);}
                 var victim=g.Enemies.FirstOrDefault(e=>e&&!e.dead&&!e.IsBoss);if(!victim)victim=boss;
-                if(victim){g.Player.SetRod(false);g.Player.AimAt(V05Aim(victim));if(g.Player.Fire())campaignShots++;if(g.Player.QuickReloadAvailable&&g.Player.ReloadProgress>=.59f&&g.Player.ReloadProgress<=.67f)g.Player.Reload();}
+                if(victim){g.Player.SetRod(false);var device=V06PriorityTarget(victim);g.Player.AimAt(device?V06DeviceAim(device):V05Aim(victim));if(g.Player.Fire())campaignShots++;if(g.Player.QuickReloadAvailable&&g.Player.ReloadProgress>=.59f&&g.Player.ReloadProgress<=.67f)g.Player.Reload();}
                 yield return null;
             }
             CampaignRequire(g.State==VoyageState.Sailing&&g.Run.health>0,"real "+(bossFight?"giant crab encounter":"live catch / lighthouse combat")+" is won with finite health and real shots");

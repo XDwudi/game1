@@ -1,0 +1,76 @@
+PASS v05 eleven different player-action briefs exist
+PASS boss 108 fixture begins without granted invulnerability
+PASS boss 108 receives actual camera-ray weapon damage
+PASS boss 108 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 108 completes independent mechanisms in all three real phases
+PASS boss 108 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 32.59 seconds
+PASS boss 108 battle never enables test invulnerability
+PASS boss 109 fixture begins without granted invulnerability
+PASS boss 109 receives actual camera-ray weapon damage
+PASS boss 109 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 109 completes independent mechanisms in all three real phases
+PASS boss 109 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 26.21 seconds
+PASS boss 109 battle never enables test invulnerability
+PASS boss 110 fixture begins without granted invulnerability
+PASS boss 110 receives actual camera-ray weapon damage
+PASS boss 110 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 110 completes independent mechanisms in all three real phases
+PASS boss 110 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 50.81 seconds
+PASS boss 110 battle never enables test invulnerability
+PASS boss 111 fixture begins without granted invulnerability
+PASS boss 111 receives actual camera-ray weapon damage
+PASS boss 111 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 111 completes independent mechanisms in all three real phases
+PASS boss 111 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 20.42 seconds
+PASS boss 111 battle never enables test invulnerability
+PASS boss 112 fixture begins without granted invulnerability
+PASS boss 112 receives actual camera-ray weapon damage
+PASS boss 112 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 112 completes independent mechanisms in all three real phases
+PASS boss 112 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 30.69 seconds
+PASS boss 112 battle never enables test invulnerability
+PASS boss 113 fixture begins without granted invulnerability
+PASS boss 113 receives actual camera-ray weapon damage
+PASS boss 113 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 113 completes independent mechanisms in all three real phases
+PASS boss 113 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 70.49 seconds
+PASS boss 113 battle never enables test invulnerability
+PASS boss 114 fixture begins without granted invulnerability
+PASS boss 114 receives actual camera-ray weapon damage
+PASS boss 114 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 114 completes independent mechanisms in all three real phases
+PASS boss 114 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 25.20 seconds
+PASS boss 114 battle never enables test invulnerability
+PASS boss 115 fixture begins without granted invulnerability
+PASS boss 115 receives actual camera-ray weapon damage
+PASS boss 115 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 115 completes independent mechanisms in all three real phases
+PASS boss 115 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 36.88 seconds
+PASS boss 115 battle never enables test invulnerability
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 receives actual camera-ray weapon damage
+PASS boss 116 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 116 completes independent mechanisms in all three real phases
+PASS boss 116 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 24.62 seconds
+PASS boss 116 battle never enables test invulnerability
+PASS boss 117 fixture begins without granted invulnerability
+PASS Kraken phase 2 red tide tether changes the rendered material colour; effective shader _Color RGBA(1.000, 0.270, 0.180, 1.000)
+PASS Kraken phase 2 red tide brace circle changes the rendered material colour; effective shader _Color RGBA(1.000, 0.720, 0.250, 1.000)
+PASS Kraken phase 2 stable reeling tether changes the rendered material colour; effective shader _Color RGBA(0.200, 0.880, 0.880, 1.000)
+PASS Kraken phase 2 stable reeling brace circle changes the rendered material colour; effective shader _Color RGBA(0.380, 0.960, 0.550, 1.000)
+PASS Kraken phase 3 red tide tether changes the rendered material colour; effective shader _Color RGBA(1.000, 0.270, 0.180, 1.000)
+PASS Kraken phase 3 red tide brace circle changes the rendered material colour; effective shader _Color RGBA(1.000, 0.720, 0.250, 1.000)
+PASS Kraken phase 3 stable reeling tether changes the rendered material colour; effective shader _Color RGBA(0.200, 0.880, 0.880, 1.000)
+PASS Kraken phase 3 stable reeling brace circle changes the rendered material colour; effective shader _Color RGBA(0.380, 0.960, 0.550, 1.000)
+PASS boss 117 receives actual camera-ray weapon damage
+PASS boss 117 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 117 completes independent mechanisms in all three real phases
+PASS boss 117 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 78.83 seconds
+PASS boss 117 battle never enables test invulnerability
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 receives actual camera-ray weapon damage
+PASS boss 118 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 118 completes independent mechanisms in all three real phases
+PASS boss 118 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 68.55 seconds
+PASS boss 118 battle never enables test invulnerability
+PASS v05 new voyage releases boss controllers and mechanism props
