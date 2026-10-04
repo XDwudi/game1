@@ -6,6 +6,9 @@
 *.ttf binary
 *.pdf binary
 *.zip binary
+*.wav binary
+*.ogg binary
 # Unity writes a trailing space for empty serialized lists.
 *.unity whitespace=-blank-at-eol
 *.meta whitespace=-blank-at-eol
+*.asset whitespace=-blank-at-eol

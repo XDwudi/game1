@@ -70,6 +70,8 @@ namespace Tidebreak
             }
             SetAct(Region);Physics.SyncTransforms();
             StaticBatchingUtility.Combine(Scenery.gameObject);
+            CoastalHabitatArt.Build(transform,Region+1);
+            gameObject.AddComponent<IslandRestoration>().Init(this);
         }
         void BuildWater()
         {
@@ -183,6 +185,7 @@ namespace Tidebreak
             WorldText(r,caption,new Vector3(0,-.24f,.075f),width,.13f,new Color(.65f,.79f,.69f));
             WorldText(r,title,new Vector3(0,.14f,-.075f),width,.34f,ivory,true);
             WorldText(r,caption,new Vector3(0,-.24f,-.075f),width,.13f,new Color(.65f,.79f,.69f),true);
+            r.gameObject.AddComponent<HarborSignVisibility>();
         }
         void WorldText(Transform p,string value,Vector3 pos,float width,float size,Color color,bool back=false)
         {

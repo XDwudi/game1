@@ -14,6 +14,7 @@ namespace Tidebreak
         WeaponMotion gunMotion;bool quickReloadAttempted;
         public int Capacity {get{return Balance.Weapons[(int)weapon].magazine+game.Run.magazineRelics*2;}}
         public float DashReady {get{return Mathf.Clamp01(1-(dashReady-Time.time)/game.Run.DodgeCooldown);}}
+        public bool DodgeActive {get{return Time.time<dashEnd+.11f&&Time.time<InvulnerableUntil;}}
         public WeaponKind weapon;
         public bool RodEquipped=true;
         public FishLoot HeldFish;
@@ -25,7 +26,7 @@ namespace Tidebreak
         int burstRemaining;float burstAt;int[] storedAmmo=new int[6];
         public float AimBloom {get{return bloom;}}
         public string StatusEffect {get{return Time.time<poisonUntil?"中毒":Time.time<slowUntil?"冰霜减速":"";}}
-        float yaw,pitch,fireAt,reloadEnd,dashReady,dashEnd,recoil,shake,vertical,castAnim,stepAt,swayX,swayY;
+        float yaw,pitch,fireAt,reloadEnd,dashReady,dashEnd,recoil,shake,vertical,castAnim,stepAt,swayX,swayY,lastGrounded=-99,queuedJump=-99;
         Vector3 dashDir;
         Transform equipment,muzzle,tip,reel;
         GameObject gun,rod,carryHands;
@@ -41,7 +42,7 @@ namespace Tidebreak
             rod=ToolArt.Rod(equipment,out tip,out reel);carryHands=ToolArt.CarryHands(equipment);BuildGun();ResetForEncounter();
         }
         void BuildGun(){if(gun){gun.SetActive(false);Destroy(gun);}gun=ToolArt.Gun(equipment,weapon,out muzzle);gunMotion=gun.AddComponent<WeaponMotion>();gunMotion.Init(this);}
-        public void Teleport(Vector3 pos){bool enabled=motor.enabled;motor.enabled=false;transform.position=pos;motor.enabled=enabled;vertical=0;}
+        public void Teleport(Vector3 pos){bool enabled=motor.enabled;motor.enabled=false;transform.position=pos;motor.enabled=enabled;vertical=0;lastGrounded=queuedJump=-99;}
         public void ResetForEncounter()
         {
             Teleport(game.World.Spawn);yaw=0;pitch=9;reloadEnd=0;dashReady=0;dashEnd=0;InvulnerableUntil=0;if(Synergy)Synergy.Reset();
@@ -57,23 +58,24 @@ namespace Tidebreak
             if(!active)return;
             if(!game.Automation){float mx=Input.GetAxisRaw("Mouse X"),my=Input.GetAxisRaw("Mouse Y");yaw+=mx*1.7f*game.Log.sensitivity;pitch=Mathf.Clamp(pitch-my*1.7f*game.Log.sensitivity,-78,82);swayX=Mathf.Lerp(swayX,-mx*.008f,Time.deltaTime*12);swayY=Mathf.Lerp(swayY,-my*.008f,Time.deltaTime*12);}
             transform.rotation=Quaternion.Euler(0,yaw,0);
-            Vector3 move=transform.right*Input.GetAxisRaw("Horizontal")+transform.forward*Input.GetAxisRaw("Vertical");move=Vector3.ClampMagnitude(move,1);
-            if(Input.GetKeyDown(KeyCode.LeftShift)&&Time.time>=dashReady)Dash(move.sqrMagnitude>.1f?move:transform.forward);
+            Vector3 move=game.Automation?Vector3.zero:transform.right*Input.GetAxisRaw("Horizontal")+transform.forward*Input.GetAxisRaw("Vertical");move=Vector3.ClampMagnitude(move,1);
+            if(!game.Automation&&Input.GetKeyDown(KeyCode.LeftShift)&&Time.time>=dashReady)Dash(move.sqrMagnitude>.1f?move:transform.forward);
             if(Time.time<dashEnd)move=dashDir*3;
-            if(motor.isGrounded&&vertical<0)vertical=-2;
-            if(Input.GetKeyDown(KeyCode.Space))Jump();
+            if(motor.isGrounded){lastGrounded=Time.time;if(vertical<0)vertical=-2;}
+            if(!game.Automation&&Input.GetKeyDown(KeyCode.Space))queuedJump=Time.time;
+            if(Time.time-queuedJump<=.13f&&Jump())queuedJump=-99;
             vertical-=19*Time.deltaTime;float pace=(1+game.Run.bootsLevel*.06f)*(Time.time<slowUntil?.65f:1)*(Time.time<game.TonicUntil?1.25f:1);motor.Move((move*5.2f*pace+Vector3.up*vertical)*Time.deltaTime);
             if(Time.time<poisonUntil&&Time.time>poisonAt){poisonAt=Time.time+1;TakeDamage(2.5f);}bloom=Mathf.MoveTowards(bloom,0,Time.deltaTime*.028f);
             if(transform.position.y<-.75f){Teleport(game.World.Spawn);game.Notice("海流把你送回岸边 · 走码头更安全",3);if(game.State==VoyageState.Combat)TakeDamage(8);}
             if(move.sqrMagnitude>.2f&&motor.isGrounded&&Time.time>stepAt){stepAt=Time.time+.39f;game.Audio.Cue("step");}
             recoil=Mathf.SmoothDamp(recoil,0,ref recoilVelocity,.07f);kickPitch=Mathf.SmoothDamp(kickPitch,0,ref kickVelocity,.16f);kickYaw=Mathf.SmoothDamp(kickYaw,0,ref kickYawVelocity,.13f);shake=Mathf.MoveTowards(shake,0,Time.deltaTime*3);castAnim=Mathf.MoveTowards(castAnim,0,Time.deltaTime*2);
-            float bob=move.magnitude>.1f?Mathf.Sin(Time.time*11)*.012f:Mathf.Sin(Time.time*1.8f)*.003f;
+            float bob=game.Log.headBob?(move.magnitude>.1f?Mathf.Sin(Time.time*11)*.012f:Mathf.Sin(Time.time*1.8f)*.003f):0;
             View.transform.localRotation=Quaternion.Euler(pitch-kickPitch,kickYaw,game.Log.shake?Mathf.Sin(Time.time*35)*shake:0);View.transform.localPosition=new Vector3(0,bob,0);
             bool ads=Input.GetMouseButton(1)&&!RodEquipped&&!HeldFish;float tilt=Reloading?Mathf.Sin((reloadEnd-Time.time)/Mathf.Max(.1f,reloadDuration)*Mathf.PI)*43:0;
             equipment.localRotation=Quaternion.Euler(-recoil*12-castAnim*21+(RodEquipped?game.CastCharge*-12+game.Tension*5:0),tilt*.5f,tilt*.65f+Mathf.Sin(Time.time*3)*bob*40);
             Vector3 desired=new Vector3(swayX+(ads?-.245f:0),swayY+bob+(ads?.17f:0),-recoil*.12f+(ads?.04f:0));equipment.localPosition=Vector3.Lerp(equipment.localPosition,desired,Time.deltaTime*16);
             if(game.State==VoyageState.Fishing&&Input.GetMouseButton(0))reel.Rotate(Vector3.right,Time.deltaTime*420,Space.Self);
-            View.fieldOfView=Mathf.Lerp(View.fieldOfView,ads?52:75+recoil*.7f,Time.deltaTime*11);
+            float baseFov=Mathf.Clamp(game.Log.fieldOfView,65,100);View.fieldOfView=Mathf.Lerp(View.fieldOfView,ads?baseFov*.7f:baseFov+recoil*.7f,Time.deltaTime*11);
             if(!game.Automation){
                 if(Input.GetKeyDown(KeyCode.Alpha1)){StowHeld();SetRod(true);}if(Input.GetKeyDown(KeyCode.Alpha2))Equip(WeaponKind.Revolver);if(Input.GetKeyDown(KeyCode.Alpha3))Equip(WeaponKind.Scattergun);if(Input.GetKeyDown(KeyCode.Alpha4))Equip(WeaponKind.Harpoon);if(Input.GetKeyDown(KeyCode.Alpha5))Equip(WeaponKind.Carbine);if(Input.GetKeyDown(KeyCode.Alpha6))Equip(WeaponKind.BurstRifle);if(Input.GetKeyDown(KeyCode.Alpha7))Equip(WeaponKind.ArcCaster);
                 if(Input.GetKeyDown(KeyCode.F))StowHeld();if(Input.GetKeyDown(KeyCode.Q)&&HeldFish)ThrowHeld();
@@ -90,7 +92,7 @@ namespace Tidebreak
         public bool StowHeld(){return !HeldFish||game.Stow(HeldFish);}
         public void ThrowHeld(){if(!HeldFish)return;var f=HeldFish;HeldFish=null;f.Release(View.transform.position+View.transform.forward*.9f,View.transform.forward*9+Vector3.up*2);game.Audio.Cue("cast");}
         public void AimAt(Vector3 point){var a=Quaternion.LookRotation(point-View.transform.position).eulerAngles;yaw=a.y;pitch=a.x>180?a.x-360:a.x;transform.rotation=Quaternion.Euler(0,yaw,0);View.transform.localRotation=Quaternion.Euler(pitch,0,0);}
-        public bool Jump(){if(!game.IsPlaying||game.Paused||!motor.enabled||!motor.isGrounded)return false;vertical=6.3f;return true;}
+        public bool Jump(){if(!game.IsPlaying||game.Paused||!motor.enabled||!motor.isGrounded&&Time.time-lastGrounded>.1f||vertical>1)return false;vertical=6.3f;lastGrounded=-99;return true;}
         public void Dash(Vector3 direction){if(Time.time<dashReady)return;dashDir=direction.normalized;dashEnd=Time.time+.19f;InvulnerableUntil=Time.time+.3f;dashReady=Time.time+game.Run.DodgeCooldown*(Time.time<game.TonicUntil?.5f:1)*(game.Run.HasKeystone(8)&&game.Run.health<game.Run.MaxHealth*.35f?.8f:1);Synergy.Dash();game.Audio.Cue("dash");}
         public void Equip(WeaponKind kind)
         {
@@ -116,7 +118,7 @@ namespace Tidebreak
             gunMotion.Shot();float shotBoost=Synergy.ShotMultiplier();bool shotHit=false,shotWeak=false;
             bool ads=Input.GetMouseButton(1);float kick=weapon==WeaponKind.Revolver?1.6f:weapon==WeaponKind.Scattergun?3.6f:weapon==WeaponKind.Harpoon?3:weapon==WeaponKind.Carbine?.65f:1.1f;
             recoil=weapon==WeaponKind.Carbine?.36f:.85f;kickPitch+=kick*Mathf.Max(.25f,1-game.Run.brakeLevel*.18f)*(ads?.72f:1);kickYaw+=Random.Range(-.32f,.32f)*kick;
-            bloom=Mathf.Min(.018f,bloom+(weapon==WeaponKind.Carbine?.0023f:.0011f));game.Audio.Cue(weapon==WeaponKind.Scattergun?"shotgun":weapon==WeaponKind.Harpoon?"harpoon":weapon==WeaponKind.ArcCaster?"arc":weapon==WeaponKind.Carbine?"carbine":"shot");
+            bloom=Mathf.Min(.018f,bloom+(weapon==WeaponKind.Carbine?.0023f:.0011f));game.Audio.Cue(weapon==WeaponKind.Scattergun?"shotgun":weapon==WeaponKind.Harpoon?"harpoon":weapon==WeaponKind.ArcCaster?"arc":weapon==WeaponKind.Carbine?"carbine":weapon==WeaponKind.BurstRifle?"burst":"shot");
             var flash=Shape.Part("Muzzle flash",PrimitiveType.Sphere,null,muzzle.position,new Vector3(.11f,.11f,.27f),new Color(1,.73f,.26f),false,true);flash.transform.rotation=muzzle.rotation;Destroy(flash,.035f);
             var light=flash.AddComponent<Light>();light.color=new Color(1,.68f,.25f);light.range=3;light.intensity=1.5f;
             if(weapon!=WeaponKind.Harpoon&&weapon!=WeaponKind.ArcCaster){var shell=Shape.Part("Ejected brass",PrimitiveType.Cylinder,null,equipment.position+View.transform.forward*.45f+View.transform.right*.2f,new Vector3(.019f,.032f,.019f),new Color(.7f,.53f,.25f));var body=shell.AddComponent<Rigidbody>();body.velocity=View.transform.right*1.8f+Vector3.up*1.3f;body.angularVelocity=Random.insideUnitSphere*12;shell.AddComponent<BrassCasing>();}

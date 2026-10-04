@@ -1,0 +1,2 @@
+kind,id,seed,weapon,weapon_rank,hull_rank,seconds,incoming_damage,health,medkits_used,shots,phase_mask,actions,failures,outcome
+boss,117,41117,Harpoon,5,3,73.87,0.00,175.00,0,19,7,6,0,cleared

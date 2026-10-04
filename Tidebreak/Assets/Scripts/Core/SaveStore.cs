@@ -15,6 +15,8 @@ namespace Tidebreak
         public bool[] goldDiscovered = new bool[8];
         public float[] heaviest = new float[8];
         public float volume = .65f, sensitivity = 1;
+        public float fieldOfView = 75, musicVolume = .7f, effectsVolume = .85f, ambienceVolume = .7f;
+        public bool headBob = true;
         public bool shake = true, easy;
     }
     public static class SaveStore

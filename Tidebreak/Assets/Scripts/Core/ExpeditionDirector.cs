@@ -94,7 +94,7 @@ namespace Tidebreak
         public void UseSite(int site)
         {
             if(State!=VoyageState.Sailing||Run.stage>9||FlatDistance(Player.transform.position,SitePoint(site))>3.5f)return;
-            if(site==2){if((Run.exploredMask&4)!=0){Notice("这份隐藏日志已经收录",2);return;}SecretStep=0;SetState(VoyageState.Dialogue);UI.ShowRune();return;}
+            if(site==2){if((Run.exploredMask&4)!=0){Notice("这份隐藏日志已经收录 · J 查看证据与人物回应",3);return;}SecretStep=0;SecretFeedback="";SetState(VoyageState.Dialogue);UI.ShowRune();return;}
             if(Run.questStep==0){Notice("先与 "+Island.npc+" 交谈，了解这里发生了什么",4);return;}
             if(Run.questStep==1&&Run.landed<1){Notice("灯塔启动前，先钓回一条鱼。鱼获需要 E 拿起才能计入任务",4);return;}
             if(Run.questStep>=3){Notice("这里的调查已经完成 · "+QuestObjective,3);return;}
@@ -107,11 +107,14 @@ namespace Tidebreak
             SpawnMissionEnemy(1,true,Player.transform.position+Player.transform.forward*7+Player.transform.right*3);
             Notice("日志的守卫醒了 · 击败守卫可以取回隐藏发现",4);
         }
+        public string SecretFeedback {get;private set;}="";
         public void SolveRune(int choice)
         {
-            if(State!=VoyageState.Dialogue||FlatDistance(Player.transform.position,SitePoint(2))>3.5f)return;
-            if(choice!=(Run.stage-1+SecretStep)%3){CloseDialogue();StartSurveyBattle(2);return;}
-            SecretStep++;if(SecretStep<3){UI.ShowRune();return;}CloseDialogue();CompleteSite(2);
+            if(State!=VoyageState.Dialogue||choice<0||choice>2||Run.stage>9||(Run.exploredMask&4)!=0||FlatDistance(Player.transform.position,SitePoint(2))>3.5f)return;
+            SecretFeedback=NarrativeContent.SecretResponse(Run.stage,choice);
+            if(choice!=NarrativeContent.SecretAnswer(Run.stage)){SecretStep++;UI.ShowRune();return;}
+            CloseDialogue();CompleteSite(2);
+            Notice("证据入册："+NarrativeContent.EvidenceTitle(Run.stage)+" · J 阅读全文；再访向导会有新的回应",6);
         }
         void CompleteSite(int site)
         {

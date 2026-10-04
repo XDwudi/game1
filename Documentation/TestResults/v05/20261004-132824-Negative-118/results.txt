@@ -1,0 +1,33 @@
+PASS v05 eleven different player-action briefs exist
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 118 shooting-only negative control actually fired
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 wrong location or missing tool cannot instantly progress a mechanism
+PASS normal walking cannot enter the solid sonar station (one metre with .03 skin tolerance)
+PASS whale phase 1 normal sonar action displays all three echo alternatives
+PASS whale phase 1 echo 0 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 echo 1 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 echo 1 ring 1 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 echo 2 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 displays one double-ring signal and two single-ring decoys
+PASS whale correct echo selection only starts its required breach-evasion trial
+PASS sonar selection creates a real unlocked blue breach warning
+PASS unlocked breach Sonar bearing has an actual blue material; effective shader _Color RGBA(0.250, 0.800, 1.000, 1.000)
+PASS unlocked breach Port boundary has an actual blue material; effective shader _Color RGBA(0.250, 0.800, 1.000, 1.000)
+PASS unlocked breach Starboard boundary has an actual blue material; effective shader _Color RGBA(0.250, 0.800, 1.000, 1.000)
+PASS breach changes to its locked warning before the real impact
+PASS locked breach Sonar bearing has an actual orange material; effective shader _Color RGBA(1.000, 0.450, 0.150, 1.000)
+PASS locked breach Port boundary has an actual orange material; effective shader _Color RGBA(1.000, 0.450, 0.150, 1.000)
+PASS locked breach Starboard boundary has an actual orange material; effective shader _Color RGBA(1.000, 0.450, 0.150, 1.000)
+PASS whale standing in the locked breach loses the attempted observation and permits a fresh sonar retry
+PASS whale phase 3 normal sonar action displays all three echo alternatives
+PASS whale phase 3 echo 0 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 echo 0 ring 1 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 echo 1 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 echo 2 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 displays one double-ring signal and two single-ring decoys
+PASS final whale phase requires a second separately locked return breach after evading the first
+PASS pausing between whale breach legs preserves the pending second-leg callback
+PASS dodging only the first whale leg and taking the return hit awards no observation and stays retryable
+PASS v05 new voyage releases boss controllers and mechanism props

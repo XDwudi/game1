@@ -1,0 +1,17 @@
+PASS boss 117 receives actual camera-ray weapon damage
+PASS boss 117 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 117 completes independent mechanisms in all three real phases
+PASS boss 117 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 78.79 seconds
+PASS boss 117 battle never enables test invulnerability
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 receives actual camera-ray weapon damage
+PASS boss 118 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 118 completes independent mechanisms in all three real phases
+PASS boss 118 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 66.35 seconds
+PASS boss 118 battle never enables test invulnerability
+PASS v05 new voyage releases boss controllers and mechanism props
+EXPEDITION_QA_PASSED in 726.9 seconds
+Setting up 12 worker threads for Enlighten.
+Curl error 42: Callback aborted
+Memory Statistics:
+[ALLOC_TEMP_TLS] TLS Allocator

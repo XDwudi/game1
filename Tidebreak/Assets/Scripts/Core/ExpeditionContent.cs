@@ -90,7 +90,7 @@ namespace Tidebreak
             }
             BodyFamily[] forms={BodyFamily.Crab,BodyFamily.Ray,BodyFamily.Eel,BodyFamily.Turtle,BodyFamily.Squid,BodyFamily.Swordfish,BodyFamily.Jelly,BodyFamily.Crab,BodyFamily.Shark};
             AttackStyle[] styles={AttackStyle.Leap,AttackStyle.Ring,AttackStyle.Burrow,AttackStyle.Mortar,AttackStyle.Pull,AttackStyle.Boomerang,AttackStyle.Beam,AttackStyle.Mine,AttackStyle.Spiral};
-            for(int i=0;i<11;i++)all.Add(new SpeciesDefinition{id=108+i,island=Mathf.Min(i,8),name=i<9?Islands[i].bossName:i==9?"古神 · 克拉肯":"幽海白鲸 · 莫比",body=i<9?forms[i]:i==9?BodyFamily.Squid:BodyFamily.Swordfish,attack=i<9?styles[i]:i==9?AttackStyle.Pull:AttackStyle.Fan,trait=i<9?(SeaTrait)(i%8+1):SeaTrait.None,boss=true,hp=i<9?820+i*340:i==9?6600:6100,speed=2,size=i<9?3.3f+i*.1f:5,tempo=5.2f,value=i<9?140+i*30:650,color=Islands[Mathf.Min(i,8)].accent,lore="三阶段守关巨物。破坏场内发光机关可开启 7 秒输出窗口；每阶段都有独立连招。"});
+            for(int i=0;i<11;i++)all.Add(new SpeciesDefinition{id=108+i,island=Mathf.Min(i,8),name=i<9?Islands[i].bossName:i==9?"古神 · 克拉肯":"幽海白鲸 · 莫比",body=i<9?forms[i]:i==9?BodyFamily.Squid:BodyFamily.Swordfish,attack=i<9?styles[i]:i==9?AttackStyle.Pull:AttackStyle.Fan,trait=i<9?(SeaTrait)(i%8+1):SeaTrait.None,boss=true,hp=i<9?820+i*340:i==9?6600:6100,speed=2,size=i<9?3.3f+i*.1f:5,tempo=5.2f,value=i<9?140+i*30:650,color=Islands[Mathf.Min(i,8)].accent,lore=BossNarrative.Teaching(108+i)});
             return all.ToArray();
         }
         public static SpeciesDefinition Roll(RunData run,System.Random random)

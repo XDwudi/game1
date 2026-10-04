@@ -53,7 +53,7 @@ namespace Tidebreak
             ThreatField.Line(g,g.Player.transform.position+Vector3.back*5,g.Player.transform.position+Vector3.forward*5,1,.8f,12,Color.red);
             yield return new WaitForSeconds(.3f);Check(g.Run.health==hp,"beam telegraph permits reaction time");yield return new WaitForSeconds(.7f);Check(g.Run.health<hp,"beam deals damage when countdown ends");
             g.StartVoyage();Time.timeScale=3;g.SetState(VoyageState.Combat);At(new Vector3(0,0,10));g.Player.InvulnerableUntil=float.PositiveInfinity;
-            ThreatField.Pool(g,g.Player.transform.position,2,.1f,5,Color.green);yield return new WaitForSeconds(.3f);Check(g.Player.StatusEffect=="","invulnerable player does not inherit pool poison");
+            ThreatField.Pool(g,g.Player.transform.position,2,.1f,5,Color.green,SeaTrait.Venom);yield return new WaitForSeconds(.3f);Check(g.Player.StatusEffect=="","invulnerable player does not inherit pool poison");
             g.StartVoyage();Time.timeScale=3;g.Run.health=30;g.Run.medkits=1;g.UseUtility("medkit");Check(g.Run.health==75&&g.Run.medkits==0,"medical supply heals once and consumes one item");g.UseUtility("medkit");Check(g.Run.health==75,"empty medical inventory cannot heal");
             g.Run.sonarCharges=1;g.UseUtility("sonar");Check(g.SonarUntil>Time.time&&g.Run.sonarCharges==0,"sonar consumes a charge and opens the exploration window");
             g.Run.tonics=1;g.UseUtility("tonic");Check(g.TonicUntil>Time.time&&g.Run.tonics==0,"speed tonic consumes a charge and applies a timed effect");

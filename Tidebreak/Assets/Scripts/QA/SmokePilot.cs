@@ -15,7 +15,10 @@ namespace Tidebreak
         {
             var cam=g.Player.View;var canvas=FindObjectsOfType<Canvas>().First(c=>c.name=="Tidebreak UI");var mode=canvas.renderMode;var camera=canvas.worldCamera;float plane=canvas.planeDistance;var previous=cam.targetTexture;var active=RenderTexture.active;
             var rt=RenderTexture.GetTemporary(1600,900,24,RenderTextureFormat.ARGB32);var img=new Texture2D(1600,900,TextureFormat.RGB24,false);
-            try{canvas.renderMode=RenderMode.ScreenSpaceCamera;canvas.worldCamera=cam;canvas.planeDistance=.2f;cam.targetTexture=rt;Canvas.ForceUpdateCanvases();cam.Render();RenderTexture.active=rt;img.ReadPixels(new Rect(0,0,1600,900),0,0);img.Apply();File.WriteAllBytes(Path.Combine(output,name+".png"),img.EncodeToPNG());}
+            // Keep the capture canvas immediately behind the near plane. The live
+            // HUD is an overlay; placing it 20 cm away lets nearby props falsely
+            // occlude only the screenshot's HUD.
+            try{canvas.renderMode=RenderMode.ScreenSpaceCamera;canvas.worldCamera=cam;canvas.planeDistance=cam.nearClipPlane+.002f;cam.targetTexture=rt;Canvas.ForceUpdateCanvases();cam.Render();RenderTexture.active=rt;img.ReadPixels(new Rect(0,0,1600,900),0,0);img.Apply();File.WriteAllBytes(Path.Combine(output,name+".png"),img.EncodeToPNG());}
             finally{cam.targetTexture=previous;RenderTexture.active=active;canvas.renderMode=mode;canvas.worldCamera=camera;canvas.planeDistance=plane;RenderTexture.ReleaseTemporary(rt);Destroy(img);}
         }
         IEnumerator Fight(string photo=null)
@@ -52,6 +55,7 @@ namespace Tidebreak
         {
             g=GameDirector.Instance;output=Path.GetFullPath(Path.Combine(Application.dataPath,"../../Artifacts/ExpeditionQA"));Directory.CreateDirectory(output);Application.logMessageReceived+=LogError;visual=Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakVisual")>=0;startTime=Time.realtimeSinceStartup;
             yield return new WaitForSecondsRealtime(1);Capture("harbor");
+            if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakV05")>=0){yield return V05Contracts();Finish();yield break;}
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakArtReview")>=0){yield return RevisionCreatureAnimation();yield return PresentationContracts();Finish();yield break;}
             if(visual||Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakPresentation")>=0){yield return PostgameRevisionContracts();yield return LegendaryCounterContracts();yield return RevisionCreatureAnimation();yield return PresentationContracts();yield return RevisionBossBattle(117);yield return RevisionBossBattle(118);Finish();yield break;}
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakRevision")>=0){yield return RevisionContracts();Finish();yield break;}

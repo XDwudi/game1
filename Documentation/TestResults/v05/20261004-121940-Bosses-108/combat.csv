@@ -1,0 +1,2 @@
+kind,id,seed,weapon,weapon_rank,hull_rank,seconds,incoming_damage,health,medkits_used,shots,phase_mask,actions,failures,outcome
+boss,108,41108,Revolver,1,0,34.38,0.00,100.00,0,65,7,5,1,cleared

@@ -1,0 +1,49 @@
+PASS v05 eleven different player-action briefs exist
+PASS campaign: harbor Start Voyage button creates a real new run
+PASS campaign: new voyage starts with its real starting economy and equipment
+PASS campaign: walking to the guide and shared E action opens the first story
+PASS campaign: segmented dialogue exposes its legitimate final 答应帮忙 button
+PASS campaign: reading dialogue pages then clicking confirmation returns to the island
+PASS campaign: accepting the final dialogue page requests a first real fish
+PASS campaign: walking to the pier permits a genuine water cast
+PASS campaign: legitimate tension control hooks an actual local fish
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: defeated catch exists physically before appraisal
+PASS campaign: walking to the fish and pressing the shared E action picks it up
+PASS campaign: physical market interaction pays exact appraised value into the wallet
+PASS campaign: walking to the pier permits a genuine water cast
+PASS campaign: legitimate tension control hooks an actual local fish
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: defeated catch exists physically before appraisal
+PASS campaign: walking to the fish and pressing the shared E action picks it up
+PASS campaign: physical market interaction pays exact appraised value into the wallet
+PASS campaign: catch earnings can finance the first damage upgrade
+PASS campaign: future-island shotgun is still locked at the first workshop
+PASS campaign: physical workshop is open before purchase weapon
+PASS campaign: workshop category button opens 枪械与配件
+PASS campaign: visible offer weapon is affordable using this voyage's earnings
+PASS campaign: clicking 枪械改装 charges exactly 85 earned coins and applies the item
+PASS campaign: workshop return button returns to the physical island
+PASS campaign: real battery-site interaction records the carried power source
+PASS campaign: installing the battery through E begins the actual defense
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: surviving actual timed defense grants boss access without prematurely unlocking island two
+PASS campaign: shared E action at the actual hunt bell summons the licensed giant crab
+PASS campaign: real giant crab encounter is won with finite health and real shots
+PASS campaign: actual giant crab fight solves all three mechanisms and awards its trophy
+PASS campaign: segmented dialogue exposes its legitimate final 交付潮核 button
+PASS campaign: reading dialogue pages then clicking confirmation returns to the island
+PASS campaign: real trophy hand-in pays once and opens only the next island
+PASS campaign: physical chart offers the newly unlocked second-island travel button
+PASS campaign: legitimate travel reaches coral island without granting later licenses
+PASS campaign: earned combat and quest rewards finance the newly licensed shotgun
+PASS campaign: physical workshop is open before purchase shotgun
+PASS campaign: workshop category button opens 枪械与配件
+PASS campaign: visible offer shotgun is affordable using this voyage's earnings
+PASS campaign: clicking 礁石霰弹枪 charges exactly 150 earned coins and applies the item
+PASS campaign: first new weapon is paid for while the third-island weapon stays locked
+PASS campaign: pause-menu Save and Return button saves the real expedition
+PASS campaign: harbor Continue button resumes the saved expedition
+PASS campaign: resumed real campaign preserves earned money, both purchases, island-two access and completed first-island story
+PASS campaign: continuous campaign traversed actual roads and combat with no QA immunity
+PASS v05 new voyage releases boss controllers and mechanism props

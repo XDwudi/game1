@@ -1,0 +1,853 @@
+{
+  "provenance": "Original procedural composition and synthesis; no external samples",
+  "preview": {
+    "file": "Artifacts/AudioPreview/Tidebreak-v05-preview.wav",
+    "seconds": 56.4,
+    "chapters": [
+      {
+        "seconds": 0,
+        "section": "explore_act1"
+      },
+      {
+        "seconds": 8,
+        "section": "explore_act2"
+      },
+      {
+        "seconds": 16,
+        "section": "explore_act3"
+      },
+      {
+        "seconds": 24,
+        "section": "combat"
+      },
+      {
+        "seconds": 32,
+        "section": "boss"
+      },
+      {
+        "seconds": 40,
+        "section": "legend"
+      },
+      {
+        "seconds": 48,
+        "section": "shot"
+      },
+      {
+        "seconds": 49.4,
+        "section": "shotgun"
+      },
+      {
+        "seconds": 50.8,
+        "section": "harpoon"
+      },
+      {
+        "seconds": 52.2,
+        "section": "carbine"
+      },
+      {
+        "seconds": 53.6,
+        "section": "burst"
+      },
+      {
+        "seconds": 55.0,
+        "section": "arc"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/explore_act1.wav",
+      "description": "Original 16-bar explore_act1",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 53.3333125,
+      "bpm": 72,
+      "loop": true,
+      "peak_dbfs": -4.87,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        -1.4734273944052322e-08,
+        7.510188175366475e-10
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 6826708
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/explore_act2.wav",
+      "description": "Original 16-bar explore_act2",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 46.82925,
+      "bpm": 82,
+      "loop": true,
+      "peak_dbfs": -4.765,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        1.0589762691720453e-09,
+        1.898011313208358e-08
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 5994188
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/explore_act3.wav",
+      "description": "Original 16-bar explore_act3",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 45.71428125,
+      "bpm": 84,
+      "loop": true,
+      "peak_dbfs": -4.114,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        -7.718802252202368e-10,
+        4.610419723612766e-09
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 5851472
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/combat.wav",
+      "description": "Original 16-bar combat",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 36.9230625,
+      "bpm": 104,
+      "loop": true,
+      "peak_dbfs": -4.286,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        -1.0331475796800442e-10,
+        3.1511001180241345e-09
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 4726196
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/boss.wav",
+      "description": "Original 16-bar boss",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 34.2856875,
+      "bpm": 112,
+      "loop": true,
+      "peak_dbfs": -5.124,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        -6.675725430254242e-10,
+        6.75917199813242e-09
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 4388612
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/boss_drums.wav",
+      "description": "Phase-responsive percussion companion",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 34.2856875,
+      "bpm": 112,
+      "loop": true,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -20.799,
+      "dc_offset": [
+        -5.340580344203394e-09,
+        7.037327224393014e-09
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 4388612
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/legend.wav",
+      "description": "Original 16-bar legend",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 30.4761875,
+      "bpm": 126,
+      "loop": true,
+      "peak_dbfs": -5.508,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        -1.5646220781491286e-10,
+        1.1609495819866535e-08
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 3900996
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Music/legend_drums.wav",
+      "description": "Phase-responsive percussion companion",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 30.4761875,
+      "bpm": 126,
+      "loop": true,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -19.261,
+      "dc_offset": [
+        1.7523767275270243e-09,
+        5.413592390395985e-09
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 3900996
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/shot.wav",
+      "description": "Original layered shot report",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.58,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -7.11,
+      "rms_dbfs": -26.026,
+      "dc_offset": [
+        -0.0009100782460179822,
+        -0.0008908814397351495
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 74284
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/shotgun.wav",
+      "description": "Original layered shotgun report",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.82,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.695,
+      "rms_dbfs": -21.363,
+      "dc_offset": [
+        -0.0006519201325207222,
+        -0.0006382860788484899
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 105004
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/harpoon.wav",
+      "description": "Original layered harpoon report",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.78,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.326,
+      "rms_dbfs": -22.101,
+      "dc_offset": [
+        -0.0008706924242851061,
+        -0.0008530555627284906
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 99884
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/carbine.wav",
+      "description": "Original layered carbine report",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.31,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -5.937,
+      "rms_dbfs": -24.397,
+      "dc_offset": [
+        -0.0011651039123535157,
+        -0.0011414866293630293
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 39724
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/burst.wav",
+      "description": "Original layered burst report",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.38,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.705,
+      "rms_dbfs": -21.44,
+      "dc_offset": [
+        -0.0013906002044677735,
+        -0.0013614880411248458
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 48684
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/arc.wav",
+      "description": "Original layered arc report",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.7,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -19.664,
+      "dc_offset": [
+        -0.000612004143851144,
+        -0.0005996813092912946
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 89644
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/ready.wav",
+      "description": "Original ready cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.32,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -8.588,
+      "rms_dbfs": -17.74,
+      "dc_offset": [
+        1.144111156463623e-05,
+        1.144111156463623e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 41004
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/weak.wav",
+      "description": "Original weak cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.23,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -6.871,
+      "rms_dbfs": -17.747,
+      "dc_offset": [
+        -1.7497850501019022e-06,
+        -1.7497850501019022e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 29484
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/coin.wav",
+      "description": "Original coin cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.4,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -6.406,
+      "rms_dbfs": -17.73,
+      "dc_offset": [
+        -1.9383430480957033e-06,
+        -1.9383430480957033e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 51244
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/discovery.wav",
+      "description": "Original discovery cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 1.4,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -6.591,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        3.542218889508929e-08,
+        3.542218889508929e-08
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 179244
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/heal.wav",
+      "description": "Original heal cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 1.0,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -6.828,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        2.9659271240234375e-07,
+        2.9659271240234375e-07
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 128044
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/win.wav",
+      "description": "Original win cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 1.8,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -8.889,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        4.561742146809896e-07,
+        4.561742146809896e-07
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 230444
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/lose.wav",
+      "description": "Original lose cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 1.6,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -5.249,
+      "rms_dbfs": -17.721,
+      "dc_offset": [
+        5.662441253662109e-08,
+        5.662441253662109e-08
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 204844
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/sonar.wav",
+      "description": "Original sonar cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.85,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -7.153,
+      "rms_dbfs": -17.731,
+      "dc_offset": [
+        4.989399629480698e-06,
+        4.989399629480698e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 108844
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/boss.wav",
+      "description": "Original boss cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 1.55,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -8.109,
+      "rms_dbfs": -17.722,
+      "dc_offset": [
+        -1.4668741533833165e-05,
+        -1.4668741533833165e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 198444
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/bite.wav",
+      "description": "Original bite cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.38,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -6.598,
+      "rms_dbfs": -17.742,
+      "dc_offset": [
+        -1.0646016974198191e-05,
+        -1.0646016974198191e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 48684
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/catch.wav",
+      "description": "Original catch cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.45,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -6.676,
+      "rms_dbfs": -17.739,
+      "dc_offset": [
+        -3.0767652723524304e-05,
+        -3.0767652723524304e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 57644
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/select.wav",
+      "description": "Original select cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.12,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -8.706,
+      "rms_dbfs": -17.77,
+      "dc_offset": [
+        -2.2252400716145835e-06,
+        -2.2252400716145835e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 15404
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/danger.wav",
+      "description": "Original danger cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.65,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -5.907,
+      "rms_dbfs": -17.752,
+      "dc_offset": [
+        4.3312953068659855e-05,
+        4.3312953068659855e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 83244
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/heartbeat.wav",
+      "description": "Original heartbeat cue",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.65,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -9.016,
+      "rms_dbfs": -17.722,
+      "dc_offset": [
+        -5.516639122596154e-05,
+        -5.516639122596154e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 83244
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/impact.wav",
+      "description": "Original filtered impact texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.16,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.217,
+      "rms_dbfs": -17.1,
+      "dc_offset": [
+        -0.00011764764785766601,
+        -0.00011764764785766601
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 20524
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/hurt.wav",
+      "description": "Original filtered hurt texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.27,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -19.771,
+      "dc_offset": [
+        -1.2860474763093172e-05,
+        -1.2860474763093172e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 34604
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/step.wav",
+      "description": "Original filtered step texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.18,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.486,
+      "rms_dbfs": -17.094,
+      "dc_offset": [
+        6.850030687120226e-05,
+        6.850030687120226e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 23084
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/reel.wav",
+      "description": "Original filtered reel texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.17,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -18.8,
+      "dc_offset": [
+        -6.789600147920496e-05,
+        -6.789600147920496e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 21804
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/equip.wav",
+      "description": "Original filtered equip texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.3,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -19.347,
+      "dc_offset": [
+        -4.253387451171875e-06,
+        -4.253387451171875e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 38444
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/reload.wav",
+      "description": "Original filtered reload texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.48,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -21.057,
+      "dc_offset": [
+        8.802215258280436e-05,
+        8.802215258280436e-05
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 61484
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/cast.wav",
+      "description": "Original filtered cast texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.38,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -21.379,
+      "dc_offset": [
+        -5.870116384405839e-06,
+        -5.870116384405839e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 48684
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/splash.wav",
+      "description": "Original filtered splash texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.65,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -20.836,
+      "dc_offset": [
+        -4.558563232421875e-06,
+        -4.558563232421875e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 83244
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/dash.wav",
+      "description": "Original filtered dash texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.31,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -19.935,
+      "dc_offset": [
+        5.552845616494455e-06,
+        5.552845616494455e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 39724
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/beam.wav",
+      "description": "Original filtered beam texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.52,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -20.693,
+      "dc_offset": [
+        8.617914639986478e-06,
+        8.617914639986478e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 66604
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/explosion.wav",
+      "description": "Original filtered explosion texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 1.1,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -22.292,
+      "dc_offset": [
+        -0.00013278180902654473,
+        -0.00013278180902654473
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 140844
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/freeze.wav",
+      "description": "Original filtered freeze texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.62,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -22.304,
+      "dc_offset": [
+        -3.613195111674647e-06,
+        -3.613195111674647e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 79404
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Effects/steam.wav",
+      "description": "Original filtered steam texture",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 0.72,
+      "bpm": null,
+      "loop": false,
+      "peak_dbfs": -2.158,
+      "rms_dbfs": -19.234,
+      "dc_offset": [
+        5.520714653862847e-06,
+        5.520714653862847e-06
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 92204
+    },
+    {
+      "file": "Tidebreak/Assets/Resources/Audio/Ambience/coastal_air.wav",
+      "description": "Original stereo surf / wind bed",
+      "sample_rate": 32000,
+      "channels": 2,
+      "seconds": 24.0,
+      "bpm": null,
+      "loop": true,
+      "peak_dbfs": -2.513,
+      "rms_dbfs": -19.172,
+      "dc_offset": [
+        -6.357828776041666e-10,
+        1.2318293253580729e-08
+      ],
+      "loop_endpoint_jump": 0.0,
+      "clipped_samples": 0,
+      "bytes": 3072044
+    }
+  ],
+  "weapon_timbre_audit": [
+    {
+      "weapon": "shot",
+      "centroid_hz": 2477.7,
+      "first_50ms_energy_ratio": 0.853,
+      "seconds": 0.58
+    },
+    {
+      "weapon": "shotgun",
+      "centroid_hz": 1983.2,
+      "first_50ms_energy_ratio": 0.705,
+      "seconds": 0.82
+    },
+    {
+      "weapon": "harpoon",
+      "centroid_hz": 1826.0,
+      "first_50ms_energy_ratio": 0.783,
+      "seconds": 0.78
+    },
+    {
+      "weapon": "carbine",
+      "centroid_hz": 3065.6,
+      "first_50ms_energy_ratio": 0.95,
+      "seconds": 0.31
+    },
+    {
+      "weapon": "burst",
+      "centroid_hz": 2071.3,
+      "first_50ms_energy_ratio": 0.866,
+      "seconds": 0.38
+    },
+    {
+      "weapon": "arc",
+      "centroid_hz": 1480.3,
+      "first_50ms_energy_ratio": 0.584,
+      "seconds": 0.7
+    }
+  ]
+}

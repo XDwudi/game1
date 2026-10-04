@@ -1,0 +1,12 @@
+{
+  "package": "Tidebreak-v0.5.0-Windows-x64.zip",
+  "bytes": 37414204,
+  "sha256": "81929b6fd27a370550139687dc2ce686ed2c7bae9adec7ff6a840a70e6ea22a0",
+  "entry_point": "Release/Tidebreak.exe",
+  "zip_entries": 154,
+  "crc_check": "passed",
+  "assembly_matches_tested_build": true,
+  "assembly_sha256": "2e3fe60226019142470a5bfe9ef9c14d9a77cf85ec8d02dc14f7cbb1724a69fb",
+  "version": "0.5.0",
+  "unity": "2021.3.16f1c1"
+}

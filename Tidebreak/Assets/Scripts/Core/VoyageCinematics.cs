@@ -77,6 +77,10 @@ namespace Tidebreak
             game.SetState(VoyageState.Cinematic);
             Active = true; lastShot = -1;
             BuildSequence();
+            for(int i=0;i<shots.Count;i++){
+                shots[i].line=NarrativeCinematicText.TextFor(sequence,i,shots[i].line,game.Run.storyChoice);
+                shots[i].document=NarrativeCinematicText.DocumentFor(sequence,i,shots[i].document);
+            }
             started = Time.unscaledTime;
             actor = game.World.GetComponentInChildren<IslandActorMotion>();
             var sign = game.World.Scenery.Find(game.Island.npc);
@@ -278,7 +282,7 @@ namespace Tidebreak
 
         void BlackBox()
         {
-            chapter = "第五章 · 证物  /  第九次求救";
+            chapter = "第五章 · 证物  /  黑匣航次记录";
             Landmark(4, "北星号黑匣子 · 录音", "这里是北星号。不要把航灯点亮。它不是出口，是诱饵。");
             Portrait(4, game.Island.npc, "声音是你的。可这艘船沉没时，你还没出生。");
             Add(Land(-9, -18, 6), Land(-6, -22, 5), Land(0, -34, 5), 4, 43,

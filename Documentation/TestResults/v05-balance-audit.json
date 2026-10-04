@@ -1,0 +1,7257 @@
+{
+  "model": "v0.5 design sensitivity model",
+  "sources": {
+    "Core/GameData.cs": "f928b31173cac04cfe5c89497cb62610449bf3a1d903b49733ca72a50ece6c3b",
+    "Core/ShopCatalog.cs": "383b2b533d414312f7d07d46d82c86f19425f809b3ce5657ff41dd265d1c84f9",
+    "Core/VoyageBuilds.cs": "adcb7204c2cc6028ea31256b66bb70aef98680d3da21336a7787fcecf3d498f0",
+    "Core/ExpeditionContent.cs": "c73dd22ec313d440b4dd064ce79baa03546b4cf0c7f907fb85c9ae144d7d2ed8",
+    "Core/IslandObjectives.cs": "ce7ce0427b49c9976c30bdd0abd4a6550a1b93fc4de0028782afda3d17979ce8",
+    "Core/ExpeditionDirector.cs": "71faf6eb92d05400ae6bba1581481ae8f17b0aba063e1428f0fada431664792f",
+    "Combat/AnglerController.cs": "7d7661f7b1d48d356e65a6254ad4ec2b1181b54d7dac7c8e5633d8100959dda5",
+    "Combat/Enemy.cs": "29c0e117cf159567c3c7ca799f9a6a03fc4f75d5ba34965f6fda9390ef78be2f",
+    "Core/EncounterTuning.cs": "9107be1801a8ca4babc23869797d6d7c788c4496267abf66718b3f3ce781bdd9",
+    "Core/CoastalResearch.cs": "7711a9101096900e928bc64bdfc98af630388b6cc772ad9afc0fc486978486b5"
+  },
+  "profiles": [
+    {
+      "name": "保守",
+      "hit": 0.55,
+      "weak_given_hit": 0.08,
+      "quick_reload": 0.1,
+      "boss_firing_uptime": 0.55,
+      "normal_firing_uptime": 0.78,
+      "reaction_seconds": 0.55,
+      "kits_per_island": 2
+    },
+    {
+      "name": "普通",
+      "hit": 0.72,
+      "weak_given_hit": 0.28,
+      "quick_reload": 0.4,
+      "boss_firing_uptime": 0.68,
+      "normal_firing_uptime": 0.86,
+      "reaction_seconds": 0.35,
+      "kits_per_island": 1
+    },
+    {
+      "name": "精准",
+      "hit": 0.9,
+      "weak_given_hit": 0.65,
+      "quick_reload": 0.85,
+      "boss_firing_uptime": 0.8,
+      "normal_firing_uptime": 0.93,
+      "reaction_seconds": 0.2,
+      "kits_per_island": 0
+    }
+  ],
+  "weapons": [
+    {
+      "name": "潮汐左轮",
+      "damage": 19.0,
+      "interval": 0.4,
+      "reload": 1.5,
+      "magazine": 8,
+      "pellets": 1,
+      "spread": 0.002,
+      "sustained_all_hit_base_dps": 32.34
+    },
+    {
+      "name": "礁石霰弹枪",
+      "damage": 7.0,
+      "interval": 0.95,
+      "reload": 2.05,
+      "magazine": 5,
+      "pellets": 7,
+      "spread": 0.047,
+      "sustained_all_hit_base_dps": 36.03
+    },
+    {
+      "name": "雷鸣鱼叉",
+      "damage": 68.0,
+      "interval": 1.12,
+      "reload": 2.4,
+      "magazine": 3,
+      "pellets": 1,
+      "spread": 0.0008,
+      "sustained_all_hit_base_dps": 35.42
+    },
+    {
+      "name": "港卫卡宾枪",
+      "damage": 9.0,
+      "interval": 0.15,
+      "reload": 2.0,
+      "magazine": 22,
+      "pellets": 1,
+      "spread": 0.008,
+      "sustained_all_hit_base_dps": 37.36
+    },
+    {
+      "name": "巡风三连发",
+      "damage": 14.0,
+      "interval": 0.15,
+      "reload": 2.1,
+      "magazine": 18,
+      "pellets": 1,
+      "spread": 0.003,
+      "sustained_all_hit_base_dps": 48.28
+    },
+    {
+      "name": "风暴电弧枪",
+      "damage": 31.0,
+      "interval": 0.67,
+      "reload": 2.3,
+      "magazine": 8,
+      "pellets": 1,
+      "spread": 0.005,
+      "sustained_all_hit_base_dps": 32.38
+    }
+  ],
+  "mandatory_base_income": [
+    {
+      "stage": 1,
+      "before_boss": 85,
+      "base_boss": 140,
+      "after_handover": 53
+    },
+    {
+      "stage": 2,
+      "before_boss": 100,
+      "base_boss": 170,
+      "after_handover": 61
+    },
+    {
+      "stage": 3,
+      "before_boss": 115,
+      "base_boss": 200,
+      "after_handover": 69
+    },
+    {
+      "stage": 4,
+      "before_boss": 130,
+      "base_boss": 230,
+      "after_handover": 77
+    },
+    {
+      "stage": 5,
+      "before_boss": 145,
+      "base_boss": 260,
+      "after_handover": 85
+    },
+    {
+      "stage": 6,
+      "before_boss": 160,
+      "base_boss": 290,
+      "after_handover": 93
+    },
+    {
+      "stage": 7,
+      "before_boss": 175,
+      "base_boss": 320,
+      "after_handover": 101
+    },
+    {
+      "stage": 8,
+      "before_boss": 190,
+      "base_boss": 350,
+      "after_handover": 109
+    },
+    {
+      "stage": 9,
+      "before_boss": 205,
+      "base_boss": 380,
+      "after_handover": 117
+    }
+  ],
+  "mandatory_base_income_total": 4410,
+  "reel_reference_seconds": [
+    11.1,
+    10.07,
+    8.0,
+    7.51
+  ],
+  "precision_keystone_sensitivity": [
+    {
+      "profile": "保守",
+      "weak_hit_probability": 0.044000000000000004,
+      "v04_shots_per_precision_proc": 279080.7,
+      "v04_expected_damage_gain_percent": 0.0,
+      "v05_shots_per_precision_proc": 23.6,
+      "v05_expected_damage_gain_percent": 3.598
+    },
+    {
+      "profile": "普通",
+      "weak_hit_probability": 0.2016,
+      "v04_shots_per_precision_proc": 757.0,
+      "v04_expected_damage_gain_percent": 0.086,
+      "v05_shots_per_precision_proc": 8.8,
+      "v05_expected_damage_gain_percent": 9.642
+    },
+    {
+      "profile": "精准",
+      "weak_hit_probability": 0.5850000000000001,
+      "v04_shots_per_precision_proc": 18.2,
+      "v04_expected_damage_gain_percent": 3.578,
+      "v05_shots_per_precision_proc": 4.5,
+      "v05_expected_damage_gain_percent": 18.868
+    }
+  ],
+  "paid_build_routes": [
+    {
+      "stage": 1,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "key0",
+        "rod"
+      ],
+      "before_boss_wallet": 84.75,
+      "ending_wallet": 300.68,
+      "total_earned": 385.68,
+      "total_spent": 110.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 12.0,
+      "normal_health_seconds": 4.49,
+      "elite_health_seconds_before_mechanic": 12.08
+    },
+    {
+      "stage": 2,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 300.68,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key0",
+          "paid": 110
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "hull"
+      ],
+      "before_boss_wallet": 216.35,
+      "ending_wallet": 475.2,
+      "total_earned": 850.2,
+      "total_spent": 400.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 12.43,
+      "normal_health_seconds": 5.16,
+      "elite_health_seconds_before_mechanic": 13.88
+    },
+    {
+      "stage": 3,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 475.2,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "harpoon",
+        "scope"
+      ],
+      "before_boss_wallet": 387.23,
+      "ending_wallet": 688.99,
+      "total_earned": 1393.99,
+      "total_spent": 730.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 13.67,
+      "normal_health_seconds": 5.45,
+      "elite_health_seconds_before_mechanic": 14.64
+    },
+    {
+      "stage": 4,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 688.99,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "harpoon",
+          "paid": 300
+        },
+        {
+          "id": "scope",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon"
+      ],
+      "before_boss_wallet": 457.82,
+      "ending_wallet": 802.49,
+      "total_earned": 2017.49,
+      "total_spent": 1240.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 15.03,
+      "normal_health_seconds": 5.63,
+      "elite_health_seconds_before_mechanic": 15.14
+    },
+    {
+      "stage": 5,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 802.49,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 638.55,
+      "ending_wallet": 1026.14,
+      "total_earned": 2721.14,
+      "total_spent": 1720.0,
+      "weapon_level": 3,
+      "hull_level": 1,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 16.39,
+      "normal_health_seconds": 5.79,
+      "elite_health_seconds_before_mechanic": 15.57
+    },
+    {
+      "stage": 6,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1026.14,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "scope"
+      ],
+      "before_boss_wallet": 1059.86,
+      "ending_wallet": 1490.36,
+      "total_earned": 3505.36,
+      "total_spent": 2040.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 16.39,
+      "normal_health_seconds": 6.42,
+      "elite_health_seconds_before_mechanic": 17.25
+    },
+    {
+      "stage": 7,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1490.36,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        },
+        {
+          "id": "scope",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "key6",
+        "hull"
+      ],
+      "before_boss_wallet": 1427.18,
+      "ending_wallet": 1900.6,
+      "total_earned": 4370.6,
+      "total_spent": 2495.0,
+      "weapon_level": 4,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 17.74,
+      "normal_health_seconds": 6.51,
+      "elite_health_seconds_before_mechanic": 17.49
+    },
+    {
+      "stage": 8,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1900.6,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key6",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1755.96,
+      "ending_wallet": 2272.29,
+      "total_earned": 5317.29,
+      "total_spent": 3070.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 18.42,
+      "normal_health_seconds": 6.82,
+      "elite_health_seconds_before_mechanic": 18.34
+    },
+    {
+      "stage": 9,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2272.29,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 245
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 2381.61,
+      "ending_wallet": 2940.85,
+      "total_earned": 6345.85,
+      "total_spent": 3430.0,
+      "weapon_level": 5,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 19.82,
+      "normal_health_seconds": 6.86,
+      "elite_health_seconds_before_mechanic": 18.43
+    },
+    {
+      "stage": 1,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "shotgun",
+        "key2"
+      ],
+      "before_boss_wallet": 79.75,
+      "ending_wallet": 295.68,
+      "total_earned": 385.68,
+      "total_spent": 115.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 10.81,
+      "normal_health_seconds": 4.99,
+      "elite_health_seconds_before_mechanic": 13.41
+    },
+    {
+      "stage": 2,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 295.68,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "shotgun",
+          "paid": 150
+        },
+        {
+          "id": "key2",
+          "paid": 110
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 126.35,
+      "ending_wallet": 385.2,
+      "total_earned": 850.2,
+      "total_spent": 490.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 14.01,
+      "normal_health_seconds": 4.58,
+      "elite_health_seconds_before_mechanic": 12.31
+    },
+    {
+      "stage": 3,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 385.2,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 362.23,
+      "ending_wallet": 663.99,
+      "total_earned": 1393.99,
+      "total_spent": 755.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 15.55,
+      "normal_health_seconds": 4.79,
+      "elite_health_seconds_before_mechanic": 12.86
+    },
+    {
+      "stage": 4,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 663.99,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon",
+        "boots"
+      ],
+      "before_boss_wallet": 622.82,
+      "ending_wallet": 967.49,
+      "total_earned": 2017.49,
+      "total_spent": 1075.0,
+      "weapon_level": 1,
+      "hull_level": 2,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 15.55,
+      "normal_health_seconds": 5.45,
+      "elite_health_seconds_before_mechanic": 14.64
+    },
+    {
+      "stage": 5,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 967.49,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "boots",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 748.55,
+      "ending_wallet": 1136.14,
+      "total_earned": 2721.14,
+      "total_spent": 1610.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 17.09,
+      "normal_health_seconds": 5.55,
+      "elite_health_seconds_before_mechanic": 14.93
+    },
+    {
+      "stage": 6,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1136.14,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 170
+        },
+        {
+          "id": "brake",
+          "paid": 115
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1089.86,
+      "ending_wallet": 1520.36,
+      "total_earned": 3505.36,
+      "total_spent": 2010.0,
+      "weapon_level": 2,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 17.09,
+      "normal_health_seconds": 6.15,
+      "elite_health_seconds_before_mechanic": 16.54
+    },
+    {
+      "stage": 7,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1520.36,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "key8",
+        "boots"
+      ],
+      "before_boss_wallet": 1632.18,
+      "ending_wallet": 2105.6,
+      "total_earned": 4370.6,
+      "total_spent": 2290.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 18.63,
+      "normal_health_seconds": 6.2,
+      "elite_health_seconds_before_mechanic": 16.65
+    },
+    {
+      "stage": 8,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2105.6,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key8",
+          "paid": 290
+        },
+        {
+          "id": "boots",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1995.96,
+      "ending_wallet": 2512.29,
+      "total_earned": 5317.29,
+      "total_spent": 2830.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 18.63,
+      "normal_health_seconds": 6.75,
+      "elite_health_seconds_before_mechanic": 18.13
+    },
+    {
+      "stage": 9,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2512.29,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 2661.61,
+      "ending_wallet": 3220.85,
+      "total_earned": 6345.85,
+      "total_spent": 3150.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 20.17,
+      "normal_health_seconds": 6.74,
+      "elite_health_seconds_before_mechanic": 18.11
+    },
+    {
+      "stage": 1,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "key1",
+        "weapon"
+      ],
+      "before_boss_wallet": 104.75,
+      "ending_wallet": 320.68,
+      "total_earned": 385.68,
+      "total_spent": 90.0,
+      "weapon_level": 0,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 10.81,
+      "normal_health_seconds": 4.99,
+      "elite_health_seconds_before_mechanic": 13.41
+    },
+    {
+      "stage": 2,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 320.68,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key1",
+          "paid": 110
+        },
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "carbine",
+        "hull"
+      ],
+      "before_boss_wallet": 216.35,
+      "ending_wallet": 475.2,
+      "total_earned": 850.2,
+      "total_spent": 400.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        1
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 15.12,
+      "normal_health_seconds": 4.24,
+      "elite_health_seconds_before_mechanic": 11.41
+    },
+    {
+      "stage": 3,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 475.2,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "carbine",
+          "paid": 230
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 282.23,
+      "ending_wallet": 583.99,
+      "total_earned": 1393.99,
+      "total_spent": 835.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 21.4,
+      "normal_health_seconds": 3.88,
+      "elite_health_seconds_before_mechanic": 10.43
+    },
+    {
+      "stage": 4,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 583.99,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        }
+      ],
+      "deferred": [
+        "key4",
+        "hull"
+      ],
+      "before_boss_wallet": 622.82,
+      "ending_wallet": 967.49,
+      "total_earned": 2017.49,
+      "total_spent": 1075.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 24.28,
+      "normal_health_seconds": 3.92,
+      "elite_health_seconds_before_mechanic": 10.53
+    },
+    {
+      "stage": 5,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 967.49,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key4",
+          "paid": 200
+        },
+        {
+          "id": "hull",
+          "paid": 130
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 838.55,
+      "ending_wallet": 1226.14,
+      "total_earned": 2721.14,
+      "total_spent": 1520.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 24.79,
+      "normal_health_seconds": 4.29,
+      "elite_health_seconds_before_mechanic": 11.53
+    },
+    {
+      "stage": 6,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1226.14,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        },
+        {
+          "id": "rod",
+          "paid": 105
+        }
+      ],
+      "deferred": [
+        "arc"
+      ],
+      "before_boss_wallet": 1194.86,
+      "ending_wallet": 1625.36,
+      "total_earned": 3505.36,
+      "total_spent": 1905.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 27.71,
+      "normal_health_seconds": 4.27,
+      "elite_health_seconds_before_mechanic": 11.48
+    },
+    {
+      "stage": 7,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1625.36,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "arc",
+          "paid": 480
+        }
+      ],
+      "deferred": [
+        "key7",
+        "hull"
+      ],
+      "before_boss_wallet": 1422.18,
+      "ending_wallet": 1895.6,
+      "total_earned": 4370.6,
+      "total_spent": 2500.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 17.56,
+      "normal_health_seconds": 6.57,
+      "elite_health_seconds_before_mechanic": 17.67
+    },
+    {
+      "stage": 8,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1895.6,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key7",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1750.96,
+      "ending_wallet": 2267.29,
+      "total_earned": 5317.29,
+      "total_spent": 3075.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 20.25,
+      "normal_health_seconds": 6.21,
+      "elite_health_seconds_before_mechanic": 16.68
+    },
+    {
+      "stage": 9,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2267.29,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 2416.61,
+      "ending_wallet": 2975.85,
+      "total_earned": 6345.85,
+      "total_spent": 3395.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 22.19,
+      "normal_health_seconds": 6.13,
+      "elite_health_seconds_before_mechanic": 16.47
+    },
+    {
+      "stage": 1,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "key0",
+        "rod"
+      ],
+      "before_boss_wallet": 87.26,
+      "ending_wallet": 308.02,
+      "total_earned": 393.02,
+      "total_spent": 110.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 21.6,
+      "normal_health_seconds": 2.8,
+      "elite_health_seconds_before_mechanic": 7.53
+    },
+    {
+      "stage": 2,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 308.02,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key0",
+          "paid": 110
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "hull"
+      ],
+      "before_boss_wallet": 271.83,
+      "ending_wallet": 536.54,
+      "total_earned": 866.54,
+      "total_spent": 355.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 23.68,
+      "normal_health_seconds": 3.04,
+      "elite_health_seconds_before_mechanic": 8.17
+    },
+    {
+      "stage": 3,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 536.54,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "harpoon",
+        "scope"
+      ],
+      "before_boss_wallet": 497.34,
+      "ending_wallet": 806.0,
+      "total_earned": 1421.0,
+      "total_spent": 640.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 26.03,
+      "normal_health_seconds": 3.21,
+      "elite_health_seconds_before_mechanic": 8.62
+    },
+    {
+      "stage": 4,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 806.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "harpoon",
+          "paid": 300
+        },
+        {
+          "id": "scope",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon"
+      ],
+      "before_boss_wallet": 624.24,
+      "ending_wallet": 976.85,
+      "total_earned": 2056.85,
+      "total_spent": 1105.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 29.03,
+      "normal_health_seconds": 3.27,
+      "elite_health_seconds_before_mechanic": 8.79
+    },
+    {
+      "stage": 5,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 976.85,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 862.97,
+      "ending_wallet": 1259.53,
+      "total_earned": 2774.53,
+      "total_spent": 1540.0,
+      "weapon_level": 3,
+      "hull_level": 1,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 31.65,
+      "normal_health_seconds": 3.36,
+      "elite_health_seconds_before_mechanic": 9.04
+    },
+    {
+      "stage": 6,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1259.53,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "scope"
+      ],
+      "before_boss_wallet": 1344.0,
+      "ending_wallet": 1784.5,
+      "total_earned": 3574.5,
+      "total_spent": 1815.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 31.65,
+      "normal_health_seconds": 3.73,
+      "elite_health_seconds_before_mechanic": 10.02
+    },
+    {
+      "stage": 7,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1784.5,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        },
+        {
+          "id": "scope",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "key6",
+        "hull"
+      ],
+      "before_boss_wallet": 1772.75,
+      "ending_wallet": 2257.21,
+      "total_earned": 4457.21,
+      "total_spent": 2225.0,
+      "weapon_level": 4,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 34.27,
+      "normal_health_seconds": 3.78,
+      "elite_health_seconds_before_mechanic": 10.15
+    },
+    {
+      "stage": 8,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2257.21,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key6",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2164.69,
+      "ending_wallet": 2693.09,
+      "total_earned": 5423.09,
+      "total_spent": 2755.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 38.5,
+      "normal_health_seconds": 3.66,
+      "elite_health_seconds_before_mechanic": 9.84
+    },
+    {
+      "stage": 9,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2693.09,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 245
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 2855.26,
+      "ending_wallet": 3427.61,
+      "total_earned": 6472.61,
+      "total_spent": 3070.0,
+      "weapon_level": 5,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 41.44,
+      "normal_health_seconds": 3.68,
+      "elite_health_seconds_before_mechanic": 9.89
+    },
+    {
+      "stage": 1,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "shotgun",
+        "key2"
+      ],
+      "before_boss_wallet": 82.26,
+      "ending_wallet": 303.02,
+      "total_earned": 393.02,
+      "total_spent": 115.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 19.46,
+      "normal_health_seconds": 3.11,
+      "elite_health_seconds_before_mechanic": 8.35
+    },
+    {
+      "stage": 2,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 303.02,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "shotgun",
+          "paid": 150
+        },
+        {
+          "id": "key2",
+          "paid": 110
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 181.83,
+      "ending_wallet": 446.54,
+      "total_earned": 866.54,
+      "total_spent": 445.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 25.16,
+      "normal_health_seconds": 2.86,
+      "elite_health_seconds_before_mechanic": 7.69
+    },
+    {
+      "stage": 3,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 446.54,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 472.34,
+      "ending_wallet": 781.0,
+      "total_earned": 1421.0,
+      "total_spent": 665.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 27.92,
+      "normal_health_seconds": 2.99,
+      "elite_health_seconds_before_mechanic": 8.03
+    },
+    {
+      "stage": 4,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 781.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon",
+        "boots"
+      ],
+      "before_boss_wallet": 789.24,
+      "ending_wallet": 1141.85,
+      "total_earned": 2056.85,
+      "total_spent": 940.0,
+      "weapon_level": 1,
+      "hull_level": 2,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 27.92,
+      "normal_health_seconds": 3.4,
+      "elite_health_seconds_before_mechanic": 9.14
+    },
+    {
+      "stage": 5,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1141.85,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "boots",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 972.97,
+      "ending_wallet": 1369.53,
+      "total_earned": 2774.53,
+      "total_spent": 1430.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 30.69,
+      "normal_health_seconds": 3.47,
+      "elite_health_seconds_before_mechanic": 9.32
+    },
+    {
+      "stage": 6,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1369.53,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 170
+        },
+        {
+          "id": "brake",
+          "paid": 115
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1374.0,
+      "ending_wallet": 1814.5,
+      "total_earned": 3574.5,
+      "total_spent": 1785.0,
+      "weapon_level": 2,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 30.69,
+      "normal_health_seconds": 3.84,
+      "elite_health_seconds_before_mechanic": 10.33
+    },
+    {
+      "stage": 7,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1814.5,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "key8",
+        "boots"
+      ],
+      "before_boss_wallet": 1977.75,
+      "ending_wallet": 2462.21,
+      "total_earned": 4457.21,
+      "total_spent": 2020.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 33.46,
+      "normal_health_seconds": 3.87,
+      "elite_health_seconds_before_mechanic": 10.4
+    },
+    {
+      "stage": 8,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2462.21,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key8",
+          "paid": 290
+        },
+        {
+          "id": "boots",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2404.69,
+      "ending_wallet": 2933.09,
+      "total_earned": 5423.09,
+      "total_spent": 2515.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 33.46,
+      "normal_health_seconds": 4.21,
+      "elite_health_seconds_before_mechanic": 11.32
+    },
+    {
+      "stage": 9,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2933.09,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3135.26,
+      "ending_wallet": 3707.61,
+      "total_earned": 6472.61,
+      "total_spent": 2790.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 36.22,
+      "normal_health_seconds": 4.21,
+      "elite_health_seconds_before_mechanic": 11.31
+    },
+    {
+      "stage": 1,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "key1",
+        "weapon"
+      ],
+      "before_boss_wallet": 107.26,
+      "ending_wallet": 328.02,
+      "total_earned": 393.02,
+      "total_spent": 90.0,
+      "weapon_level": 0,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 19.46,
+      "normal_health_seconds": 3.11,
+      "elite_health_seconds_before_mechanic": 8.35
+    },
+    {
+      "stage": 2,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 328.02,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key1",
+          "paid": 110
+        },
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "carbine",
+        "hull"
+      ],
+      "before_boss_wallet": 271.83,
+      "ending_wallet": 536.54,
+      "total_earned": 866.54,
+      "total_spent": 355.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        1
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 26.81,
+      "normal_health_seconds": 2.68,
+      "elite_health_seconds_before_mechanic": 7.21
+    },
+    {
+      "stage": 3,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 536.54,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "carbine",
+          "paid": 230
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 392.34,
+      "ending_wallet": 701.0,
+      "total_earned": 1421.0,
+      "total_spent": 745.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 32.73,
+      "normal_health_seconds": 2.68,
+      "elite_health_seconds_before_mechanic": 7.2
+    },
+    {
+      "stage": 4,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 701.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        }
+      ],
+      "deferred": [
+        "key4",
+        "hull"
+      ],
+      "before_boss_wallet": 789.24,
+      "ending_wallet": 1141.85,
+      "total_earned": 2056.85,
+      "total_spent": 940.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 36.73,
+      "normal_health_seconds": 2.73,
+      "elite_health_seconds_before_mechanic": 7.33
+    },
+    {
+      "stage": 5,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1141.85,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key4",
+          "paid": 200
+        },
+        {
+          "id": "hull",
+          "paid": 130
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 1062.97,
+      "ending_wallet": 1459.53,
+      "total_earned": 2774.53,
+      "total_spent": 1340.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 37.65,
+      "normal_health_seconds": 2.98,
+      "elite_health_seconds_before_mechanic": 8.0
+    },
+    {
+      "stage": 6,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1459.53,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        },
+        {
+          "id": "rod",
+          "paid": 105
+        }
+      ],
+      "deferred": [
+        "arc"
+      ],
+      "before_boss_wallet": 1479.0,
+      "ending_wallet": 1919.5,
+      "total_earned": 3574.5,
+      "total_spent": 1680.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 41.73,
+      "normal_health_seconds": 2.98,
+      "elite_health_seconds_before_mechanic": 8.02
+    },
+    {
+      "stage": 7,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1919.5,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "arc",
+          "paid": 480
+        }
+      ],
+      "deferred": [
+        "key7",
+        "hull"
+      ],
+      "before_boss_wallet": 1767.75,
+      "ending_wallet": 2252.21,
+      "total_earned": 4457.21,
+      "total_spent": 2230.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 31.28,
+      "normal_health_seconds": 4.14,
+      "elite_health_seconds_before_mechanic": 11.12
+    },
+    {
+      "stage": 8,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2252.21,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key7",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2159.69,
+      "ending_wallet": 2688.09,
+      "total_earned": 5423.09,
+      "total_spent": 2760.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 35.78,
+      "normal_health_seconds": 3.94,
+      "elite_health_seconds_before_mechanic": 10.59
+    },
+    {
+      "stage": 9,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2688.09,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 2890.26,
+      "ending_wallet": 3462.61,
+      "total_earned": 6472.61,
+      "total_spent": 3035.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 39.17,
+      "normal_health_seconds": 3.89,
+      "elite_health_seconds_before_mechanic": 10.46
+    },
+    {
+      "stage": 1,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "key0",
+        "rod"
+      ],
+      "before_boss_wallet": 91.91,
+      "ending_wallet": 321.61,
+      "total_earned": 406.61,
+      "total_spent": 110.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 37.8,
+      "normal_health_seconds": 1.74,
+      "elite_health_seconds_before_mechanic": 4.68
+    },
+    {
+      "stage": 2,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 321.61,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key0",
+          "paid": 110
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "hull"
+      ],
+      "before_boss_wallet": 336.21,
+      "ending_wallet": 611.77,
+      "total_earned": 896.77,
+      "total_spent": 310.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 44.93,
+      "normal_health_seconds": 1.74,
+      "elite_health_seconds_before_mechanic": 4.68
+    },
+    {
+      "stage": 3,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 611.77,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "harpoon",
+        "scope"
+      ],
+      "before_boss_wallet": 624.53,
+      "ending_wallet": 945.96,
+      "total_earned": 1470.96,
+      "total_spent": 550.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 49.39,
+      "normal_health_seconds": 1.84,
+      "elite_health_seconds_before_mechanic": 4.94
+    },
+    {
+      "stage": 4,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 945.96,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "harpoon",
+          "paid": 300
+        },
+        {
+          "id": "scope",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon"
+      ],
+      "before_boss_wallet": 817.36,
+      "ending_wallet": 1184.65,
+      "total_earned": 2129.65,
+      "total_spent": 970.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 56.38,
+      "normal_health_seconds": 1.83,
+      "elite_health_seconds_before_mechanic": 4.92
+    },
+    {
+      "stage": 5,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1184.65,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1125.16,
+      "ending_wallet": 1538.31,
+      "total_earned": 2873.31,
+      "total_spent": 1360.0,
+      "weapon_level": 3,
+      "hull_level": 1,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 61.46,
+      "normal_health_seconds": 1.88,
+      "elite_health_seconds_before_mechanic": 5.06
+    },
+    {
+      "stage": 6,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1538.31,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "scope"
+      ],
+      "before_boss_wallet": 1678.4,
+      "ending_wallet": 2137.42,
+      "total_earned": 3702.42,
+      "total_spent": 1590.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 61.46,
+      "normal_health_seconds": 2.09,
+      "elite_health_seconds_before_mechanic": 5.61
+    },
+    {
+      "stage": 7,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2137.42,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        },
+        {
+          "id": "scope",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "key6",
+        "hull"
+      ],
+      "before_boss_wallet": 2137.55,
+      "ending_wallet": 2642.43,
+      "total_earned": 4617.43,
+      "total_spent": 2000.0,
+      "weapon_level": 4,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 66.55,
+      "normal_health_seconds": 2.12,
+      "elite_health_seconds_before_mechanic": 5.69
+    },
+    {
+      "stage": 8,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2642.43,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key6",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2563.1,
+      "ending_wallet": 3113.84,
+      "total_earned": 5618.84,
+      "total_spent": 2530.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 83.37,
+      "normal_health_seconds": 1.84,
+      "elite_health_seconds_before_mechanic": 4.94
+    },
+    {
+      "stage": 9,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 3113.84,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 245
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3290.5,
+      "ending_wallet": 3887.11,
+      "total_earned": 6707.11,
+      "total_spent": 2845.0,
+      "weapon_level": 5,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 89.74,
+      "normal_health_seconds": 1.85,
+      "elite_health_seconds_before_mechanic": 4.97
+    },
+    {
+      "stage": 1,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "shotgun",
+        "key2"
+      ],
+      "before_boss_wallet": 86.91,
+      "ending_wallet": 316.61,
+      "total_earned": 406.61,
+      "total_spent": 115.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 34.06,
+      "normal_health_seconds": 1.93,
+      "elite_health_seconds_before_mechanic": 5.19
+    },
+    {
+      "stage": 2,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 316.61,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "shotgun",
+          "paid": 150
+        },
+        {
+          "id": "key2",
+          "paid": 110
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 246.21,
+      "ending_wallet": 521.77,
+      "total_earned": 896.77,
+      "total_spent": 400.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 43.86,
+      "normal_health_seconds": 1.79,
+      "elite_health_seconds_before_mechanic": 4.8
+    },
+    {
+      "stage": 3,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 521.77,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 599.53,
+      "ending_wallet": 920.96,
+      "total_earned": 1470.96,
+      "total_spent": 575.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 48.68,
+      "normal_health_seconds": 1.87,
+      "elite_health_seconds_before_mechanic": 5.01
+    },
+    {
+      "stage": 4,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 920.96,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon",
+        "boots"
+      ],
+      "before_boss_wallet": 982.36,
+      "ending_wallet": 1349.65,
+      "total_earned": 2129.65,
+      "total_spent": 805.0,
+      "weapon_level": 1,
+      "hull_level": 2,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 48.68,
+      "normal_health_seconds": 2.12,
+      "elite_health_seconds_before_mechanic": 5.7
+    },
+    {
+      "stage": 5,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1349.65,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "boots",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1235.16,
+      "ending_wallet": 1648.31,
+      "total_earned": 2873.31,
+      "total_spent": 1250.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 53.51,
+      "normal_health_seconds": 2.16,
+      "elite_health_seconds_before_mechanic": 5.82
+    },
+    {
+      "stage": 6,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1648.31,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 170
+        },
+        {
+          "id": "brake",
+          "paid": 115
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1708.4,
+      "ending_wallet": 2167.42,
+      "total_earned": 3702.42,
+      "total_spent": 1560.0,
+      "weapon_level": 2,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 53.51,
+      "normal_health_seconds": 2.4,
+      "elite_health_seconds_before_mechanic": 6.45
+    },
+    {
+      "stage": 7,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2167.42,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "key8",
+        "boots"
+      ],
+      "before_boss_wallet": 2342.55,
+      "ending_wallet": 2847.43,
+      "total_earned": 4617.43,
+      "total_spent": 1795.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 58.33,
+      "normal_health_seconds": 2.41,
+      "elite_health_seconds_before_mechanic": 6.49
+    },
+    {
+      "stage": 8,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2847.43,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key8",
+          "paid": 290
+        },
+        {
+          "id": "boots",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2803.1,
+      "ending_wallet": 3353.84,
+      "total_earned": 5618.84,
+      "total_spent": 2290.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 58.33,
+      "normal_health_seconds": 2.63,
+      "elite_health_seconds_before_mechanic": 7.06
+    },
+    {
+      "stage": 9,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 3353.84,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3570.5,
+      "ending_wallet": 4167.11,
+      "total_earned": 6707.11,
+      "total_spent": 2565.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 63.16,
+      "normal_health_seconds": 2.63,
+      "elite_health_seconds_before_mechanic": 7.06
+    },
+    {
+      "stage": 1,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 25.0,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "key1",
+        "weapon"
+      ],
+      "before_boss_wallet": 111.91,
+      "ending_wallet": 341.61,
+      "total_earned": 406.61,
+      "total_spent": 90.0,
+      "weapon_level": 0,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 34.06,
+      "normal_health_seconds": 1.93,
+      "elite_health_seconds_before_mechanic": 5.19
+    },
+    {
+      "stage": 2,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 341.61,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key1",
+          "paid": 110
+        },
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "carbine",
+        "hull"
+      ],
+      "before_boss_wallet": 336.21,
+      "ending_wallet": 611.77,
+      "total_earned": 896.77,
+      "total_spent": 310.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        1
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 45.3,
+      "normal_health_seconds": 1.77,
+      "elite_health_seconds_before_mechanic": 4.76
+    },
+    {
+      "stage": 3,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 611.77,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "carbine",
+          "paid": 230
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 519.53,
+      "ending_wallet": 840.96,
+      "total_earned": 1470.96,
+      "total_spent": 655.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 52.26,
+      "normal_health_seconds": 1.77,
+      "elite_health_seconds_before_mechanic": 4.77
+    },
+    {
+      "stage": 4,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 840.96,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        }
+      ],
+      "deferred": [
+        "key4",
+        "hull"
+      ],
+      "before_boss_wallet": 982.36,
+      "ending_wallet": 1349.65,
+      "total_earned": 2129.65,
+      "total_spent": 805.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 58.19,
+      "normal_health_seconds": 1.81,
+      "elite_health_seconds_before_mechanic": 4.88
+    },
+    {
+      "stage": 5,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1349.65,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key4",
+          "paid": 200
+        },
+        {
+          "id": "hull",
+          "paid": 130
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 1325.16,
+      "ending_wallet": 1738.31,
+      "total_earned": 2873.31,
+      "total_spent": 1160.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 59.83,
+      "normal_health_seconds": 1.98,
+      "elite_health_seconds_before_mechanic": 5.31
+    },
+    {
+      "stage": 6,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 1738.31,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        },
+        {
+          "id": "rod",
+          "paid": 105
+        }
+      ],
+      "deferred": [
+        "arc"
+      ],
+      "before_boss_wallet": 1813.4,
+      "ending_wallet": 2272.42,
+      "total_earned": 3702.42,
+      "total_spent": 1455.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 65.92,
+      "normal_health_seconds": 1.99,
+      "elite_health_seconds_before_mechanic": 5.35
+    },
+    {
+      "stage": 7,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2272.42,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "arc",
+          "paid": 480
+        }
+      ],
+      "deferred": [
+        "key7",
+        "hull"
+      ],
+      "before_boss_wallet": 2132.55,
+      "ending_wallet": 2637.43,
+      "total_earned": 4617.43,
+      "total_spent": 2005.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 53.89,
+      "normal_health_seconds": 2.61,
+      "elite_health_seconds_before_mechanic": 7.02
+    },
+    {
+      "stage": 8,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 2637.43,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key7",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2558.1,
+      "ending_wallet": 3108.84,
+      "total_earned": 5618.84,
+      "total_spent": 2535.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 60.84,
+      "normal_health_seconds": 2.52,
+      "elite_health_seconds_before_mechanic": 6.77
+    },
+    {
+      "stage": 9,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": false,
+      "research_stipend": 0,
+      "starting_wallet": 3108.84,
+      "planned_fish": 2,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3325.5,
+      "ending_wallet": 3922.11,
+      "total_earned": 6707.11,
+      "total_spent": 2810.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 66.54,
+      "normal_health_seconds": 2.49,
+      "elite_health_seconds_before_mechanic": 6.7
+    }
+  ],
+  "optional_research_routes": [
+    {
+      "stage": 1,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "key0",
+        "rod"
+      ],
+      "before_boss_wallet": 162.12,
+      "ending_wallet": 378.06,
+      "total_earned": 463.06,
+      "total_spent": 110.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 12.0,
+      "normal_health_seconds": 4.49,
+      "elite_health_seconds_before_mechanic": 12.08
+    },
+    {
+      "stage": 2,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 378.06,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key0",
+          "paid": 110
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "hull"
+      ],
+      "before_boss_wallet": 381.57,
+      "ending_wallet": 640.41,
+      "total_earned": 1015.41,
+      "total_spent": 400.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 12.43,
+      "normal_health_seconds": 5.16,
+      "elite_health_seconds_before_mechanic": 13.88
+    },
+    {
+      "stage": 3,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 640.41,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "harpoon",
+        "scope"
+      ],
+      "before_boss_wallet": 650.96,
+      "ending_wallet": 952.72,
+      "total_earned": 1657.72,
+      "total_spent": 730.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 13.67,
+      "normal_health_seconds": 5.45,
+      "elite_health_seconds_before_mechanic": 14.64
+    },
+    {
+      "stage": 4,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 952.72,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "harpoon",
+          "paid": 300
+        },
+        {
+          "id": "scope",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon"
+      ],
+      "before_boss_wallet": 830.96,
+      "ending_wallet": 1175.64,
+      "total_earned": 2390.64,
+      "total_spent": 1240.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 15.03,
+      "normal_health_seconds": 5.63,
+      "elite_health_seconds_before_mechanic": 15.14
+    },
+    {
+      "stage": 5,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1175.64,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1132.22,
+      "ending_wallet": 1519.81,
+      "total_earned": 3214.81,
+      "total_spent": 1720.0,
+      "weapon_level": 3,
+      "hull_level": 1,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 16.39,
+      "normal_health_seconds": 5.79,
+      "elite_health_seconds_before_mechanic": 15.57
+    },
+    {
+      "stage": 6,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1519.81,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "scope"
+      ],
+      "before_boss_wallet": 1685.39,
+      "ending_wallet": 2115.89,
+      "total_earned": 4130.89,
+      "total_spent": 2040.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 16.39,
+      "normal_health_seconds": 6.42,
+      "elite_health_seconds_before_mechanic": 17.25
+    },
+    {
+      "stage": 7,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2115.89,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        },
+        {
+          "id": "scope",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "key6",
+        "hull"
+      ],
+      "before_boss_wallet": 2196.12,
+      "ending_wallet": 2669.54,
+      "total_earned": 5139.54,
+      "total_spent": 2495.0,
+      "weapon_level": 4,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 17.74,
+      "normal_health_seconds": 6.51,
+      "elite_health_seconds_before_mechanic": 17.49
+    },
+    {
+      "stage": 8,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2669.54,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key6",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2680.07,
+      "ending_wallet": 3196.4,
+      "total_earned": 6241.4,
+      "total_spent": 3070.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 18.42,
+      "normal_health_seconds": 6.82,
+      "elite_health_seconds_before_mechanic": 18.34
+    },
+    {
+      "stage": 9,
+      "profile": "保守",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3196.4,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 245
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3472.89,
+      "ending_wallet": 4032.14,
+      "total_earned": 7437.14,
+      "total_spent": 3430.0,
+      "weapon_level": 5,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 19.82,
+      "normal_health_seconds": 6.86,
+      "elite_health_seconds_before_mechanic": 18.43
+    },
+    {
+      "stage": 1,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "shotgun",
+        "key2"
+      ],
+      "before_boss_wallet": 157.12,
+      "ending_wallet": 373.06,
+      "total_earned": 463.06,
+      "total_spent": 115.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 10.81,
+      "normal_health_seconds": 4.99,
+      "elite_health_seconds_before_mechanic": 13.41
+    },
+    {
+      "stage": 2,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 373.06,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "shotgun",
+          "paid": 150
+        },
+        {
+          "id": "key2",
+          "paid": 110
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 291.57,
+      "ending_wallet": 550.41,
+      "total_earned": 1015.41,
+      "total_spent": 490.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 14.01,
+      "normal_health_seconds": 4.58,
+      "elite_health_seconds_before_mechanic": 12.31
+    },
+    {
+      "stage": 3,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 550.41,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 625.96,
+      "ending_wallet": 927.72,
+      "total_earned": 1657.72,
+      "total_spent": 755.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 15.55,
+      "normal_health_seconds": 4.79,
+      "elite_health_seconds_before_mechanic": 12.86
+    },
+    {
+      "stage": 4,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 927.72,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon",
+        "boots"
+      ],
+      "before_boss_wallet": 995.96,
+      "ending_wallet": 1340.64,
+      "total_earned": 2390.64,
+      "total_spent": 1075.0,
+      "weapon_level": 1,
+      "hull_level": 2,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 15.55,
+      "normal_health_seconds": 5.45,
+      "elite_health_seconds_before_mechanic": 14.64
+    },
+    {
+      "stage": 5,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1340.64,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "boots",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1242.22,
+      "ending_wallet": 1629.81,
+      "total_earned": 3214.81,
+      "total_spent": 1610.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 17.09,
+      "normal_health_seconds": 5.55,
+      "elite_health_seconds_before_mechanic": 14.93
+    },
+    {
+      "stage": 6,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1629.81,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 170
+        },
+        {
+          "id": "brake",
+          "paid": 115
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 1715.39,
+      "ending_wallet": 2145.89,
+      "total_earned": 4130.89,
+      "total_spent": 2010.0,
+      "weapon_level": 2,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 17.09,
+      "normal_health_seconds": 6.15,
+      "elite_health_seconds_before_mechanic": 16.54
+    },
+    {
+      "stage": 7,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2145.89,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "key8",
+        "boots"
+      ],
+      "before_boss_wallet": 2401.12,
+      "ending_wallet": 2874.54,
+      "total_earned": 5139.54,
+      "total_spent": 2290.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 18.63,
+      "normal_health_seconds": 6.2,
+      "elite_health_seconds_before_mechanic": 16.65
+    },
+    {
+      "stage": 8,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2874.54,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key8",
+          "paid": 290
+        },
+        {
+          "id": "boots",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2920.07,
+      "ending_wallet": 3436.4,
+      "total_earned": 6241.4,
+      "total_spent": 2830.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 18.63,
+      "normal_health_seconds": 6.75,
+      "elite_health_seconds_before_mechanic": 18.13
+    },
+    {
+      "stage": 9,
+      "profile": "保守",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3436.4,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3752.89,
+      "ending_wallet": 4312.14,
+      "total_earned": 7437.14,
+      "total_spent": 3150.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 20.17,
+      "normal_health_seconds": 6.74,
+      "elite_health_seconds_before_mechanic": 18.11
+    },
+    {
+      "stage": 1,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "key1",
+        "weapon"
+      ],
+      "before_boss_wallet": 182.12,
+      "ending_wallet": 398.06,
+      "total_earned": 463.06,
+      "total_spent": 90.0,
+      "weapon_level": 0,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 10.81,
+      "normal_health_seconds": 4.99,
+      "elite_health_seconds_before_mechanic": 13.41
+    },
+    {
+      "stage": 2,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 398.06,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key1",
+          "paid": 110
+        },
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "carbine",
+        "hull"
+      ],
+      "before_boss_wallet": 381.57,
+      "ending_wallet": 640.41,
+      "total_earned": 1015.41,
+      "total_spent": 400.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        1
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 15.12,
+      "normal_health_seconds": 4.24,
+      "elite_health_seconds_before_mechanic": 11.41
+    },
+    {
+      "stage": 3,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 640.41,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "carbine",
+          "paid": 230
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 545.96,
+      "ending_wallet": 847.72,
+      "total_earned": 1657.72,
+      "total_spent": 835.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 21.4,
+      "normal_health_seconds": 3.88,
+      "elite_health_seconds_before_mechanic": 10.43
+    },
+    {
+      "stage": 4,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 847.72,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        }
+      ],
+      "deferred": [
+        "key4",
+        "hull"
+      ],
+      "before_boss_wallet": 995.96,
+      "ending_wallet": 1340.64,
+      "total_earned": 2390.64,
+      "total_spent": 1075.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 24.28,
+      "normal_health_seconds": 3.92,
+      "elite_health_seconds_before_mechanic": 10.53
+    },
+    {
+      "stage": 5,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1340.64,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key4",
+          "paid": 200
+        },
+        {
+          "id": "hull",
+          "paid": 130
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 1332.22,
+      "ending_wallet": 1719.81,
+      "total_earned": 3214.81,
+      "total_spent": 1520.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 24.79,
+      "normal_health_seconds": 4.29,
+      "elite_health_seconds_before_mechanic": 11.53
+    },
+    {
+      "stage": 6,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1719.81,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        },
+        {
+          "id": "rod",
+          "paid": 105
+        }
+      ],
+      "deferred": [
+        "arc"
+      ],
+      "before_boss_wallet": 1820.39,
+      "ending_wallet": 2250.89,
+      "total_earned": 4130.89,
+      "total_spent": 1905.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 27.71,
+      "normal_health_seconds": 4.27,
+      "elite_health_seconds_before_mechanic": 11.48
+    },
+    {
+      "stage": 7,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2250.89,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "arc",
+          "paid": 480
+        }
+      ],
+      "deferred": [
+        "key7",
+        "hull"
+      ],
+      "before_boss_wallet": 2191.12,
+      "ending_wallet": 2664.54,
+      "total_earned": 5139.54,
+      "total_spent": 2500.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 17.56,
+      "normal_health_seconds": 6.57,
+      "elite_health_seconds_before_mechanic": 17.67
+    },
+    {
+      "stage": 8,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2664.54,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "key7",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2675.07,
+      "ending_wallet": 3191.4,
+      "total_earned": 6241.4,
+      "total_spent": 3075.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 20.25,
+      "normal_health_seconds": 6.21,
+      "elite_health_seconds_before_mechanic": 16.68
+    },
+    {
+      "stage": 9,
+      "profile": "保守",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3191.4,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 115,
+      "kits_bought": 2,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3507.89,
+      "ending_wallet": 4067.14,
+      "total_earned": 7437.14,
+      "total_spent": 3395.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 22.19,
+      "normal_health_seconds": 6.13,
+      "elite_health_seconds_before_mechanic": 16.47
+    },
+    {
+      "stage": 1,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "key0",
+        "rod"
+      ],
+      "before_boss_wallet": 165.89,
+      "ending_wallet": 386.65,
+      "total_earned": 471.65,
+      "total_spent": 110.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 21.6,
+      "normal_health_seconds": 2.8,
+      "elite_health_seconds_before_mechanic": 7.53
+    },
+    {
+      "stage": 2,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 386.65,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key0",
+          "paid": 110
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "hull"
+      ],
+      "before_boss_wallet": 439.86,
+      "ending_wallet": 704.57,
+      "total_earned": 1034.57,
+      "total_spent": 355.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 23.68,
+      "normal_health_seconds": 3.04,
+      "elite_health_seconds_before_mechanic": 8.17
+    },
+    {
+      "stage": 3,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 704.57,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "harpoon",
+        "scope"
+      ],
+      "before_boss_wallet": 765.77,
+      "ending_wallet": 1074.43,
+      "total_earned": 1689.43,
+      "total_spent": 640.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 26.03,
+      "normal_health_seconds": 3.21,
+      "elite_health_seconds_before_mechanic": 8.62
+    },
+    {
+      "stage": 4,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1074.43,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "harpoon",
+          "paid": 300
+        },
+        {
+          "id": "scope",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon"
+      ],
+      "before_boss_wallet": 1004.29,
+      "ending_wallet": 1356.9,
+      "total_earned": 2436.9,
+      "total_spent": 1105.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 29.03,
+      "normal_health_seconds": 3.27,
+      "elite_health_seconds_before_mechanic": 8.79
+    },
+    {
+      "stage": 5,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1356.9,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1366.09,
+      "ending_wallet": 1762.65,
+      "total_earned": 3277.65,
+      "total_spent": 1540.0,
+      "weapon_level": 3,
+      "hull_level": 1,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 31.65,
+      "normal_health_seconds": 3.36,
+      "elite_health_seconds_before_mechanic": 9.04
+    },
+    {
+      "stage": 6,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1762.65,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "scope"
+      ],
+      "before_boss_wallet": 1981.85,
+      "ending_wallet": 2422.35,
+      "total_earned": 4212.35,
+      "total_spent": 1815.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 31.65,
+      "normal_health_seconds": 3.73,
+      "elite_health_seconds_before_mechanic": 10.02
+    },
+    {
+      "stage": 7,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2422.35,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        },
+        {
+          "id": "scope",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "key6",
+        "hull"
+      ],
+      "before_boss_wallet": 2557.23,
+      "ending_wallet": 3041.68,
+      "total_earned": 5241.68,
+      "total_spent": 2225.0,
+      "weapon_level": 4,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 34.27,
+      "normal_health_seconds": 3.78,
+      "elite_health_seconds_before_mechanic": 10.15
+    },
+    {
+      "stage": 8,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3041.68,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key6",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 3107.9,
+      "ending_wallet": 3636.31,
+      "total_earned": 6366.31,
+      "total_spent": 2755.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 38.5,
+      "normal_health_seconds": 3.66,
+      "elite_health_seconds_before_mechanic": 9.84
+    },
+    {
+      "stage": 9,
+      "profile": "普通",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3636.31,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 245
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 3969.55,
+      "ending_wallet": 4541.9,
+      "total_earned": 7586.9,
+      "total_spent": 3070.0,
+      "weapon_level": 5,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 41.44,
+      "normal_health_seconds": 3.68,
+      "elite_health_seconds_before_mechanic": 9.89
+    },
+    {
+      "stage": 1,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "shotgun",
+        "key2"
+      ],
+      "before_boss_wallet": 160.89,
+      "ending_wallet": 381.65,
+      "total_earned": 471.65,
+      "total_spent": 115.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 19.46,
+      "normal_health_seconds": 3.11,
+      "elite_health_seconds_before_mechanic": 8.35
+    },
+    {
+      "stage": 2,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 381.65,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "shotgun",
+          "paid": 150
+        },
+        {
+          "id": "key2",
+          "paid": 110
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 349.86,
+      "ending_wallet": 614.57,
+      "total_earned": 1034.57,
+      "total_spent": 445.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 25.16,
+      "normal_health_seconds": 2.86,
+      "elite_health_seconds_before_mechanic": 7.69
+    },
+    {
+      "stage": 3,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 614.57,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 740.77,
+      "ending_wallet": 1049.43,
+      "total_earned": 1689.43,
+      "total_spent": 665.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 27.92,
+      "normal_health_seconds": 2.99,
+      "elite_health_seconds_before_mechanic": 8.03
+    },
+    {
+      "stage": 4,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1049.43,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon",
+        "boots"
+      ],
+      "before_boss_wallet": 1169.29,
+      "ending_wallet": 1521.9,
+      "total_earned": 2436.9,
+      "total_spent": 940.0,
+      "weapon_level": 1,
+      "hull_level": 2,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 27.92,
+      "normal_health_seconds": 3.4,
+      "elite_health_seconds_before_mechanic": 9.14
+    },
+    {
+      "stage": 5,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1521.9,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "boots",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1476.09,
+      "ending_wallet": 1872.65,
+      "total_earned": 3277.65,
+      "total_spent": 1430.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 30.69,
+      "normal_health_seconds": 3.47,
+      "elite_health_seconds_before_mechanic": 9.32
+    },
+    {
+      "stage": 6,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1872.65,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 170
+        },
+        {
+          "id": "brake",
+          "paid": 115
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2011.85,
+      "ending_wallet": 2452.35,
+      "total_earned": 4212.35,
+      "total_spent": 1785.0,
+      "weapon_level": 2,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 30.69,
+      "normal_health_seconds": 3.84,
+      "elite_health_seconds_before_mechanic": 10.33
+    },
+    {
+      "stage": 7,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2452.35,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "key8",
+        "boots"
+      ],
+      "before_boss_wallet": 2762.23,
+      "ending_wallet": 3246.68,
+      "total_earned": 5241.68,
+      "total_spent": 2020.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 33.46,
+      "normal_health_seconds": 3.87,
+      "elite_health_seconds_before_mechanic": 10.4
+    },
+    {
+      "stage": 8,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3246.68,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key8",
+          "paid": 290
+        },
+        {
+          "id": "boots",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 3347.9,
+      "ending_wallet": 3876.31,
+      "total_earned": 6366.31,
+      "total_spent": 2515.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 33.46,
+      "normal_health_seconds": 4.21,
+      "elite_health_seconds_before_mechanic": 11.32
+    },
+    {
+      "stage": 9,
+      "profile": "普通",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3876.31,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 4249.55,
+      "ending_wallet": 4821.9,
+      "total_earned": 7586.9,
+      "total_spent": 2790.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 36.22,
+      "normal_health_seconds": 4.21,
+      "elite_health_seconds_before_mechanic": 11.31
+    },
+    {
+      "stage": 1,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "key1",
+        "weapon"
+      ],
+      "before_boss_wallet": 185.89,
+      "ending_wallet": 406.65,
+      "total_earned": 471.65,
+      "total_spent": 90.0,
+      "weapon_level": 0,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 19.46,
+      "normal_health_seconds": 3.11,
+      "elite_health_seconds_before_mechanic": 8.35
+    },
+    {
+      "stage": 2,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 406.65,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key1",
+          "paid": 110
+        },
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "carbine",
+        "hull"
+      ],
+      "before_boss_wallet": 439.86,
+      "ending_wallet": 704.57,
+      "total_earned": 1034.57,
+      "total_spent": 355.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        1
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 26.81,
+      "normal_health_seconds": 2.68,
+      "elite_health_seconds_before_mechanic": 7.21
+    },
+    {
+      "stage": 3,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 704.57,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "carbine",
+          "paid": 230
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 660.77,
+      "ending_wallet": 969.43,
+      "total_earned": 1689.43,
+      "total_spent": 745.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 32.73,
+      "normal_health_seconds": 2.68,
+      "elite_health_seconds_before_mechanic": 7.2
+    },
+    {
+      "stage": 4,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 969.43,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        }
+      ],
+      "deferred": [
+        "key4",
+        "hull"
+      ],
+      "before_boss_wallet": 1169.29,
+      "ending_wallet": 1521.9,
+      "total_earned": 2436.9,
+      "total_spent": 940.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 36.73,
+      "normal_health_seconds": 2.73,
+      "elite_health_seconds_before_mechanic": 7.33
+    },
+    {
+      "stage": 5,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1521.9,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key4",
+          "paid": 200
+        },
+        {
+          "id": "hull",
+          "paid": 130
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 1566.09,
+      "ending_wallet": 1962.65,
+      "total_earned": 3277.65,
+      "total_spent": 1340.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 37.65,
+      "normal_health_seconds": 2.98,
+      "elite_health_seconds_before_mechanic": 8.0
+    },
+    {
+      "stage": 6,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1962.65,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        },
+        {
+          "id": "rod",
+          "paid": 105
+        }
+      ],
+      "deferred": [
+        "arc"
+      ],
+      "before_boss_wallet": 2116.85,
+      "ending_wallet": 2557.35,
+      "total_earned": 4212.35,
+      "total_spent": 1680.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 41.73,
+      "normal_health_seconds": 2.98,
+      "elite_health_seconds_before_mechanic": 8.02
+    },
+    {
+      "stage": 7,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2557.35,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "arc",
+          "paid": 480
+        }
+      ],
+      "deferred": [
+        "key7",
+        "hull"
+      ],
+      "before_boss_wallet": 2552.23,
+      "ending_wallet": 3036.68,
+      "total_earned": 5241.68,
+      "total_spent": 2230.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 31.28,
+      "normal_health_seconds": 4.14,
+      "elite_health_seconds_before_mechanic": 11.12
+    },
+    {
+      "stage": 8,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3036.68,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key7",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 3102.9,
+      "ending_wallet": 3631.31,
+      "total_earned": 6366.31,
+      "total_spent": 2760.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 35.78,
+      "normal_health_seconds": 3.94,
+      "elite_health_seconds_before_mechanic": 10.59
+    },
+    {
+      "stage": 9,
+      "profile": "普通",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3631.31,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 4004.55,
+      "ending_wallet": 4576.9,
+      "total_earned": 7586.9,
+      "total_spent": 3035.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 39.17,
+      "normal_health_seconds": 3.89,
+      "elite_health_seconds_before_mechanic": 10.46
+    },
+    {
+      "stage": 1,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "key0",
+        "rod"
+      ],
+      "before_boss_wallet": 172.86,
+      "ending_wallet": 402.56,
+      "total_earned": 487.56,
+      "total_spent": 110.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 37.8,
+      "normal_health_seconds": 1.74,
+      "elite_health_seconds_before_mechanic": 4.68
+    },
+    {
+      "stage": 2,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 402.56,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key0",
+          "paid": 110
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "hull"
+      ],
+      "before_boss_wallet": 509.46,
+      "ending_wallet": 785.02,
+      "total_earned": 1070.02,
+      "total_spent": 310.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 44.93,
+      "normal_health_seconds": 1.74,
+      "elite_health_seconds_before_mechanic": 4.68
+    },
+    {
+      "stage": 3,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 785.02,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "harpoon",
+        "scope"
+      ],
+      "before_boss_wallet": 901.67,
+      "ending_wallet": 1223.1,
+      "total_earned": 1748.1,
+      "total_spent": 550.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 49.39,
+      "normal_health_seconds": 1.84,
+      "elite_health_seconds_before_mechanic": 4.94
+    },
+    {
+      "stage": 4,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1223.1,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "harpoon",
+          "paid": 300
+        },
+        {
+          "id": "scope",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon"
+      ],
+      "before_boss_wallet": 1210.2,
+      "ending_wallet": 1577.49,
+      "total_earned": 2522.49,
+      "total_spent": 970.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        0
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 56.38,
+      "normal_health_seconds": 1.83,
+      "elite_health_seconds_before_mechanic": 4.92
+    },
+    {
+      "stage": 5,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1577.49,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1645.75,
+      "ending_wallet": 2058.9,
+      "total_earned": 3393.9,
+      "total_spent": 1360.0,
+      "weapon_level": 3,
+      "hull_level": 1,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 61.46,
+      "normal_health_seconds": 1.88,
+      "elite_health_seconds_before_mechanic": 5.06
+    },
+    {
+      "stage": 6,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2058.9,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "scope"
+      ],
+      "before_boss_wallet": 2339.04,
+      "ending_wallet": 2798.05,
+      "total_earned": 4363.05,
+      "total_spent": 1590.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 61.46,
+      "normal_health_seconds": 2.09,
+      "elite_health_seconds_before_mechanic": 5.61
+    },
+    {
+      "stage": 7,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2798.05,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        },
+        {
+          "id": "scope",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "key6",
+        "hull"
+      ],
+      "before_boss_wallet": 2950.76,
+      "ending_wallet": 3455.64,
+      "total_earned": 5430.64,
+      "total_spent": 2000.0,
+      "weapon_level": 4,
+      "hull_level": 2,
+      "keys": [
+        0,
+        5
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 66.55,
+      "normal_health_seconds": 2.12,
+      "elite_health_seconds_before_mechanic": 5.69
+    },
+    {
+      "stage": 8,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3455.64,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key6",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 3541.63,
+      "ending_wallet": 4092.38,
+      "total_earned": 6597.38,
+      "total_spent": 2530.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 83.37,
+      "normal_health_seconds": 1.84,
+      "elite_health_seconds_before_mechanic": 4.94
+    },
+    {
+      "stage": 9,
+      "profile": "精准",
+      "route": "精准猎手",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 4092.38,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 245
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 4447.36,
+      "ending_wallet": 5043.97,
+      "total_earned": 7863.97,
+      "total_spent": 2845.0,
+      "weapon_level": 5,
+      "hull_level": 3,
+      "keys": [
+        0,
+        5,
+        6
+      ],
+      "weapon": 2,
+      "pre_defence_boss_dps": 89.74,
+      "normal_health_seconds": 1.85,
+      "elite_health_seconds_before_mechanic": 4.97
+    },
+    {
+      "stage": 1,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "shotgun",
+        "key2"
+      ],
+      "before_boss_wallet": 167.86,
+      "ending_wallet": 397.56,
+      "total_earned": 487.56,
+      "total_spent": 115.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 34.06,
+      "normal_health_seconds": 1.93,
+      "elite_health_seconds_before_mechanic": 5.19
+    },
+    {
+      "stage": 2,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 397.56,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "shotgun",
+          "paid": 150
+        },
+        {
+          "id": "key2",
+          "paid": 110
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 419.46,
+      "ending_wallet": 695.02,
+      "total_earned": 1070.02,
+      "total_spent": 400.0,
+      "weapon_level": 0,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 43.86,
+      "normal_health_seconds": 1.79,
+      "elite_health_seconds_before_mechanic": 4.8
+    },
+    {
+      "stage": 3,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 695.02,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 85
+        },
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 876.67,
+      "ending_wallet": 1198.1,
+      "total_earned": 1748.1,
+      "total_spent": 575.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 48.68,
+      "normal_health_seconds": 1.87,
+      "elite_health_seconds_before_mechanic": 5.01
+    },
+    {
+      "stage": 4,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1198.1,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 130
+        },
+        {
+          "id": "brake",
+          "paid": 75
+        }
+      ],
+      "deferred": [
+        "key5",
+        "weapon",
+        "boots"
+      ],
+      "before_boss_wallet": 1375.2,
+      "ending_wallet": 1742.49,
+      "total_earned": 2522.49,
+      "total_spent": 805.0,
+      "weapon_level": 1,
+      "hull_level": 2,
+      "keys": [
+        2
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 48.68,
+      "normal_health_seconds": 2.12,
+      "elite_health_seconds_before_mechanic": 5.7
+    },
+    {
+      "stage": 5,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1742.49,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key5",
+          "paid": 200
+        },
+        {
+          "id": "weapon",
+          "paid": 125
+        },
+        {
+          "id": "boots",
+          "paid": 95
+        }
+      ],
+      "deferred": [
+        "hull",
+        "brake"
+      ],
+      "before_boss_wallet": 1755.75,
+      "ending_wallet": 2168.9,
+      "total_earned": 3393.9,
+      "total_spent": 1250.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 53.51,
+      "normal_health_seconds": 2.16,
+      "elite_health_seconds_before_mechanic": 5.82
+    },
+    {
+      "stage": 6,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2168.9,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "hull",
+          "paid": 170
+        },
+        {
+          "id": "brake",
+          "paid": 115
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 2369.04,
+      "ending_wallet": 2828.05,
+      "total_earned": 4363.05,
+      "total_spent": 1560.0,
+      "weapon_level": 2,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 53.51,
+      "normal_health_seconds": 2.4,
+      "elite_health_seconds_before_mechanic": 6.45
+    },
+    {
+      "stage": 7,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2828.05,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        }
+      ],
+      "deferred": [
+        "key8",
+        "boots"
+      ],
+      "before_boss_wallet": 3155.76,
+      "ending_wallet": 3660.64,
+      "total_earned": 5430.64,
+      "total_spent": 1795.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 58.33,
+      "normal_health_seconds": 2.41,
+      "elite_health_seconds_before_mechanic": 6.49
+    },
+    {
+      "stage": 8,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3660.64,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key8",
+          "paid": 290
+        },
+        {
+          "id": "boots",
+          "paid": 135
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 3781.63,
+      "ending_wallet": 4332.38,
+      "total_earned": 6597.38,
+      "total_spent": 2290.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 58.33,
+      "normal_health_seconds": 2.63,
+      "elite_health_seconds_before_mechanic": 7.06
+    },
+    {
+      "stage": 9,
+      "profile": "精准",
+      "route": "近岸机动",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 4332.38,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 4727.36,
+      "ending_wallet": 5323.97,
+      "total_earned": 7863.97,
+      "total_spent": 2565.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        2,
+        5,
+        8
+      ],
+      "weapon": 1,
+      "pre_defence_boss_dps": 63.16,
+      "normal_health_seconds": 2.63,
+      "elite_health_seconds_before_mechanic": 7.06
+    },
+    {
+      "stage": 1,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 25.0,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 85,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "rod",
+          "paid": 65
+        }
+      ],
+      "deferred": [
+        "key1",
+        "weapon"
+      ],
+      "before_boss_wallet": 192.86,
+      "ending_wallet": 422.56,
+      "total_earned": 487.56,
+      "total_spent": 90.0,
+      "weapon_level": 0,
+      "hull_level": 0,
+      "keys": [],
+      "weapon": 0,
+      "pre_defence_boss_dps": 34.06,
+      "normal_health_seconds": 1.93,
+      "elite_health_seconds_before_mechanic": 5.19
+    },
+    {
+      "stage": 2,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 422.56,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 100,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key1",
+          "paid": 110
+        },
+        {
+          "id": "weapon",
+          "paid": 85
+        }
+      ],
+      "deferred": [
+        "carbine",
+        "hull"
+      ],
+      "before_boss_wallet": 509.46,
+      "ending_wallet": 785.02,
+      "total_earned": 1070.02,
+      "total_spent": 310.0,
+      "weapon_level": 1,
+      "hull_level": 0,
+      "keys": [
+        1
+      ],
+      "weapon": 0,
+      "pre_defence_boss_dps": 45.3,
+      "normal_health_seconds": 1.77,
+      "elite_health_seconds_before_mechanic": 4.76
+    },
+    {
+      "stage": 3,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 785.02,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 115,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "carbine",
+          "paid": 230
+        },
+        {
+          "id": "hull",
+          "paid": 90
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 796.67,
+      "ending_wallet": 1118.1,
+      "total_earned": 1748.1,
+      "total_spent": 655.0,
+      "weapon_level": 1,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 52.26,
+      "normal_health_seconds": 1.77,
+      "elite_health_seconds_before_mechanic": 4.77
+    },
+    {
+      "stage": 4,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1118.1,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 130,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 125
+        }
+      ],
+      "deferred": [
+        "key4",
+        "hull"
+      ],
+      "before_boss_wallet": 1375.2,
+      "ending_wallet": 1742.49,
+      "total_earned": 2522.49,
+      "total_spent": 805.0,
+      "weapon_level": 2,
+      "hull_level": 1,
+      "keys": [
+        1
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 58.19,
+      "normal_health_seconds": 1.81,
+      "elite_health_seconds_before_mechanic": 4.88
+    },
+    {
+      "stage": 5,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 1742.49,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 145,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "key4",
+          "paid": 200
+        },
+        {
+          "id": "hull",
+          "paid": 130
+        }
+      ],
+      "deferred": [
+        "weapon",
+        "rod"
+      ],
+      "before_boss_wallet": 1845.75,
+      "ending_wallet": 2258.9,
+      "total_earned": 3393.9,
+      "total_spent": 1160.0,
+      "weapon_level": 2,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 59.83,
+      "normal_health_seconds": 1.98,
+      "elite_health_seconds_before_mechanic": 5.31
+    },
+    {
+      "stage": 6,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2258.9,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 160,
+      "supply_spend": 25,
+      "kits_bought": 0,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 165
+        },
+        {
+          "id": "rod",
+          "paid": 105
+        }
+      ],
+      "deferred": [
+        "arc"
+      ],
+      "before_boss_wallet": 2474.04,
+      "ending_wallet": 2933.05,
+      "total_earned": 4363.05,
+      "total_spent": 1455.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 3,
+      "pre_defence_boss_dps": 65.92,
+      "normal_health_seconds": 1.99,
+      "elite_health_seconds_before_mechanic": 5.35
+    },
+    {
+      "stage": 7,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 2933.05,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 175,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "arc",
+          "paid": 480
+        }
+      ],
+      "deferred": [
+        "key7",
+        "hull"
+      ],
+      "before_boss_wallet": 2945.76,
+      "ending_wallet": 3450.64,
+      "total_earned": 5430.64,
+      "total_spent": 2005.0,
+      "weapon_level": 3,
+      "hull_level": 2,
+      "keys": [
+        1,
+        4
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 53.89,
+      "normal_health_seconds": 2.61,
+      "elite_health_seconds_before_mechanic": 7.02
+    },
+    {
+      "stage": 8,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 3450.64,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 190,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "key7",
+          "paid": 290
+        },
+        {
+          "id": "hull",
+          "paid": 170
+        }
+      ],
+      "deferred": [
+        "weapon"
+      ],
+      "before_boss_wallet": 3536.63,
+      "ending_wallet": 4087.38,
+      "total_earned": 6597.38,
+      "total_spent": 2535.0,
+      "weapon_level": 3,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 60.84,
+      "normal_health_seconds": 2.52,
+      "elite_health_seconds_before_mechanic": 6.77
+    },
+    {
+      "stage": 9,
+      "profile": "精准",
+      "route": "元素渔猎",
+      "research_completed": true,
+      "research_stipend": 35,
+      "starting_wallet": 4087.38,
+      "planned_fish": 3,
+      "optional_extra_fish": 0,
+      "extra_fishing_minutes": 0.0,
+      "mission_stipend": 205,
+      "supply_spend": 70,
+      "kits_bought": 1,
+      "purchases": [
+        {
+          "id": "weapon",
+          "paid": 205
+        }
+      ],
+      "deferred": [],
+      "before_boss_wallet": 4482.36,
+      "ending_wallet": 5078.97,
+      "total_earned": 7863.97,
+      "total_spent": 2810.0,
+      "weapon_level": 4,
+      "hull_level": 3,
+      "keys": [
+        1,
+        4,
+        7
+      ],
+      "weapon": 5,
+      "pre_defence_boss_dps": 66.54,
+      "normal_health_seconds": 2.49,
+      "elite_health_seconds_before_mechanic": 6.7
+    }
+  ],
+  "mechanic_failure_contract": [
+    {
+      "boss_id": 108,
+      "purchased_hull_health": 100,
+      "exposure_seconds": [
+        10.0,
+        10.5,
+        11.0
+      ],
+      "exposure_multiplier": 1.35,
+      "failure_damage": [
+        18.0,
+        21.0,
+        24.0
+      ],
+      "pressure_seconds": [
+        7.5,
+        6.9,
+        6.3
+      ],
+      "full_health_survivable_phase3_mistakes": 4,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 109,
+      "purchased_hull_health": 100,
+      "exposure_seconds": [
+        8.0,
+        8.5,
+        9.0
+      ],
+      "exposure_multiplier": 1.35,
+      "failure_damage": [
+        7.0,
+        8.0,
+        9.0
+      ],
+      "pressure_seconds": [
+        8.0,
+        7.4,
+        6.8
+      ],
+      "full_health_survivable_phase3_mistakes": 11,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 110,
+      "purchased_hull_health": 125,
+      "exposure_seconds": [
+        12.0,
+        12.5,
+        13.0
+      ],
+      "exposure_multiplier": 1.15,
+      "failure_damage": [
+        16.0,
+        18.0,
+        20.0
+      ],
+      "pressure_seconds": [
+        8.0,
+        7.4,
+        6.8
+      ],
+      "full_health_survivable_phase3_mistakes": 6,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 111,
+      "purchased_hull_health": 125,
+      "exposure_seconds": [
+        9.0,
+        9.5,
+        10.0
+      ],
+      "exposure_multiplier": 1.4,
+      "failure_damage": [
+        12.0,
+        14.0,
+        16.0
+      ],
+      "pressure_seconds": [
+        8.0,
+        7.4,
+        6.8
+      ],
+      "full_health_survivable_phase3_mistakes": 7,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 112,
+      "purchased_hull_health": 125,
+      "exposure_seconds": [
+        8.0,
+        8.5,
+        9.0
+      ],
+      "exposure_multiplier": 1.5,
+      "failure_damage": [
+        12.0,
+        14.0,
+        16.0
+      ],
+      "pressure_seconds": [
+        8.0,
+        7.4,
+        6.8
+      ],
+      "full_health_survivable_phase3_mistakes": 7,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 113,
+      "purchased_hull_health": 150,
+      "exposure_seconds": [
+        10.0,
+        10.5,
+        11.0
+      ],
+      "exposure_multiplier": 1.3,
+      "failure_damage": [
+        16.0,
+        18.0,
+        20.0
+      ],
+      "pressure_seconds": [
+        7.5,
+        6.9,
+        6.3
+      ],
+      "full_health_survivable_phase3_mistakes": 7,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 114,
+      "purchased_hull_health": 150,
+      "exposure_seconds": [
+        7.0,
+        7.5,
+        8.0
+      ],
+      "exposure_multiplier": 1.5,
+      "failure_damage": [
+        18.0,
+        20.0,
+        22.0
+      ],
+      "pressure_seconds": [
+        8.5,
+        7.9,
+        7.3
+      ],
+      "full_health_survivable_phase3_mistakes": 6,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 115,
+      "purchased_hull_health": 175,
+      "exposure_seconds": [
+        12.0,
+        12.5,
+        13.0
+      ],
+      "exposure_multiplier": 1.25,
+      "failure_damage": [
+        19.0,
+        20.0,
+        21.0
+      ],
+      "pressure_seconds": [
+        8.5,
+        7.9,
+        7.3
+      ],
+      "full_health_survivable_phase3_mistakes": 8,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 116,
+      "purchased_hull_health": 175,
+      "exposure_seconds": [
+        9.0,
+        9.5,
+        10.0
+      ],
+      "exposure_multiplier": 1.4,
+      "failure_damage": [
+        14.0,
+        16.0,
+        18.0
+      ],
+      "pressure_seconds": [
+        8.0,
+        7.4,
+        6.8
+      ],
+      "full_health_survivable_phase3_mistakes": 9,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 117,
+      "purchased_hull_health": 175,
+      "exposure_seconds": [
+        10.0,
+        10.5,
+        11.0
+      ],
+      "exposure_multiplier": 1.3,
+      "failure_damage": [
+        20.0,
+        22.0,
+        24.0
+      ],
+      "pressure_seconds": [
+        7.5,
+        6.9,
+        6.3
+      ],
+      "full_health_survivable_phase3_mistakes": 7,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    },
+    {
+      "boss_id": 118,
+      "purchased_hull_health": 175,
+      "exposure_seconds": [
+        12.0,
+        12.5,
+        13.0
+      ],
+      "exposure_multiplier": 1.45,
+      "failure_damage": [
+        24.0,
+        26.0,
+        28.0
+      ],
+      "pressure_seconds": [
+        8.0,
+        7.4,
+        6.8
+      ],
+      "full_health_survivable_phase3_mistakes": 6,
+      "note": "Arithmetic upper bound before other enemy attacks; no armour, regeneration or medical item counted. Timing and survival need live tests."
+    }
+  ],
+  "historical_v04_bot_telemetry": [
+    {
+      "file": "Documentation\\TestResults\\v04-full-combat.csv",
+      "rows": [
+        {
+          "kind": "weapon",
+          "id": "0",
+          "seconds": "18.03",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "32",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=33.72"
+        },
+        {
+          "kind": "weapon",
+          "id": "0",
+          "seconds": "18.01",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "32",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=48.62"
+        },
+        {
+          "kind": "weapon",
+          "id": "1",
+          "seconds": "18.03",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "15",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=40.77"
+        },
+        {
+          "kind": "weapon",
+          "id": "1",
+          "seconds": "18.01",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "15",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=58.75"
+        },
+        {
+          "kind": "weapon",
+          "id": "2",
+          "seconds": "18.03",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "10",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=56.57"
+        },
+        {
+          "kind": "weapon",
+          "id": "2",
+          "seconds": "18.03",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "10",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=81.47"
+        },
+        {
+          "kind": "weapon",
+          "id": "3",
+          "seconds": "18.01",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "72",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=35.99"
+        },
+        {
+          "kind": "weapon",
+          "id": "3",
+          "seconds": "18.01",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "72",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=51.83"
+        },
+        {
+          "kind": "weapon",
+          "id": "4",
+          "seconds": "18.00",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "21",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=48.99"
+        },
+        {
+          "kind": "weapon",
+          "id": "4",
+          "seconds": "18.03",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "21",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=70.44"
+        },
+        {
+          "kind": "weapon",
+          "id": "5",
+          "seconds": "18.03",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "20",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=34.38"
+        },
+        {
+          "kind": "weapon",
+          "id": "5",
+          "seconds": "18.02",
+          "player_damage": "0",
+          "medkits": "0",
+          "shots": "20",
+          "phase_mask": "0",
+          "moves": "0",
+          "nodes": "0",
+          "outcome": "DPS=49.56"
+        },
+        {
+          "kind": "stationary",
+          "id": "117",
+          "seconds": "13.58",
+          "player_damage": "100.00",
+          "medkits": "0",
+          "shots": "0",
+          "phase_mask": "1",
+          "moves": "3",
+          "nodes": "0",
+          "outcome": "Defeat"
+        },
+        {
+          "kind": "stationary",
+          "id": "118",
+          "seconds": "14.09",
+          "player_damage": "100.00",
+          "medkits": "0",
+          "shots": "0",
+          "phase_mask": "1",
+          "moves": "3",
+          "nodes": "0",
+          "outcome": "Defeat"
+        },
+        {
+          "kind": "boss",
+          "id": "108",
+          "seconds": "24.74",
+          "player_damage": "0.00",
+          "medkits": "0",
+          "shots": "43",
+          "phase_mask": "7",
+          "moves": "5",
+          "nodes": "6",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "109",
+          "seconds": "29.06",
+          "player_damage": "35.64",
+          "medkits": "0",
+          "shots": "50",
+          "phase_mask": "7",
+          "moves": "6",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "110",
+          "seconds": "30.36",
+          "player_damage": "0.00",
+          "medkits": "0",
+          "shots": "129",
+          "phase_mask": "7",
+          "moves": "6",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "111",
+          "seconds": "45.89",
+          "player_damage": "88.80",
+          "medkits": "1",
+          "shots": "27",
+          "phase_mask": "7",
+          "moves": "9",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "112",
+          "seconds": "29.59",
+          "player_damage": "28.16",
+          "medkits": "0",
+          "shots": "18",
+          "phase_mask": "7",
+          "moves": "6",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "113",
+          "seconds": "40.48",
+          "player_damage": "52.80",
+          "medkits": "0",
+          "shots": "24",
+          "phase_mask": "7",
+          "moves": "7",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "114",
+          "seconds": "41.71",
+          "player_damage": "80.20",
+          "medkits": "0",
+          "shots": "24",
+          "phase_mask": "7",
+          "moves": "7",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "115",
+          "seconds": "32.18",
+          "player_damage": "0.00",
+          "medkits": "0",
+          "shots": "20",
+          "phase_mask": "7",
+          "moves": "6",
+          "nodes": "4",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "116",
+          "seconds": "38.27",
+          "player_damage": "90.60",
+          "medkits": "0",
+          "shots": "24",
+          "phase_mask": "7",
+          "moves": "7",
+          "nodes": "6",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "117",
+          "seconds": "68.16",
+          "player_damage": "63.20",
+          "medkits": "0",
+          "shots": "41",
+          "phase_mask": "7",
+          "moves": "15",
+          "nodes": "6",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "118",
+          "seconds": "56.91",
+          "player_damage": "255.60",
+          "medkits": "4",
+          "shots": "34",
+          "phase_mask": "7",
+          "moves": "12",
+          "nodes": "6",
+          "outcome": "cleared"
+        }
+      ]
+    },
+    {
+      "file": "Documentation\\TestResults\\v04-final-legendary-combat.csv",
+      "rows": [
+        {
+          "kind": "boss",
+          "id": "117",
+          "seed": "41117",
+          "seconds": "67.20",
+          "player_damage": "63.20",
+          "medkits": "0",
+          "shots": "40",
+          "phase_mask": "7",
+          "moves": "14",
+          "nodes": "6",
+          "outcome": "cleared"
+        },
+        {
+          "kind": "boss",
+          "id": "118",
+          "seed": "41118",
+          "seconds": "56.92",
+          "player_damage": "255.60",
+          "medkits": "4",
+          "shots": "34",
+          "phase_mask": "7",
+          "moves": "12",
+          "nodes": "6",
+          "outcome": "cleared"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "All prices and weapon inputs are read from C#; aim/uptime/travel assumptions are design sensitivity inputs, not player observations.",
+    "Wallet comparison purchases real staged offers with the actual escalating prices; medkits are budgeted, not granted for free.",
+    "No random relic, secret reward, perfect-dodge counterattack or repeat-boss farming is credited to a planned build.",
+    "Health-output seconds exclude boss objective travel, guards, timed attack opportunities, invulnerability, interruption and player death. They cannot certify a full encounter clear.",
+    "v0.5 precision rhythm gives partial progress for a body hit and costs one point on a miss; the old consecutive-weakpoint dead choice is removed.",
+    "Base fixed nine-island income already supports a focused build. Income should not be globally cut before measuring optional fishing and supply consumption.",
+    "v0.4 deterministic bot grants gear/medkits. Its 4-kit whale clear is historical regression evidence, not a calibrated human difficulty target."
+  ],
+  "self_test_checks": [
+    "162 route/profile/research/island cases",
+    "wallet conservation and no negative gold",
+    "staged weapon and keystone licenses",
+    "all offer unlocks respected",
+    "aim and upgrade monotonicity for all six weapons",
+    "rod upgrades shorten reel policy"
+  ]
+}

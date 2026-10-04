@@ -8,6 +8,7 @@ namespace Tidebreak
         public CreatureKind kind;
         public bool elite,dead,lastWeak,Summoned;
         public int quality,phase=1;
+        public int CaughtHabitat=-1;
         public float weight,health,maxHealth,exposedUntil;
         public bool IsBoss {get{return Spec!=null&&Spec.boss;}}
         public bool Exposed {get{return Encounter?Encounter.Recovering:!IsBoss||Time.time<exposedUntil;}}
@@ -18,11 +19,13 @@ namespace Tidebreak
         public CreatureMotion Motion {get;private set;}
         public float LastDamageApplied {get;private set;}
         public string DisplayName {get{return Spec.name;}}
-        public string Telegraph {get{return Encounter?Encounter.Cue:Elite?Elite.Cue:healing?"愈合蓄势 · 射击打断":Time.time>nextAttack-.8f?ExpeditionContent.AttackNames[(int)Spec.attack]+" · 即将出招":"";}}
+        public float AttackWindup {get{return normalWindup>0?Mathf.Clamp01(1-(normalWindup-Time.time)/windupLength):0;}}
+        public Vector3 LockedAim {get{return attackAim;}}
+        public string Telegraph {get{return Encounter?Encounter.Cue:Elite?Elite.Cue:healing?"愈合蓄势 · 射击打断":normalWindup>0?ExpeditionContent.AttackNames[(int)Spec.attack]+" · "+ExpeditionContent.Counters[(int)Spec.attack]:Time.time<normalRecovery?"出招收势 · 弱点机会":"";}}
         Transform rig,tail;Vector3 origin,chargeDirection;
         Rigidbody body;Renderer[] renderers;MaterialPropertyBlock properties;Color[] baseTints;
         float age,nextAttack,flash,stagger,staggerReady,hopAt,launchUntil,chargeUntil,slowUntil,stunUntil,burnUntil,burnTick,blinkAt;
-        bool healing;float healAt;
+        bool healing;float healAt,normalWindup,windupLength,normalRecovery,visualDepth;Vector3 attackAim;
         public void Init(GameDirector director,CreatureKind type,bool isElite,Vector3 position)
         {InitSpecies(director,ExpeditionContent.Species[type>=CreatureKind.Crab?108:(int)type],isElite,position);}
         public void InitSpecies(GameDirector director,SpeciesDefinition species,bool isElite,Vector3 position)
@@ -40,6 +43,7 @@ namespace Tidebreak
             Motion=gameObject.AddComponent<CreatureMotion>();Motion.Init(this,rig);
             if(IsBoss){Encounter=gameObject.AddComponent<EncounterDirector>();Encounter.Init(this);}
             else if(elite){Elite=gameObject.AddComponent<EliteTactics>();Elite.Init(this);}
+            else gameObject.AddComponent<CreatureIntent>().Init(this);
         }
         public void LaunchToward(Vector3 point)
         {
@@ -53,20 +57,23 @@ namespace Tidebreak
             float slow=Time.time<slowUntil?.48f:1;if(Time.time<stunUntil)return;
             Vector3 to=game.Player.transform.position-transform.position;to.y=0;
             if(to.sqrMagnitude>.01f)transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(to)*Quaternion.Euler(0,Encounter?Encounter.FacingOffset:0,0),Time.deltaTime*3.6f);
-            if(IsBoss){transform.position=origin+new Vector3(Mathf.Sin(age*.24f)*4,Mathf.Sin(age*.8f)*.24f-Mathf.Max(0,1-age/1.4f)*4-(Encounter?Encounter.Submerge:0),Mathf.Cos(age*.3f)*1.4f);float wind=Mathf.Clamp01(1-(nextAttack-Time.time)/1.2f);rig.localEulerAngles=new Vector3(wind*-10+Mathf.Sin(age*2)*2,0,Mathf.Sin(age)*2);
+            if(IsBoss){visualDepth=Mathf.MoveTowards(visualDepth,Encounter?Encounter.Submerge:0,Time.deltaTime*4.6f);transform.position=origin+new Vector3(Mathf.Sin(age*.24f)*4,Mathf.Sin(age*.8f)*.24f-Mathf.Max(0,1-age/1.4f)*4-visualDepth,Mathf.Cos(age*.3f)*1.4f)+(Encounter?Encounter.PoseOffset:Vector3.zero);float wind=Encounter?Encounter.Windup:0;rig.localEulerAngles=new Vector3(wind*-10+Mathf.Sin(age*2)*2,0,Mathf.Sin(age)*2);
                 if(Spec.id==117)for(int i=0;i<rig.childCount;i++){var arm=rig.GetChild(i);if(arm.name.StartsWith("Tentacle")){int index=int.Parse(arm.name.Substring(9));arm.localRotation=Quaternion.Euler(Mathf.Sin(age*1.4f+index)*8-wind*20,index*45,Mathf.Sin(age+index)*8);}}
             }else if(Time.time>launchUntil){
                 bool floating=Spec.body==BodyFamily.Jelly||Spec.body==BodyFamily.Ray||Spec.body==BodyFamily.Squid;
                 if(Time.time<chargeUntil){body.velocity=chargeDirection*(8+Spec.island*.35f);if(to.magnitude<1.1f){DealContact();chargeUntil=0;}}
-                else if(floating){body.useGravity=false;Vector3 desired=to.normalized*(to.magnitude>6?Spec.speed:to.magnitude<3?-2:0)+Vector3.Cross(Vector3.up,to.normalized)*Mathf.Sin(age)*1.5f;desired.y=(game.World.GroundAt(transform.position)+2.3f+Mathf.Sin(age*2)*.35f-transform.position.y)*3;body.velocity=Vector3.Lerp(body.velocity,desired*slow,Time.deltaTime*4);}
-                else if(Time.time>hopAt&&transform.position.y-game.World.GroundAt(transform.position)<1.25f){body.useGravity=true;Vector3 dir=to.magnitude<3&&Spec.attack!=AttackStyle.Bite?-to.normalized:to.normalized;float speed=Spec.speed*slow;body.velocity=dir*speed+Vector3.up*(Spec.body==BodyFamily.Crab?2.1f:3.8f);hopAt=Time.time+(Spec.trait==SeaTrait.Frenzy&&health<maxHealth*.5f?.6f:1.2f);}
+                else if(floating){body.useGravity=false;Vector3 desired=to.normalized*(to.magnitude>6?Spec.speed:to.magnitude<3?-2:0)+Vector3.Cross(Vector3.up,to.normalized)*Mathf.Sin(age)*1.5f;desired.y=(game.World.GroundAt(transform.position)+2.3f+Mathf.Sin(age*2)*.35f-transform.position.y)*3;body.velocity=Vector3.Lerp(body.velocity,desired*slow*(normalWindup>0?.3f:1),Time.deltaTime*4);}
+                else if(normalWindup==0&&Time.time>hopAt&&transform.position.y-game.World.GroundAt(transform.position)<1.25f){body.useGravity=true;Vector3 dir=to.magnitude<3&&Spec.attack!=AttackStyle.Bite?-to.normalized:to.normalized;float speed=Spec.speed*slow;body.velocity=dir*speed+Vector3.up*(Spec.body==BodyFamily.Crab?2.1f:3.8f);hopAt=Time.time+(Spec.trait==SeaTrait.Frenzy&&health<maxHealth*.5f?.6f:1.2f);}
                 float wind=Mathf.Clamp01(1-(nextAttack-Time.time)/.8f);rig.localEulerAngles=new Vector3(Mathf.Sin(age*7)*4-wind*18,0,Mathf.Sin(age*9)*8);
                 if(transform.position.y<-1.6f){var p=game.Player.transform.position+game.Player.transform.forward*2;p.y=game.World.GroundAt(p)+1;transform.position=p;body.velocity=Vector3.up*2;}
                 if(Spec.trait==SeaTrait.Blinker&&Time.time>blinkAt){blinkAt=Time.time+7;Vector3 p=transform.position+transform.right*(Mathf.Sin(age)>0?3:-3);if(game.World.GroundAt(p)>0){game.Effect(transform.position,Spec.color,8,.1f);p.y=game.World.GroundAt(p)+1;transform.position=p;}}
             }
             if(tail)tail.localRotation=Quaternion.Euler(0,Mathf.Sin(age*12)*22,0);
             if(healing&&Time.time>healAt){healing=false;health=Mathf.Min(maxHealth,health+maxHealth*.12f);foreach(var e in game.Enemies)if(e!=this)e.health=Mathf.Min(e.maxHealth,e.health+e.maxHealth*.08f);game.Effect(transform.position,Color.green,14,.13f);}
-            if(!Encounter&&!Elite&&Time.time>=nextAttack){Attack();nextAttack=Time.time+Spec.tempo/slow;}
+            if(!Encounter&&!Elite){
+                if(normalWindup>0&&Time.time>=normalWindup){normalWindup=0;Attack();normalRecovery=Time.time+.8f;nextAttack=Time.time+Mathf.Max(.8f,Spec.tempo-windupLength)/slow;}
+                else if(normalWindup==0&&Time.time>=nextAttack&&Time.time>launchUntil){attackAim=game.Player.transform.position;windupLength=(Spec.attack==AttackStyle.Charge||Spec.attack==AttackStyle.Leap?.9f:Spec.attack==AttackStyle.Heal||Spec.attack==AttackStyle.Split?1.25f:.7f)*(game.Run.easy?1.3f:1);normalWindup=Time.time+windupLength;}
+            }
             if(flash>0){flash-=Time.deltaTime;if(flash<=0)Tint(false);}
         }
         void DealContact(){float before=game.Run.health;game.Player.TakeDamage(8+Spec.island*1.2f);if(game.Run.health<before)game.Player.ApplyStatus(Spec.trait);if(Spec.trait==SeaTrait.Leech)health=Mathf.Min(maxHealth,health+maxHealth*.06f);}
@@ -75,11 +82,11 @@ namespace Tidebreak
         void Bolt(Vector3 target,float speed,float damage,float curve=0)
         {var g=Shape.Part("Creature water bolt",PrimitiveType.Sphere,game.Hazards,transform.position+Vector3.up*.4f,Vector3.one*(IsBoss?.43f:.26f),Spec.color,false,true);var b=g.AddComponent<SeaProjectile>();b.game=game;b.velocity=(target-g.transform.position).normalized*speed;b.damage=damage;b.trait=Spec.trait;b.returnAfter=curve;}
         public void EmitBolt(Vector3 target,float speed,float damage,float curve=0){Bolt(target,speed,damage,curve);}
+        public void Lunge(Vector3 target,float seconds){if(IsBoss||!body)return;chargeDirection=target-transform.position;chargeDirection.y=0;chargeDirection.Normalize();chargeUntil=Time.time+seconds;body.velocity=Vector3.up*2.6f;}
         public void NotifyAttackExecuted(){AttackExecutions++;if(Motion)Motion.Attack();}
         void Attack()
         {
-            AttackExecutions++;if(Motion)Motion.Attack();Vector3 p=game.Player.transform.position;float damage=IsBoss?14+Spec.island*1.2f:9+Spec.island*.95f;float delay=game.Run.easy?1.8f:1.15f;
-            game.Notice(DisplayName+" · "+ExpeditionContent.AttackNames[(int)Spec.attack]+"："+ExpeditionContent.Counters[(int)Spec.attack],2.4f);
+            AttackExecutions++;if(Motion)Motion.Attack();Vector3 p=IsBoss?game.Player.transform.position:attackAim;float damage=IsBoss?14+Spec.island*1.2f:9+Spec.island*.95f;float delay=game.Run.easy?1.8f:1.15f;
             if(Spec.id==117){game.Warn(p,2.6f,delay,damage);game.Warn(p+game.Player.transform.right*3,2.3f,delay+.7f,damage);if(phase==2)game.Warn(p-game.Player.transform.right*3,2.3f,delay+1.4f,damage);for(int i=-1;i<=1;i++)Bolt(p+Vector3.right*i*2,10,10);}
             else switch(Spec.attack){
                 case AttackStyle.Bite:if(Vector3.Distance(transform.position,p)<3.5f)game.Warn(p,1.35f,.65f,damage);else Bolt(p,7,damage*.6f);break;
@@ -88,7 +95,7 @@ namespace Tidebreak
                 case AttackStyle.Mortar:game.Warn(p,IsBoss?2.8f:1.7f,delay+.25f,damage);if(phase==2)game.Warn(p+game.Player.transform.forward*3,2,delay+.8f,damage);break;
                 case AttackStyle.Ring:ThreatField.Ring(game,transform.position,damage,Spec.color);break;
                 case AttackStyle.Beam:ThreatField.Line(game,transform.position+Vector3.up,p,IsBoss?1.15f:.6f,delay,damage,Spec.color);break;
-                case AttackStyle.Mine:ThreatField.Pool(game,p+game.Player.transform.forward*2,IsBoss?2.2f:1.3f,delay,damage*.45f,Spec.color);break;
+                case AttackStyle.Mine:ThreatField.Pool(game,p+game.Player.transform.forward*2,IsBoss?2.2f:1.3f,delay,damage*.45f,Spec.color,Spec.trait);break;
                 case AttackStyle.Leap:game.Warn(p,IsBoss?2.6f:1.5f,delay,damage);if(!IsBoss){body.velocity=(p-transform.position)*1.1f+Vector3.up*6;launchUntil=Time.time+.8f;}break;
                 case AttackStyle.Spiral:for(int i=0;i<7;i++){float a=age+i*Mathf.PI*2/7;Bolt(transform.position+new Vector3(Mathf.Cos(a),.1f,Mathf.Sin(a))*10,7,damage*.6f);}Bolt(p,8,damage*.65f);break;
                 case AttackStyle.Pull:ThreatField.Vortex(game,p+Vector3.forward*2,IsBoss?4:2.3f,delay,damage,Spec.color);break;
@@ -101,7 +108,7 @@ namespace Tidebreak
             exposedUntil=Time.time+delay+1.65f;
         }
         public void Slow(float seconds){slowUntil=Mathf.Max(slowUntil,Time.time+seconds);}
-        public void Stun(float seconds){stunUntil=Mathf.Max(stunUntil,Time.time+(IsBoss?seconds*.4f:seconds));healing=false;}
+        public void Stun(float seconds){stunUntil=Mathf.Max(stunUntil,Time.time+(IsBoss?seconds*.4f:seconds));healing=false;if(!IsBoss&&!elite){normalWindup=0;nextAttack=Mathf.Max(nextAttack,stunUntil+.55f);}}
         public void Hit(float damage,bool weak=false,bool critical=false,bool effects=true)
         {
             LastDamageApplied=0;if(dead||game.State!=VoyageState.Combat)return;lastWeak=weak;float mult=Encounter?Encounter.DamageFactor:Elite?Elite.DamageFactor(weak):1;
@@ -109,6 +116,7 @@ namespace Tidebreak
             float applied=damage*mult;if(Encounter)applied=Encounter.ClampPhaseDamage(applied);LastDamageApplied=applied;
             if(applied<=0){if(effects){game.UI.HitMarker(false,0);game.Audio.Cue("impact");}return;}
             health-=applied;healing=false;if(Elite)Elite.OnHit(weak);if(Motion)Motion.Hit();
+            if(weak&&normalWindup>0&&(Spec.attack==AttackStyle.Heal||Spec.attack==AttackStyle.Split)){normalWindup=0;normalRecovery=Time.time+1.5f;nextAttack=normalRecovery;game.Notice("弱点打断 · "+ExpeditionContent.AttackNames[(int)Spec.attack]+"失败",1.6f);}
             if(effects){game.UI.HitMarker(critical||weak,applied);game.Audio.Cue(weak?"weak":"impact");flash=.09f;Tint(true);game.Effect(transform.position,Spec.color,5,.07f);if(game.Run.fireRelics>0)burnUntil=Time.time+2.5f;if(game.Run.iceRelics>0)Slow(1+game.Run.iceRelics*.4f);if(game.Run.shockRelics>0&&Random.value<.1f*game.Run.shockRelics)Stun(.55f);}
             if(body)body.AddForce(game.Player.View.transform.forward*(1+game.Run.staggerRelics*.3f)+Vector3.up*.2f,ForceMode.Impulse);
             stagger+=applied*(weak?1.6f:1)*(1+game.Run.staggerRelics*.2f);if(stagger>maxHealth*(IsBoss?.2f:.45f)&&Time.time>=staggerReady){stagger=0;staggerReady=Time.time+(IsBoss?9:2.4f);exposedUntil=Time.time+(IsBoss?3:1);nextAttack=Mathf.Max(nextAttack,Time.time+(IsBoss?.5f:.5f));if(!IsBoss)Stun(.2f);}

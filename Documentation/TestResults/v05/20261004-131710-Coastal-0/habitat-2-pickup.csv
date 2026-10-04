@@ -1,0 +1,4 @@
+seconds,habitat,event,player_x,player_y,player_z,fish_x,fish_y,fish_z,distance
+0.00,2,defeated,0.63,3.41,10.38,3.31,1.54,24.68,14.66
+1.07,2,approach_start,0.90,3.44,10.86,0.90,1.95,11.86,1.80
+1.09,2,picked_up,0.90,3.43,10.97,1.03,2.32,11.29,1.16

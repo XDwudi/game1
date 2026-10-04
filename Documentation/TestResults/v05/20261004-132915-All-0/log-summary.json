@@ -1,0 +1,20 @@
+{
+  "run": "20261004-132915-All-0",
+  "pass_count": 638,
+  "fail_count": 0,
+  "completion_marker": "EXPEDITION_QA_PASSED in 726.9 seconds",
+  "reported_player_exit_code": 0,
+  "assembly_sha256": "2E3FE60226019142470A5BFE9EF9C14D9A77CF85EC8D02DC14F7CBB1724A69FB",
+  "released_assembly_matches": true,
+  "package_manifest_assembly_matches": true,
+  "full_player_log_path": "Artifacts/v05-20261004-132915-All-0.log",
+  "full_player_log_sha256": "5A15DC30F651BBC75D566E7C10A49BC50C9CFD956918431E2376B53E5C235240",
+  "runtime_exception_matches": [],
+  "other_error_log_matches": [
+    {
+      "line": 662,
+      "text": "Curl error 42: Callback aborted"
+    }
+  ],
+  "note": "The only error-text entry is Unity Curl error 42: Callback aborted after EXPEDITION_QA_PASSED during shutdown. It is retained, not counted as a C# runtime exception."
+}

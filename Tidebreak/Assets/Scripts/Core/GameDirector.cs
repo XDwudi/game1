@@ -35,12 +35,14 @@ namespace Tidebreak
         float nextLineSound;
         FishLoot targetLoot;
         int interactionKind;
+        public BossMechanism ActiveBossMechanism {get{foreach(var e in Enemies)if(e&&e.Encounter&&e.Encounter.Mechanism)return e.Encounter.Mechanism;return null;}}
         void Awake()
         {
             Instance=this;Automation=Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakSmoke")>=0;
             if(Automation)SaveStore.DirectoryOverride=System.IO.Path.Combine(Application.temporaryCachePath,"TidebreakIslandQA");
             Application.targetFrameRate=90;QualitySettings.vSyncCount=0;
             Log=SaveStore.Read<CaptainLog>("captain")??new CaptainLog();
+            if(Log.fieldOfView<50){Log.fieldOfView=75;Log.musicVolume=.7f;Log.effectsVolume=.85f;Log.ambienceVolume=.7f;Log.headBob=true;}
             if(Log.discovered==null)Log.discovered=new bool[8];else if(Log.discovered.Length!=8)Array.Resize(ref Log.discovered,8);
             if(Log.goldDiscovered==null)Log.goldDiscovered=new bool[8];else if(Log.goldDiscovered.Length!=8)Array.Resize(ref Log.goldDiscovered,8);
             if(Log.heaviest==null)Log.heaviest=new float[8];else if(Log.heaviest.Length!=8)Array.Resize(ref Log.heaviest,8);
@@ -150,14 +152,14 @@ namespace Tidebreak
             if(boss&&Run.stage>=10&&!Automation&&(Run.cinematicMask&(1<<Run.stage))==0){PlayCinematic(Run.stage,()=>BeginCombat(true));return;}
             ClearFishing();Charging=false;SetState(VoyageState.Combat);Audio.SetCombat(true);Player.SetRod(false);
             if(boss){var spec=ExpeditionContent.Species[Run.stage<=9?107+Run.stage:Run.stage==10?117:118];SpawnSpecies(spec,false,new Vector3(0,1.1f,38));Splash(new Vector3(0,-.35f,38));Audio.Cue("boss");Notice(spec.name+" 苏醒 · 留意专属蓄势预警",4);}
-            else {var spec=ExpeditionContent.Roll(Run,Rng);bool elite=Rng.NextDouble()<.08+Run.stage*.018+(Run.route==RouteKind.Hunt?.18:0);var e=SpawnSpecies(spec,elite,castPoint);e.LaunchToward(Player.transform.position+Player.transform.forward*3.5f);Notice(spec.name+" 出水！"+ExpeditionContent.Counters[(int)spec.attack],4);}
+            else {var spec=RollCoastalCatch();bool elite=Rng.NextDouble()<.08+Run.stage*.018+(Run.route==RouteKind.Hunt?.18:0);var e=SpawnSpecies(spec,elite,castPoint);e.CaughtHabitat=hookedHabitat;e.LaunchToward(Player.transform.position+Player.transform.forward*3.5f);Notice(spec.name+" 出水！"+ExpeditionContent.Counters[(int)spec.attack],4);}
         }
         Enemy Spawn(CreatureKind kind,bool elite,Vector3 pos)
         {var e=new GameObject(Balance.CreatureName(kind)).AddComponent<Enemy>();e.Init(this,kind,elite,pos);return e;}
         public void EnemyKilled(Enemy enemy)
         {
             if(State!=VoyageState.Combat)return;
-            var item=new CatchData{kind=enemy.kind,speciesId=enemy.Spec.id,elite=enemy.elite,quality=enemy.quality,weight=enemy.weight,airshot=enemy.Airborne,weakshot=enemy.lastWeak};
+            var item=new CatchData{kind=enemy.kind,speciesId=enemy.Spec.id,elite=enemy.elite,quality=enemy.quality,weight=enemy.weight,airshot=enemy.Airborne,weakshot=enemy.lastWeak,habitat=enemy.CaughtHabitat,fieldSample=enemy.CaughtHabitat>=0};
             float bonus=(item.quality==2?2.6f:item.quality==1?1.6f:1)*(item.airshot?1.25f:1)*(item.weakshot?1.15f:1);
             item.value=Mathf.RoundToInt(enemy.Spec.value*(enemy.elite?1.65f:1)*bonus*(1+Run.fortuneRelics*.15f)*(Run.route==RouteKind.Shoal?1.15f:1));
             Run.kills++;Run.health=Mathf.Min(Run.MaxHealth,Run.health+Run.leechRelics*3);Log.totalKills++;
@@ -173,7 +175,7 @@ namespace Tidebreak
         {
             if(fish.Registered)return;fish.Registered=true;Run.landed++;int id=fish.Data.speciesId;
             if(id>=0&&id<119){if(!Run.islandCaught.Contains(id))Run.islandCaught.Add(id);Log.speciesWeight[id]=Mathf.Max(Log.speciesWeight[id],fish.Data.weight);if(fish.Data.quality==2)Log.speciesGold[id]=true;}
-            SaveStore.Write("captain",Log);if(Run.questStep==1&&Run.landed>=1)Notice("第一份鱼获已到手 · 出售可赚取金币，接着取电池修复灯塔",4);
+            SaveStore.Write("captain",Log);RecordHabitat(fish.Data);if(Run.questStep==1&&Run.landed>=1)Notice("第一份鱼获已到手 · 出售可赚取金币，接着取电池修复灯塔",4);
         }
         public bool Stow(FishLoot fish)
         {
@@ -191,7 +193,9 @@ namespace Tidebreak
         void UpdateInteraction()
         {
             Interaction="";interactionKind=0;targetLoot=null;if(!IsPlaying||State==VoyageState.Fishing)return;
-            string missionInteraction;if(TryMissionInteraction(out missionInteraction)){Interaction=missionInteraction;interactionKind=20;return;}
+            string missionInteraction;var mechanism=ActiveBossMechanism;
+            if(mechanism&&mechanism.TryInteraction(out missionInteraction)){Interaction=missionInteraction;interactionKind=21;return;}
+            if(TryMissionInteraction(out missionInteraction)){Interaction=missionInteraction;interactionKind=20;return;}
             Vector3 p=Player.transform.position;
             if(State==VoyageState.Sailing) {
                 if(Run.stage<=9&&FlatDistance(p,World.QuestPoint)<4){Interaction="E  与 "+Island.npc+" 交谈 · "+Island.title;interactionKind=6;return;}
@@ -210,7 +214,7 @@ namespace Tidebreak
         public void Interact()
         {
             UpdateInteraction();
-            if(interactionKind==20)UseMissionAction();else if(interactionKind==1)SellCatch();else if(interactionKind==2)OpenShop();else if(interactionKind==3)OpenRoute();else if(interactionKind==4)BeginCombat(true);else if(interactionKind==5)Player.PickUp(targetLoot);else if(interactionKind==6)TalkGuide();else if(interactionKind>=7&&interactionKind<=9)UseSite(interactionKind-7);
+            if(interactionKind==21){var mechanism=ActiveBossMechanism;if(mechanism)mechanism.UseAction();}else if(interactionKind==20)UseMissionAction();else if(interactionKind==1)SellCatch();else if(interactionKind==2)OpenShop();else if(interactionKind==3)OpenRoute();else if(interactionKind==4)BeginCombat(true);else if(interactionKind==5)Player.PickUp(targetLoot);else if(interactionKind==6)TalkGuide();else if(interactionKind>=7&&interactionKind<=9)UseSite(interactionKind-7);
         }
         public static float FlatDistance(Vector3 a,Vector3 b){a.y=b.y=0;return Vector3.Distance(a,b);}
         public void OpenShop(){if(State!=VoyageState.Sailing||FlatDistance(Player.transform.position,World.ShopPoint)>4.8f)return;Player.StowHeld();Checkpoint(false);SetState(VoyageState.Shop);}

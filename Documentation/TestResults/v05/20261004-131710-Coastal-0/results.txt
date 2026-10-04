@@ -1,0 +1,21 @@
+PASS v05 eleven different player-action briefs exist
+PASS habitat 0 accepts a real water cast
+PASS habitat 0 tension/reeling produces a live encounter
+PASS habitat 0 rolls its own ecological family pool and tags the catch origin
+PASS habitat 0 fish is defeated with ordinary movement and real starter weapon
+PASS habitat 0 actual caught fish records only after physical pickup
+PASS live habitat pickup pays only the final one-time research stipend
+PASS habitat 1 accepts a real water cast
+PASS habitat 1 tension/reeling produces a live encounter
+PASS habitat 1 rolls its own ecological family pool and tags the catch origin
+PASS habitat 1 fish is defeated with ordinary movement and real starter weapon
+PASS habitat 1 actual caught fish records only after physical pickup
+PASS live habitat pickup pays only the final one-time research stipend
+PASS habitat 2 accepts a real water cast
+PASS habitat 2 tension/reeling produces a live encounter
+PASS habitat 2 rolls its own ecological family pool and tags the catch origin
+PASS habitat 2 fish is defeated with ordinary movement and real starter weapon
+PASS habitat 2 actual caught fish records only after physical pickup
+PASS live habitat pickup pays only the final one-time research stipend
+PASS all three coastal ecological pools are reachable with the starting lure
+PASS v05 new voyage releases boss controllers and mechanism props

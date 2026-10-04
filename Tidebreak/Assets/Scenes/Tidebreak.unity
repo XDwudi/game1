@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1868191609
+--- !u!1 &656483174
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1868191611}
-  - component: {fileID: 1868191610}
+  - component: {fileID: 656483176}
+  - component: {fileID: 656483175}
   m_Layer: 0
   m_Name: "Tidebreak \xB7 Game bootstrap"
   m_TagString: Untagged
@@ -140,13 +140,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1868191610
+--- !u!114 &656483175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868191609}
+  m_GameObject: {fileID: 656483174}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e3ce4e5fa78471428b55820547d3710, type: 3}
@@ -158,6 +158,8 @@ MonoBehaviour:
   TonicUntil: 0
   Chummed: 0
   Run:
+    habitatRecords: 000000000000000000000000000000000000000000000000000000000000000000000000
+    researchRewards: 0
     questStep: 0
     exploredMask: 0
     eventMask: 0
@@ -441,6 +443,11 @@ MonoBehaviour:
     - 0
     volume: 0.65
     sensitivity: 1
+    fieldOfView: 75
+    musicVolume: 0.7
+    effectsVolume: 0.85
+    ambienceVolume: 0.7
+    headBob: 1
     shake: 1
     easy: 0
   State: 0
@@ -461,13 +468,13 @@ MonoBehaviour:
   LastReward: 0
   Hazards: {fileID: 0}
   AstrolabeAxes: 000000000000000000000000
---- !u!4 &1868191611
+--- !u!4 &656483176
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868191609}
+  m_GameObject: {fileID: 656483174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}

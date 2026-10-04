@@ -39,7 +39,7 @@ namespace Tidebreak
         void LateUpdate()
         {
             if(!enemy||!rig||enemy.game.Paused)return;
-            float t=Time.time,wind=enemy.Encounter?enemy.Encounter.Windup:enemy.Elite?enemy.Elite.Windup:0;
+            float t=Time.time,wind=enemy.Encounter?enemy.Encounter.Windup:enemy.Elite?enemy.Elite.Windup:enemy.AttackWindup;
             attackPulse=Mathf.MoveTowards(attackPulse,0,Time.deltaTime*2.8f);hitPulse=Mathf.MoveTowards(hitPulse,0,Time.deltaTime*7);
             float breath=Mathf.Sin(t*2.4f+seed)*.025f;
             rig.localScale=Vector3.Scale(scale,new Vector3(1+breath+wind*.06f,1+breath*.6f-wind*.08f+attackPulse*.08f,1-breath*.5f+wind*.05f));

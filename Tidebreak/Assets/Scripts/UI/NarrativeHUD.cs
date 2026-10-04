@@ -10,25 +10,79 @@ namespace Tidebreak
         bool resonanceVisualAid;
 
         public void ShowNarrativeStory(bool talking)
+        { BuildStoryPage(talking,0); }
+
+        static string[] DialoguePages(string text)
+        {
+            var paragraphs=text.Split(new[]{"\n\n"},StringSplitOptions.RemoveEmptyEntries);
+            var pages=new System.Collections.Generic.List<string>();string page="";
+            foreach(var paragraph in paragraphs){
+                if(page.Length>0&&(page.Length+paragraph.Length>145||page.Contains("\n\n"))){pages.Add(page);page="";}
+                page+=(page.Length>0?"\n\n":"")+paragraph;
+            }
+            if(page.Length>0)pages.Add(page);return pages.Count>0?pages.ToArray():new[]{text};
+        }
+        void JournalTabs(RectTransform p,int current)
+        {
+            Button(p,80,267,277,41,"航行纪事",()=>ShowNarrativeStory(false),current==0);
+            Button(p,372,267,277,41,"证据收藏",()=>ShowEvidenceJournal(),current==1);
+            Button(p,664,267,277,41,"生态笔记",ShowResearchJournal,current==2);
+        }
+        void BuildStoryPage(bool talking,int pageIndex)
         {
             var p=NewModal();var r=game.Run;var chapter=NarrativeContent.Chapter(r.stage);
-            Header(p,"VOICES OF THE NINE TIDES / 九潮纪事",game.Island.title,talking?game.Island.npc+" · "+game.Island.name:"船长日志 · 委托、证据与尚未抵达的明天");
-            string words=r.questStep==0?chapter.premise:r.questStep<3?chapter.assignment:r.questStep==3&&!r.bossCleared?chapter.discovery:chapter.resolution;
-            Box(p,80,281,855,435,Panel);Box(p,80,281,5,435,game.Island.accent);
-            Text(p,111,301,791,37,r.questStep==0?"初次相遇":r.questStep<3?"正在进行的委托":r.questStep==3&&!r.bossCleared?"你亲手发现的证据":"离岛之前",19,Gold);
-            Text(p,111,361,790,318,words,25,Cream);
-            Box(p,963,281,557,435,Panel);
-            IslandIllustration(p,977,295,529,181,r.stage);
-            Text(p,989,486,505,27,"航海手记 · "+game.Island.name,16,Gold);
-            Text(p,989,526,505,76,chapter.mechanic,20,Cream);
-            Text(p,989,620,505,76,game.QuestObjective,18,Mint);
-            string aftermath="调查进度会自动记录；进行中的护送、守护或操作可在失败后重新启动。";
-            if(r.stage==9&&r.questStep>=3)aftermath=r.storyChoice==1?"你的决定：保留航行记忆。幸存者将带着共同的昨天，学习面对真正的明天。":"你的决定：放归被困者。重复的昨天会结束，每个人都能写下自己的新航线。";
-            Text(p,80,737,1440,48,aftermath,18,Muted);
+            Header(p,"VOICES OF THE NINE TIDES / 九潮纪事",game.Island.title,talking?game.Island.npc+" · "+NarrativeContent.BeatLabel(r,game.MissionActive):"船长日志 · 每一次真实的行动，都在改变这段航程");
+            if(!talking)JournalTabs(p,0);
+            float top=talking?281:326,height=talking?435:390;
+            var pages=DialoguePages(NarrativeContent.Dialogue(r,game.MissionActive));pageIndex=Mathf.Clamp(pageIndex,0,pages.Length-1);
+            Box(p,80,top,855,height,Panel);Box(p,80,top,5,height,game.Island.accent);
+            Text(p,111,top+21,791,31,NarrativeContent.BeatLabel(r,game.MissionActive),18,Gold);
+            Text(p,111,top+79,790,height-141,pages[pageIndex],27,Cream);
+            Text(p,111,top+height-41,790,29,"航行记录  "+(pageIndex+1)+" / "+pages.Length,15,Muted,TextAlignmentOptions.Right);
+            Box(p,963,top,557,height,Panel);IslandIllustration(p,977,top+14,529,140,r.stage);
+            Text(p,989,top+172,505,27,"下一步 · "+game.Island.name,17,Gold);
+            var rules=Text(p,989,top+216,505,height-239,r.questStep>=4?NarrativeContent.Aftermath(r.stage,r.storyChoice):r.questStep==3&&!r.bossCleared?BossNarrative.Teaching(107+r.stage):NarrativeContent.Instructions(r),19,Cream);
+            rules.overflowMode=TextOverflowModes.Ellipsis;
+            Text(p,80,737,1440,46,game.QuestObjective,18,Mint);
             bool ready=r.questStep==0||r.questStep==3&&r.bossCleared&&r.bossTrophy;
-            if(talking&&ready)Button(p,80,805,830,56,r.questStep==0?"答应帮忙 · 开始这段航行":"交付潮核 · 与向导告别",()=>game.AdvanceStory(),true);
-            else if(r.stage==2&&(r.eventMask&1)!=0&&r.questStep<3)Button(p,80,805,670,56,"回放已经记录的珊瑚旋律",game.PlayMissionMelody);
-            Button(p,1090,805,430,56,"返回海岛",()=>{if(talking)game.CloseDialogue();else game.TogglePause();},!ready);
+            if(pageIndex>0){int previous=pageIndex-1;Button(p,80,805,235,56,"← 上一句",()=>BuildStoryPage(talking,previous));}
+            if(pageIndex<pages.Length-1){int next=pageIndex+1;Button(p,333,805,577,56,"听下去 →",()=>BuildStoryPage(talking,next),true);}
+            else if(talking&&ready)Button(p,333,805,577,56,r.questStep==0?"答应帮忙 · 记下这件事":"交付潮核 · 与向导告别",()=>game.AdvanceStory(),true);
+            else if(r.stage==2&&(r.eventMask&1)!=0&&r.questStep<3)Button(p,333,805,577,56,"回放记录的珊瑚旋律",game.PlayMissionMelody);
+            Button(p,1090,805,430,56,"返回海岛",()=>{if(talking)game.CloseDialogue();else game.TogglePause();});
+        }
+        public void ShowEvidenceJournal(int selectedStage=0)
+        {
+            var entries=IslandEvidence.JournalEntries(game.Run);var p=NewModal();
+            Header(p,"THE THINGS WE KEPT / 证据收藏","带回来的，不只有鱼获",entries.Count+" / 9 份证物 · 这些文字在世界里真实存在；重读时，也许会听见先前忽略的一句。");
+            JournalTabs(p,1);
+            if(selectedStage==0)selectedStage=entries.Count>0?entries[entries.Count-1].Stage:game.Run.stage;
+            var chosen=entries.FirstOrDefault(e=>e.Stage==selectedStage);
+            for(int i=1;i<=9;i++){int stage=i;var entry=entries.FirstOrDefault(e=>e.Stage==stage);Button(p,80,329+(i-1)*46,382,37,entry!=null?i.ToString("00")+"  "+entry.Title:i.ToString("00")+"  尚未找到的记录",()=>ShowEvidenceJournal(stage),stage==selectedStage,entry!=null);}
+            Box(p,493,329,1027,411,new Color(.92f,.88f,.76f));Box(p,514,350,3,367,new Color(.57f,.37f,.2f,.4f));
+            Text(p,546,354,917,40,chosen!=null?chosen.Title:"让海岛留下更多故事",28,Ink);
+            Text(p,546,421,917,270,chosen!=null?chosen.Text:"寻找每座岛上的隐藏现场。比较当事人留下的信件、记录与物件，作出有依据的判断。\n\n所有答案都在现场线索里，读错可以继续尝试。发现后，记录会留在这里。",25,Ink);
+            Text(p,80,764,958,58,"地图上的第三处发现藏着一份证物。复访向导时，他也会回应你的发现。",18,Muted);
+            Button(p,1120,805,400,56,"返回海岛",game.TogglePause,true);
+        }
+        public void ShowResearchJournal()
+        {
+            var p=NewModal();int record=game.ResearchRecord;
+            Header(p,"A COAST WORTH KNOWING / 生态笔记",game.Island.name+" · 三处不同的海",game.ResearchHint);
+            JournalTabs(p,2);
+            Box(p,80,329,1440,113,new Color(.88f,.86f,.72f));
+            Text(p,105,350,1390,73,"西  礁隙  ◇ ───────── 船长码头 / 湾心水道 ───────── ◇  海草  东\n转动视角，让浮漂真正落进不同水域；拿起当地鱼获，才算完成一次观察。",22,Ink,TextAlignmentOptions.Center);
+            for(int i=0;i<3;i++){
+                float x=80+i*486;bool done=(record&(1<<i))!=0;int start=Mathf.Clamp(game.Run.stage-1,0,8)*12;
+                int found=game.Run.islandCaught.Count(id=>id>=start&&id<start+12&&(id-start)%3==i);
+                Box(p,x,464,464,252,Panel);Box(p,x,464,464,4,done?Mint:Gold);
+                Text(p,x+23,485,416,37,(done?"◆ ":"◇ ")+GameDirector.HabitatNames[i],27,done?Mint:Cream);
+                Text(p,x+23,542,416,90,GameDirector.HabitatClues[i],22,Cream);
+                Text(p,x+23,659,416,32,(done?"已记录":"等待第一份样本")+"  ·  本趟收获 "+found+" / 4 种",18,Gold);
+            }
+            Text(p,80,742,1020,81,"每岛首次完成三处观察：研究津贴 +35 金币。每处钓场四种生物，拟饵升级逐步开放。\n新的拟饵值得带回旧岛；金币用于工坊升级，发现记录不会因出售鱼获而丢失。",18,Muted);
+            Button(p,1130,743,390,49,"查看本地物种图鉴",()=>{codexIsland=Mathf.Clamp(game.Run.stage-1,0,8);BuildCodex();});
+            Button(p,1130,809,390,53,"返回海岛",game.TogglePause,true);
         }
 
         public void ShowResonancePuzzle(string status="")

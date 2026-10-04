@@ -22,3 +22,5 @@
 *.unitypackage
 ThirdParty/*.otf
 Artifacts/
+__pycache__/
+*.pyc

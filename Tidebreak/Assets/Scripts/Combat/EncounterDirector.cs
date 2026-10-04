@@ -4,37 +4,29 @@ using UnityEngine;
 
 namespace Tidebreak
 {
-    // Each boss owns a moveset, phase gates and recovery windows. Health is never scaled to player gear.
+    // Combat phases share scheduling, while BossMechanism owns each encounter's
+    // player actions and damage rules. Health is never scaled to player gear.
     public class EncounterDirector : MonoBehaviour
     {
         public Enemy Owner { get; private set; }
         public int Phase { get; private set; } = 1;
         public int Moves { get; private set; }
         public int GatesBroken { get; private set; }
-        public int SeveredArms { get; private set; }
-        public int SeveredArmMask { get; private set; }
+        public BossMechanism Mechanism {get;private set;}
+        public int SeveredArms { get {return bossIndex==9&&Mechanism?Mechanism.CompletedActions:0;} }
+        public int SeveredArmMask { get {int mask=0;for(int i=0;i<SeveredArms;i++)mask|=1<<(i*2+1);return mask;} }
         public int KrakenSlamCount {get{return Mathf.Max(2,2+Phase-SeveredArms);}}
-        public string Cue { get; private set; }
+        string cue;
+        public string Cue { get {return Mechanism&&Mechanism.Active?Mechanism.Cue:cue;} private set {cue=value;} }
         public float Windup { get { return pending == null ? 0 : Mathf.Clamp01(1 - (executeAt - Time.time) / tellDuration); } }
-        public bool Recovering { get { return Time.time < recoveryUntil && Targets.Count == 0; } }
-        public float Submerge {get{return bossIndex==10&&pending!=null&&(turn-1)%3==0?Mathf.Sin(Windup*Mathf.PI)*2.4f:0;}}
-        public float PosePitch {get{return bossIndex==10?((turn-1)%3==2?-18:12)*Windup:bossIndex==9?-4*Windup:0;}}
-        public float FacingOffset {get{return bossIndex==10&&Recovering?Mathf.Sin(Time.time*.65f)*48:0;}}
+        public bool Recovering { get { return Mechanism&&Mechanism.Active?Mechanism.DamageMultiplier>=1:Time.time<recoveryUntil; } }
+        public float Submerge {get{return Mechanism&&Mechanism.Active?Mechanism.Submerge:bossIndex==10&&pending!=null&&(turn-1)%3==0?Mathf.Sin(Windup*Mathf.PI)*2.4f:0;}}
+        public Vector3 PoseOffset {get{return Mechanism?Mechanism.PoseOffset:Vector3.zero;}}
+        public float PosePitch {get{return Mechanism&&Mechanism.Active?Mechanism.PosePitch:bossIndex==10?((turn-1)%3==2?-18:12)*Windup:bossIndex==9?-4*Windup:0;}}
+        public float FacingOffset {get{return Mechanism&&Mechanism.Active?Mechanism.FacingOffset:bossIndex==10&&Recovering?Mathf.Sin(Time.time*.65f)*48:0;}}
         public readonly List<EncounterTarget> Targets = new List<EncounterTarget>();
-        public float DamageFactor { get { return Targets.Count > 0 ? 0 : Recovering ? 1.35f : .48f; } }
-        public static readonly string[] Mechanics = {
-            "裂钳交叉：击碎两只钳锁，横移避开夹击；砸地后腹部暴露。",
-            "逆音潮环：跳过声波，摧毁共鸣贝；双环之间保留一次跳跃。",
-            "毒根潜袭：清除毒囊释放安全地面；尾迹锁定后再冲刺。",
-            "日轮石甲：打碎两块日轮碎片；躲开棋盘轰击后攻击头部。",
-            "沉钟牵引：先断锚链再躲回旋刃；鸣钟后的停顿是输出窗口。",
-            "冰脊猎线：碎冰开放逃生通道；侧移躲冲锋，跳过落地冲击。",
-            "雷极轮转：击毁接地电容，离开交叉雷线；放电后核心过载。",
-            "熔甲锻炉：破坏冷却阀使甲壳骤冷；熔池会封锁旧站位。",
-            "镜渊回响：击碎过去的三个锚点；记录你的位置，再依序重演。",
-            "八腕封海：斩断登陆触腕，跳过潮环；第三阶段触腕与墨潮交替。",
-            "白鲸追忆：击碎冰封声呐，引出潜航白鲸；双向破冰冲锋后反击。"
-        };
+        public float DamageFactor { get { return Mechanism&&Mechanism.Active?Mechanism.DamageMultiplier:Recovering?(Mechanism?Mechanism.ExposureMultiplier:1.35f):.65f; } }
+        public static readonly string[] Mechanics = BossMechanism.Instructions;
         GameDirector game;
         Action pending;
         float nextMove, executeAt, tellDuration, recoveryUntil, nextPressure;
@@ -47,7 +39,7 @@ namespace Tidebreak
             Owner = enemy; game = enemy.game; bossIndex = enemy.Spec.id - 108;
             nextMove = Time.time + 2.2f;
             Cue = Mechanics[bossIndex];
-            if (bossIndex == 0) CreateGate(2, "钳锁", new Color(1,.63f,.2f));
+            Mechanism=gameObject.AddComponent<BossMechanism>();Mechanism.Init(enemy,MechanismSolved);Mechanism.BeginPhase(1);
         }
         void Update()
         {
@@ -55,49 +47,38 @@ namespace Tidebreak
             Targets.RemoveAll(t => !t);
             if(Time.time>=recordAt){recordAt=Time.time+.8f;recentPositions.Enqueue(game.Player.transform.position);while(recentPositions.Count>4)recentPositions.Dequeue();}
             int desired = Owner.health <= Owner.maxHealth * .32f ? 3 : Owner.health <= Owner.maxHealth * .67f ? 2 : 1;
-            if (desired > Phase) ChangePhase(desired);
+            if (desired > Phase && (!Mechanism||!Mechanism.Active)) ChangePhase(desired);
             Owner.phase = Phase;
+            if(Mechanism&&Mechanism.Active&&!Mechanism.ShouldRunAttackPattern){pending=null;return;}
             if (pending != null && Time.time >= executeAt)
             {
                 var action = pending; pending = null; action(); Moves++; Owner.NotifyAttackExecuted();
                 recoveryUntil = Mathf.Max(recoveryUntil,Time.time + (Phase == 3 ? 2.1f : 2.8f));
-                nextMove = recoveryUntil + (Targets.Count > 0 ? .15f : .7f);
-            }
-            if (Targets.Count > 0 && Time.time >= nextPressure)
-            {
-                nextPressure = Time.time + 5;
-                game.Warn(game.Player.transform.position, 1.65f, 1.5f, 14 + bossIndex);
+                nextMove = recoveryUntil + (Mechanism&&Mechanism.Active ? 3.5f : .7f);
             }
             if (pending == null && Time.time >= nextMove) ScheduleMove();
         }
         void ChangePhase(int phase)
         {
-            Phase = phase; pending = null; turn = 0; recoveryUntil = 0; SeveredArms=SeveredArmMask=0;
+            Phase = phase; pending = null; turn = 0; recoveryUntil = 0;
             ClearTargets();
-            string[] names = { "钳锁", "共鸣贝", "毒囊", "日轮碎片", "锚链扣", "冰脊", "接地电容", "冷却阀", "记忆锚点", "登陆触腕", "冰封声呐" };
-            CreateGate(bossIndex >= 8 ? 3 : 2, names[bossIndex], Owner.Spec.color);
+            Mechanism.BeginPhase(phase);
             Cue = "第 " + Phase + " 阶段 · " + Mechanics[bossIndex];
-            game.Notice(Cue, 6); game.Audio.Cue("boss"); nextMove = Time.time + 2;
+            game.Notice(BossNarrative.Get(Owner.Spec.id).speaker+"："+BossNarrative.PhaseLine(Owner.Spec.id,Phase), 5); game.Audio.Cue("boss"); nextMove = Time.time + 2;
         }
         public float ClampPhaseDamage(float amount)
         {
             // A huge critical hit cannot skip the next encounter phase.
-            float floor = Targets.Count > 0 ? Owner.health : Phase == 1 ? Owner.maxHealth * .665f : Phase == 2 ? Owner.maxHealth * .315f : 0;
+            float floor = Phase == 1 ? Owner.maxHealth * .665f : Phase == 2 ? Owner.maxHealth * .315f : Mechanism&&Mechanism.Active?1:0;
             return Mathf.Min(amount, Mathf.Max(0, Owner.health - floor));
         }
-        void CreateGate(int count, string label, Color color)
+        void MechanismSolved()
         {
-            if(bossIndex==9)color=new Color(.83f,.38f,.72f);
-            for (int i = 0; i < count; i++)
-            {
-                int armIndex=i*2+1;
-                Vector3 at = new Vector3((i-(count-1)*.5f)*6, 0, i%2==0 ? 5 : -1);
-                at.y = game.World.GroundAt(at) + 1.8f;
-                var t = EncounterTarget.Create(game, at, label + " " + (i+1), 48 + bossIndex*7 + Phase*9, color,
-                    target => { Targets.Remove(target); GatesBroken++; if(bossIndex==9){SeveredArms++;SeveredArmMask|=1<<armIndex;game.Notice("触腕已退缩 · 本阶段拍岸连击减至 "+KrakenSlamCount+" 段",3);} if (Targets.Count == 0) { pending=null; recoveryUntil = Time.time + 7; nextMove = Time.time+(bossIndex==0?1:2.5f); Cue = "破招成功 · 核心暴露 7 秒，仍需躲避反扑"; game.Notice(Cue,4); game.Audio.Cue("weak"); } });
-                Targets.Add(t);
-            }
-            nextPressure = Time.time + 3;
+            GatesBroken+=Mechanism.CompletedActions;pending=null;
+            recoveryUntil=Time.time+Mechanism.ExposureDuration;
+            nextMove=Time.time+Mathf.Max(2,Mechanism.ExposureDuration*.55f);
+            Cue="机制破解 · "+Mechanism.TargetLabel+" · 核心可攻击";
+            game.Notice(Cue,4);game.Audio.Cue("weak");
         }
         void Tell(string text, float seconds, Action action)
         {
@@ -123,7 +104,7 @@ namespace Tidebreak
                     else Tell("静音水域 · 离开脚下的共鸣漩涡",.8f,()=>ThreatField.Vortex(game,lockedPosition,3.2f,1.1f,damage*.45f,Color.magenta));
                     break;
                 case 2:
-                    if(move==0)Tell("毒根追踪 · 三段尾迹，沿弧线撤离",.9f,()=>{for(int i=0;i<3;i++)ThreatField.Pool(game,lockedPosition+across*(i-1)*3,1.8f,.8f+i*.4f,damage*.38f,Color.green);});
+                    if(move==0)Tell("毒根追踪 · 三段尾迹，沿弧线撤离",.9f,()=>{for(int i=0;i<3;i++)ThreatField.Pool(game,lockedPosition+across*(i-1)*3,1.8f,.8f+i*.4f,damage*.38f,Color.green,SeaTrait.Venom);});
                     else if(move==1)Tell("潜地猎杀 · 波纹锁定后再闪避",1,()=>{game.Warn(lockedPosition,3,.7f,damage*1.2f);game.Warn(lockedPosition+Vector3.forward*4,2.4f,1.6f,damage);});
                     else Tell("根须孵化 · 优先清理追猎幼体",1.2f,()=>{game.SpawnMinion(Owner);Fan(lockedPosition,3,damage*.6f,9);});
                     break;

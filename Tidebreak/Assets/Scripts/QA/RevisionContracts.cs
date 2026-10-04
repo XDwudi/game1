@@ -144,8 +144,8 @@ namespace Tidebreak
                 var saved = SaveStore.Read<RunData>("voyage");
                 Check(saved != null && saved.HasKeystone(index) && saved.coins == coins,
                     "keystone " + index + " persists together with the charged wallet");
-                if (index == 1) Check(g.Run.fireRelics > 0 && g.Run.iceRelics > 0, "steam build supplies both required elements");
-                if (index == 7) Check(g.Run.fireRelics > 0 && g.Run.shockRelics > 0, "thermal lightning build supplies both required elements");
+                if (index == 1) Check(g.Run.fireRelics == 0 && g.Run.iceRelics == 0, "steam specialization does not grant unrelated free fire or frost relics");
+                if (index == 7) Check(g.Run.fireRelics == 0 && g.Run.shockRelics == 0, "thermal lightning specialization does not grant unrelated free fire or shock relics");
                 yield return null;
             }
             g.StartVoyage();

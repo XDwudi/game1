@@ -1,0 +1,607 @@
+PASS v05 eleven different player-action briefs exist
+PASS cinematic 0 takes control of camera and gameplay state
+PASS cinematic 0 skip completes exactly once
+PASS cinematic 0 restores camera pose and field of view
+PASS cinematic 13 takes control of camera and gameplay state
+PASS cinematic 13 skip completes exactly once
+PASS cinematic 13 restores camera pose and field of view
+PASS cinematic 12 takes control of camera and gameplay state
+PASS cinematic 12 skip completes exactly once
+PASS cinematic 12 restores camera pose and field of view
+PASS lighthouse cannot start without its battery
+PASS lighthouse starts a timed power-up defense
+PASS lighthouse power-up stops when captain leaves its radius
+PASS lighthouse defense grants boss access without another sample hand-in
+PASS wrong coral response resets the phrase without advancing story
+PASS four actual coral response buttons resolve the resonance puzzle
+PASS mangrove presents three separate shootable pollution targets
+PASS breaking all toxic sacs records the purified waterway
+PASS purifier skiff waits when escort leaves eight metres
+PASS moving skiff reaches the second site under escort
+PASS astrolabe rejects a misaligned sky
+PASS three independently rotated axes satisfy the evidence relationships
+PASS black-box download requires an actual nearby operator
+PASS download preserves evidence and requires the separate ship-bell recording
+PASS ship-bell evidence reveals the captain's own distress call
+PASS carried rescue heat depletes in the open
+PASS standing by a real intermediate heater replenishes rescue heat
+PASS cold rescue fails safely without spending coins or erasing the chapter
+PASS arriving at the rescue pod cannot instantly complete the rescue
+PASS eighteen-second rescue requires repeated real heat replenishment and preserves thaw progress on retreat
+PASS late electrical delivery returns to recharge instead of completing for free
+PASS completed relay cannot accept a fourth charge during remaining-guard cleanup
+PASS three separately accepted live electrical deliveries restore the arrays
+PASS forge fire valve increases both heat and dangerous pressure
+PASS separate forge relief valve lowers pressure
+PASS controlling the two real valves maintains the forging band until the key is made
+PASS memory choice persists before the finale
+PASS preserving memory selects the western anchor first
+PASS two actual capture zones seal the mirror tide
+PASS final choice and objective completion survive a saved checkpoint
+PASS resume after third charge only clears guards, never asks for a fourth charge
+PASS completed island investigation stipend cannot be claimed twice
+PASS resume after second anchor preserves its completion while clearing remaining guards
+PASS v0.3 migration restarts unfinished errands but preserves wallet, gear and finished islands
+PASS unbroken mission targets exist before leaving
+PASS leaving a voyage destroys independently parented mission targets
+PASS main-story hand-in records its victory and reaches the ending exactly once
+PASS main-story hand-in pays once and consumes the outstanding trophy
+PASS main ending returns to its exact completed ninth-island snapshot
+PASS legendary departure from island one loads the ninth workshop's stock and purchase mask
+PASS legendary waters cannot reopen a copied story cache for duplicate rewards
+PASS legendary waters do not open a misleading ninth-island story hand-in
+PASS legendary workshop charges the real price and consumes the shared remaining stock slot
+PASS legendary purchases persist only the shared stock mask without overwriting ninth-island investigation
+PASS unfinished legendary voyage resumes with the same workshop and bought slots
+PASS a legendary stock purchase cannot be bought again after reload
+PASS rare victory returns all ninth-island story fields while retaining the global legendary achievement
+PASS returning with a rare trophy cannot pay the main-story hand-in twice
+PASS ninth-island secret completion survives a rare victory and cannot pay twice
+PASS ninth-island workshop respects the stock slot bought in legendary waters
+PASS resuming a completed legendary save returns to the restored ninth island instead of a disabled hunt bell
+PASS legendary returns and reloads do not increment main-story victory count
+PASS a checkpoint interrupted during the ending resumes the pending final film
+PASS cancelling the resumed ending preserves its pending status without recording an early victory
+PASS finishing or skipping the pending ending records victory once and clears the pending flag
+PASS subsequent reload does not replay or recount an already settled ending
+PASS new captain accepts the lighthouse introduction through its guide
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS throw restores physical velocity
+PASS species identity persists in bag
+PASS real caught fish pays its exact appraisal at the physical market
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS real caught fish pays its exact appraisal at the physical market
+PASS fishing, live combat and catch handling complete without test invulnerability
+PASS fish sale proceeds fund the first real weapon upgrade without granted coins
+PASS earned purchase and wallet survive the fishing-loop checkpoint
+PASS habitat 0 accepts a real water cast
+PASS habitat 0 tension/reeling produces a live encounter
+PASS habitat 0 rolls its own ecological family pool and tags the catch origin
+PASS habitat 0 fish is defeated with ordinary movement and real starter weapon
+PASS habitat 0 actual caught fish records only after physical pickup
+PASS live habitat pickup pays only the final one-time research stipend
+PASS habitat 1 accepts a real water cast
+PASS habitat 1 tension/reeling produces a live encounter
+PASS habitat 1 rolls its own ecological family pool and tags the catch origin
+PASS habitat 1 fish is defeated with ordinary movement and real starter weapon
+PASS habitat 1 actual caught fish records only after physical pickup
+PASS live habitat pickup pays only the final one-time research stipend
+PASS habitat 2 accepts a real water cast
+PASS habitat 2 tension/reeling produces a live encounter
+PASS habitat 2 rolls its own ecological family pool and tags the catch origin
+PASS habitat 2 fish is defeated with ordinary movement and real starter weapon
+FAIL habitat 2 actual caught fish records only after physical pickup
+FAIL live habitat pickup pays only the final one-time research stipend
+FAIL all three coastal ecological pools are reachable with the starting lure
+PASS research records distinct habitat 0 through physical catch handling
+PASS research records distinct habitat 1 through physical catch handling
+PASS research records distinct habitat 2 through physical catch handling
+PASS three habitat records pay exactly one 35-coin research stipend
+PASS duplicate habitat cannot farm the research stipend
+PASS habitat records and once-only stipend survive reload
+PASS island 1 wrong evidence choice gives feedback and permits retry
+PASS island 1 correct evidence is archived and rewarded once
+PASS island 1 archived evidence cannot be paid twice
+PASS island 1 discovered evidence persists
+PASS island 2 wrong evidence choice gives feedback and permits retry
+PASS island 2 correct evidence is archived and rewarded once
+PASS island 2 archived evidence cannot be paid twice
+PASS island 2 discovered evidence persists
+PASS island 3 wrong evidence choice gives feedback and permits retry
+PASS island 3 correct evidence is archived and rewarded once
+PASS island 3 archived evidence cannot be paid twice
+PASS island 3 discovered evidence persists
+PASS island 4 wrong evidence choice gives feedback and permits retry
+PASS island 4 correct evidence is archived and rewarded once
+PASS island 4 archived evidence cannot be paid twice
+PASS island 4 discovered evidence persists
+PASS island 5 wrong evidence choice gives feedback and permits retry
+PASS island 5 correct evidence is archived and rewarded once
+PASS island 5 archived evidence cannot be paid twice
+PASS island 5 discovered evidence persists
+PASS island 6 wrong evidence choice gives feedback and permits retry
+PASS island 6 correct evidence is archived and rewarded once
+PASS island 6 archived evidence cannot be paid twice
+PASS island 6 discovered evidence persists
+PASS island 7 wrong evidence choice gives feedback and permits retry
+PASS island 7 correct evidence is archived and rewarded once
+PASS island 7 archived evidence cannot be paid twice
+PASS island 7 discovered evidence persists
+PASS island 8 wrong evidence choice gives feedback and permits retry
+PASS island 8 correct evidence is archived and rewarded once
+PASS island 8 archived evidence cannot be paid twice
+PASS island 8 discovered evidence persists
+PASS island 9 wrong evidence choice gives feedback and permits retry
+PASS island 9 correct evidence is archived and rewarded once
+PASS island 9 archived evidence cannot be paid twice
+PASS island 9 discovered evidence persists
+PASS rhythm uses hit+1, weak+2 and one-point miss loss
+PASS six rhythm charge empowers exactly one shot by 85 percent
+PASS element effects require their real hit counters
+PASS fifth hit procs steam independently
+PASS seventh hit procs thermal lightning independently
+PASS charged effects do not bypass their cooldowns
+PASS steam returns after four seconds without prematurely resetting thermal cooldown
+PASS thermal lightning returns after five seconds on its independent cooldown
+PASS line threat covers its visible full-width corridor
+PASS line boundary renders the actual four-metre damage width
+PASS paused combat freezes attack timing and damage
+PASS grounded captain inside the displayed corridor takes the actual strike
+PASS ordinary ink or heat pool hurts without silently poisoning the captain
+PASS explicit venom pool applies its advertised poison after real damage
+PASS island 1 walkable trail to chapter guide
+PASS island 1 walkable trail to first chapter mechanism
+PASS island 1 walkable trail to second chapter mechanism
+PASS island 2 walkable trail to chapter guide
+PASS island 2 walkable trail to first chapter mechanism
+PASS island 2 walkable trail to second chapter mechanism
+PASS island 3 walkable trail to chapter guide
+PASS island 3 walkable trail to first chapter mechanism
+PASS island 3 walkable trail to second chapter mechanism
+PASS island 4 walkable trail to chapter guide
+PASS island 4 walkable trail to first chapter mechanism
+PASS island 4 walkable trail to second chapter mechanism
+PASS island 5 walkable trail to chapter guide
+PASS island 5 walkable trail to first chapter mechanism
+PASS island 5 walkable trail to second chapter mechanism
+PASS island 6 walkable trail to chapter guide
+PASS island 6 walkable trail to first chapter mechanism
+PASS island 6 walkable trail to second chapter mechanism
+PASS island 7 walkable trail to chapter guide
+PASS island 7 walkable trail to first chapter mechanism
+PASS island 7 walkable trail to second chapter mechanism
+PASS island 8 walkable trail to chapter guide
+PASS island 8 walkable trail to first chapter mechanism
+PASS island 8 walkable trail to second chapter mechanism
+PASS island 9 walkable trail to chapter guide
+PASS island 9 walkable trail to first chapter mechanism
+PASS island 9 walkable trail to second chapter mechanism
+PASS keystone 0 stays locked before its chapter
+PASS keystone 0 requires its coin price
+PASS keystone 0 is purchased for the exact displayed price
+PASS keystone choice 0 excludes same-chapter option 0
+PASS keystone choice 0 excludes same-chapter option 1
+PASS keystone choice 0 excludes same-chapter option 2
+PASS keystone 0 persists together with the charged wallet
+PASS keystone 1 stays locked before its chapter
+PASS keystone 1 requires its coin price
+PASS keystone 1 is purchased for the exact displayed price
+PASS keystone choice 1 excludes same-chapter option 0
+PASS keystone choice 1 excludes same-chapter option 1
+PASS keystone choice 1 excludes same-chapter option 2
+PASS keystone 1 persists together with the charged wallet
+PASS steam specialization does not grant unrelated free fire or frost relics
+PASS keystone 2 stays locked before its chapter
+PASS keystone 2 requires its coin price
+PASS keystone 2 is purchased for the exact displayed price
+PASS keystone choice 2 excludes same-chapter option 0
+PASS keystone choice 2 excludes same-chapter option 1
+PASS keystone choice 2 excludes same-chapter option 2
+PASS keystone 2 persists together with the charged wallet
+PASS keystone 3 stays locked before its chapter
+PASS keystone 3 requires its coin price
+PASS keystone 3 is purchased for the exact displayed price
+PASS keystone choice 3 excludes same-chapter option 3
+PASS keystone choice 3 excludes same-chapter option 4
+PASS keystone choice 3 excludes same-chapter option 5
+PASS keystone 3 persists together with the charged wallet
+PASS keystone 4 stays locked before its chapter
+PASS keystone 4 requires its coin price
+PASS keystone 4 is purchased for the exact displayed price
+PASS keystone choice 4 excludes same-chapter option 3
+PASS keystone choice 4 excludes same-chapter option 4
+PASS keystone choice 4 excludes same-chapter option 5
+PASS keystone 4 persists together with the charged wallet
+PASS keystone 5 stays locked before its chapter
+PASS keystone 5 requires its coin price
+PASS keystone 5 is purchased for the exact displayed price
+PASS keystone choice 5 excludes same-chapter option 3
+PASS keystone choice 5 excludes same-chapter option 4
+PASS keystone choice 5 excludes same-chapter option 5
+PASS keystone 5 persists together with the charged wallet
+PASS keystone 6 stays locked before its chapter
+PASS keystone 6 requires its coin price
+PASS keystone 6 is purchased for the exact displayed price
+PASS keystone choice 6 excludes same-chapter option 6
+PASS keystone choice 6 excludes same-chapter option 7
+PASS keystone choice 6 excludes same-chapter option 8
+PASS keystone 6 persists together with the charged wallet
+PASS keystone 7 stays locked before its chapter
+PASS keystone 7 requires its coin price
+PASS keystone 7 is purchased for the exact displayed price
+PASS keystone choice 7 excludes same-chapter option 6
+PASS keystone choice 7 excludes same-chapter option 7
+PASS keystone choice 7 excludes same-chapter option 8
+PASS keystone 7 persists together with the charged wallet
+PASS thermal lightning specialization does not grant unrelated free fire or shock relics
+PASS keystone 8 stays locked before its chapter
+PASS keystone 8 requires its coin price
+PASS keystone 8 is purchased for the exact displayed price
+PASS keystone choice 8 excludes same-chapter option 6
+PASS keystone choice 8 excludes same-chapter option 7
+PASS keystone choice 8 excludes same-chapter option 8
+PASS keystone 8 persists together with the charged wallet
+PASS first paid weapon upgrade has a material damage increase
+PASS stacking generic damage cannot create unbounded multiplicative power
+PASS weapon 0 rank 0 sustained live-ray DPS remains bounded: 33.7
+PASS weapon 0 empties a magazine and completes sustained reload cycles
+PASS weapon 0 rank 4 sustained live-ray DPS remains bounded: 48.6
+PASS weapon 0 empties a magazine and completes sustained reload cycles
+PASS weapon 0 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 1 rank 0 sustained live-ray DPS remains bounded: 40.8
+PASS weapon 1 empties a magazine and completes sustained reload cycles
+PASS weapon 1 rank 4 sustained live-ray DPS remains bounded: 58.7
+PASS weapon 1 empties a magazine and completes sustained reload cycles
+PASS weapon 1 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 2 rank 0 sustained live-ray DPS remains bounded: 56.6
+PASS weapon 2 empties a magazine and completes sustained reload cycles
+PASS weapon 2 rank 4 sustained live-ray DPS remains bounded: 81.6
+PASS weapon 2 empties a magazine and completes sustained reload cycles
+PASS weapon 2 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 3 rank 0 sustained live-ray DPS remains bounded: 36.0
+PASS weapon 3 empties a magazine and completes sustained reload cycles
+PASS weapon 3 rank 4 sustained live-ray DPS remains bounded: 51.8
+PASS weapon 3 empties a magazine and completes sustained reload cycles
+PASS weapon 3 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 4 rank 0 sustained live-ray DPS remains bounded: 48.9
+PASS weapon 4 empties a magazine and completes sustained reload cycles
+PASS weapon 4 rank 4 sustained live-ray DPS remains bounded: 70.5
+PASS weapon 4 empties a magazine and completes sustained reload cycles
+PASS weapon 4 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 5 rank 0 sustained live-ray DPS remains bounded: 34.4
+PASS weapon 5 empties a magazine and completes sustained reload cycles
+PASS weapon 5 rank 4 sustained live-ray DPS remains bounded: 49.6
+PASS weapon 5 empties a magazine and completes sustained reload cycles
+PASS weapon 5 paid upgrades improve sustained damage without exponential scaling
+PASS pressing reload inside the precision window completes a fast reload
+PASS missing the precision window cannot be corrected by spamming reload
+PASS model 0 decorative anatomy preserves its front-facing weak point ray
+PASS model 1 decorative anatomy preserves its front-facing weak point ray
+PASS model 2 decorative anatomy preserves its front-facing weak point ray
+PASS model 3 decorative anatomy preserves its front-facing weak point ray
+PASS model 4 decorative anatomy preserves its front-facing weak point ray
+PASS model 5 decorative anatomy preserves its front-facing weak point ray
+PASS model 6 decorative anatomy preserves its front-facing weak point ray
+PASS model 7 decorative anatomy preserves its front-facing weak point ray
+PASS model 8 decorative anatomy preserves its front-facing weak point ray
+PASS model 9 decorative anatomy preserves its front-facing weak point ray
+PASS model 10 decorative anatomy preserves its front-facing weak point ray
+PASS model 11 decorative anatomy preserves its front-facing weak point ray
+PASS model 108 decorative anatomy preserves its front-facing weak point ray
+PASS model 109 decorative anatomy preserves its front-facing weak point ray
+PASS model 110 decorative anatomy preserves its front-facing weak point ray
+PASS model 111 decorative anatomy preserves its front-facing weak point ray
+PASS model 112 decorative anatomy preserves its front-facing weak point ray
+PASS model 113 decorative anatomy preserves its front-facing weak point ray
+PASS model 114 decorative anatomy preserves its front-facing weak point ray
+PASS model 115 decorative anatomy preserves its front-facing weak point ray
+PASS model 116 decorative anatomy preserves its front-facing weak point ray
+PASS model 117 decorative anatomy preserves its front-facing weak point ray
+PASS model 118 decorative anatomy preserves its front-facing weak point ray
+PASS animation fixture contains its actual Faceted scales mesh
+PASS Faceted scales animates its local vertices instead of only rotating a rigid whole model
+PASS animation fixture contains its actual Continuous curling arm mesh
+PASS Continuous curling arm animates its local vertices instead of only rotating a rigid whole model
+PASS elite 0 executes its own repeated tactic
+PASS elite 0 cannot be permanently suppressed by rapid weak point interrupts
+PASS elite 0 test uses normal damage immunity windows
+PASS elite 0 releases all symbiotic objects during encounter cleanup
+PASS elite 1 executes its own repeated tactic
+PASS elite 1 cannot be permanently suppressed by rapid weak point interrupts
+PASS elite 1 test uses normal damage immunity windows
+PASS elite 1 releases all symbiotic objects during encounter cleanup
+PASS elite 2 executes its own repeated tactic
+PASS elite 2 test uses normal damage immunity windows
+PASS elite 2 releases all symbiotic objects during encounter cleanup
+PASS elite 3 executes its own repeated tactic
+PASS elite 3 test uses normal damage immunity windows
+PASS elite 3 releases all symbiotic objects during encounter cleanup
+PASS elite 4 executes its own repeated tactic
+PASS elite 4 test uses normal damage immunity windows
+PASS elite 4 releases all symbiotic objects during encounter cleanup
+PASS elite 5 executes its own repeated tactic
+PASS elite 5 symbiotic object breaks from real player shots
+PASS elite 5 loses its linked body protection
+PASS elite 5 test uses normal damage immunity windows
+PASS elite 5 releases all symbiotic objects during encounter cleanup
+PASS elite 6 executes its own repeated tactic
+PASS elite 6 test uses normal damage immunity windows
+PASS elite 6 releases all symbiotic objects during encounter cleanup
+PASS elite 7 executes its own repeated tactic
+PASS elite 7 test uses normal damage immunity windows
+PASS elite 7 releases all symbiotic objects during encounter cleanup
+PASS elite 8 executes its own repeated tactic
+PASS elite 8 test uses normal damage immunity windows
+PASS elite 8 releases all symbiotic objects during encounter cleanup
+PASS elite 9 executes its own repeated tactic
+PASS elite 9 symbiotic object breaks from real player shots
+PASS elite 9 loses its linked body protection
+PASS elite 9 test uses normal damage immunity windows
+PASS elite 9 releases all symbiotic objects during encounter cleanup
+PASS elite 10 executes its own repeated tactic
+PASS elite 10 cannot be permanently suppressed by rapid weak point interrupts
+PASS elite 10 test uses normal damage immunity windows
+PASS elite 10 releases all symbiotic objects during encounter cleanup
+PASS elite 11 executes its own repeated tactic
+PASS elite 11 test uses normal damage immunity windows
+PASS elite 11 releases all symbiotic objects during encounter cleanup
+PASS elite 0 actual weak-point shot interrupts its windup
+PASS elite 1 actual weak-point shot interrupts its windup
+PASS puffer interrupted inflation opens body damage instead of retaining armor
+PASS urchin body-hit classification triggers a counter projectile during windup
+PASS elite 10 actual weak-point shot interrupts its windup
+PASS eel sheds a persistent shell and regenerates while the shell survives
+PASS eel molted shell creates its distinct shootable support object
+PASS eel molted shell support object breaks from real weapon fire
+PASS eel molted shell breaking support creates a real body-damage opportunity
+PASS destroying the eel shell actually stops regeneration
+PASS ray executes successive five-blade alternating-wing volleys
+PASS crab front armor can be countered by reaching its rear
+PASS crab eye remains a frontal weak-point alternative
+PASS jelly symbiotic lamp creates its distinct shootable support object
+PASS jelly symbiotic lamp support object breaks from real weapon fire
+PASS jelly symbiotic lamp breaking support creates a real body-damage opportunity
+PASS turtle retracts during windup and opens a real damage window after its ring
+PASS squid creates two visual decoys without fake damageable weak points or bullet blockers
+PASS squid attack retains its returning projectile alongside decoys
+PASS swordfish strike commits to its telegraphed old lane, allowing lateral evasion
+PASS seahorse brood egg provides actual sustained healing
+PASS seahorse brood egg creates its distinct shootable support object
+PASS seahorse brood egg support object breaks from real weapon fire
+PASS seahorse brood egg breaking support creates a real body-damage opportunity
+PASS destroying the brood egg stops its healing
+PASS half-health shark relocks its second pounce at the new player position
+PASS audio imports all 33 authored effects
+PASS audio imports all eight music and percussion tracks
+PASS audio has zero missing imported effect fallbacks
+PASS story conversation ducks music so its mechanism and dialogue space stays clear
+PASS island 1 begins with its unrepaired physical consequence layer
+PASS island 1 completed investigation changes its visible world state
+PASS island 1 boss victory advances the world to its released state
+PASS island 1 restoration survives a real checkpoint reload
+PASS island 2 begins with its unrepaired physical consequence layer
+PASS island 2 completed investigation changes its visible world state
+PASS island 2 boss victory advances the world to its released state
+PASS island 2 restoration survives a real checkpoint reload
+PASS island 3 begins with its unrepaired physical consequence layer
+PASS island 3 completed investigation changes its visible world state
+PASS island 3 boss victory advances the world to its released state
+PASS island 3 restoration survives a real checkpoint reload
+PASS island 4 begins with its unrepaired physical consequence layer
+PASS island 4 completed investigation changes its visible world state
+PASS island 4 boss victory advances the world to its released state
+PASS island 4 restoration survives a real checkpoint reload
+PASS island 5 begins with its unrepaired physical consequence layer
+PASS island 5 completed investigation changes its visible world state
+PASS island 5 boss victory advances the world to its released state
+PASS island 5 restoration survives a real checkpoint reload
+PASS island 6 begins with its unrepaired physical consequence layer
+PASS island 6 completed investigation changes its visible world state
+PASS island 6 boss victory advances the world to its released state
+PASS rescue outcome adds the living passenger with her ticket beside the guide
+PASS island 6 restoration survives a real checkpoint reload
+PASS island 7 begins with its unrepaired physical consequence layer
+PASS island 7 completed investigation changes its visible world state
+PASS island 7 boss victory advances the world to its released state
+PASS island 7 restoration survives a real checkpoint reload
+PASS island 8 begins with its unrepaired physical consequence layer
+PASS island 8 completed investigation changes its visible world state
+PASS island 8 boss victory advances the world to its released state
+PASS island 8 restoration survives a real checkpoint reload
+PASS island 9 begins with its unrepaired physical consequence layer
+PASS island 9 completed investigation changes its visible world state
+PASS island 9 boss victory advances the world to its released state
+PASS island 9 restoration survives a real checkpoint reload
+PASS legendary arena disables borrowed mirror-island consequence props
+PASS campaign: harbor Start Voyage button creates a real new run
+PASS campaign: new voyage starts with its real starting economy and equipment
+PASS campaign: walking to the guide and shared E action opens the first story
+PASS campaign: segmented dialogue exposes its legitimate final 答应帮忙 button
+PASS campaign: reading dialogue pages then clicking confirmation returns to the island
+PASS campaign: accepting the final dialogue page requests a first real fish
+PASS campaign: walking to the pier permits a genuine water cast
+PASS campaign: legitimate tension control hooks an actual local fish
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: defeated catch exists physically before appraisal
+PASS campaign: walking to the fish and pressing the shared E action picks it up
+PASS campaign: physical market interaction pays exact appraised value into the wallet
+PASS campaign: walking to the pier permits a genuine water cast
+PASS campaign: legitimate tension control hooks an actual local fish
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: defeated catch exists physically before appraisal
+PASS campaign: walking to the fish and pressing the shared E action picks it up
+PASS campaign: physical market interaction pays exact appraised value into the wallet
+PASS campaign: catch earnings can finance the first damage upgrade
+PASS campaign: future-island shotgun is still locked at the first workshop
+PASS campaign: physical workshop is open before purchase weapon
+PASS campaign: workshop category button opens 枪械与配件
+PASS campaign: visible offer weapon is affordable using this voyage's earnings
+PASS campaign: clicking 枪械改装 charges exactly 85 earned coins and applies the item
+PASS campaign: workshop return button returns to the physical island
+PASS campaign: real battery-site interaction records the carried power source
+PASS campaign: installing the battery through E begins the actual defense
+PASS campaign: real live catch / lighthouse combat is won with finite health and real shots
+PASS campaign: surviving actual timed defense grants boss access without prematurely unlocking island two
+PASS campaign: shared E action at the actual hunt bell summons the licensed giant crab
+PASS campaign: real giant crab encounter is won with finite health and real shots
+PASS campaign: actual giant crab fight solves all three mechanisms and awards its trophy
+PASS campaign: segmented dialogue exposes its legitimate final 交付潮核 button
+PASS campaign: reading dialogue pages then clicking confirmation returns to the island
+PASS campaign: real trophy hand-in pays once and opens only the next island
+PASS campaign: physical chart offers the newly unlocked second-island travel button
+PASS campaign: legitimate travel reaches coral island without granting later licenses
+PASS campaign: earned combat and quest rewards finance the newly licensed shotgun
+PASS campaign: physical workshop is open before purchase shotgun
+PASS campaign: workshop category button opens 枪械与配件
+PASS campaign: visible offer shotgun is affordable using this voyage's earnings
+PASS campaign: clicking 礁石霰弹枪 charges exactly 150 earned coins and applies the item
+PASS campaign: first new weapon is paid for while the third-island weapon stays locked
+PASS campaign: pause-menu Save and Return button saves the real expedition
+PASS campaign: harbor Continue button resumes the saved expedition
+PASS campaign: resumed real campaign preserves earned money, both purchases, island-two access and completed first-island story
+PASS campaign: continuous campaign traversed actual roads and combat with no QA immunity
+PASS boss 108 fixture begins without granted invulnerability
+PASS boss 108 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 108 shooting-only negative control actually fired
+PASS boss 108 fixture begins without granted invulnerability
+PASS boss 108 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 109 fixture begins without granted invulnerability
+PASS boss 109 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 109 shooting-only negative control actually fired
+PASS boss 109 fixture begins without granted invulnerability
+PASS boss 109 wrong location or missing tool cannot instantly progress a mechanism
+PASS wrong melody restarts playback without losing encounter access
+PASS boss 110 fixture begins without granted invulnerability
+PASS boss 110 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 110 shooting-only negative control actually fired
+PASS boss 110 fixture begins without granted invulnerability
+PASS boss 110 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 111 fixture begins without granted invulnerability
+PASS boss 111 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 111 shooting-only negative control actually fired
+PASS boss 111 fixture begins without granted invulnerability
+PASS boss 111 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 112 fixture begins without granted invulnerability
+PASS boss 112 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 112 shooting-only negative control actually fired
+PASS boss 112 fixture begins without granted invulnerability
+PASS boss 112 wrong location or missing tool cannot instantly progress a mechanism
+PASS bell rejects an early pull and remains retryable
+PASS boss 113 fixture begins without granted invulnerability
+PASS boss 113 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 113 shooting-only negative control actually fired
+PASS boss 113 fixture begins without granted invulnerability
+PASS boss 113 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 114 fixture begins without granted invulnerability
+PASS boss 114 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 114 shooting-only negative control actually fired
+PASS boss 114 fixture begins without granted invulnerability
+PASS boss 114 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 115 fixture begins without granted invulnerability
+PASS boss 115 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 115 shooting-only negative control actually fired
+PASS boss 115 fixture begins without granted invulnerability
+PASS boss 115 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 116 shooting-only negative control actually fired
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 117 fixture begins without granted invulnerability
+PASS boss 117 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 117 shooting-only negative control actually fired
+PASS boss 117 fixture begins without granted invulnerability
+PASS boss 117 wrong location or missing tool cannot instantly progress a mechanism
+PASS Kraken hook rejects gun equipment
+PASS Kraken holding through red-tide struggle breaks the line without granting an arm
+PASS Kraken broken line is retryable with the same free rod action
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 118 shooting-only negative control actually fired
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 wrong location or missing tool cannot instantly progress a mechanism
+PASS whale correct echo selection only starts its required breach-evasion trial
+PASS whale standing in the locked breach loses the attempted observation and permits a fresh sonar retry
+PASS final whale phase requires a second separately locked return breach after evading the first
+PASS pausing between whale breach legs preserves the pending second-leg callback
+PASS dodging only the first whale leg and taking the return hit awards no observation and stays retryable
+PASS boss 108 fixture begins without granted invulnerability
+PASS boss 108 receives actual camera-ray weapon damage
+PASS boss 108 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 108 completes independent mechanisms in all three real phases
+PASS boss 108 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 34.42 seconds
+PASS boss 108 battle never enables test invulnerability
+PASS boss 109 fixture begins without granted invulnerability
+PASS boss 109 receives actual camera-ray weapon damage
+PASS boss 109 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 109 completes independent mechanisms in all three real phases
+PASS boss 109 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 25.90 seconds
+PASS boss 109 battle never enables test invulnerability
+PASS boss 110 fixture begins without granted invulnerability
+PASS boss 110 receives actual camera-ray weapon damage
+PASS boss 110 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 110 completes independent mechanisms in all three real phases
+PASS boss 110 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 48.63 seconds
+PASS boss 110 battle never enables test invulnerability
+PASS boss 111 fixture begins without granted invulnerability
+PASS boss 111 receives actual camera-ray weapon damage
+PASS boss 111 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 111 completes independent mechanisms in all three real phases
+PASS boss 111 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 24.63 seconds
+PASS boss 111 battle never enables test invulnerability
+PASS boss 112 fixture begins without granted invulnerability
+PASS boss 112 receives actual camera-ray weapon damage
+PASS boss 112 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 112 completes independent mechanisms in all three real phases
+PASS boss 112 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 30.33 seconds
+PASS boss 112 battle never enables test invulnerability
+PASS boss 113 fixture begins without granted invulnerability
+PASS boss 113 receives actual camera-ray weapon damage
+PASS boss 113 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 113 completes independent mechanisms in all three real phases
+PASS boss 113 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 71.23 seconds
+PASS boss 113 battle never enables test invulnerability
+PASS boss 114 fixture begins without granted invulnerability
+PASS boss 114 receives actual camera-ray weapon damage
+PASS boss 114 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 114 completes independent mechanisms in all three real phases
+FAIL boss 114 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 24.74 seconds
+PASS boss 114 battle never enables test invulnerability
+PASS boss 115 fixture begins without granted invulnerability
+PASS boss 115 receives actual camera-ray weapon damage
+PASS boss 115 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 115 completes independent mechanisms in all three real phases
+PASS boss 115 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 40.00 seconds
+PASS boss 115 battle never enables test invulnerability
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 receives actual camera-ray weapon damage
+PASS boss 116 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 116 completes independent mechanisms in all three real phases
+PASS boss 116 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 27.80 seconds
+PASS boss 116 battle never enables test invulnerability
+PASS boss 117 fixture begins without granted invulnerability
+PASS boss 117 receives actual camera-ray weapon damage
+PASS boss 117 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 117 completes independent mechanisms in all three real phases
+PASS boss 117 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 78.99 seconds
+PASS boss 117 battle never enables test invulnerability
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 receives actual camera-ray weapon damage
+PASS boss 118 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 118 completes independent mechanisms in all three real phases
+PASS boss 118 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 66.26 seconds
+PASS boss 118 battle never enables test invulnerability
+PASS v05 new voyage releases boss controllers and mechanism props

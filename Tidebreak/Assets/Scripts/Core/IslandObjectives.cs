@@ -402,7 +402,7 @@ namespace Tidebreak
                 const int rate=22050;float[] samples=new float[rate/2];float frequency=new[]{261.63f,329.63f,392f}[n];
                 for(int i=0;i<samples.Length;i++){float t=i/(float)rate;samples[i]=Mathf.Sin(t*frequency*Mathf.PI*2)*Mathf.Exp(-t*7)*Mathf.Min(1,t*55)*.28f;}
                 melodyClips[n]=AudioClip.Create("Coral tone "+n,samples.Length,1,rate,false);melodyClips[n].SetData(samples,0);
-            }}melodySource.PlayOneShot(melodyClips[note]);
+            }}Audio.PlayMechanismTone(melodyClips[note],.42f);
         }
     }
 }

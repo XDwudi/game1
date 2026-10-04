@@ -20,6 +20,15 @@ namespace Tidebreak
             if(glow) { m.EnableKeyword("_EMISSION"); m.SetColor("_EmissionColor", c*1.8f); }
             materials[key]=m; return m;
         }
+        static readonly MaterialPropertyBlock lineTint=new MaterialPropertyBlock();
+        public static void TintLine(LineRenderer line,Color color)
+        {
+            // Standard does not consume LineRenderer vertex colors. Apply the
+            // tint to this renderer without changing the cached shared material.
+            line.startColor=line.endColor=color;
+            line.GetPropertyBlock(lineTint);lineTint.SetColor("_Color",color);
+            lineTint.SetColor("_EmissionColor",color*1.8f);line.SetPropertyBlock(lineTint);
+        }
         public static GameObject Part(string name, PrimitiveType type, Transform parent, Vector3 pos, Vector3 scale, Color color, bool collider=false, bool glow=false)
         {
             var g=GameObject.CreatePrimitive(type); g.name=name; g.transform.SetParent(parent,false);
