@@ -11,6 +11,7 @@ namespace Tidebreak
         }
         public static void Line(GameDirector g,Vector3 from,Vector3 to,float width,float delay,float damage,Color c){Create(g,0,from,to,width,delay,damage,c);}
         public static void Ring(GameDirector g,Vector3 center,float damage,Color c){Create(g,1,center,center,1,.9f,damage,c);}
+        public static void RingDelayed(GameDirector g,Vector3 center,float damage,Color c,float delay){Create(g,1,center,center,1,delay,damage,c);}
         public static void Pool(GameDirector g,Vector3 center,float radius,float delay,float damage,Color c){Create(g,2,center,center,radius,delay,damage,c);}
         public static void Vortex(GameDirector g,Vector3 center,float radius,float delay,float damage,Color c){Create(g,3,center,center,radius,delay,damage,c);}
         void Update()

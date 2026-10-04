@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tidebreak
 {
-    public enum VoyageState { Harbor, Sailing, Fishing, Combat, Reward, Shop, Route, Victory, Defeat, Dialogue }
+    public enum VoyageState { Harbor, Sailing, Fishing, Combat, Reward, Shop, Route, Victory, Defeat, Dialogue, Cinematic }
     public enum CreatureKind { Snapper, Puffer, Razorfin, Crab, Angler, Leviathan, Kraken, WhiteWhale }
     public enum WeaponKind { Revolver, Scattergun, Harpoon, Carbine, BurstRifle, ArcCaster }
     public enum RouteKind { Shoal, Hunt, Abyss }
@@ -28,11 +28,11 @@ namespace Tidebreak
         public int checkpointVersion = 3;
         public bool betweenEncounters;
         public float MaxHealth { get { return 100 + hullLevel * 25; } }
-        public float DamageMultiplier { get { return (1 + .18f * weaponLevel) * (1 + .14f * damageRelics); } }
+        public float DamageMultiplier { get { return 1 + .11f * Mathf.Min(5,weaponLevel) + .09f * Mathf.Min(4,damageRelics); } }
         public float CriticalChance { get { return Mathf.Min(.5f, .08f + .07f * criticalRelics); } }
-        public float FireRateMultiplier { get { return 1 + hasteRelics * .12f; } }
+        public float FireRateMultiplier { get { return 1 + Mathf.Min(4,hasteRelics) * .08f; } }
         public float DodgeCooldown { get { return Mathf.Max(1.6f, 3.5f - .35f * dodgeRelics); } }
-        public float DamageTakenMultiplier { get { return (easy ? .65f : 1) * Mathf.Max(.65f, 1 - shieldRelics * .07f); } }
+        public float DamageTakenMultiplier { get { return (easy ? .65f : 1) * Mathf.Max(.65f, 1 - shieldRelics * .07f) * (HasKeystone(3)?1.12f:1); } }
         public int Act { get { return Mathf.Clamp((stage - 1) / 3, 0, 2); } }
         public bool BossStage { get { return questStep>=3 || stage>=10; } }
     }
@@ -49,12 +49,12 @@ namespace Tidebreak
     public static class Balance
     {
         public static readonly WeaponSpec[] Weapons = {
-            new WeaponSpec("潮汐左轮", 23, .34f, 1.3f, 8, 1, .003f),
-            new WeaponSpec("礁石霰弹枪", 11, .85f, 1.8f, 5, 7, .055f),
-            new WeaponSpec("雷鸣鱼叉", 100, .98f, 2.1f, 3, 1, .001f),
-            new WeaponSpec("港卫卡宾枪", 14, .115f, 1.8f, 24, 1, .008f),
-            new WeaponSpec("巡风三连发", 25, .13f, 1.9f, 18, 1, .004f),
-            new WeaponSpec("风暴电弧枪", 48, .58f, 2.2f, 8, 1, .006f)
+            new WeaponSpec("潮汐左轮", 19, .4f, 1.5f, 8, 1, .002f),
+            new WeaponSpec("礁石霰弹枪", 7, .95f, 2.05f, 5, 7, .047f),
+            new WeaponSpec("雷鸣鱼叉", 68, 1.12f, 2.4f, 3, 1, .0008f),
+            new WeaponSpec("港卫卡宾枪", 9, .15f, 2.0f, 22, 1, .008f),
+            new WeaponSpec("巡风三连发", 14, .15f, 2.1f, 18, 1, .003f),
+            new WeaponSpec("风暴电弧枪", 31, .67f, 2.3f, 8, 1, .005f)
         };
         public static readonly string[] Seas = { "日光浅滩", "风暴群礁", "幽光深渊" };
         public static readonly string[] SeaCaptions = { "SUNLIT SHOALS", "TEMPEST REEF", "THE LUMINOUS DEEP" };
@@ -109,9 +109,15 @@ namespace Tidebreak
         public Action<RunData> apply;
         public Relic(string i, string n, string d, string c, Color col, Action<RunData> a)
         { id=i; name=n; description=d; category=c; color=col; apply=a; }
+        public bool AtCap(RunData r)
+        {
+            switch(id){case "fang":return r.damageRelics>=4;case "clock":return r.hasteRelics>=4;case "eye":return r.criticalRelics>=6;
+                case "wind":return r.dodgeRelics>=6;case "ward":return r.shieldRelics>=5;case "steady":return r.brakeLevel>=4;
+                case "stride":return r.bootsLevel>=4;case "hold":return r.bagLevel>=5;case "keen":return r.scopeLevel>=4;default:return false;}
+        }
         public static readonly Relic[] All = {
-            new Relic("fang", "鲨齿弹头", "武器伤害 +14%\n每次命中都更有分量。", "火力", new Color(1,.52f,.32f), r=>r.damageRelics++),
-            new Relic("clock", "潮汐发条", "射速 +12%\n缩短两次射击之间的空隙。", "火力", new Color(1,.73f,.32f), r=>r.hasteRelics++),
+            new Relic("fang", "鲨齿弹头", "武器伤害 +9%（最多 4 层）\n与枪械改造的伤害加成相加。", "火力", new Color(1,.52f,.32f), r=>r.damageRelics++),
+            new Relic("clock", "潮汐发条", "射速 +8%（最多 4 层）\n缩短两次射击之间的空隙。", "火力", new Color(1,.73f,.32f), r=>r.hasteRelics++),
             new Relic("eye", "猎手之眼", "暴击率 +7%\n暴击造成 1.75 倍伤害，上限 50%。", "精准", new Color(.5f,.85f,1), r=>r.criticalRelics++),
             new Relic("coral", "生命珊瑚", "击杀恢复 3 点生命\n多次获得可叠加。", "生存", new Color(.4f,1,.74f), r=>r.leechRelics++),
             new Relic("pearl", "幸运黑珍珠", "战利品金币 +15%\n深渊也有自己的馈赠。", "财富", new Color(.83f,.65f,1), r=>r.fortuneRelics++),
@@ -119,8 +125,8 @@ namespace Tidebreak
             new Relic("shell", "无限螺壳", "弹匣容量 +2\n备用弹药无限，装填仍然重要。", "弹药", new Color(1,.81f,.5f), r=>r.magazineRelics++),
             new Relic("ward", "海神鳞片", "受到伤害 -7%\n最多减伤 35%。", "防护", new Color(.43f,.87f,.8f), r=>r.shieldRelics++),
             new Relic("burn", "熔盐弹头", "命中附加持续灼烧\n擅长消耗厚甲目标。", "元素", Color.red, r=>r.fireRelics++),
-            new Relic("frost", "霜纹弹匣", "命中减缓移动与出招\n为你创造装填时间。", "元素", Color.cyan, r=>r.iceRelics++),
-            new Relic("shock", "蓄电导轨", "连续命中有概率短暂打断\n降低弹幕压迫。", "元素", Color.yellow, r=>r.shockRelics++),
+            new Relic("frost", "霜纹弹匣", "减缓移动与普通怪物出招\n首领专属招式需要破解机关。", "元素", Color.cyan, r=>r.iceRelics++),
+            new Relic("shock", "蓄电导轨", "命中有概率打断普通怪物\n精英专属技能依照各自机制反制。", "元素", Color.yellow, r=>r.shockRelics++),
             new Relic("execute", "猎首刻印", "低血量敌人额外受到伤害\n加快战斗收尾。", "火力", Color.red, r=>r.executeRelics++),
             new Relic("stagger", "破甲锤针", "提高失衡伤害与击退\n攻击蓄势中的敌人。", "控制", Color.yellow, r=>r.staggerRelics++),
             new Relic("chain", "分叉线圈", "电弧枪额外连接目标\n强化对群作战。", "元素", Color.cyan, r=>r.chainLevel++),

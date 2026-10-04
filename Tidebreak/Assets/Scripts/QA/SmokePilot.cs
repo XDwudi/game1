@@ -52,6 +52,9 @@ namespace Tidebreak
         {
             g=GameDirector.Instance;output=Path.GetFullPath(Path.Combine(Application.dataPath,"../../Artifacts/ExpeditionQA"));Directory.CreateDirectory(output);Application.logMessageReceived+=LogError;visual=Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakVisual")>=0;startTime=Time.realtimeSinceStartup;
             yield return new WaitForSecondsRealtime(1);Capture("harbor");
+            if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakArtReview")>=0){yield return RevisionCreatureAnimation();yield return PresentationContracts();Finish();yield break;}
+            if(visual||Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakPresentation")>=0){yield return PostgameRevisionContracts();yield return LegendaryCounterContracts();yield return RevisionCreatureAnimation();yield return PresentationContracts();yield return RevisionBossBattle(117);yield return RevisionBossBattle(118);Finish();yield break;}
+            if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakRevision")>=0){yield return RevisionContracts();Finish();yield break;}
             Check(ExpeditionContent.Species.Length==119&&ExpeditionContent.Species.Count(x=>!x.boss)==108,"108 normal species plus 11 bosses, excluding variants");Check(ExpeditionContent.Species.Select(x=>x.name).Distinct().Count()==119,"all species have unique names and stable IDs");
             Check(ExpeditionContent.Species.Where(x=>!x.boss).Select(x=>x.body).Distinct().Count()==12,"twelve anatomical families");Check(ExpeditionContent.Species.Where(x=>!x.boss).Select(x=>x.attack).Distinct().Count()==14,"fourteen primary attack mechanics");
             Check(ShopCatalog.All.Length==23&&Relic.All.Length==20,"23 purchasable equipment and supply offers plus 20 random perks");

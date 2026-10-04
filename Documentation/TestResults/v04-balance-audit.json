@@ -1,0 +1,154 @@
+{
+  "version": "0.4.0",
+  "generic_damage_cap": 1.91,
+  "weapons": [
+    {
+      "weapon": "潮汐左轮",
+      "close_range_all_hit_sustained_dps": 32.34,
+      "magazine_damage": 152.0,
+      "reload_seconds": 1.5,
+      "rank4_multiplier": 1.44
+    },
+    {
+      "weapon": "礁石霰弹枪",
+      "close_range_all_hit_sustained_dps": 36.03,
+      "magazine_damage": 245.0,
+      "reload_seconds": 2.05,
+      "rank4_multiplier": 1.44
+    },
+    {
+      "weapon": "雷鸣鱼叉",
+      "close_range_all_hit_sustained_dps": 35.42,
+      "magazine_damage": 204.0,
+      "reload_seconds": 2.4,
+      "rank4_multiplier": 1.44
+    },
+    {
+      "weapon": "港卫卡宾枪",
+      "close_range_all_hit_sustained_dps": 37.36,
+      "magazine_damage": 198.0,
+      "reload_seconds": 2.0,
+      "rank4_multiplier": 1.44
+    },
+    {
+      "weapon": "巡风三连发",
+      "close_range_all_hit_sustained_dps": 48.28,
+      "magazine_damage": 252.0,
+      "reload_seconds": 2.1,
+      "rank4_multiplier": 1.44
+    },
+    {
+      "weapon": "风暴电弧枪",
+      "close_range_all_hit_sustained_dps": 32.38,
+      "magazine_damage": 248.0,
+      "reload_seconds": 2.3,
+      "rank4_multiplier": 1.44
+    }
+  ],
+  "boss_output_ranges": [
+    {
+      "id": 108,
+      "name": "裂桨巨蟹",
+      "hp": 820.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 44.8,
+        "accurate_window_play": 23.5
+      }
+    },
+    {
+      "id": 109,
+      "name": "千齿珊瑚鳐",
+      "hp": 1160.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 63.4,
+        "accurate_window_play": 33.2
+      }
+    },
+    {
+      "id": 110,
+      "name": "沼泽吞舟鳗",
+      "hp": 1500.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 74.6,
+        "accurate_window_play": 39.0
+      }
+    },
+    {
+      "id": 111,
+      "name": "砂冠守陵龟",
+      "hp": 1840.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 77.8,
+        "accurate_window_play": 40.7
+      }
+    },
+    {
+      "id": 112,
+      "name": "沉钟铁甲章鱼",
+      "hp": 2180.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 85.1,
+        "accurate_window_play": 44.5
+      }
+    },
+    {
+      "id": 113,
+      "name": "霜脊独角鲸",
+      "hp": 2520.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 98.4,
+        "accurate_window_play": 51.5
+      }
+    },
+    {
+      "id": 114,
+      "name": "天线风暴水母",
+      "hp": 2860.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 103.6,
+        "accurate_window_play": 54.2
+      }
+    },
+    {
+      "id": 115,
+      "name": "熔甲火山龙虾",
+      "hp": 3200.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 109.5,
+        "accurate_window_play": 57.3
+      }
+    },
+    {
+      "id": 116,
+      "name": "镜渊吞星者",
+      "hp": 3540.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 113.4,
+        "accurate_window_play": 59.3
+      }
+    },
+    {
+      "id": 117,
+      "name": "古神 · 克拉肯",
+      "hp": 6600.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 211.4,
+        "accurate_window_play": 110.6
+      }
+    },
+    {
+      "id": 118,
+      "name": "幽海白鲸 · 莫比",
+      "hp": 6100.0,
+      "main_health_output_seconds_before_objective_time": {
+        "learning_body_shots": 195.4,
+        "accurate_window_play": 102.2
+      }
+    }
+  ],
+  "live_telemetry_available": true,
+  "live_bosses_tested": 2,
+  "live_boss_clear_count": 2,
+  "live_median_seconds": 62.06,
+  "limits": "Analytical output ranges only. No claim of fun or human skill calibration. Shotgun assumes all pellets land within 10m, arc excludes secondary targets. Boss estimates exclude keystone build effects and assume 48% guard / 135% recovery, 1.4 weak points and stated exposure shares; objective travel, gate HP, interruptions and healing add time. Live telemetry uses a deterministic auto-aim movement bot with legal ammo, damage, dashes and up to four finite medical items, without invulnerability. Live weapon samples shoot breakable objective targets: harpoon samples include its 1.5x objective bonus and must not be labeled ordinary-enemy DPS."
+}

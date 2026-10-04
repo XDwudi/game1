@@ -54,6 +54,7 @@ namespace Tidebreak
         }
         void Update()
         {
+            if(CinematicActive)return;
             if(Input.GetKeyDown(KeyCode.Escape)) {
                 if(State==VoyageState.Harbor)UI.ShowHarbor();
                 else if(State==VoyageState.Dialogue)CloseDialogue();
@@ -62,6 +63,7 @@ namespace Tidebreak
             }
             if(Paused)return;
             if(State==VoyageState.Dialogue)return;
+            TickIslandMission();
             if(IsPlaying&&Input.GetKeyDown(KeyCode.Tab)){TogglePause();UI.ShowBag();return;}
             if(State==VoyageState.Harbor) {
                 float a=Time.unscaledTime*.012f;
@@ -93,14 +95,17 @@ namespace Tidebreak
         }
         public void StartVoyage(bool resume=false)
         {
+            CancelCinematic();
             ClearEncounter();SonarUntil=TonicUntil=0;Chummed=false;
             if(resume)Run=SaveStore.Read<RunData>("voyage")??NewRun();else {Run=NewRun();SaveStore.ClearRun();Log.voyages++;SaveStore.Write("captain",Log);}
             Run.stage=Mathf.Clamp(Run.stage,1,11);Run.health=Mathf.Clamp(Run.health,1,Run.MaxHealth);if(Run.bag==null)Run.bag=new List<CatchData>();
             EnsureExpedition();PendingSite=-1;Rng=new System.Random(Run.seed+Run.stage*997);RollShop();SetRegion(Mathf.Min(Run.stage-1,8));Player.ResetForEncounter();
             SetState(VoyageState.Sailing);Checkpoint(false);Notice("抵达 "+Island.name+" · "+QuestObjective,5);
+            if(resume&&Run.endingPending)PlayCinematic(12,()=>EndVoyage(true),true);
+            else if(!resume)PlayCinematic(0);
         }
         RunData NewRun(){int seed=Environment.TickCount&int.MaxValue;return new RunData{seed=seed,easy=Log.easy,rareSignal=new System.Random(seed).NextDouble()<.18};}
-        void RollShop(){Choices=Relic.Roll(new System.Random(Run.seed+Run.stage*881),Mathf.Min(20,5+Mathf.Min(9,Run.stage)*2));}
+        void RollShop(){int workshop=Mathf.Min(9,Run.stage);Choices=Relic.Roll(new System.Random(Run.seed+workshop*881),Mathf.Min(20,5+workshop*2));}
         public void Cast()
         {
             if(State!=VoyageState.Sailing||Paused||Player.HeldFish)return;
@@ -142,6 +147,7 @@ namespace Tidebreak
         {
             if(State!=VoyageState.Sailing&&State!=VoyageState.Fishing)return;
             if(boss&&Run.stage<=9&&(Run.questStep<3||Run.bossCleared)){Notice("先完成向导的调查，取得首领线索",3);return;}
+            if(boss&&Run.stage>=10&&!Automation&&(Run.cinematicMask&(1<<Run.stage))==0){PlayCinematic(Run.stage,()=>BeginCombat(true));return;}
             ClearFishing();Charging=false;SetState(VoyageState.Combat);Audio.SetCombat(true);Player.SetRod(false);
             if(boss){var spec=ExpeditionContent.Species[Run.stage<=9?107+Run.stage:Run.stage==10?117:118];SpawnSpecies(spec,false,new Vector3(0,1.1f,38));Splash(new Vector3(0,-.35f,38));Audio.Cue("boss");Notice(spec.name+" 苏醒 · 留意专属蓄势预警",4);}
             else {var spec=ExpeditionContent.Roll(Run,Rng);bool elite=Rng.NextDouble()<.08+Run.stage*.018+(Run.route==RouteKind.Hunt?.18:0);var e=SpawnSpecies(spec,elite,castPoint);e.LaunchToward(Player.transform.position+Player.transform.forward*3.5f);Notice(spec.name+" 出水！"+ExpeditionContent.Counters[(int)spec.attack],4);}
@@ -162,12 +168,12 @@ namespace Tidebreak
             if(Enemies.Count==0){if(enemy.Spec.trait==SeaTrait.Volatile)StartCoroutine(FinishVolatileEncounter());else FinishEncounter();}
         }
         System.Collections.IEnumerator FinishVolatileEncounter(){yield return new WaitForSeconds(1.25f);if(State==VoyageState.Combat&&Enemies.Count==0)FinishEncounter();}
-        void FinishEncounter(){Audio.SetCombat(false);Log.bestStage=Mathf.Max(Log.bestStage,Run.stage);SaveStore.Write("captain",Log);if(Run.bossCleared&&Run.stage>=10)EndVoyage(true);else {SetState(VoyageState.Sailing);if(PendingSite>=0)CompleteSite(PendingSite);Checkpoint(false);}}
+        void FinishEncounter(){if(ResolveMissionEncounter())return;Audio.SetCombat(false);Log.bestStage=Mathf.Max(Log.bestStage,Run.stage);SaveStore.Write("captain",Log);if(Run.bossCleared&&Run.stage>=10)EndVoyage(true);else {SetState(VoyageState.Sailing);if(PendingSite>=0)CompleteSite(PendingSite);Checkpoint(false);}}
         public void RegisterCatch(FishLoot fish)
         {
             if(fish.Registered)return;fish.Registered=true;Run.landed++;int id=fish.Data.speciesId;
             if(id>=0&&id<119){if(!Run.islandCaught.Contains(id))Run.islandCaught.Add(id);Log.speciesWeight[id]=Mathf.Max(Log.speciesWeight[id],fish.Data.weight);if(fish.Data.quality==2)Log.speciesGold[id]=true;}
-            SaveStore.Write("captain",Log);if(Run.questStep==1&&Run.SamplesReady)Notice("样本齐备 · 回向导处提交研究，鱼获仍可出售",4);
+            SaveStore.Write("captain",Log);if(Run.questStep==1&&Run.landed>=1)Notice("第一份鱼获已到手 · 出售可赚取金币，接着取电池修复灯塔",4);
         }
         public bool Stow(FishLoot fish)
         {
@@ -185,10 +191,11 @@ namespace Tidebreak
         void UpdateInteraction()
         {
             Interaction="";interactionKind=0;targetLoot=null;if(!IsPlaying||State==VoyageState.Fishing)return;
+            string missionInteraction;if(TryMissionInteraction(out missionInteraction)){Interaction=missionInteraction;interactionKind=20;return;}
             Vector3 p=Player.transform.position;
             if(State==VoyageState.Sailing) {
-                if(FlatDistance(p,World.QuestPoint)<4){Interaction="E  与 "+Island.npc+" 交谈 · "+Island.title;interactionKind=6;return;}
-                for(int i=0;i<3;i++)if(FlatDistance(p,SitePoint(i))<3.5f&&(Run.exploredMask&(1<<i))==0){Interaction="E  探索 "+(i==0?Island.siteA:i==1?Island.siteB:Island.secret);interactionKind=7+i;return;}
+                if(Run.stage<=9&&FlatDistance(p,World.QuestPoint)<4){Interaction="E  与 "+Island.npc+" 交谈 · "+Island.title;interactionKind=6;return;}
+                for(int i=0;i<3&&Run.stage<=9;i++)if(FlatDistance(p,SitePoint(i))<3.5f&&(Run.exploredMask&(1<<i))==0){Interaction="E  探索 "+(i==0?Island.siteA:i==1?Island.siteB:Island.secret);interactionKind=7+i;return;}
                 if(FlatDistance(p,World.SellPoint)<4.8f){Interaction="E  出售鱼获   /   鱼篓 "+Run.BagValue+" 金币";interactionKind=1;return;}
                 if(FlatDistance(p,World.ShopPoint)<4.8f){Interaction="E  老船长工坊   /   金币购买装备与配件";interactionKind=2;return;}
                 if(FlatDistance(p,World.ChartPoint)<3.4f){Interaction="E  查看群岛航图 · 已解锁 "+Run.maxIsland+" / 9";interactionKind=3;return;}
@@ -203,7 +210,7 @@ namespace Tidebreak
         public void Interact()
         {
             UpdateInteraction();
-            if(interactionKind==1)SellCatch();else if(interactionKind==2)OpenShop();else if(interactionKind==3)OpenRoute();else if(interactionKind==4)BeginCombat(true);else if(interactionKind==5)Player.PickUp(targetLoot);else if(interactionKind==6)TalkGuide();else if(interactionKind>=7&&interactionKind<=9)UseSite(interactionKind-7);
+            if(interactionKind==20)UseMissionAction();else if(interactionKind==1)SellCatch();else if(interactionKind==2)OpenShop();else if(interactionKind==3)OpenRoute();else if(interactionKind==4)BeginCombat(true);else if(interactionKind==5)Player.PickUp(targetLoot);else if(interactionKind==6)TalkGuide();else if(interactionKind>=7&&interactionKind<=9)UseSite(interactionKind-7);
         }
         public static float FlatDistance(Vector3 a,Vector3 b){a.y=b.y=0;return Vector3.Distance(a,b);}
         public void OpenShop(){if(State!=VoyageState.Sailing||FlatDistance(Player.transform.position,World.ShopPoint)>4.8f)return;Player.StowHeld();Checkpoint(false);SetState(VoyageState.Shop);}
@@ -218,7 +225,7 @@ namespace Tidebreak
         }
         public int Price(string id)
         {
-            if(id.StartsWith("relic")){int i;if(!int.TryParse(id.Substring(5),out i)||i<0||i>2||Choices==null||(Run.shopMask&(1<<i))!=0)return -1;return 80+Run.Act*30;}
+            if(id.StartsWith("relic")){int i;if(!int.TryParse(id.Substring(5),out i)||i<0||i>2||Choices==null||(Run.shopMask&(1<<i))!=0||Choices[i].AtCap(Run))return -1;return 80+Run.Act*30;}
             var item=ShopCatalog.Find(id);if(item==null||ShopCatalog.Lock(Run,item)!="")return -1;return item.Price(Run);
         }
         public void OpenRoute(){if(State!=VoyageState.Sailing&&State!=VoyageState.Shop)return;SetState(VoyageState.Route);}
@@ -228,16 +235,16 @@ namespace Tidebreak
         void ChallengeRare(int stage)
         {
             if((State!=VoyageState.Victory&&State!=VoyageState.Route)||!StoryComplete||(stage==10?!(Run.abyssBait||Run.rareSignal):!Run.rareSignal))return;
-            StoreIsland();
-            Run.stage=stage;Run.bossCleared=false;Run.questStep=3;Run.landed=0;Run.health=Mathf.Min(Run.MaxHealth,Run.health+50);ClearEncounter();SetRegion(8);Player.ResetForEncounter();Checkpoint(false);SetState(VoyageState.Sailing);Notice("稀有巨物潜伏海湾 · 在码头尽头按 E 摇响猎潮钟",5);
+            StoreIsland();RestoreIslandProgress(9);
+            Run.stage=stage;Run.bossCleared=false;Run.bossTrophy=false;Run.questStep=3;Run.landed=0;Run.health=Mathf.Min(Run.MaxHealth,Run.health+50);ClearEncounter();RollShop();SetRegion(8);Player.ResetForEncounter();Checkpoint(false);SetState(VoyageState.Sailing);Notice("稀有巨物潜伏海湾 · 在码头尽头按 E 摇响猎潮钟\n补给工坊与镜渊神庙共享随机库存",5);
         }
         public void EndVoyage(bool victory)
         {
             if(State==VoyageState.Defeat||State==VoyageState.Victory)return;
-            ClearHazards();ClearFishing();Audio.SetCombat(false);Paused=false;Time.timeScale=1;if(victory&&Run.stage==9)Log.victories++;
+            ClearHazards();ClearFishing();Audio.SetCombat(false);Paused=false;Time.timeScale=1;if(victory&&Run.stage==9){Log.victories++;Run.endingPending=false;}
             if(victory)Checkpoint(false);else SaveStore.ClearRun();SaveStore.Write("captain",Log);SetState(victory?VoyageState.Victory:VoyageState.Defeat);Audio.Cue(victory?"win":"lose");
         }
-        public void ReturnHarbor(){if(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue){Player.StowHeld();Checkpoint(false);}Paused=false;Time.timeScale=1;ClearEncounter();SetRegion(0);SetState(VoyageState.Harbor);}
+        public void ReturnHarbor(){CancelCinematic();if(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue){Player.StowHeld();Checkpoint(false);}Paused=false;Time.timeScale=1;ClearEncounter();SetRegion(0);SetState(VoyageState.Harbor);}
         public void Checkpoint(bool between){StoreIsland();Run.betweenEncounters=false;SaveStore.Write("voyage",Run);}
         public void TogglePause(){Paused=!Paused;Time.timeScale=Paused?0:1;Cursor.lockState=Paused?CursorLockMode.None:(IsPlaying&&!Automation?CursorLockMode.Locked:CursorLockMode.None);Cursor.visible=Paused||!IsPlaying||Automation;if(Paused)UI.ShowPause();else UI.ShowState();}
         public void SetState(VoyageState state){State=state;Cursor.lockState=IsPlaying&&!Automation?CursorLockMode.Locked:CursorLockMode.None;Cursor.visible=!IsPlaying||Automation;UI.ShowState();}
@@ -248,8 +255,8 @@ namespace Tidebreak
         public void Effect(Vector3 point,Color color,int count,float size){for(int i=0;i<count;i++){var g=Shape.Part("Spray",PrimitiveType.Cube,Hazards,point,Vector3.one*size,color);var f=g.AddComponent<Fleck>();f.velocity=UnityEngine.Random.insideUnitSphere*3+Vector3.up*1.5f;f.life=UnityEngine.Random.Range(.3f,.7f);}}
         public void Tracer(Vector3 a,Vector3 b,Color color){var g=new GameObject("Tracer");g.transform.SetParent(Hazards);var l=g.AddComponent<LineRenderer>();l.positionCount=2;l.SetPosition(0,a);l.SetPosition(1,b);l.startWidth=.016f;l.endWidth=.006f;l.material=Shape.Mat(color,true);Destroy(g,.07f);}
         void ClearHazards(){if(Hazards)for(int i=Hazards.childCount-1;i>=0;i--)Destroy(Hazards.GetChild(i).gameObject);}
-        void ClearEncounter(){Charging=false;ClearFishing();foreach(var e in Enemies)if(e)Destroy(e.gameObject);Enemies.Clear();foreach(var f in Loot)if(f)Destroy(f.gameObject);Loot.Clear();if(Player)Player.HeldFish=null;ClearHazards();}
-        void OnApplicationQuit(){Time.timeScale=1;if(Player&&(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue)){Player.StowHeld();Checkpoint(false);}SaveStore.Write("captain",Log);}
+        void ClearEncounter(){ResetIslandMission();Charging=false;ClearFishing();foreach(var e in Enemies)if(e)Destroy(e.gameObject);Enemies.Clear();foreach(var f in Loot)if(f)Destroy(f.gameObject);Loot.Clear();if(Player)Player.HeldFish=null;ClearHazards();}
+        void OnApplicationQuit(){CancelCinematic();Time.timeScale=1;if(Player&&(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue)){Player.StowHeld();Checkpoint(false);}SaveStore.Write("captain",Log);}
         public void Quit(){SaveStore.Write("captain",Log);Application.Quit();}
     }
 }

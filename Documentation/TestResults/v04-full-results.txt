@@ -1,0 +1,407 @@
+PASS eleven bosses expose distinct mechanic instructions
+PASS twelve elite anatomical families expose different counterplay
+PASS cinematic 0 takes control of camera and gameplay state
+PASS cinematic 0 skip completes exactly once
+PASS cinematic 0 restores camera pose and field of view
+PASS cinematic 13 takes control of camera and gameplay state
+PASS cinematic 13 skip completes exactly once
+PASS cinematic 13 restores camera pose and field of view
+PASS cinematic 12 takes control of camera and gameplay state
+PASS cinematic 12 skip completes exactly once
+PASS cinematic 12 restores camera pose and field of view
+PASS lighthouse cannot start without its battery
+PASS lighthouse starts a timed power-up defense
+PASS lighthouse power-up stops when captain leaves its radius
+PASS lighthouse defense grants boss access without another sample hand-in
+PASS wrong coral response resets the phrase without advancing story
+PASS four actual coral response buttons resolve the resonance puzzle
+PASS mangrove presents three separate shootable pollution targets
+PASS breaking all toxic sacs records the purified waterway
+PASS purifier skiff waits when escort leaves eight metres
+PASS moving skiff reaches the second site under escort
+PASS astrolabe rejects a misaligned sky
+PASS three independently rotated axes satisfy the evidence relationships
+PASS black-box download requires an actual nearby operator
+PASS download preserves evidence and requires the separate ship-bell recording
+PASS ship-bell evidence reveals the captain's own distress call
+PASS carried rescue heat depletes in the open
+PASS standing by a real intermediate heater replenishes rescue heat
+PASS cold rescue fails safely without spending coins or erasing the chapter
+PASS arriving at the rescue pod cannot instantly complete the rescue
+PASS eighteen-second rescue requires repeated real heat replenishment and preserves thaw progress on retreat
+PASS late electrical delivery returns to recharge instead of completing for free
+PASS completed relay cannot accept a fourth charge during remaining-guard cleanup
+PASS three separately accepted live electrical deliveries restore the arrays
+PASS forge fire valve increases both heat and dangerous pressure
+PASS separate forge relief valve lowers pressure
+PASS controlling the two real valves maintains the forging band until the key is made
+PASS memory choice persists before the finale
+PASS preserving memory selects the western anchor first
+PASS two actual capture zones seal the mirror tide
+PASS final choice and objective completion survive a saved checkpoint
+PASS resume after third charge only clears guards, never asks for a fourth charge
+PASS completed island investigation stipend cannot be claimed twice
+PASS resume after second anchor preserves its completion while clearing remaining guards
+PASS v0.3 migration restarts unfinished errands but preserves wallet, gear and finished islands
+PASS unbroken mission targets exist before leaving
+PASS leaving a voyage destroys independently parented mission targets
+PASS new captain accepts the lighthouse introduction through its guide
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS throw restores physical velocity
+PASS species identity persists in bag
+PASS real caught fish pays its exact appraisal at the physical market
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS real caught fish pays its exact appraisal at the physical market
+PASS fishing, live combat and catch handling complete without test invulnerability
+PASS fish sale proceeds fund the first real weapon upgrade without granted coins
+PASS earned purchase and wallet survive the fishing-loop checkpoint
+PASS island 1 walkable trail to chapter guide
+PASS island 1 walkable trail to first chapter mechanism
+PASS island 1 walkable trail to second chapter mechanism
+PASS island 2 walkable trail to chapter guide
+PASS island 2 walkable trail to first chapter mechanism
+PASS island 2 walkable trail to second chapter mechanism
+PASS island 3 walkable trail to chapter guide
+PASS island 3 walkable trail to first chapter mechanism
+PASS island 3 walkable trail to second chapter mechanism
+PASS island 4 walkable trail to chapter guide
+PASS island 4 walkable trail to first chapter mechanism
+PASS island 4 walkable trail to second chapter mechanism
+PASS island 5 walkable trail to chapter guide
+PASS island 5 walkable trail to first chapter mechanism
+PASS island 5 walkable trail to second chapter mechanism
+PASS island 6 walkable trail to chapter guide
+PASS island 6 walkable trail to first chapter mechanism
+PASS island 6 walkable trail to second chapter mechanism
+PASS island 7 walkable trail to chapter guide
+PASS island 7 walkable trail to first chapter mechanism
+PASS island 7 walkable trail to second chapter mechanism
+PASS island 8 walkable trail to chapter guide
+PASS island 8 walkable trail to first chapter mechanism
+PASS island 8 walkable trail to second chapter mechanism
+PASS island 9 walkable trail to chapter guide
+PASS island 9 walkable trail to first chapter mechanism
+PASS island 9 walkable trail to second chapter mechanism
+PASS keystone 0 stays locked before its chapter
+PASS keystone 0 requires its coin price
+PASS keystone 0 is purchased for the exact displayed price
+PASS keystone choice 0 excludes same-chapter option 0
+PASS keystone choice 0 excludes same-chapter option 1
+PASS keystone choice 0 excludes same-chapter option 2
+PASS keystone 0 persists together with the charged wallet
+PASS keystone 1 stays locked before its chapter
+PASS keystone 1 requires its coin price
+PASS keystone 1 is purchased for the exact displayed price
+PASS keystone choice 1 excludes same-chapter option 0
+PASS keystone choice 1 excludes same-chapter option 1
+PASS keystone choice 1 excludes same-chapter option 2
+PASS keystone 1 persists together with the charged wallet
+PASS steam build supplies both required elements
+PASS keystone 2 stays locked before its chapter
+PASS keystone 2 requires its coin price
+PASS keystone 2 is purchased for the exact displayed price
+PASS keystone choice 2 excludes same-chapter option 0
+PASS keystone choice 2 excludes same-chapter option 1
+PASS keystone choice 2 excludes same-chapter option 2
+PASS keystone 2 persists together with the charged wallet
+PASS keystone 3 stays locked before its chapter
+PASS keystone 3 requires its coin price
+PASS keystone 3 is purchased for the exact displayed price
+PASS keystone choice 3 excludes same-chapter option 3
+PASS keystone choice 3 excludes same-chapter option 4
+PASS keystone choice 3 excludes same-chapter option 5
+PASS keystone 3 persists together with the charged wallet
+PASS keystone 4 stays locked before its chapter
+PASS keystone 4 requires its coin price
+PASS keystone 4 is purchased for the exact displayed price
+PASS keystone choice 4 excludes same-chapter option 3
+PASS keystone choice 4 excludes same-chapter option 4
+PASS keystone choice 4 excludes same-chapter option 5
+PASS keystone 4 persists together with the charged wallet
+PASS keystone 5 stays locked before its chapter
+PASS keystone 5 requires its coin price
+PASS keystone 5 is purchased for the exact displayed price
+PASS keystone choice 5 excludes same-chapter option 3
+PASS keystone choice 5 excludes same-chapter option 4
+PASS keystone choice 5 excludes same-chapter option 5
+PASS keystone 5 persists together with the charged wallet
+PASS keystone 6 stays locked before its chapter
+PASS keystone 6 requires its coin price
+PASS keystone 6 is purchased for the exact displayed price
+PASS keystone choice 6 excludes same-chapter option 6
+PASS keystone choice 6 excludes same-chapter option 7
+PASS keystone choice 6 excludes same-chapter option 8
+PASS keystone 6 persists together with the charged wallet
+PASS keystone 7 stays locked before its chapter
+PASS keystone 7 requires its coin price
+PASS keystone 7 is purchased for the exact displayed price
+PASS keystone choice 7 excludes same-chapter option 6
+PASS keystone choice 7 excludes same-chapter option 7
+PASS keystone choice 7 excludes same-chapter option 8
+PASS keystone 7 persists together with the charged wallet
+PASS thermal lightning build supplies both required elements
+PASS keystone 8 stays locked before its chapter
+PASS keystone 8 requires its coin price
+PASS keystone 8 is purchased for the exact displayed price
+PASS keystone choice 8 excludes same-chapter option 6
+PASS keystone choice 8 excludes same-chapter option 7
+PASS keystone choice 8 excludes same-chapter option 8
+PASS keystone 8 persists together with the charged wallet
+PASS first paid weapon upgrade has a material damage increase
+PASS stacking generic damage cannot create unbounded multiplicative power
+PASS precision build loses its streak after a missed shot
+PASS four consecutive weak points charge exactly one empowered shot
+PASS dash build links both shot damage and reload speed to its movement window
+PASS dash build bonuses expire instead of becoming permanent
+PASS a genuine dash immunity window earns counterattack charge and limited healing
+PASS multiple simultaneous hazards cannot repeatedly farm perfect-dash healing
+PASS steam and thermal lightning retain both damage effects when purchased together
+PASS element explosions cannot retrigger immediately
+PASS steam keeps its four-second cooldown after buying thermal lightning
+PASS thermal lightning independently returns after five seconds
+PASS weapon 0 rank 0 sustained live-ray DPS remains bounded: 33.7
+PASS weapon 0 empties a magazine and completes sustained reload cycles
+PASS weapon 0 rank 4 sustained live-ray DPS remains bounded: 48.6
+PASS weapon 0 empties a magazine and completes sustained reload cycles
+PASS weapon 0 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 1 rank 0 sustained live-ray DPS remains bounded: 40.8
+PASS weapon 1 empties a magazine and completes sustained reload cycles
+PASS weapon 1 rank 4 sustained live-ray DPS remains bounded: 58.8
+PASS weapon 1 empties a magazine and completes sustained reload cycles
+PASS weapon 1 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 2 rank 0 sustained live-ray DPS remains bounded: 56.6
+PASS weapon 2 empties a magazine and completes sustained reload cycles
+PASS weapon 2 rank 4 sustained live-ray DPS remains bounded: 81.5
+PASS weapon 2 empties a magazine and completes sustained reload cycles
+PASS weapon 2 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 3 rank 0 sustained live-ray DPS remains bounded: 36.0
+PASS weapon 3 empties a magazine and completes sustained reload cycles
+PASS weapon 3 rank 4 sustained live-ray DPS remains bounded: 51.8
+PASS weapon 3 empties a magazine and completes sustained reload cycles
+PASS weapon 3 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 4 rank 0 sustained live-ray DPS remains bounded: 49.0
+PASS weapon 4 empties a magazine and completes sustained reload cycles
+PASS weapon 4 rank 4 sustained live-ray DPS remains bounded: 70.4
+PASS weapon 4 empties a magazine and completes sustained reload cycles
+PASS weapon 4 paid upgrades improve sustained damage without exponential scaling
+PASS weapon 5 rank 0 sustained live-ray DPS remains bounded: 34.4
+PASS weapon 5 empties a magazine and completes sustained reload cycles
+PASS weapon 5 rank 4 sustained live-ray DPS remains bounded: 49.6
+PASS weapon 5 empties a magazine and completes sustained reload cycles
+PASS weapon 5 paid upgrades improve sustained damage without exponential scaling
+PASS pressing reload inside the precision window completes a fast reload
+PASS missing the precision window cannot be corrected by spamming reload
+PASS model 0 decorative anatomy preserves its front-facing weak point ray
+PASS model 1 decorative anatomy preserves its front-facing weak point ray
+PASS model 2 decorative anatomy preserves its front-facing weak point ray
+PASS model 3 decorative anatomy preserves its front-facing weak point ray
+PASS model 4 decorative anatomy preserves its front-facing weak point ray
+PASS model 5 decorative anatomy preserves its front-facing weak point ray
+PASS model 6 decorative anatomy preserves its front-facing weak point ray
+PASS model 7 decorative anatomy preserves its front-facing weak point ray
+PASS model 8 decorative anatomy preserves its front-facing weak point ray
+PASS model 9 decorative anatomy preserves its front-facing weak point ray
+PASS model 10 decorative anatomy preserves its front-facing weak point ray
+PASS model 11 decorative anatomy preserves its front-facing weak point ray
+PASS model 108 decorative anatomy preserves its front-facing weak point ray
+PASS model 109 decorative anatomy preserves its front-facing weak point ray
+PASS model 110 decorative anatomy preserves its front-facing weak point ray
+PASS model 111 decorative anatomy preserves its front-facing weak point ray
+PASS model 112 decorative anatomy preserves its front-facing weak point ray
+PASS model 113 decorative anatomy preserves its front-facing weak point ray
+PASS model 114 decorative anatomy preserves its front-facing weak point ray
+PASS model 115 decorative anatomy preserves its front-facing weak point ray
+PASS model 116 decorative anatomy preserves its front-facing weak point ray
+PASS model 117 decorative anatomy preserves its front-facing weak point ray
+PASS model 118 decorative anatomy preserves its front-facing weak point ray
+PASS animation fixture contains its actual Faceted scales mesh
+PASS Faceted scales animates its local vertices instead of only rotating a rigid whole model
+PASS animation fixture contains its actual Continuous curling arm mesh
+PASS Continuous curling arm animates its local vertices instead of only rotating a rigid whole model
+PASS elite 0 executes its own repeated tactic
+PASS elite 0 cannot be permanently suppressed by rapid weak point interrupts
+PASS elite 0 test uses normal damage immunity windows
+PASS elite 0 releases all symbiotic objects during encounter cleanup
+PASS elite 1 executes its own repeated tactic
+PASS elite 1 cannot be permanently suppressed by rapid weak point interrupts
+PASS elite 1 test uses normal damage immunity windows
+PASS elite 1 releases all symbiotic objects during encounter cleanup
+PASS elite 2 executes its own repeated tactic
+PASS elite 2 test uses normal damage immunity windows
+PASS elite 2 releases all symbiotic objects during encounter cleanup
+PASS elite 3 executes its own repeated tactic
+PASS elite 3 test uses normal damage immunity windows
+PASS elite 3 releases all symbiotic objects during encounter cleanup
+PASS elite 4 executes its own repeated tactic
+PASS elite 4 test uses normal damage immunity windows
+PASS elite 4 releases all symbiotic objects during encounter cleanup
+PASS elite 5 executes its own repeated tactic
+PASS elite 5 symbiotic object breaks from real player shots
+PASS elite 5 loses its linked body protection
+PASS elite 5 test uses normal damage immunity windows
+PASS elite 5 releases all symbiotic objects during encounter cleanup
+PASS elite 6 executes its own repeated tactic
+PASS elite 6 test uses normal damage immunity windows
+PASS elite 6 releases all symbiotic objects during encounter cleanup
+PASS elite 7 executes its own repeated tactic
+PASS elite 7 test uses normal damage immunity windows
+PASS elite 7 releases all symbiotic objects during encounter cleanup
+PASS elite 8 executes its own repeated tactic
+PASS elite 8 test uses normal damage immunity windows
+PASS elite 8 releases all symbiotic objects during encounter cleanup
+PASS elite 9 executes its own repeated tactic
+PASS elite 9 symbiotic object breaks from real player shots
+PASS elite 9 loses its linked body protection
+PASS elite 9 test uses normal damage immunity windows
+PASS elite 9 releases all symbiotic objects during encounter cleanup
+PASS elite 10 executes its own repeated tactic
+PASS elite 10 cannot be permanently suppressed by rapid weak point interrupts
+PASS elite 10 test uses normal damage immunity windows
+PASS elite 10 releases all symbiotic objects during encounter cleanup
+PASS elite 11 executes its own repeated tactic
+PASS elite 11 test uses normal damage immunity windows
+PASS elite 11 releases all symbiotic objects during encounter cleanup
+PASS boss 108 opening objectives prevent damage bypass
+PASS boss 108 cannot lose two phases to one burst
+PASS boss 108 opens physical breakable objectives for phase two
+PASS boss 108 cannot skip its final mechanic gate
+PASS boss 108 cannot die while final phase objectives remain intact
+PASS boss 108 interruption cleans up every phase objective
+PASS boss 109 cannot lose two phases to one burst
+PASS boss 109 opens physical breakable objectives for phase two
+PASS boss 109 cannot skip its final mechanic gate
+PASS boss 109 cannot die while final phase objectives remain intact
+PASS boss 109 interruption cleans up every phase objective
+PASS boss 110 cannot lose two phases to one burst
+PASS boss 110 opens physical breakable objectives for phase two
+PASS boss 110 cannot skip its final mechanic gate
+PASS boss 110 cannot die while final phase objectives remain intact
+PASS boss 110 interruption cleans up every phase objective
+PASS boss 111 cannot lose two phases to one burst
+PASS boss 111 opens physical breakable objectives for phase two
+PASS boss 111 cannot skip its final mechanic gate
+PASS boss 111 cannot die while final phase objectives remain intact
+PASS boss 111 interruption cleans up every phase objective
+PASS boss 112 cannot lose two phases to one burst
+PASS boss 112 opens physical breakable objectives for phase two
+PASS boss 112 cannot skip its final mechanic gate
+PASS boss 112 cannot die while final phase objectives remain intact
+PASS boss 112 interruption cleans up every phase objective
+PASS boss 113 cannot lose two phases to one burst
+PASS boss 113 opens physical breakable objectives for phase two
+PASS boss 113 cannot skip its final mechanic gate
+PASS boss 113 cannot die while final phase objectives remain intact
+PASS boss 113 interruption cleans up every phase objective
+PASS boss 114 cannot lose two phases to one burst
+PASS boss 114 opens physical breakable objectives for phase two
+PASS boss 114 cannot skip its final mechanic gate
+PASS boss 114 cannot die while final phase objectives remain intact
+PASS boss 114 interruption cleans up every phase objective
+PASS boss 115 cannot lose two phases to one burst
+PASS boss 115 opens physical breakable objectives for phase two
+PASS boss 115 cannot skip its final mechanic gate
+PASS boss 115 cannot die while final phase objectives remain intact
+PASS boss 115 interruption cleans up every phase objective
+PASS boss 116 cannot lose two phases to one burst
+PASS boss 116 opens physical breakable objectives for phase two
+PASS boss 116 cannot skip its final mechanic gate
+PASS boss 116 cannot die while final phase objectives remain intact
+PASS boss 116 interruption cleans up every phase objective
+PASS boss 117 cannot lose two phases to one burst
+PASS boss 117 opens physical breakable objectives for phase two
+PASS boss 117 cannot skip its final mechanic gate
+PASS boss 117 cannot die while final phase objectives remain intact
+PASS boss 117 interruption cleans up every phase objective
+PASS boss 118 cannot lose two phases to one burst
+PASS boss 118 opens physical breakable objectives for phase two
+PASS boss 118 cannot skip its final mechanic gate
+PASS boss 118 cannot die while final phase objectives remain intact
+PASS boss 118 interruption cleans up every phase objective
+PASS legendary boss 117 executes multiple attacks against a stationary player
+PASS legendary boss 117 punishes standing still with meaningful damage: 100.00
+PASS legendary pressure check never uses test invulnerability
+PASS legendary boss 118 executes multiple attacks against a stationary player
+PASS legendary boss 118 punishes standing still with meaningful damage: 100.00
+PASS legendary pressure check never uses test invulnerability
+PASS boss 108 integrated fire damages physical nodes and the boss
+PASS boss 108 real combat visits all three phases and breaks their objectives
+PASS boss 108 survives long enough to execute multiple moves
+PASS boss 108 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 108 encounter duration remains within a playable range: 24.74
+PASS boss 108 clear never depends on test invulnerability
+PASS boss 109 integrated fire damages physical nodes and the boss
+PASS boss 109 real combat visits all three phases and breaks their objectives
+PASS boss 109 survives long enough to execute multiple moves
+PASS boss 109 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 109 encounter duration remains within a playable range: 29.06
+PASS boss 109 clear never depends on test invulnerability
+PASS boss 110 integrated fire damages physical nodes and the boss
+PASS boss 110 real combat visits all three phases and breaks their objectives
+PASS boss 110 survives long enough to execute multiple moves
+PASS boss 110 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 110 encounter duration remains within a playable range: 30.36
+PASS boss 110 clear never depends on test invulnerability
+PASS boss 111 integrated fire damages physical nodes and the boss
+PASS boss 111 real combat visits all three phases and breaks their objectives
+PASS boss 111 survives long enough to execute multiple moves
+PASS boss 111 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 111 encounter duration remains within a playable range: 45.89
+PASS boss 111 clear never depends on test invulnerability
+PASS boss 112 integrated fire damages physical nodes and the boss
+PASS boss 112 real combat visits all three phases and breaks their objectives
+PASS boss 112 survives long enough to execute multiple moves
+PASS boss 112 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 112 encounter duration remains within a playable range: 29.59
+PASS boss 112 clear never depends on test invulnerability
+PASS boss 113 integrated fire damages physical nodes and the boss
+PASS boss 113 real combat visits all three phases and breaks their objectives
+PASS boss 113 survives long enough to execute multiple moves
+PASS boss 113 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 113 encounter duration remains within a playable range: 40.48
+PASS boss 113 clear never depends on test invulnerability
+PASS boss 114 integrated fire damages physical nodes and the boss
+PASS boss 114 real combat visits all three phases and breaks their objectives
+PASS boss 114 survives long enough to execute multiple moves
+PASS boss 114 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 114 encounter duration remains within a playable range: 41.71
+PASS boss 114 clear never depends on test invulnerability
+PASS boss 115 integrated fire damages physical nodes and the boss
+PASS boss 115 real combat visits all three phases and breaks their objectives
+PASS boss 115 survives long enough to execute multiple moves
+PASS boss 115 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 115 encounter duration remains within a playable range: 32.18
+PASS boss 115 clear never depends on test invulnerability
+PASS boss 116 integrated fire damages physical nodes and the boss
+PASS boss 116 real combat visits all three phases and breaks their objectives
+PASS boss 116 survives long enough to execute multiple moves
+PASS boss 116 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 116 encounter duration remains within a playable range: 38.27
+PASS boss 116 clear never depends on test invulnerability
+PASS boss 117 integrated fire damages physical nodes and the boss
+PASS boss 117 real combat visits all three phases and breaks their objectives
+PASS boss 117 survives long enough to execute multiple moves
+PASS boss 117 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 117 encounter duration remains within a playable range: 68.16
+PASS legendary boss 117 sustains a multi-mechanic endgame encounter
+PASS boss 117 clear never depends on test invulnerability
+PASS boss 118 integrated fire damages physical nodes and the boss
+PASS boss 118 real combat visits all three phases and breaks their objectives
+PASS boss 118 survives long enough to execute multiple moves
+PASS boss 118 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 118 encounter duration remains within a playable range: 56.91
+FAIL legendary boss 118 sustains a multi-mechanic endgame encounter
+PASS boss 118 clear never depends on test invulnerability
+PASS new voyage clears all encounter nodes and damaging hazards

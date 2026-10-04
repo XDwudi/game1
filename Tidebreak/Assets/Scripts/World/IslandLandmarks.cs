@@ -5,7 +5,10 @@ namespace Tidebreak
     {
         bool ClearTrail(float x,float z)
         {
-            var p=new Vector2(x,z);if(Mathf.Abs(x)<3.5f)return true;
+            var p=new Vector2(x,z);if(Mathf.Abs(x)<3.5f||Mathf.Abs(x)<11&&z> -12)return true;
+            var routeStart=new Vector2(Definition.site1.x,Definition.site1.z);var routeEnd=new Vector2(Definition.site2.x,Definition.site2.z);var routeDelta=routeEnd-routeStart;
+            float routeT=Mathf.Clamp01(Vector2.Dot(p-routeStart,routeDelta)/Mathf.Max(.1f,routeDelta.sqrMagnitude));
+            if(Vector2.Distance(p,routeStart+routeDelta*routeT)<2.3f)return true;
             foreach(var v in new[]{SellPoint,ShopPoint,QuestPoint,Definition.site1,Definition.site2,Definition.site3}){
                 var b=new Vector2(v.x,v.z);if(Vector2.Distance(p,b)<6)return true;
                 var a=new Vector2(0,2);var d=b-a;float t=Mathf.Clamp01(Vector2.Dot(p-a,d)/d.sqrMagnitude);if(Vector2.Distance(p,a+d*t)<1.8f)return true;
@@ -14,13 +17,44 @@ namespace Tidebreak
         void BuildGuide()
         {
             Vector3 p=QuestPoint;p.y=Height(p.x,p.z);
-            var root=new GameObject(Definition.npc).transform;root.SetParent(Scenery);root.position=p;
-            for(int s=-1;s<=1;s+=2){Shape.Beam(root,new Vector3(s*.17f,.1f,0),new Vector3(s*.17f,.8f,0),.2f,iron);Shape.Beam(root,new Vector3(s*.34f,1.4f,0),new Vector3(s*.4f,.9f,.2f),.2f,Definition.accent);}
-            Shape.Part("Guide coat",PrimitiveType.Capsule,root,Vector3.up*1.1f,new Vector3(.7f,.5f,.45f),Definition.accent);
-            Shape.Part("Guide face",PrimitiveType.Sphere,root,Vector3.up*1.8f,new Vector3(.46f,.53f,.43f),new Color(.7f,.49f,.32f));
-            Shape.Part("Hood",PrimitiveType.Sphere,root,new Vector3(0,1.89f,-.13f),new Vector3(.58f,.58f,.39f),iron);
-            for(int s=-1;s<=1;s+=2)Shape.Part("Eye",PrimitiveType.Sphere,root,new Vector3(s*.09f,1.86f,.2f),Vector3.one*.065f,iron);
-            Box("Field notebook",root,new Vector3(.35f,1.08f,.32f),new Vector3(.25f,.34f,.08f),ivory);
+            // Animated joints cannot be children of Scenery: that hierarchy is statically batched.
+            var root=new GameObject(Definition.npc).transform;root.SetParent(transform);root.position=p;
+            var motion=root.gameObject.AddComponent<IslandActorMotion>();
+            Color skin=new Color(.7f,.49f,.32f);
+            for(int s=-1;s<=1;s+=2){
+                Shape.Beam(root,new Vector3(s*.17f,.14f,0),new Vector3(s*.17f,.85f,0),.2f,iron);
+                Shape.Part("Leather boot",PrimitiveType.Cube,root,new Vector3(s*.17f,.1f,.07f),new Vector3(.24f,.2f,.37f),wood);
+            }
+            motion.Chest=Shape.Part("Guide coat",PrimitiveType.Capsule,root,Vector3.up*1.1f,new Vector3(.7f,.5f,.45f),Definition.accent).transform;
+            Shape.Part("Collar",PrimitiveType.Cube,root,new Vector3(0,1.5f,.09f),new Vector3(.53f,.16f,.43f),ivory);
+            var head=new GameObject("Guide head joint").transform;head.SetParent(root,false);head.localPosition=Vector3.up*1.69f;motion.Head=head;
+            Shape.Part("Guide face",PrimitiveType.Sphere,head,new Vector3(0,.11f,0),new Vector3(.46f,.53f,.43f),skin);
+            Shape.Part("Hood",PrimitiveType.Sphere,head,new Vector3(0,.2f,-.13f),new Vector3(.58f,.58f,.39f),iron);
+            Shape.Part("Nose",PrimitiveType.Sphere,head,new Vector3(0,.12f,.22f),new Vector3(.07f,.11f,.1f),skin*.92f);
+            motion.Eyes=new Transform[2];
+            for(int s=-1;s<=1;s+=2){
+                motion.Eyes[(s+1)/2]=Shape.Part("Eye",PrimitiveType.Sphere,head,new Vector3(s*.09f,.17f,.2f),new Vector3(.066f,.066f,.055f),iron).transform;
+                Shape.Part("Brow",PrimitiveType.Cube,head,new Vector3(s*.09f,.235f,.19f),new Vector3(.105f,.028f,.035f),iron);
+            }
+            motion.Mouth=Shape.Part("Mouth",PrimitiveType.Sphere,head,new Vector3(0,.01f,.2f),new Vector3(.12f,.029f,.03f),new Color(.29f,.12f,.1f)).transform;
+            for(int s=-1;s<=1;s+=2){
+                var shoulder=new GameObject(s<0?"Left shoulder":"Right shoulder").transform;shoulder.SetParent(root,false);shoulder.localPosition=new Vector3(s*.32f,1.43f,0);
+                Shape.Beam(shoulder,Vector3.zero,Vector3.down*.34f,.19f,Definition.accent);
+                var elbow=new GameObject("Elbow joint").transform;elbow.SetParent(shoulder,false);elbow.localPosition=Vector3.down*.34f;
+                Shape.Beam(elbow,Vector3.zero,Vector3.down*.29f,.16f,Definition.accent);
+                Shape.Part("Hand",PrimitiveType.Sphere,elbow,new Vector3(0,-.33f,0),new Vector3(.17f,.22f,.13f),skin);
+                if(s<0){motion.LeftArm=shoulder;motion.LeftForearm=elbow;}else{
+                    motion.RightArm=shoulder;motion.RightForearm=elbow;
+                    var book=new GameObject("Notebook joint").transform;book.SetParent(elbow,false);book.localPosition=new Vector3(0,-.36f,.08f);motion.Book=book;
+                    Box("Field notebook cover",book,Vector3.zero,new Vector3(.3f,.035f,.39f),wood);
+                    Box("Field notebook paper",book,new Vector3(0,.024f,0),new Vector3(.27f,.03f,.36f),ivory);
+                    for(int line=0;line<5;line++)Box("Notebook ink",book,new Vector3(0,.041f,-.12f+line*.05f),new Vector3(.2f,.002f,.008f),iron);
+                }
+            }
+            if(Region==6){Shape.Part("Engineer goggles",PrimitiveType.Cube,head,new Vector3(0,.23f,.22f),new Vector3(.34f,.13f,.06f),new Color(.43f,.73f,.8f));}
+            if(Region==5)Shape.Part("Fur hat",PrimitiveType.Cylinder,head,new Vector3(0,.41f,-.02f),new Vector3(.57f,.11f,.51f),ivory);
+            if(Region==4)Shape.Part("Diver's cap",PrimitiveType.Cylinder,head,new Vector3(0,.39f,-.01f),new Vector3(.51f,.075f,.47f),new Color(.78f,.36f,.16f));
+            motion.Initialize(Region);
             Sign(Scenery,p+new Vector3(0,3.1f,-.25f),Definition.npc,"STORY / E",0,4.8f);
             for(int i=0;i<5;i++){float x=p.x+(i-2)*1.2f,z=p.z+2.6f;Box("Guide approach",Scenery,new Vector3(x,Height(x,z)+.025f,z),new Vector3(1.1f,.07f,.65f),wood);}
         }
@@ -31,7 +65,8 @@ namespace Tidebreak
                 Box("Relic pedestal",root,new Vector3(0,.35f,0),new Vector3(1.3f,.7f,1.3f),Color.Lerp(Definition.accent,iron,.65f),true);
                 var item=Shape.Part(i==2?"Secret rune chest":"Navigation relic",i==0?PrimitiveType.Cylinder:PrimitiveType.Cube,root,new Vector3(0,1.1f,0),new Vector3(.48f,.35f,.48f),Definition.accent,false,true);
                 CoastalMesh.Ring(root,new Vector3(0,.8f,0),.7f,.035f,Definition.accent,Quaternion.Euler(90,0,0));
-                Sign(root,p+new Vector3(0,2.4f,-.3f),i==0?Definition.siteA:i==1?Definition.siteB:Definition.secret,i==2?"SECRET / E":"INVESTIGATE / E",0,3.3f);
+                var chapter=NarrativeContent.Chapter(Region+1);
+                Sign(root,p+new Vector3(0,2.4f,-.3f),i==0?chapter.siteA:i==1?chapter.siteB:Definition.secret,i==2?"SECRET / E":"INVESTIGATE / E",0,3.3f);
                 var marker=root.gameObject.AddComponent<IslandMarker>();marker.Index=i;marker.Object=item.transform;
                 var gl=item.AddComponent<Light>();gl.color=Definition.accent;gl.range=4;gl.intensity=.65f;
                 // Sparse stepping stones expose a walkable route to each objective.

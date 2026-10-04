@@ -1,0 +1,163 @@
+PASS main-story hand-in records its victory and reaches the ending exactly once
+PASS main-story hand-in pays once and consumes the outstanding trophy
+PASS main ending returns to its exact completed ninth-island snapshot
+PASS legendary departure from island one loads the ninth workshop's stock and purchase mask
+PASS legendary waters cannot reopen a copied story cache for duplicate rewards
+PASS legendary waters do not open a misleading ninth-island story hand-in
+PASS legendary workshop charges the real price and consumes the shared remaining stock slot
+PASS legendary purchases persist only the shared stock mask without overwriting ninth-island investigation
+PASS unfinished legendary voyage resumes with the same workshop and bought slots
+PASS a legendary stock purchase cannot be bought again after reload
+PASS rare victory returns all ninth-island story fields while retaining the global legendary achievement
+PASS returning with a rare trophy cannot pay the main-story hand-in twice
+PASS ninth-island secret completion survives a rare victory and cannot pay twice
+PASS ninth-island workshop respects the stock slot bought in legendary waters
+PASS resuming a completed legendary save returns to the restored ninth island instead of a disabled hunt bell
+PASS legendary returns and reloads do not increment main-story victory count
+PASS a checkpoint interrupted during the ending resumes the pending final film
+PASS cancelling the resumed ending preserves its pending status without recording an early victory
+PASS finishing or skipping the pending ending records victory once and clears the pending flag
+PASS subsequent reload does not replay or recount an already settled ending
+PASS breaking a landed Kraken arm immediately removes one subsequent slam
+PASS the corresponding living Kraken arm visibly retracts after its shore target breaks
+PASS Kraken retains at least two readable counterattacks after all arms are severed
+PASS the final Kraken phase visibly regrows arms and restores its full pressure pattern
+PASS whale tracking lane cannot damage the captain before its visible lock finishes
+PASS locked whale lane damages a captain who stays in its path
+PASS whale tracking lane cannot damage the captain before its visible lock finishes
+PASS moving sideways after whale lock avoids its actual hit volume
+PASS model 0 decorative anatomy preserves its front-facing weak point ray
+PASS model 1 decorative anatomy preserves its front-facing weak point ray
+PASS model 2 decorative anatomy preserves its front-facing weak point ray
+PASS model 3 decorative anatomy preserves its front-facing weak point ray
+PASS model 4 decorative anatomy preserves its front-facing weak point ray
+PASS model 5 decorative anatomy preserves its front-facing weak point ray
+PASS model 6 decorative anatomy preserves its front-facing weak point ray
+PASS model 7 decorative anatomy preserves its front-facing weak point ray
+PASS model 8 decorative anatomy preserves its front-facing weak point ray
+PASS model 9 decorative anatomy preserves its front-facing weak point ray
+PASS model 10 decorative anatomy preserves its front-facing weak point ray
+PASS model 11 decorative anatomy preserves its front-facing weak point ray
+PASS model 108 decorative anatomy preserves its front-facing weak point ray
+PASS model 109 decorative anatomy preserves its front-facing weak point ray
+PASS model 110 decorative anatomy preserves its front-facing weak point ray
+PASS model 111 decorative anatomy preserves its front-facing weak point ray
+PASS model 112 decorative anatomy preserves its front-facing weak point ray
+PASS model 113 decorative anatomy preserves its front-facing weak point ray
+PASS model 114 decorative anatomy preserves its front-facing weak point ray
+PASS model 115 decorative anatomy preserves its front-facing weak point ray
+PASS model 116 decorative anatomy preserves its front-facing weak point ray
+PASS model 117 decorative anatomy preserves its front-facing weak point ray
+PASS model 118 decorative anatomy preserves its front-facing weak point ray
+PASS animation fixture contains its actual Faceted scales mesh
+PASS Faceted scales animates its local vertices instead of only rotating a rigid whole model
+PASS animation fixture contains its actual Continuous curling arm mesh
+PASS Continuous curling arm animates its local vertices instead of only rotating a rigid whole model
+PASS presentation-story-illustration-1600x900 renders requested native pixel dimensions
+PASS presentation-keystone-1600x900 renders requested native pixel dimensions
+PASS presentation-map-1600x900 renders requested native pixel dimensions
+PASS presentation-cinematic-13-1600x900 renders requested native pixel dimensions
+PASS presentation 1600x900 cinematic 13 restores camera exactly once
+PASS presentation-cinematic-12-1600x900 renders requested native pixel dimensions
+PASS presentation 1600x900 cinematic 12 restores camera exactly once
+PASS boss 111 has its animated identity signature
+PASS boss 111 signature geometry cannot intercept shots
+PASS boss 111 CreatureMotion changes its living pose at 1600x900
+PASS boss 111 retains a shootable weak point
+PASS boss 111 has an unobstructed actual pier sightline at 1600x900
+PASS boss 111 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-111-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-111-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 115 has its animated identity signature
+PASS boss 115 signature geometry cannot intercept shots
+PASS boss 115 CreatureMotion changes its living pose at 1600x900
+PASS boss 115 retains a shootable weak point
+PASS boss 115 has an unobstructed actual pier sightline at 1600x900
+PASS boss 115 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-115-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-115-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 116 has its animated identity signature
+PASS boss 116 signature geometry cannot intercept shots
+PASS boss 116 CreatureMotion changes its living pose at 1600x900
+PASS boss 116 retains a shootable weak point
+PASS boss 116 has an unobstructed actual pier sightline at 1600x900
+PASS boss 116 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-116-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-116-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 117 has its animated identity signature
+PASS boss 117 signature geometry cannot intercept shots
+PASS boss 117 CreatureMotion changes its living pose at 1600x900
+PASS boss 117 retains a shootable weak point
+PASS boss 117 has an unobstructed actual pier sightline at 1600x900
+PASS boss 117 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-117-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-117-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 118 has its animated identity signature
+PASS boss 118 signature geometry cannot intercept shots
+PASS boss 118 CreatureMotion changes its living pose at 1600x900
+PASS boss 118 retains a shootable weak point
+PASS boss 118 has an unobstructed actual pier sightline at 1600x900
+PASS boss 118 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-118-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-118-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS presentation-story-illustration-1280x720 renders requested native pixel dimensions
+PASS presentation-keystone-1280x720 renders requested native pixel dimensions
+PASS presentation-map-1280x720 renders requested native pixel dimensions
+PASS presentation-cinematic-13-1280x720 renders requested native pixel dimensions
+PASS presentation 1280x720 cinematic 13 restores camera exactly once
+PASS presentation-cinematic-12-1280x720 renders requested native pixel dimensions
+PASS presentation 1280x720 cinematic 12 restores camera exactly once
+PASS boss 111 has its animated identity signature
+PASS boss 111 signature geometry cannot intercept shots
+PASS boss 111 CreatureMotion changes its living pose at 1280x720
+PASS boss 111 retains a shootable weak point
+PASS boss 111 has an unobstructed actual pier sightline at 1280x720
+PASS boss 111 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-111-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-111-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 115 has its animated identity signature
+PASS boss 115 signature geometry cannot intercept shots
+PASS boss 115 CreatureMotion changes its living pose at 1280x720
+PASS boss 115 retains a shootable weak point
+PASS boss 115 has an unobstructed actual pier sightline at 1280x720
+PASS boss 115 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-115-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-115-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 116 has its animated identity signature
+PASS boss 116 signature geometry cannot intercept shots
+PASS boss 116 CreatureMotion changes its living pose at 1280x720
+PASS boss 116 retains a shootable weak point
+PASS boss 116 has an unobstructed actual pier sightline at 1280x720
+PASS boss 116 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-116-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-116-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 117 has its animated identity signature
+PASS boss 117 signature geometry cannot intercept shots
+PASS boss 117 CreatureMotion changes its living pose at 1280x720
+PASS boss 117 retains a shootable weak point
+PASS boss 117 has an unobstructed actual pier sightline at 1280x720
+PASS boss 117 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-117-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-117-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 118 has its animated identity signature
+PASS boss 118 signature geometry cannot intercept shots
+PASS boss 118 CreatureMotion changes its living pose at 1280x720
+PASS boss 118 retains a shootable weak point
+PASS boss 118 has an unobstructed actual pier sightline at 1280x720
+PASS boss 118 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-118-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-118-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 117 integrated fire damages physical nodes and the boss
+PASS boss 117 real combat visits all three phases and breaks their objectives
+PASS boss 117 survives long enough to execute multiple moves
+PASS boss 117 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 117 encounter duration remains within a playable range: 67.20
+PASS legendary boss 117 sustains a multi-mechanic endgame encounter
+PASS boss 117 clear never depends on test invulnerability
+PASS boss 118 integrated fire damages physical nodes and the boss
+PASS boss 118 real combat visits all three phases and breaks their objectives
+PASS boss 118 survives long enough to execute multiple moves
+PASS boss 118 can be defeated with legal shooting, movement, dash and finite medical items
+PASS boss 118 encounter duration remains within a playable range: 56.92
+PASS legendary boss 118 sustains a multi-mechanic endgame encounter
+PASS boss 118 clear never depends on test invulnerability

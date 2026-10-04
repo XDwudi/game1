@@ -9,7 +9,7 @@ namespace Tidebreak
     {
         static readonly Color Ink=new Color(.035f,.09f,.13f), Panel=new Color(.045f,.13f,.17f,.97f), Cream=new Color(.94f,.92f,.82f), Muted=new Color(.55f,.72f,.72f), Mint=new Color(.37f,.9f,.75f), Gold=new Color(1,.71f,.35f);
         GameDirector game;
-        RectTransform root,hud,modal,fishPanel,bossPanel,crosshair,dangerPanel,noticePanel,compassPanel;
+        RectTransform root,hud,modal,fishPanel,bossPanel,crosshair,dangerPanel,noticePanel,compassPanel,targetPanel;
         TMP_FontAsset font;
         Sprite whiteSprite;
         TextMeshProUGUI inventory,compass,seaTitle,objective,money,healthText,weaponText,ammoText,notice,hint,bossName,bossHealth,fishingTitle,fishingHint,damageNumber,status,targetName,dangerText;
@@ -56,7 +56,8 @@ namespace Tidebreak
             Box(crosshair,17,1,3,10,Cream);Box(crosshair,17,27,3,10,Cream);Box(crosshair,1,17,10,3,Cream);Box(crosshair,27,17,10,3,Cream);Box(crosshair,17,17,3,3,Mint);
             hit=Box(hud,793,443,14,14,Color.clear);hit.rectTransform.localRotation=Quaternion.Euler(0,0,45);
             damageNumber=Text(hud,816,418,130,40,"",23,Gold);
-            targetName=Text(hud,510,507,580,50,"",17,Cream,TextAlignmentOptions.Center);
+            targetPanel=Rect("Target identity",hud,495,487,610,58);Box(targetPanel,0,0,610,58,new Color(Ink.r,Ink.g,Ink.b,.82f));
+            targetName=Text(targetPanel,10,4,590,50,"",17,Cream,TextAlignmentOptions.Center);
             dangerPanel=Rect("Incoming strike warning",hud,505,591,590,57);
             Box(dangerPanel,0,0,590,57,new Color(.53f,.1f,.11f,.94f));dangerText=Text(dangerPanel,12,10,566,38,"",21,Cream,TextAlignmentOptions.Center);
             fishPanel=Rect("Fishing instrument",hud,495,610,610,126);Box(fishPanel,0,0,610,126,Panel);
@@ -68,7 +69,7 @@ namespace Tidebreak
             Box(bossPanel,0,0,716,90,new Color(Ink.r,Ink.g,Ink.b,.87f));
             bossName=Text(bossPanel,20,10,535,30,"",24,Cream);bossHealth=Text(bossPanel,546,11,149,28,"",17,Gold,TextAlignmentOptions.Right);
             bossFill=Bar(bossPanel,20,54,675,8,new Color(.94f,.42f,.35f));
-            Text(bossPanel,20,69,675,18,"红圈预警 → 冲刺躲避 → 攻击发光弱点",11,Muted,TextAlignmentOptions.Center);
+            Text(bossPanel,20,69,675,18,"先破岸上机关 · 跳潮环 / 避锁定线 · 暴露期间仍会反扑",11,Muted,TextAlignmentOptions.Center);
             damageOverlay=Box(root,0,0,1600,900,Color.clear);damageOverlay.raycastTarget=false;
         }
         public void ShowState()
@@ -95,7 +96,7 @@ namespace Tidebreak
             else Button(p,60,646,245,50,"船长手册",ShowManual);
             Button(p,320,646,245,50,"海洋图鉴",ShowJournal);
             Button(p,60,710,245,50,"设置",()=>ShowSettings(false));Button(p,320,710,245,50,"退出游戏",game.Quit);
-            Text(p,60,807,510,44,"九岛剧情  ·  108 种生物  ·  逐步解锁\nWIN 64   /   v0.3.0",13,Muted);
+            Text(p,60,807,510,44,"九岛剧情  ·  108 种生物  ·  逐步解锁\nWIN 64   /   v0.4.0",13,Muted);
             Text(p,1075,741,452,38,"PINEHAVEN",27,Cream,TextAlignmentOptions.Right).characterSpacing=4;
             Text(p,1075,786,452,43,"松风港  /  钓猎远征\n完成 "+game.Log.victories+" 次远征  ·  克拉肯 "+game.Log.krakens+" 次",15,Cream,TextAlignmentOptions.Right);
         }
@@ -111,7 +112,7 @@ namespace Tidebreak
             for(int i=0;i<4;i++){float x=80+i*366;Box(p,x,302,342,154,Panel);Text(p,x+24,324,296,32,labels[i],17,Muted);Text(p,x+22,368,296,66,values[i],47,Cream);}
             bool kraken=victory&&game.StoryComplete&&(game.Run.abyssBait||game.Run.rareSignal);
             if(kraken){Text(p,80,521,1440,71,"深渊传来回应。稀有 BOSS「克拉肯」可被唤醒。\n挑战前恢复 50 点生命；战败仍会保留本次主线通关纪录。",23,Gold);Button(p,80,642,680,66,"继续：挑战克拉肯    →",game.ChallengeKraken,true);}
-            else Text(p,80,521,1440,80,victory?"稀有传闻：购买「禁忌鱼饵」，或解开岛上的隐藏宝箱。\n继续探索后，可随时在航图中进入传说海域。":"船长建议：红圈出现后再冲刺，注意发光弱点，\n不要在鱼线发红时一直按住收线。",23,Muted);
+            else Text(p,80,521,1440,80,victory?"稀有传闻：购买「禁忌鱼饵」，或解开岛上的隐藏宝箱。\n继续探索后，可随时在航图中进入传说海域。":"船长建议：锁定后再闪避，攻击正面青绿核心，\n不要在鱼线发红时一直按住收线。",23,Muted);
             if(victory&&game.StoryComplete&&game.Run.rareSignal)Button(p,800,642,720,66,"罕见遭遇：幽海白鲸    →",game.ChallengeWhiteWhale);
             if(victory)Button(p,1020,758,500,61,"继续探索已解锁的群岛",game.ExploreAfterEnding);
             Button(p,80,758,450,61,"返回港口",game.ReturnHarbor,true);Button(p,550,758,450,61,"再次远征",()=>game.StartVoyage());
@@ -125,9 +126,9 @@ namespace Tidebreak
         }
         void ShowManual()
         {
-            var p=NewModal();Header(p,"CAPTAIN'S FIELD GUIDE","船长手册","从松风港出发，与向导交谈 → 收集不同样本 → 探索遗迹 → 首领潮核 → 解锁新岛。");
+            var p=NewModal();Header(p,"CAPTAIN'S FIELD GUIDE","船长手册","从松风港出发，独立调查与机关 → 破招首领战 → 金币选择专精 → 新航路。");
             string[] titles={"01  抛竿与控线","02  射击与生存","03  成长与巨物"};
-            string[] desc={"WASD 行走，SPACE 跳跃。\n按 1 拿起鱼竿，面向开阔海面。\n按住左键蓄力，松开抛出浮漂。\n\n咬钩后，绿灯按住左键收线；\n红灯松手降低张力。\n收线完成，怪鱼会跃出海面。", "按 2 拔枪，左键射击，R 装填。\n右键瞄准，SHIFT 冲刺闪避。\n凌空击杀与弱点击杀提高售价。\n\n击倒鱼后按 E 拿起；\nF 收进鱼篓，Q 可以把鱼抛出。\n鱼篓可在工坊扩容。", "港内鱼获收购柜台按 E 出售鱼获。\n老船长工坊用金币购买所有升级。\n随机配件也需要金币。\n\n完成委托，到港内航图按 E 选择岛屿。\n各岛完成调查后，在码头摇钟。\n首领潮核必须交给向导解锁航线。"};
+            string[] desc={"WASD 行走，SPACE 跳跃。\n按 1 拿起鱼竿，面向开阔海面。\n按住左键蓄力，松开抛出浮漂。\n\n咬钩后，绿灯按住左键收线；\n红灯松手降低张力。\n收线完成，怪鱼会跃出海面。", "按 2 拔枪，左键射击，R 装填。\n右键瞄准，SHIFT 冲刺闪避。\n凌空击杀与弱点击杀提高售价。\n\n击倒鱼后按 E 拿起；\nF 收进鱼篓，Q 可以把鱼抛出。\n鱼篓可在工坊扩容。", "港内鱼获收购柜台按 E 出售鱼获。\n老船长工坊用金币购买所有升级。\n随机配件也需要金币。\n\n修复、护送、解谜、追寻失踪船员。\n各岛完成调查后，在码头摇钟。\n首领潮核必须交给向导解锁航线。"};
             for(int i=0;i<3;i++){float x=80+i*489;Box(p,x,295,463,401,Panel);Text(p,x+26,321,415,45,titles[i],28,Gold);Text(p,x+26,389,413,281,desc[i],21,Muted);}
             Button(p,80,772,400,58,"返回",()=>{if(game.Paused)ShowPause();else ShowHarbor();},true);
         }
@@ -156,7 +157,7 @@ namespace Tidebreak
             notice.text=Time.unscaledTime<game.MessageUntil?game.Message:"";
             noticePanel.gameObject.SetActive(!string.IsNullOrEmpty(notice.text));
             UpdateExpeditionHUD();
-            hint.text=game.Interaction!=""?game.Interaction:game.State==VoyageState.Fishing?"按住左键收线  /  红灯松手  /  Q 收回":game.Player.RodEquipped?"面向海面 · 按住左键蓄力，松开抛竿":game.State==VoyageState.Combat?(game.Enemies.Count>0&&game.Enemies[0].IsBoss?"避开红圈和水弹   ·   等待破绽，集中攻击发光弱点":"凌空击杀 +25% 售价   ·   瞄准头部弱点"):"1 切换鱼竿   ·   鱼市与工坊在码头后方";
+            hint.text=game.Interaction!=""?game.Interaction:game.State==VoyageState.Fishing?"按住左键收线  /  红灯松手  /  Q 收回":game.Player.RodEquipped?"面向海面 · 按住左键蓄力，松开抛竿":game.State==VoyageState.Combat?(game.Enemies.Count>0&&game.Enemies[0].IsBoss?"先破岸上机关   ·   避开预警，攻击正面青绿核心":"凌空击杀 +25% 售价   ·   瞄准头部弱点"):"1 切换鱼竿   ·   鱼市与工坊在码头后方";
             status.text="SEED "+r.seed+"   /   "+(r.easy?"轻松":"标准")+"   /   J 任务 · I 图鉴 · M 航图";
             fishPanel.gameObject.SetActive(game.State==VoyageState.Fishing);
             if(game.State==VoyageState.Fishing) {
@@ -167,7 +168,9 @@ namespace Tidebreak
             }
             Enemy boss=null;foreach(var e in game.Enemies)if(e&&e.IsBoss){boss=e;break;}compassPanel.gameObject.SetActive(boss==null);
             bossPanel.gameObject.SetActive(boss!=null&&game.State==VoyageState.Combat);
-            if(boss){bossName.text=boss.DisplayName+"  /  "+(boss.phase==2?"狂暴":boss.Exposed?"弱点暴露":"蓄势");bossFill.fillAmount=boss.health/boss.maxHealth;bossHealth.text=Mathf.CeilToInt(boss.health)+" / "+boss.maxHealth;}
+            noticePanel.anchoredPosition=new Vector2(460,boss?-216:-135);
+            if(boss&&(game.Message.StartsWith("第 ")||game.Message.StartsWith("破招成功")||game.Message.StartsWith(boss.DisplayName+" 苏醒")))noticePanel.gameObject.SetActive(false);
+            if(boss){bossName.text=boss.DisplayName+"  /  阶段 "+boss.phase+" · "+(boss.Exposed?"破绽":"戒备");bossFill.fillAmount=boss.health/boss.maxHealth;bossHealth.text=Mathf.CeilToInt(boss.health)+" / "+boss.maxHealth;objective.text="首领交战中 · 第 "+boss.phase+" / 3 阶段\n击碎岸上机关解除潮核封锁\n核心暴露时，仍需应对反扑";}
             crosshair.gameObject.SetActive(game.IsPlaying&&!game.Paused);
             float danger=-1;
             if(game.State==VoyageState.Combat)for(int i=0;i<game.Hazards.childCount;i++) {
@@ -182,14 +185,16 @@ namespace Tidebreak
                 RaycastHit rayHit;
                 if(Physics.Raycast(game.Player.View.transform.position,game.Player.View.transform.forward,out rayHit,100)) {
                     var enemy=rayHit.collider.GetComponentInParent<Enemy>();
-                    if(enemy)targetName.text=(enemy.elite?"精英 · ":"")+enemy.DisplayName+"   "+Mathf.CeilToInt(enemy.health)+" / "+Mathf.CeilToInt(enemy.maxHealth)+"\n<color=#FFC06A>"+enemy.Telegraph+"</color>";
+                    if(enemy)targetName.text=(rayHit.collider.GetComponent<HitRegion>()?"<color=#8CFFD1>弱点 · </color>":"")+(enemy.elite?"精英 · ":"")+enemy.DisplayName+"   "+Mathf.CeilToInt(enemy.health)+" / "+Mathf.CeilToInt(enemy.maxHealth)+"\n<color=#FFC06A>"+enemy.Telegraph+"</color>";
                 }
             }
             if(Time.unscaledTime>hitUntil){hit.color=Color.clear;damageNumber.text="";}
             damageOverlay.color=new Color(.8f,.12f,.08f,Mathf.Clamp01((damageUntil-Time.unscaledTime)/.4f)*.25f);
+            UpdateCombatReadability();
+            targetPanel.gameObject.SetActive(!string.IsNullOrEmpty(targetName.text)&&game.IsPlaying);
             if(SaveStore.LastError!=null&&game.Paused&&!settings)notice.text="保存失败：请确保存档目录可写";
         }
-        public void HitMarker(bool critical,float damage){hit.color=critical?Gold:Mint;hitUntil=Time.unscaledTime+.13f;damageNumber.text=Mathf.RoundToInt(damage)+(critical?"!":"");}
+        public void HitMarker(bool critical,float damage){hit.color=damage<=0?Muted:critical?Gold:Mint;hitUntil=Time.unscaledTime+.13f;damageNumber.text=damage<=0?"封锁":Mathf.RoundToInt(damage)+(critical?"!":"");}
         public void DamageFlash(){damageUntil=Time.unscaledTime+.4f;}
         RectTransform Full(string name,Transform parent){var g=new GameObject(name,typeof(RectTransform));var r=g.GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;return r;}
         RectTransform Rect(string name,Transform parent,float x,float y,float w,float h)

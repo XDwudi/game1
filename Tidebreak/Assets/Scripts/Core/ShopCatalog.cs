@@ -12,12 +12,12 @@ namespace Tidebreak
     public static class ShopCatalog
     {
         public static readonly ShopOffer[] All={
-            new ShopOffer("weapon","枪械改装","所有武器基础伤害 +18%\n升级上限随主线许可证提升",0,1,85,5,r=>r.weaponLevel,r=>r.weaponLevel++),
+            new ShopOffer("weapon","枪械改装","所有武器基础伤害 +11%\n升级上限随主线许可证提升",0,1,85,5,r=>r.weaponLevel,r=>r.weaponLevel++),
             new ShopOffer("shotgun","礁石霰弹枪","七发散射 · 近距离爆发\n按 3 切换",0,2,150,1,r=>r.shotgun?1:0,r=>r.shotgun=true),
-            new ShopOffer("carbine","港卫卡宾枪","24 发弹匣 · 全自动\n按 5 切换；连续开火散布扩大",0,3,230,1,r=>r.carbine?1:0,r=>r.carbine=true),
-            new ShopOffer("harpoon","雷鸣鱼叉","高伤精确射击 · 3 发弹匣\n按 4 切换；适合远处弱点",0,4,300,1,r=>r.harpoon?1:0,r=>r.harpoon=true),
+            new ShopOffer("carbine","港卫卡宾枪","22 发弹匣 · 全自动\n按 5 切换；连续开火散布扩大",0,3,230,1,r=>r.carbine?1:0,r=>r.carbine=true),
+            new ShopOffer("harpoon","雷鸣鱼叉","精确射击 · 机关伤害 +50%\n按 4 切换；破甲工具，3 发弹匣",0,4,300,1,r=>r.harpoon?1:0,r=>r.harpoon=true),
             new ShopOffer("burst","巡风三连发","一次扣扳机射出三发\n按 6 切换；控制爆发节奏",0,5,360,1,r=>r.burstRifle?1:0,r=>r.burstRifle=true),
-            new ShopOffer("arc","风暴电弧枪","电流连接相邻目标\n按 7 切换；打断蓄势",0,7,480,1,r=>r.arcCaster?1:0,r=>r.arcCaster=true),
+            new ShopOffer("arc","风暴电弧枪","电流连接相邻目标\n按 7 切换；打断普通怪物蓄势",0,7,480,1,r=>r.arcCaster?1:0,r=>r.arcCaster=true),
             new ShopOffer("brake","枪口补偿器","每级减少 18% 镜头后坐\n所有武器通用",0,2,75,3,r=>r.brakeLevel,r=>r.brakeLevel++),
             new ShopOffer("scope","精密瞄具","每级减少瞄准散布\n提高远距离命中稳定性",0,4,95,2,r=>r.scopeLevel,r=>r.scopeLevel++),
             new ShopOffer("rod","钓具改装","更快收线，更稳控线\n高级鱼竿逐岛开放",1,1,65,3,r=>r.rodLevel,r=>r.rodLevel++),

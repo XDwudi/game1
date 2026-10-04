@@ -2,7 +2,7 @@ using UnityEngine;
 namespace Tidebreak
 {
     // Twelve anatomical rigs; species also vary in proportions, appendages, palette and crest.
-    public static class SpeciesArt
+    public static partial class SpeciesArt
     {
         static Color skin,belly,dark;
         static Transform Part(Transform p,string name,Vector3 at,Vector3 scale,Color c,PrimitiveType shape=PrimitiveType.Sphere){return Shape.Part(name,shape,p,at,scale,c).transform;}
@@ -10,8 +10,8 @@ namespace Tidebreak
         static void Fin(Transform p,Vector3 a,Vector3 b,Vector3 c){var m=new CoastalMesh();m.Tri(a,b,c,skin);m.Tri(c,b,a,belly);m.Build("Fin membrane",p);Shape.Beam(p,a,b,.025f,belly);}
         public static Transform Build(Transform parent,SpeciesDefinition s,bool elite)
         {
-            if(s.id==117)return CreatureArt.Build(parent,CreatureKind.Kraken,false);
-            if(s.id==118)return WhiteWhale(parent);
+            if(s.id==117){var kraken=CreatureArt.Build(parent,CreatureKind.Kraken,false);kraken.localScale=Vector3.one*1.7f;BossIdentityArt.BuildSignature(kraken,s);return kraken;}
+            if(s.id==118){var whale=WhiteWhale(parent);BossIdentityArt.BuildSignature(whale,s);return whale;}
             var root=new GameObject("Anatomy - "+s.body).transform;root.SetParent(parent,false);root.localScale=Vector3.one*s.size*(elite?1.13f:1);
             skin=elite?Color.Lerp(s.color,new Color(.7f,.23f,.7f),.35f):s.color;belly=Color.Lerp(skin,new Color(.92f,.87f,.68f),.6f);dark=Color.Lerp(skin,Color.black,.65f);
             float variation=1+(s.island%3)*.12f;Vector3 colliderSize=new Vector3(1.25f,1.1f,2.6f),eyeAt=new Vector3(.36f,.25f,.7f),weak=new Vector3(0,.2f,1.05f);
@@ -43,16 +43,27 @@ namespace Tidebreak
             for(int side=-1;side<=1;side+=2){Vector3 at=eyeAt;at.x*=side;Part(root,"Eye",at,Vector3.one*.15f,belly);Part(root,"Pupil",at+Vector3.forward*.07f,Vector3.one*.075f,dark);}
             // Island-specific sensory crests change the silhouette, including when seen at a distance.
             for(int j=0;j<s.island%4;j++)Limb(root,"Sensory crest",new[]{new Vector3((j-1)*.16f,.48f,.18f),new Vector3((j-1)*.23f,.9f+j*.12f,-.1f)},.045f);
+            BuildEcology(root,s);
             // Keep the luminous frontal target outside the solid hull, so a head-on ray can hit it.
             var col=root.gameObject.AddComponent<BoxCollider>();col.center=Vector3.back*.12f;col.size=new Vector3(colliderSize.x,colliderSize.y,Mathf.Min(colliderSize.z,(weak.z+.02f)*2));
             var point=Shape.Part("Weak point",PrimitiveType.Sphere,root,weak,Vector3.one*.24f,new Color(.5f,1,.8f),true,true);point.AddComponent<HitRegion>();
+            BossIdentityArt.BuildSignature(root,s);
             return root;
         }
         static Transform WhiteWhale(Transform parent)
         {
-            var root=new GameObject("White whale anatomy").transform;root.SetParent(parent,false);root.localScale=Vector3.one*4.4f;
+            var root=new GameObject("White whale anatomy").transform;root.SetParent(parent,false);root.localScale=Vector3.one*5.2f;
             skin=new Color(.72f,.83f,.85f);belly=new Color(.91f,.94f,.86f);dark=new Color(.08f,.18f,.23f);
             CoastalMesh.Tube("Streamlined whale",root,new[]{new Vector3(0,0,-2),new Vector3(0,0,-1.3f),new Vector3(0,0,-.4f),new Vector3(0,0,.55f),new Vector3(0,0,1.12f),new Vector3(0,0,1.38f)},new[]{.07f,.3f,.57f,.66f,.48f,.22f},skin,belly,16);
+            Part(root,"Rounded whale forehead",new Vector3(0,.1f,.83f),new Vector3(.97f,.96f,1.04f),skin);
+            // Thick horizontal flukes stay legible against the water from a low
+            // captain camera; paper-thin fins disappear almost entirely edge-on.
+            for(int side=-1;side<=1;side+=2){
+                var fluke=Part(root,"Whale tail fluke",new Vector3(side*.51f,.02f,-2.06f),new Vector3(1.23f,.16f,.72f),skin);
+                fluke.localRotation=Quaternion.Euler(0,side*-18,side*5);
+                var paddle=Part(root,"Whale pectoral paddle",new Vector3(side*.77f,-.08f,.06f),new Vector3(1.02f,.16f,.52f),belly);
+                paddle.localRotation=Quaternion.Euler(0,side*32,side*-12);
+            }
             for(int side=-1;side<=1;side+=2){Fin(root,new Vector3(side*.38f,-.13f,.52f),new Vector3(side*1.4f,-.29f,-.4f),new Vector3(side*.45f,-.26f,-.45f));Fin(root,new Vector3(0,0,-1.8f),new Vector3(side*1.25f,.08f,-2.15f),new Vector3(side*.46f,0,-2.55f));Part(root,"Whale eye",new Vector3(side*.42f,.14f,1.04f),Vector3.one*.115f,dark);}
             Limb(root,"Mouth seam",new[]{new Vector3(-.3f,-.18f,1.19f),new Vector3(0,-.21f,1.42f),new Vector3(.3f,-.18f,1.19f)},.013f);
             Part(root,"Blowhole",new Vector3(0,.58f,.34f),new Vector3(.18f,.04f,.23f),dark);

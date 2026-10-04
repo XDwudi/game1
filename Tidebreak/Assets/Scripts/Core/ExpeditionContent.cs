@@ -84,13 +84,13 @@ namespace Tidebreak
                 for(int k=0;k<12;k++){
                     int attack=(k+island*3)%14;SeaTrait trait=island==0&&k<6?SeaTrait.None:(SeaTrait)((k+island)%9);
                     all.Add(new SpeciesDefinition{id=all.Count,island=island,name=names[k],body=(BodyFamily)k,attack=(AttackStyle)attack,trait=trait,lure=k<6?0:k<9?1:k<11?2:3,
-                        color=Color.Lerp(Islands[island].accent,Color.HSVToRGB((k*.071f+island*.043f)%1,.48f,.72f),.52f),hp=(36+k*4)*(1+island*.2f),speed=2.7f+(k%4)*.55f,size=.7f+(k%3)*.13f+island*.016f,tempo=4.3f-(k%3)*.25f,value=23+island*7+k*2,
+                        color=Color.Lerp(Islands[island].accent,Color.HSVToRGB((k*.071f+island*.043f)%1,.48f,.72f),.52f),hp=(64+k*5)*(1+island*.19f),speed=3.1f+(k%4)*.55f,size=.7f+(k%3)*.13f+island*.016f,tempo=3.25f-(k%3)*.22f,value=25+island*7+k*2,
                         lore=Islands[island].name+"的"+new[]{"潮池居民","礁缝伏击者","浅海巡游者","夜间觅食者"}[k%4]+"。"+Counters[attack]+"；"+TraitNames[(int)trait]+"。"});
                 }
             }
             BodyFamily[] forms={BodyFamily.Crab,BodyFamily.Ray,BodyFamily.Eel,BodyFamily.Turtle,BodyFamily.Squid,BodyFamily.Swordfish,BodyFamily.Jelly,BodyFamily.Crab,BodyFamily.Shark};
             AttackStyle[] styles={AttackStyle.Leap,AttackStyle.Ring,AttackStyle.Burrow,AttackStyle.Mortar,AttackStyle.Pull,AttackStyle.Boomerang,AttackStyle.Beam,AttackStyle.Mine,AttackStyle.Spiral};
-            for(int i=0;i<11;i++)all.Add(new SpeciesDefinition{id=108+i,island=Mathf.Min(i,8),name=i<9?Islands[i].bossName:i==9?"古神 · 克拉肯":"幽海白鲸 · 莫比",body=i<9?forms[i]:i==9?BodyFamily.Squid:BodyFamily.Swordfish,attack=i<9?styles[i]:i==9?AttackStyle.Pull:AttackStyle.Fan,trait=i<9?(SeaTrait)(i%8+1):SeaTrait.None,boss=true,hp=i<9?420+i*190:i==9?3100:2800,speed=2,size=i<9?3.3f+i*.1f:5,tempo=5.2f,value=i<9?140+i*30:500,color=Islands[Mathf.Min(i,8)].accent,lore="守关巨物。半血切换攻击节奏；击破发光弱点可以制造失衡窗口。"});
+            for(int i=0;i<11;i++)all.Add(new SpeciesDefinition{id=108+i,island=Mathf.Min(i,8),name=i<9?Islands[i].bossName:i==9?"古神 · 克拉肯":"幽海白鲸 · 莫比",body=i<9?forms[i]:i==9?BodyFamily.Squid:BodyFamily.Swordfish,attack=i<9?styles[i]:i==9?AttackStyle.Pull:AttackStyle.Fan,trait=i<9?(SeaTrait)(i%8+1):SeaTrait.None,boss=true,hp=i<9?820+i*340:i==9?6600:6100,speed=2,size=i<9?3.3f+i*.1f:5,tempo=5.2f,value=i<9?140+i*30:650,color=Islands[Mathf.Min(i,8)].accent,lore="三阶段守关巨物。破坏场内发光机关可开启 7 秒输出窗口；每阶段都有独立连招。"});
             return all.ToArray();
         }
         public static SpeciesDefinition Roll(RunData run,System.Random random)

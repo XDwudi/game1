@@ -1,0 +1,13 @@
+Presentation-only fixtures; synthetic setup, no claim of human playtesting.
+Device: MS-7C37 (Micro-Star International Co., Ltd.)
+OS: Windows 10  (10.0.19045) 64bit
+CPU: AMD Ryzen 9 5900X 12-Core Processor  / 24 logical cores
+GPU: NVIDIA GeForce RTX 3080 / Direct3D11
+RAM MB: 65457; VRAM MB: 10053
+Unity: 2021.3.16f1c1; target frame rate: 90
+*-pier files use the captain standing on the actual pier with normal game camera.
+*-qa-three-quarter files use a separate inspection camera pose; not gameplay POV.
+Requested render 1600x900; window 1600x900
+Requested render 1280x720; window 1280x720
+Frame observation: one live Kraken, normal time, actual pier POV, 1600x900, 3 seconds; no screenshot encoding inside sample.
+Samples=269; mean_ms=11.17; median_ms=11.11; p95_ms=11.48
