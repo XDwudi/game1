@@ -56,7 +56,9 @@ namespace Tidebreak
                 Cylinder(r,"Long barrel",new Vector3(0,.037f,.46f),.031f,.62f,Steel);
                 Cylinder(r,"Magazine tube",new Vector3(0,-.03f,.42f),.027f,.51f,Steel);
                 if(kind==WeaponKind.Scattergun){Part(r,"Pump foregrip",new Vector3(0,-.036f,.4f),new Vector3(.098f,.09f,.24f),Walnut);for(int i=0;i<8;i++)Part(r,"Pump grooves",new Vector3(0,.008f,.31f+i*.026f),new Vector3(.1f,.01f,.007f),Brass*.5f);}
-                else {for(int s=-1;s<=1;s+=2)Shape.Beam(r,new Vector3(s*.09f,.08f,.13f),new Vector3(s*.09f,.08f,.66f),.012f,Brass);Cylinder(r,"Harpoon shaft",new Vector3(0,.077f,.55f),.009f,.7f,Edge);CoastalMesh.Tube("Harpoon head",r,new[]{new Vector3(0,.077f,.84f),new Vector3(0,.077f,.9f),new Vector3(0,.077f,1.03f)},new[]{.01f,.035f,0},Edge,Steel,5);end=1.02f;}
+                else if(kind==WeaponKind.Harpoon){for(int s=-1;s<=1;s+=2)Shape.Beam(r,new Vector3(s*.09f,.08f,.13f),new Vector3(s*.09f,.08f,.66f),.012f,Brass);Cylinder(r,"Harpoon shaft",new Vector3(0,.077f,.55f),.009f,.7f,Edge);CoastalMesh.Tube("Harpoon head",r,new[]{new Vector3(0,.077f,.84f),new Vector3(0,.077f,.9f),new Vector3(0,.077f,1.03f)},new[]{.01f,.035f,0},Edge,Steel,5);end=1.02f;}
+                if(kind==WeaponKind.Carbine||kind==WeaponKind.BurstRifle){Part(r,"Detachable magazine",new Vector3(0,-.17f,.12f),new Vector3(.09f,.27f,.12f),Steel).localRotation=Quaternion.Euler(-12,0,0);Part(r,"Stock",new Vector3(0,-.05f,-.24f),new Vector3(.09f,.17f,.3f),Walnut);for(int v=0;v<6;v++)Part(r,"Cooling vent",new Vector3(0,.074f,.23f+v*.055f),new Vector3(.072f,.02f,.02f),Edge);if(kind==WeaponKind.BurstRifle)Cylinder(r,"Optic",new Vector3(0,.13f,.13f),.045f,.16f,Steel);}
+                if(kind==WeaponKind.ArcCaster){for(int v=0;v<5;v++)CoastalMesh.Ring(r,new Vector3(0,.037f,.32f+v*.07f),.074f,.009f,new Color(.3f,.9f,.85f),Quaternion.identity);Part(r,"Capacitor",new Vector3(0,-.075f,.13f),new Vector3(.16f,.16f,.23f),Steel);}
                 Hand(r,new Vector3(-.025f,-.16f,.38f),Quaternion.Euler(10,0,15),true);
             }
             Cylinder(r,"Dark bore",new Vector3(0,.035f,end+.003f),.019f,.01f,new Color(.025f,.032f,.033f));

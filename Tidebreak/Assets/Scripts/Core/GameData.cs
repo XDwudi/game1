@@ -4,28 +4,28 @@ using UnityEngine;
 
 namespace Tidebreak
 {
-    public enum VoyageState { Harbor, Sailing, Fishing, Combat, Reward, Shop, Route, Victory, Defeat }
+    public enum VoyageState { Harbor, Sailing, Fishing, Combat, Reward, Shop, Route, Victory, Defeat, Dialogue }
     public enum CreatureKind { Snapper, Puffer, Razorfin, Crab, Angler, Leviathan, Kraken, WhiteWhale }
-    public enum WeaponKind { Revolver, Scattergun, Harpoon }
+    public enum WeaponKind { Revolver, Scattergun, Harpoon, Carbine, BurstRifle, ArcCaster }
     public enum RouteKind { Shoal, Hunt, Abyss }
 
     [Serializable]
-    public class RunData
+    public partial class RunData
     {
         public int seed, stage = 1, coins = 25, kills, catches, bossKills, earned;
         public int landed, sold, shopMask;
         public bool bossCleared;
         public List<CatchData> bag=new List<CatchData>();
         public int BagValue {get {int n=0;if(bag!=null)foreach(var f in bag)n+=f.value;return n;}}
-        public int Quota {get{return BossStage?1:3+Act;}}
-        public bool RouteReady {get{return BossStage?bossCleared:landed>=Quota;}}
+        public int Quota {get{return ExpeditionContent.Island(stage).quota;}}
+        public bool RouteReady {get{return stage>=10?bossCleared:questStep>=4;}}
         public float health = 100, elapsed;
         public int weaponLevel, rodLevel, hullLevel, damageRelics, hasteRelics, criticalRelics;
         public int leechRelics, fortuneRelics, dodgeRelics, magazineRelics, shieldRelics;
         public bool shotgun, harpoon, abyssBait, krakenDefeated, whaleDefeated, rareSignal, easy;
         public RouteKind route;
         public int selectedWeapon;
-        public int checkpointVersion = 2;
+        public int checkpointVersion = 3;
         public bool betweenEncounters;
         public float MaxHealth { get { return 100 + hullLevel * 25; } }
         public float DamageMultiplier { get { return (1 + .18f * weaponLevel) * (1 + .14f * damageRelics); } }
@@ -34,7 +34,7 @@ namespace Tidebreak
         public float DodgeCooldown { get { return Mathf.Max(1.6f, 3.5f - .35f * dodgeRelics); } }
         public float DamageTakenMultiplier { get { return (easy ? .65f : 1) * Mathf.Max(.65f, 1 - shieldRelics * .07f); } }
         public int Act { get { return Mathf.Clamp((stage - 1) / 3, 0, 2); } }
-        public bool BossStage { get { return stage % 3 == 0 || stage >= 10; } }
+        public bool BossStage { get { return questStep>=3 || stage>=10; } }
     }
 
     public struct WeaponSpec
@@ -51,7 +51,10 @@ namespace Tidebreak
         public static readonly WeaponSpec[] Weapons = {
             new WeaponSpec("潮汐左轮", 23, .34f, 1.3f, 8, 1, .003f),
             new WeaponSpec("礁石霰弹枪", 11, .85f, 1.8f, 5, 7, .055f),
-            new WeaponSpec("雷鸣鱼叉", 100, .98f, 2.1f, 3, 1, .001f)
+            new WeaponSpec("雷鸣鱼叉", 100, .98f, 2.1f, 3, 1, .001f),
+            new WeaponSpec("港卫卡宾枪", 14, .115f, 1.8f, 24, 1, .008f),
+            new WeaponSpec("巡风三连发", 25, .13f, 1.9f, 18, 1, .004f),
+            new WeaponSpec("风暴电弧枪", 48, .58f, 2.2f, 8, 1, .006f)
         };
         public static readonly string[] Seas = { "日光浅滩", "风暴群礁", "幽光深渊" };
         public static readonly string[] SeaCaptions = { "SUNLIT SHOALS", "TEMPEST REEF", "THE LUMINOUS DEEP" };
@@ -92,10 +95,11 @@ namespace Tidebreak
     public class CatchData
     {
         public CreatureKind kind;
+        public int speciesId=-1;
         public int value,quality;
         public float weight;
         public bool elite,airshot,weakshot;
-        public string Label {get{return (quality==2?"金鳞 · ":quality==1?"巨型 · ":elite?"精英 · ":"")+Balance.CreatureName(kind);}}
+        public string Label {get{return (quality==2?"金鳞 · ":quality==1?"巨型 · ":elite?"精英 · ":"")+(speciesId>=0?ExpeditionContent.Species[speciesId].name:Balance.CreatureName(kind));}}
     }
 
     public class Relic
@@ -113,11 +117,23 @@ namespace Tidebreak
             new Relic("pearl", "幸运黑珍珠", "战利品金币 +15%\n深渊也有自己的馈赠。", "财富", new Color(.83f,.65f,1), r=>r.fortuneRelics++),
             new Relic("wind", "乘风羽鳍", "冲刺冷却 -0.35 秒\n最低冷却 1.6 秒。", "机动", new Color(.45f,.88f,1), r=>r.dodgeRelics++),
             new Relic("shell", "无限螺壳", "弹匣容量 +2\n备用弹药无限，装填仍然重要。", "弹药", new Color(1,.81f,.5f), r=>r.magazineRelics++),
-            new Relic("ward", "海神鳞片", "受到伤害 -7%\n最多减伤 35%。", "防护", new Color(.43f,.87f,.8f), r=>r.shieldRelics++)
+            new Relic("ward", "海神鳞片", "受到伤害 -7%\n最多减伤 35%。", "防护", new Color(.43f,.87f,.8f), r=>r.shieldRelics++),
+            new Relic("burn", "熔盐弹头", "命中附加持续灼烧\n擅长消耗厚甲目标。", "元素", Color.red, r=>r.fireRelics++),
+            new Relic("frost", "霜纹弹匣", "命中减缓移动与出招\n为你创造装填时间。", "元素", Color.cyan, r=>r.iceRelics++),
+            new Relic("shock", "蓄电导轨", "连续命中有概率短暂打断\n降低弹幕压迫。", "元素", Color.yellow, r=>r.shockRelics++),
+            new Relic("execute", "猎首刻印", "低血量敌人额外受到伤害\n加快战斗收尾。", "火力", Color.red, r=>r.executeRelics++),
+            new Relic("stagger", "破甲锤针", "提高失衡伤害与击退\n攻击蓄势中的敌人。", "控制", Color.yellow, r=>r.staggerRelics++),
+            new Relic("chain", "分叉线圈", "电弧枪额外连接目标\n强化对群作战。", "元素", Color.cyan, r=>r.chainLevel++),
+            new Relic("steady", "船匠配重", "减少镜头后坐\n更稳地连续命中。", "操控", Color.gray, r=>r.brakeLevel++),
+            new Relic("stride", "浪行绑腿", "移动速度提升\n缩短冰霜减速时间。", "机动", Color.green, r=>r.bootsLevel++),
+            new Relic("hold", "渔网夹层", "鱼篓容量 +4\n单次探索携带更多鱼获。", "探索", Color.green, r=>r.bagLevel++),
+            new Relic("keen", "鹰眼棱镜", "瞄准散布降低\n精确打击更远处的弱点。", "精准", Color.cyan, r=>r.scopeLevel++),
+            new Relic("medical", "行医包", "获得 2 个随身急救包\nZ 使用，消耗后需再购买。", "补给", Color.green, r=>r.medkits+=2),
+            new Relic("powder", "爆破袋", "获得 3 枚深水震爆弹\nX 投掷，消耗后需再购买。", "补给", Color.red, r=>r.bombs+=3)
         };
-        public static Relic[] Roll(System.Random rng)
+        public static Relic[] Roll(System.Random rng,int available=20)
         {
-            var pool = new List<Relic>(All);
+            var pool = new List<Relic>(All).GetRange(0,Math.Min(available,All.Length));
             var result = new Relic[3];
             for(int i=0;i<3;i++) { int index=rng.Next(pool.Count); result[i]=pool[index]; pool.RemoveAt(index); }
             return result;

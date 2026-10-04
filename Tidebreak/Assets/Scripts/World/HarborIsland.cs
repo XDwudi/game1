@@ -4,16 +4,19 @@ using UnityEngine;
 
 namespace Tidebreak
 {
-    public class SeaWorld : MonoBehaviour
+    public partial class SeaWorld : MonoBehaviour
     {
         public Transform Boat,Scenery;
         public int Region;
-        float CoastWidth {get{return 28+Region*2;}}
-        float CoastLength {get{return 33+Region;}}
+        float CoastWidth {get{return 29+(Region%3)*6;}}
+        float CoastLength {get{return 34+(Region%3)*5;}}
         public Material Ocean;
-        public readonly Vector3 SellPoint=new Vector3(-10,1.1f,-6);
-        public readonly Vector3 ShopPoint=new Vector3(10,1.1f,-7);
-        public readonly Vector3 ChartPoint=new Vector3(0,1.1f,-15);
+        public IslandDefinition Definition {get{return ExpeditionContent.Islands[Mathf.Clamp(Region,0,8)];}}
+        public Vector3 SellPoint {get{return Definition.market;}}
+        public Vector3 QuestPoint {get{return Definition.guide;}}
+        public Vector3[] SitePoints {get{return new[]{Definition.site1,Definition.site2,Definition.site3};}}
+        public Vector3 ShopPoint {get{return Definition.workshop;}}
+        public Vector3 ChartPoint {get{return new Vector3(4.8f,1.5f,2);}}
         public Vector3 Spawn {get{return new Vector3(0,3.3f,8);}}
         public const int GroundMask=1<<8;
         Light sun;
@@ -24,13 +27,17 @@ namespace Tidebreak
         readonly Color wood=new Color(.39f,.25f,.15f),ivory=new Color(.86f,.85f,.68f),iron=new Color(.13f,.22f,.24f),orange=new Color(.87f,.35f,.12f);
         public float Height(float x,float z)
         {
-            float d=Mathf.Sqrt(x*x/(CoastWidth*CoastWidth)+(z+15)*(z+15)/(CoastLength*CoastLength));
-            float edge=.9f+Mathf.Sin(Mathf.Atan2(z+15,x)*(5+Region))*(.035f+Region*.01f);
-            if(d>edge)return Mathf.Lerp(.1f,-5,Mathf.Clamp01((d-edge)/.2f));
-            float hill=Mathf.PerlinNoise(x*.09f+51,z*.09f+31)*.7f;
-            float h=1.25f+hill;
-            if(z < -22)h+=Mathf.Clamp01((-z-22)/19)*(4+Region*1.5f)*Mathf.PerlinNoise(x*.05f+3+Region*7,z*.06f+5);
-            return Mathf.Lerp(h,.15f,Mathf.Clamp01((d-.72f)/(edge-.72f)));
+            float angle=Mathf.Atan2(z+15,x);float d=Mathf.Sqrt(x*x/(CoastWidth*CoastWidth)+(z+15)*(z+15)/(CoastLength*CoastLength));
+            float edge=.94f+Mathf.Sin(angle*(3+Region%4))*(.045f+Region%3*.013f)+Mathf.Cos(angle*2+Region)*.03f;
+            if(d>edge)return Mathf.Lerp(.1f,-5,Mathf.Clamp01((d-edge)/.19f));
+            float h=1.5f+Mathf.PerlinNoise(x*.075f+Region*8,z*.075f+31)*.45f;
+            if(z < -24)h+=Mathf.Clamp01((-z-24)/20)*(2+Region%4*1.5f)*Mathf.PerlinNoise(x*.055f+3+Region*7,z*.06f+5);
+            if(Region==3)h+=Mathf.Sin(x*.17f+z*.1f)*.3f;
+            if(Region==5&&Mathf.Abs(x)>21)h+=Mathf.Clamp01((Mathf.Abs(x)-21)/10)*4;
+            float village=Mathf.Min(Vector2.Distance(new Vector2(x,z),new Vector2(SellPoint.x,SellPoint.z)),Vector2.Distance(new Vector2(x,z),new Vector2(ShopPoint.x,ShopPoint.z)));
+            if(village<6.4f)h=Mathf.Lerp(1.55f,h,Mathf.Clamp01((village-5.2f)/1.2f));
+            foreach(var p in SitePoints){float distance=Vector2.Distance(new Vector2(x,z),new Vector2(p.x,p.z));if(distance<5.5f)h=Mathf.Lerp(Mathf.Min(h,2.2f),h,Mathf.SmoothStep(0,1,Mathf.InverseLerp(2.2f,5.5f,distance)));}
+            return Mathf.Lerp(h,.15f,Mathf.Clamp01((d-.76f)/(edge-.76f)));
         }
         public float GroundAt(Vector3 p)
         {
@@ -51,7 +58,7 @@ namespace Tidebreak
             Ocean=new Material(Resources.Load<Shader>("Ocean"));
             BuildWater();
             Scenery=new GameObject("Pinehaven Island").transform;Scenery.SetParent(transform);
-            BuildTerrain();BuildPier();BuildVillage();BuildWilds();BuildDistantIslands();BuildBoat();BuildBiomes();
+            BuildTerrain();BuildPier();BuildVillage();BuildWilds();BuildDistantIslands();BuildBoat();BuildBiomes();BuildExplorationSites();
             for(int i=0;i<8;i++) {
                 var bird=new GameObject("Gull").transform;bird.SetParent(transform);
                 var mesh=new CoastalMesh();
@@ -75,12 +82,12 @@ namespace Tidebreak
         void BuildTerrain()
         {
             var mesh=new CoastalMesh();
-            for(int z=-53;z<24;z++)for(int x=-35;x<35;x++) {
+            for(int z=-64;z<24;z++)for(int x=-43;x<43;x++) {
                 var a=new Vector3(x,Height(x,z),z);var b=new Vector3(x+1,Height(x+1,z),z);
                 var c=new Vector3(x,Height(x,z+1),z+1);var d=new Vector3(x+1,Height(x+1,z+1),z+1);
                 float h=(a.y+b.y+c.y+d.y)*.25f;
                 bool path=Mathf.Abs(x)<2.6f&&z>-20||z>-10&&z<-5&&Mathf.Abs(x)<14;
-                Color col=h<.65f?new Color(.7f,.67f,.49f):path?new Color(.59f,.55f,.39f):Region==0?new Color(.37f,.51f,.24f):Region==1?new Color(.34f,.43f,.3f):new Color(.28f,.39f,.37f);
+                Color col=h<.65f?new Color(.7f,.67f,.49f):path?new Color(.59f,.55f,.39f):Definition.ground;
                 col*=Random.Range(.93f,1.06f);col.a=1;
                 mesh.Tri(a,c,b,col);mesh.Tri(b,c,d,col);
             }
@@ -118,41 +125,26 @@ namespace Tidebreak
         }
         void BuildVillage()
         {
-            Shack(new Vector3(-10,1.55f,-9),-8,false);
-            Shack(new Vector3(10,1.55f,-10),8,true);
-            Sign(Scenery,new Vector3(-10,4.85f,-6.6f),"鱼 获 收 购","FISH MARKET  /  E",-8,4.9f);
-            Sign(Scenery,new Vector3(10,4.85f,-7.6f),"老 船 长 工 坊","GEAR & GUNS  /  E",8,5.6f);
-            NPC(new Vector3(-10,1.65f,-8.15f),false);NPC(new Vector3(10,1.65f,-9.15f),true);
-            // Fish scale, open crate and coin jar establish the sell counter's purpose.
-            Box("Fish counter",Scenery,new Vector3(-10,2.2f,-6.4f),new Vector3(4.5f,1.2f,1.1f),wood,true);
-            Box("Market ice",Scenery,new Vector3(-10.8f,2.84f,-6.4f),new Vector3(2,.08f,.7f),new Color(.65f,.85f,.82f));
-            var display=CreatureArt.Build(new GameObject("Display fish").transform,CreatureKind.Snapper,false);display.parent.SetParent(Scenery);display.parent.position=new Vector3(-10.9f,3,-6.4f);display.parent.localScale=Vector3.one*.38f;display.parent.rotation=Quaternion.Euler(0,90,85);foreach(var co in display.GetComponentsInChildren<Collider>())Destroy(co);
-            Box("Workshop counter",Scenery,new Vector3(10,2.2f,-7.4f),new Vector3(4.7f,1.2f,1.1f),wood,true);
-            Shape.Part("Anvil",PrimitiveType.Cube,Scenery,new Vector3(9.6f,3,-7.4f),new Vector3(.8f,.22f,.35f),iron);
-            Shape.Beam(Scenery,new Vector3(10.7f,2.85f,-7.5f),new Vector3(11.3f,2.87f,-7.3f),.075f,wood);
-            Box("Hammer",Scenery,new Vector3(11.3f,2.88f,-7.3f),new Vector3(.17f,.13f,.32f),iron);
-            for(int i=0;i<3;i++)Crate(new Vector3(6.5f,1.5f,-11+i),.8f);
-            Barrel(new Vector3(-13.8f,1.6f,-6.4f));Barrel(new Vector3(13.7f,1.6f,-6.8f));
-            Sign(Scenery,new Vector3(0,2.7f,-17),"远 征 航 图","CHART A COURSE  /  E",0,4.2f);
-            Box("Chart support",Scenery,new Vector3(0,1.9f,-17),new Vector3(.22f,1.2f,.22f),wood,true);
-            for(int i=0;i<6;i++) {
-                float a=i*Mathf.PI/3;Shape.Rock(Scenery,new Vector3(Mathf.Cos(a)*.85f,1.66f,-21+Mathf.Sin(a)*.85f),Vector3.one*.35f,new Color(.35f,.38f,.33f));
+            for(int i=0;i<2;i++){
+                Vector3 p=i==0?SellPoint:ShopPoint;p.y=1.65f;
+                Shack(p+Vector3.back*2.7f,0,i==1);NPC(p+Vector3.back*1.5f,i==1);
+                Sign(Scenery,p+new Vector3(0,3.25f,.2f),i==0?"鱼获收购":"岛屿工坊",i==0?"SELL YOUR CATCH / E":"BLUEPRINTS & GEAR / E",0,4.8f);
+                Box(i==0?"Fish counter":"Workshop counter",Scenery,p+Vector3.up*.55f,new Vector3(4.5f,1.1f,1),wood,true);
+                if(i==0){Box("Market ice",Scenery,p+Vector3.up*1.12f,new Vector3(2,.08f,.7f),new Color(.65f,.85f,.82f));var display=CreatureArt.Build(new GameObject("Market specimen").transform,CreatureKind.Snapper,false);display.parent.SetParent(Scenery);display.parent.position=p+Vector3.up*1.4f;display.parent.localScale=Vector3.one*.38f;display.parent.rotation=Quaternion.Euler(0,90,85);foreach(var c in display.GetComponentsInChildren<Collider>()){c.enabled=false;Destroy(c);}}
+                else {Box("Anvil",Scenery,p+Vector3.up*1.25f,new Vector3(.8f,.25f,.5f),iron);for(int j=0;j<3;j++)Crate(p+new Vector3(3.7f,-.15f,-1-j),.75f);}
+                Barrel(p+new Vector3(-3.7f,-.05f,0));
             }
-            Shape.Beam(Scenery,new Vector3(-.6f,1.7f,-21),new Vector3(.6f,1.7f,-21),.16f,wood);
-            Shape.Beam(Scenery,new Vector3(0,1.75f,-21.6f),new Vector3(0,1.75f,-20.4f),.16f,wood);
-            var fire=Shape.Part("Campfire",PrimitiveType.Sphere,Scenery,new Vector3(0,2,-21),new Vector3(.5f,.7f,.5f),new Color(1,.39f,.06f),false,true);var light=fire.AddComponent<Light>();light.color=new Color(1,.47f,.16f);light.range=9;light.intensity=2;
-            // String lights frame the village without blocking the walking path.
-            for(int s=-1;s<=1;s+=2)Shape.Beam(Scenery,new Vector3(s*15,1.5f,-4),new Vector3(s*15,6,-4),.13f,wood);
-            for(int i=0;i<16;i++) {
-                float x=-15+i*2;float y=5.7f-Mathf.Sin((x+15)/30*Mathf.PI)*1.3f;
-                if(i<15){float nx=x+2,ny=5.7f-Mathf.Sin((nx+15)/30*Mathf.PI)*1.3f;Shape.Beam(Scenery,new Vector3(x,y,-4),new Vector3(nx,ny,-4),.025f,iron);}
-                Shape.Part("Warm bulb",PrimitiveType.Sphere,Scenery,new Vector3(x,y-.12f,-4),Vector3.one*.13f,new Color(1,.77f,.4f),false,true);
-            }
+            Sign(Scenery,ChartPoint+Vector3.up*1.4f,"群岛航图","CHART / E    MAP / M",160,2.4f);
+            Box("Chart pedestal",Scenery,ChartPoint+Vector3.up*.4f,new Vector3(.24f,1.2f,.24f),wood,true);
+            BuildGuide();
+            for(int s=-1;s<=1;s+=2)Shape.Beam(Scenery,new Vector3(s*4,Height(s*4,-3),-3),new Vector3(s*4,4.7f,-3),.12f,wood);
+            for(int i=0;i<9;i++)Shape.Part("Village lantern",PrimitiveType.Sphere,Scenery,new Vector3(i-4,4.7f-Mathf.Sin(i/8f*Mathf.PI)*.7f,-3),Vector3.one*.17f,new Color(1,.79f,.4f),false,true);
+            Shape.Beam(Scenery,new Vector3(-4,4.7f,-3),new Vector3(4,4.7f,-3),.025f,iron);
         }
         void Shack(Vector3 position,float angle,bool workshop)
         {
             var r=new GameObject(workshop?"Captain's workshop":"Fish market").transform;r.SetParent(Scenery);r.position=position;r.rotation=Quaternion.Euler(0,angle,0);
-            Color wall=workshop?new Color(.24f,.39f,.41f):new Color(.61f,.42f,.24f);
+            Color wall=Color.Lerp(workshop?new Color(.24f,.39f,.41f):new Color(.61f,.42f,.24f),Definition.accent,.4f);
             Box("Foundation",r,Vector3.zero,new Vector3(6.1f,.2f,4.7f),wood,true);
             for(int i=0;i<12;i++) {
                 Box("Back siding",r,new Vector3(-2.75f+i*.5f,1.5f,-2.2f),new Vector3(.48f,3,.16f),wall*Random.Range(.94f,1.06f),true);
@@ -210,9 +202,9 @@ namespace Tidebreak
         void BuildWilds()
         {
             var grass=new CoastalMesh();
-            for(int i=0;i<9000;i++) {
+            for(int i=0;i<(Region==3||Region==5||Region==7?900:6500);i++) {
                 float x=Random.Range(-26f,26f),z=Random.Range(-46f,14f),y=Height(x,z);
-                if(y<1.25f||Mathf.Abs(x)<3.5f||z>-13&&z<-3&&Mathf.Abs(x)<16)continue;
+                if(y<1.25f||ClearTrail(x,z))continue;
                 if(Vector2.Distance(new Vector2(x,z),new Vector2(-10,-9))<5||Vector2.Distance(new Vector2(x,z),new Vector2(10,-10))<5)continue;
                 float h=Random.Range(.15f,.48f),w=Random.Range(.06f,.12f);var p=new Vector3(x,y-.035f,z);Color col=Color.Lerp(new Color(.31f,.43f,.16f),new Color(.65f,.66f,.29f),Random.value);
                 grass.Tri(p+Vector3.left*w,p+Vector3.up*h+Vector3.right*.09f,p+Vector3.right*w,col);grass.Tri(p+Vector3.forward*w,p+Vector3.up*h+Vector3.back*.07f,p+Vector3.back*w,col);
@@ -220,22 +212,23 @@ namespace Tidebreak
             grass.Build("Meadow grasses",Scenery);
             for(int i=0;i<70;i++) {
                 float x=Random.Range(-25f,25f),z=Random.Range(-45f,10f),y=Height(x,z);
-                if(y<1.2f||Mathf.Abs(x)<4||z>-16&&z<-1&&Mathf.Abs(x)<18)continue;
+                if(y<1.2f||ClearTrail(x,z))continue;
                 Pine(Scenery,new Vector3(x,y,z),Random.Range(3.8f,7.8f));
             }
             for(int i=0;i<35;i++) {
                 float x=Random.Range(-27f,27f),z=Random.Range(-45f,15f),y=Height(x,z);
-                if(y<0||Mathf.Abs(x)<4||z>-16&&z<-2&&Mathf.Abs(x)<18)continue;
+                if(y<0||ClearTrail(x,z))continue;
                 float scale=Random.Range(.45f,1.6f);var r=Shape.Rock(Scenery,new Vector3(x,y-.2f,z),new Vector3(scale,scale*.7f,scale),new Color(.43f,.48f,.43f));r.AddComponent<MeshCollider>();r.layer=8;
             }
-            for(int i=0;i<10;i++){float x=Random.Range(-21f,21f),z=Random.Range(-42f,-25f);Crate(new Vector3(x,Height(x,z),z),.45f);}
+            for(int i=0;i<10;i++){float x=Random.Range(-21f,21f),z=Random.Range(-42f,-25f);if(!ClearTrail(x,z))Crate(new Vector3(x,Height(x,z),z),.45f);}
         }
         void Pine(Transform parent,Vector3 pos,float height)
         {
+            if(Region!=0&&Region!=5){ThemePlant(parent,pos,height);return;}
             var m=new CoastalMesh();m.Cone(pos,.19f,height,new Color(.31f,.24f,.15f),7,.06f);
             Color low=Region==0?new Color(.17f,.32f,.22f):Region==1?new Color(.2f,.3f,.27f):new Color(.22f,.28f,.35f);
             Color high=Region==0?new Color(.32f,.47f,.26f):Region==1?new Color(.38f,.46f,.35f):new Color(.34f,.48f,.47f);
-            for(int i=0;i<5;i++)m.Cone(pos+Vector3.up*(height*.24f+i*height*.13f),height*(.25f-i*.034f),height*.38f,Color.Lerp(low,high,i*.2f),9);
+            for(int i=0;i<5;i++)m.Cone(pos+Vector3.up*(height*.24f+i*height*.13f),height*(.25f-i*.034f),height*.38f,Region==5?Color.Lerp(new Color(.35f,.49f,.48f),new Color(.87f,.94f,.94f),i*.23f):Color.Lerp(low,high,i*.2f),9);
             var g=m.Build("Coastal pine",parent);if(parent==Scenery){var col=g.AddComponent<CapsuleCollider>();col.center=pos+Vector3.up*height*.4f;col.radius=.23f;col.height=height*.8f;g.layer=8;}
         }
         void BuildDistantIslands()
@@ -264,38 +257,15 @@ namespace Tidebreak
             Box("Canvas canopy",boatFloat,new Vector3(0,3.75f,-1.1f),new Vector3(2.8f,.07f,3),orange);
             CoastalMesh.Ring(boatFloat,new Vector3(1.82f,.7f,.3f),.45f,.1f,orange,Quaternion.Euler(0,90,0));
         }
-        void BuildBiomes()
-        {
-            for(int act=0;act<3;act++){biomeDetails[act]=new GameObject("Sea region details "+act).transform;biomeDetails[act].SetParent(transform);}
-            // A storm-wrecked hull and old navigation stones mark the second region.
-            var wreck=new GameObject("Wreck of the Northstar").transform;wreck.SetParent(biomeDetails[1]);wreck.position=new Vector3(-19,Height(-19,3),3);wreck.rotation=Quaternion.Euler(0,32,18);
-            for(int i=0;i<9;i++){float z=-4+i;Shape.Beam(wreck,new Vector3(-2,.4f,z),new Vector3(-1,-.5f,z),.18f,wood*.6f);Shape.Beam(wreck,new Vector3(1,-.5f,z),new Vector3(2,.4f,z),.18f,wood*.6f);}
-            for(int s=-1;s<=1;s+=2)for(int i=0;i<3;i++)Shape.Beam(wreck,new Vector3(s*(1.1f+i*.3f),-.45f+i*.3f,-4),new Vector3(s*(1.1f+i*.3f),-.45f+i*.3f,Random.Range(1.2f,4)),.19f,wood*.7f);
-            Shape.Beam(wreck,Vector3.zero,new Vector3(-2.4f,4.8f,1),.16f,wood);
-            for(int s=-1;s<=1;s+=2){float x=s*19,z=-16;float y=Height(x,z);Shape.Rock(biomeDetails[1],new Vector3(x,y,z),new Vector3(1.2f,4.5f,1.1f),new Color(.28f,.36f,.37f));}
-            // Deepwater plants, luminous crystals and an old gate provide a distinct final shoreline.
-            for(int i=0;i<27;i++) {
-                float x=(i%2==0?-1:1)*Random.Range(8f,23f),z=Random.Range(-30f,10f),y=Height(x,z);if(y<.6f||z>-15&&z<-3&&Mathf.Abs(x)<16)continue;
-                var p=new Vector3(x,y,z);var col=new Color(.2f,.6f,.64f);
-                for(int j=0;j<3;j++){var r=Shape.Rock(biomeDetails[2],p+new Vector3((j-1)*.35f,0,0),new Vector3(.3f,Random.Range(.6f,1.6f),.3f),col,5);r.transform.localRotation=Quaternion.Euler(0,j*45,(j-1)*20);}
-                Shape.Part("Bioluminescent bloom",PrimitiveType.Sphere,biomeDetails[2],p+Vector3.up*.85f,new Vector3(.25f,.18f,.25f),new Color(.29f,.86f,.7f),false,true);
-            }
-            for(int s=-1;s<=1;s+=2){float x=s*6.5f,z=-27;float y=Height(x,z);Shape.Rock(biomeDetails[2],new Vector3(x,y,z),new Vector3(.9f,5.8f,1.2f),new Color(.23f,.3f,.34f),6);}
-            Shape.Beam(biomeDetails[2],new Vector3(-6.5f,7.1f,-27),new Vector3(6.5f,7.1f,-27),.7f,new Color(.25f,.33f,.35f));
-            for(int i=0;i<7;i++)Shape.Part("Gate rune",PrimitiveType.Cube,biomeDetails[2],new Vector3((i-3)*1.3f,7.15f,-26.7f),new Vector3(.12f,.4f,.06f),new Color(.3f,.85f,.7f),false,true);
-            for(int act=0;act<3;act++)StaticBatchingUtility.Combine(biomeDetails[act].gameObject);
-        }
+        void BuildBiomes(){BuildLandmark();}
         public void SetAct(int act)
         {
-            for(int i=0;i<biomeDetails.Length;i++)if(biomeDetails[i])biomeDetails[i].gameObject.SetActive(i==act);
-            Ocean.SetColor("_DeepColor",act==0?new Color(.06f,.3f,.37f):act==1?new Color(.065f,.21f,.3f):new Color(.055f,.12f,.23f));
-            Ocean.SetColor("_CrestColor",act==0?new Color(.38f,.69f,.68f):new Color(.28f,.52f,.6f));
-            RenderSettings.fogColor=act==0?new Color(.69f,.79f,.8f):act==1?new Color(.49f,.61f,.7f):new Color(.25f,.33f,.46f);
-            sun.intensity=act==0?1.2f:act==1?.95f:.7f;sun.color=act==0?new Color(1,.92f,.77f):new Color(.77f,.87f,1);
-            RenderSettings.skybox.SetColor("_SkyTint",act==0?new Color(.28f,.5f,.7f):act==1?new Color(.25f,.36f,.47f):new Color(.12f,.19f,.32f));
-            RenderSettings.skybox.SetColor("_Horizon",RenderSettings.fogColor);RenderSettings.skybox.SetColor("_Cloud",act==0?new Color(.96f,.94f,.87f):new Color(.53f,.61f,.69f));
-            RenderSettings.skybox.SetFloat("_Exposure",act==0?1.2f:act==1?1:.85f);
-            RenderSettings.ambientSkyColor=act==0?new Color(.66f,.77f,.8f):new Color(.4f,.53f,.66f);
+            Color accent=Definition.accent;bool night=Region>=6;bool snow=Region==5;
+            Ocean.SetColor("_DeepColor",Color.Lerp(new Color(.04f,.23f,.31f),accent,.15f));Ocean.SetColor("_CrestColor",Color.Lerp(new Color(.32f,.65f,.66f),accent,.2f));
+            RenderSettings.fogColor=night?Color.Lerp(new Color(.17f,.23f,.34f),accent,.13f):Color.Lerp(new Color(.69f,.8f,.82f),accent,.17f);
+            sun.intensity=night?.8f:snow?1.1f:1.25f;sun.color=Region==3||Region==7?new Color(1,.8f,.57f):new Color(.91f,.94f,1);
+            skyMaterial.SetColor("_SkyTint",night?Color.Lerp(new Color(.1f,.16f,.28f),accent,.09f):Definition.sky);skyMaterial.SetColor("_Horizon",RenderSettings.fogColor);skyMaterial.SetColor("_Cloud",night?new Color(.4f,.46f,.58f):new Color(.94f,.94f,.86f));skyMaterial.SetFloat("_Exposure",night?.9f:1.15f);
+            RenderSettings.ambientSkyColor=night?new Color(.42f,.53f,.65f):new Color(.68f,.76f,.8f);
         }
         void Update()
         {

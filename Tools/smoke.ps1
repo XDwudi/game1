@@ -9,4 +9,4 @@ if ($Visual) { $taskArgs += ' -tidebreakVisual' }
 $taskProcess = Start-Process -FilePath $taskExe -ArgumentList $taskArgs -WindowStyle Hidden -PassThru
 $taskProcess.WaitForExit()
 if ($taskProcess.ExitCode -ne 0) { throw "Integration test returned $($taskProcess.ExitCode). See Artifacts/player-smoke.log." }
-Get-Content -LiteralPath (Join-Path $taskRepo 'Builds/Artifacts/IslandQA/island-results.txt')
+Get-Content -LiteralPath (Join-Path $taskRepo 'Builds/Artifacts/ExpeditionQA/results.txt')

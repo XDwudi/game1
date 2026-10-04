@@ -1,0 +1,10 @@
+{
+  "version": "0.3.0",
+  "platform": "Windows x64",
+  "archive": "Tidebreak-v0.3.0-Windows-x64.zip",
+  "bytes": 29899461,
+  "files": 153,
+  "crc": "PASS",
+  "sha256": "70148582c8eb8649f353977e2669c1e43bb759f45797463728d874ddf34f254a",
+  "script_assembly_sha256": "e5f5b975436be34822b04fb3e0071199bc8a8e73df1f9b3afc6bb5ce41158493"
+}

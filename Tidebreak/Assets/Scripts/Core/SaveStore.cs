@@ -6,6 +6,10 @@ namespace Tidebreak
 {
     [Serializable] public class CaptainLog
     {
+        public int catalogVersion=3;
+        public bool[] speciesSeen=new bool[119], speciesGold=new bool[119];
+        public float[] speciesWeight=new float[119];
+        public int[] speciesKills=new int[119];
         public int voyages, victories, krakens, bestStage, totalKills;
         public bool[] discovered = new bool[8];
         public bool[] goldDiscovered = new bool[8];

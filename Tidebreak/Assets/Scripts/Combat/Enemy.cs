@@ -1,118 +1,128 @@
 using UnityEngine;
-
 namespace Tidebreak
 {
     public class Enemy : MonoBehaviour
     {
         public GameDirector game;
+        public SpeciesDefinition Spec;
         public CreatureKind kind;
-        public bool elite,dead,lastWeak;
-        public int quality;
+        public bool elite,dead,lastWeak,Summoned;
+        public int quality,phase=1;
         public float weight,health,maxHealth,exposedUntil;
-        public int phase=1;
-        public bool IsBoss {get{return kind>=CreatureKind.Crab;}}
+        public bool IsBoss {get{return Spec!=null&&Spec.boss;}}
         public bool Exposed {get{return !IsBoss||Time.time<exposedUntil;}}
-        public bool Airborne {get{return !IsBoss&&transform.position.y-game.World.GroundAt(transform.position)>.95f;}}
-        Transform rig,tail;
-        Vector3 origin;
-        Rigidbody body;
-        float age,nextAttack,flash,stagger,hopAt,launchUntil,attackPose;
-        Renderer[] renderers;
-        MaterialPropertyBlock properties;
+        public bool Airborne {get{return !IsBoss&&Time.time<launchUntil+.6f;}}
+        public int AttackExecutions {get;private set;}
+        public string DisplayName {get{return Spec.name;}}
+        public string Telegraph {get{return healing?"愈合蓄势 · 射击打断":Time.time>nextAttack-.8f?ExpeditionContent.AttackNames[(int)Spec.attack]+" · 即将出招":"";}}
+        Transform rig,tail;Vector3 origin,chargeDirection;
+        Rigidbody body;Renderer[] renderers;MaterialPropertyBlock properties;Color[] baseTints;
+        float age,nextAttack,flash,stagger,staggerReady,hopAt,launchUntil,chargeUntil,slowUntil,stunUntil,burnUntil,burnTick,blinkAt;
+        bool healing;float healAt;
         public void Init(GameDirector director,CreatureKind type,bool isElite,Vector3 position)
+        {InitSpecies(director,ExpeditionContent.Species[type>=CreatureKind.Crab?108:(int)type],isElite,position);}
+        public void InitSpecies(GameDirector director,SpeciesDefinition species,bool isElite,Vector3 position)
         {
-            game=director;kind=type;elite=isElite;origin=position;transform.position=position;
-            double rarity=game.Rng.NextDouble();quality=IsBoss?0:rarity<.045?2:rarity<.16?1:0;
-            weight=(float)(game.Rng.NextDouble()*2.2+1.3)*(elite?1.7f:1)*(quality==1?2.1f:1);
-            maxHealth=Balance.Health(kind,game.Run.stage,elite)*(game.Run.route==RouteKind.Hunt?1.12f:1)*(quality==1?1.25f:1);health=maxHealth;
-            rig=CreatureArt.Build(transform,kind,elite);if(elite)rig.localScale=Vector3.one*1.15f;if(quality==1)rig.localScale*=1.35f;
-            if(kind==CreatureKind.Crab)rig.localScale=Vector3.one*1.65f;
+            game=director;Spec=species;elite=isElite;origin=position;transform.position=position;
+            kind=Spec.id==117?CreatureKind.Kraken:Spec.id==118?CreatureKind.WhiteWhale:IsBoss?CreatureKind.Crab:Spec.body==BodyFamily.Puffer?CreatureKind.Puffer:CreatureKind.Snapper;
+            double rarity=game.Rng.NextDouble();quality=IsBoss?0:rarity<(game.Chummed?.1:.045)?2:rarity<.16?1:0;
+            weight=(float)(game.Rng.NextDouble()*2.2+1.3)*(elite?1.7f:1)*(quality==1?2.1f:1)*(1+Spec.island*.15f);
+            maxHealth=Spec.hp*(elite?1.65f:1)*(game.Run.route==RouteKind.Hunt?1.12f:1)*(quality==1?1.25f:1);health=maxHealth;
+            rig=SpeciesArt.Build(transform,Spec,elite);if(quality==1)rig.localScale*=1.3f;
             foreach(var t in rig.GetComponentsInChildren<Transform>())if(t.name=="Tail fin")tail=t;
-            renderers=GetComponentsInChildren<Renderer>();properties=new MaterialPropertyBlock();
-            if(!IsBoss){body=gameObject.AddComponent<Rigidbody>();body.mass=2.4f;body.drag=.12f;body.angularDrag=3;body.collisionDetectionMode=CollisionDetectionMode.ContinuousDynamic;body.constraints=RigidbodyConstraints.FreezeRotation;}
-            nextAttack=Time.time+(IsBoss?3:2.8f);hopAt=Time.time+2;game.Enemies.Add(this);SetTint(false);
+            renderers=GetComponentsInChildren<Renderer>();properties=new MaterialPropertyBlock();baseTints=new Color[renderers.Length];for(int i=0;i<renderers.Length;i++){renderers[i].GetPropertyBlock(properties);baseTints[i]=properties.isEmpty?renderers[i].sharedMaterial.GetColor("_Color"):properties.GetColor("_Color");}
+            if(!IsBoss){body=gameObject.AddComponent<Rigidbody>();body.mass=2.4f;body.drag=.35f;body.angularDrag=3;body.collisionDetectionMode=CollisionDetectionMode.ContinuousDynamic;body.constraints=RigidbodyConstraints.FreezeRotation;}
+            nextAttack=Time.time+(IsBoss?3.5f:2.5f);hopAt=Time.time+2;blinkAt=Time.time+7;game.Enemies.Add(this);Tint(false);
         }
         public void LaunchToward(Vector3 point)
         {
-            if(IsBoss)return;float time=1.3f;point.y=game.World.GroundAt(point)+.6f;
-            if(point.y<0){point=game.Player.transform.position+game.Player.transform.forward*1.1f;point.y=game.World.GroundAt(point)+.6f;}
-            body.velocity=(point-transform.position-Physics.gravity*time*time*.5f)/time;launchUntil=Time.time+time;game.Splash(transform.position);
+            if(IsBoss)return;float t=1.3f;point.y=game.World.GroundAt(point)+.7f;if(point.y<0){point=game.Player.transform.position+game.Player.transform.forward;point.y=game.World.GroundAt(point)+.7f;}
+            body.velocity=(point-transform.position-Physics.gravity*t*t*.5f)/t;launchUntil=Time.time+t;game.Splash(transform.position);
         }
         void Update()
         {
             if(dead||!game||game.State!=VoyageState.Combat||game.Paused)return;age+=Time.deltaTime;
+            if(Time.time<burnUntil&&Time.time>burnTick){burnTick=Time.time+.5f;Hit(3+game.Run.fireRelics*2,false,false,false);if(dead)return;}
+            float slow=Time.time<slowUntil?.48f:1;if(Time.time<stunUntil)return;
             Vector3 to=game.Player.transform.position-transform.position;to.y=0;
-            if(to.sqrMagnitude>.01f)transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(to),Time.deltaTime*4);
-            if(IsBoss) {
-                transform.position=origin+new Vector3(Mathf.Sin(age*.3f)*3,Mathf.Sin(age*.9f)*.17f-Mathf.Max(0,1-age/1.4f)*4,Mathf.Cos(age*.4f)*1.2f);
-                float windup=Mathf.Clamp01(1-(nextAttack-Time.time)/1.1f);
-                rig.localEulerAngles=new Vector3(windup*-13+Mathf.Sin(age*2)*2,0,Mathf.Sin(age)*2);
-                if(kind==CreatureKind.Kraken)for(int i=0;i<rig.childCount;i++){var arm=rig.GetChild(i);if(arm.name.StartsWith("Tentacle")){int index=int.Parse(arm.name.Substring(9));arm.localRotation=Quaternion.Euler(Mathf.Sin(age*1.4f+index)*8-windup*20,index*45,Mathf.Sin(age*.9f+index)*8);}}
-                if(phase==1&&health<=maxHealth*.5f){phase=2;nextAttack=Time.time+2;game.Notice("首领进入狂暴 · 连续攻击后再反击",3);game.Audio.Cue("boss");}
-            } else {
-                if(Time.time>launchUntil&&Time.time>hopAt&&!Airborne) {
-                    Vector3 dir=to.normalized;body.velocity=dir*(kind==CreatureKind.Razorfin?4.7f:2.8f)+Vector3.up*(kind==CreatureKind.Puffer?3:4.2f);hopAt=Time.time+(elite?.9f:1.35f);
-                    if(to.magnitude<1.7f){game.Player.TakeDamage(elite?12:7);game.Notice("怪鱼扑咬 · 后撤或冲刺拉开距离",1.3f);}
-                }
-                rig.localRotation=Quaternion.Euler(Airborne?-15:Mathf.Sin(age*13)*9,0,Mathf.Sin(age*(Airborne?8:13))*12);
-                if(transform.position.y<-1.6f){var p=game.Player.transform.position+game.Player.transform.forward*2;p.y=game.World.GroundAt(p)+1;transform.position=p;body.velocity=Vector3.up*3;game.Splash(p);}
+            if(to.sqrMagnitude>.01f)transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(to),Time.deltaTime*3.6f);
+            if(IsBoss){transform.position=origin+new Vector3(Mathf.Sin(age*.24f)*4,Mathf.Sin(age*.8f)*.24f-Mathf.Max(0,1-age/1.4f)*4,Mathf.Cos(age*.3f)*1.4f);float wind=Mathf.Clamp01(1-(nextAttack-Time.time)/1.2f);rig.localEulerAngles=new Vector3(wind*-10+Mathf.Sin(age*2)*2,0,Mathf.Sin(age)*2);
+                if(Spec.id==117)for(int i=0;i<rig.childCount;i++){var arm=rig.GetChild(i);if(arm.name.StartsWith("Tentacle")){int index=int.Parse(arm.name.Substring(9));arm.localRotation=Quaternion.Euler(Mathf.Sin(age*1.4f+index)*8-wind*20,index*45,Mathf.Sin(age+index)*8);}}
+                if(phase==1&&health<maxHealth*.5f){phase=2;nextAttack=Time.time+1;game.Notice(DisplayName+" · 第二阶段：追加攻击即将到来",3);game.Audio.Cue("boss");}
+            }else if(Time.time>launchUntil){
+                bool floating=Spec.body==BodyFamily.Jelly||Spec.body==BodyFamily.Ray||Spec.body==BodyFamily.Squid;
+                if(Time.time<chargeUntil){body.velocity=chargeDirection*(8+Spec.island*.35f);if(to.magnitude<1.1f){DealContact();chargeUntil=0;}}
+                else if(floating){body.useGravity=false;Vector3 desired=to.normalized*(to.magnitude>6?Spec.speed:to.magnitude<3?-2:0)+Vector3.Cross(Vector3.up,to.normalized)*Mathf.Sin(age)*1.5f;desired.y=(game.World.GroundAt(transform.position)+2.3f+Mathf.Sin(age*2)*.35f-transform.position.y)*3;body.velocity=Vector3.Lerp(body.velocity,desired*slow,Time.deltaTime*4);}
+                else if(Time.time>hopAt&&transform.position.y-game.World.GroundAt(transform.position)<1.25f){body.useGravity=true;Vector3 dir=to.magnitude<3&&Spec.attack!=AttackStyle.Bite?-to.normalized:to.normalized;float speed=Spec.speed*slow;body.velocity=dir*speed+Vector3.up*(Spec.body==BodyFamily.Crab?2.1f:3.8f);hopAt=Time.time+(Spec.trait==SeaTrait.Frenzy&&health<maxHealth*.5f?.6f:1.2f);}
+                float wind=Mathf.Clamp01(1-(nextAttack-Time.time)/.8f);rig.localEulerAngles=new Vector3(Mathf.Sin(age*7)*4-wind*18,0,Mathf.Sin(age*9)*8);
+                if(transform.position.y<-1.6f){var p=game.Player.transform.position+game.Player.transform.forward*2;p.y=game.World.GroundAt(p)+1;transform.position=p;body.velocity=Vector3.up*2;}
+                if(Spec.trait==SeaTrait.Blinker&&Time.time>blinkAt){blinkAt=Time.time+7;Vector3 p=transform.position+transform.right*(Mathf.Sin(age)>0?3:-3);if(game.World.GroundAt(p)>0){game.Effect(transform.position,Spec.color,8,.1f);p.y=game.World.GroundAt(p)+1;transform.position=p;}}
             }
             if(tail)tail.localRotation=Quaternion.Euler(0,Mathf.Sin(age*12)*22,0);
-            if(Time.time>=nextAttack)Attack();
-            if(flash>0){flash-=Time.deltaTime;if(flash<=0)SetTint(false);}
+            if(healing&&Time.time>healAt){healing=false;health=Mathf.Min(maxHealth,health+maxHealth*.12f);foreach(var e in game.Enemies)if(e!=this)e.health=Mathf.Min(e.maxHealth,e.health+e.maxHealth*.08f);game.Effect(transform.position,Color.green,14,.13f);}
+            if(Time.time>=nextAttack){Attack();nextAttack=Time.time+(IsBoss?(phase==2?4.4f:5.6f):Spec.tempo)/slow;}
+            if(flash>0){flash-=Time.deltaTime;if(flash<=0)Tint(false);}
         }
-        void SetTint(bool hit)
-        {properties.Clear();if(hit)properties.SetColor("_Color",new Color(1.5f,1.3f,1.1f));else if(quality==2)properties.SetColor("_Color",new Color(1.6f,1.28f,.32f));foreach(var r in renderers)if(r)r.SetPropertyBlock(properties);}
+        void DealContact(){float before=game.Run.health;game.Player.TakeDamage(8+Spec.island*1.2f);if(game.Run.health<before)game.Player.ApplyStatus(Spec.trait);if(Spec.trait==SeaTrait.Leech)health=Mathf.Min(maxHealth,health+maxHealth*.06f);}
+        void Tint(bool hit)
+        {for(int i=0;i<renderers.Length;i++)if(renderers[i]){properties.Clear();properties.SetColor("_Color",hit?new Color(1.7f,1.4f,1.15f):quality==2?new Color(1.4f,1.1f,.38f):baseTints[i]);renderers[i].SetPropertyBlock(properties);}}
+        void Bolt(Vector3 target,float speed,float damage,float curve=0)
+        {var g=Shape.Part("Creature water bolt",PrimitiveType.Sphere,game.Hazards,transform.position+Vector3.up*.4f,Vector3.one*(IsBoss?.43f:.26f),Spec.color,false,true);var b=g.AddComponent<SeaProjectile>();b.game=game;b.velocity=(target-g.transform.position).normalized*speed;b.damage=damage;b.trait=Spec.trait;b.returnAfter=curve;}
         void Attack()
         {
-            var p=game.Player.transform.position;float damage=IsBoss?16+game.Run.Act*3:elite?12:8+game.Run.Act*2;float delay=game.Run.easy?1.8f:1.35f;
-            if(kind==CreatureKind.Kraken) {
-                game.Notice(phase==1?"克拉肯抬起触腕 · 离开落点":"深渊狂潮 · 三次连续触腕重击",2);
-                game.Warn(p,2.6f,delay,damage);game.Warn(p+game.Player.transform.right*3,2.3f,delay+.7f,damage);
-                if(phase==2)game.Warn(p-game.Player.transform.right*3,2.3f,delay+1.4f,damage);
-                for(int i=-1;i<=1;i++)game.Projectile(transform.position+Vector3.up,game.Player.transform.position+game.Player.transform.right*i*2,9,10,new Color(.53f,.25f,.56f));
-            } else if(kind==CreatureKind.WhiteWhale) {
-                game.Notice("霜潮齐射 · 横移避弹，再离开冰爆落点",2);
-                for(int i=-2;i<=2;i++)game.Projectile(transform.position+Vector3.up,p+game.Player.transform.right*i*2,phase==1?9:12,damage*.65f,new Color(.62f,.92f,1));
-                game.Warn(p,2.3f,delay+.6f,damage);if(phase==2){game.Warn(p+Vector3.right*4,2,delay+1,damage);game.Warn(p-Vector3.right*4,2,delay+1,damage);}
-            } else if(kind==CreatureKind.Crab) {
-                game.Notice("铁钳重击 · 躲开落点，随后攻击腹部弱点",2);game.Warn(p,2.2f,delay,damage);
-                if(phase==2)game.Warn(p+game.Player.transform.forward*2.8f,2,delay+.65f,damage);
-                game.Projectile(transform.position+Vector3.up,p,10,10,new Color(.78f,.52f,.22f));
-            } else if(kind==CreatureKind.Angler) {
-                game.Notice("灯笼蓄光 · 横向躲避扇形弹幕",2);
-                for(int i=-2;i<=2;i++)game.Projectile(transform.position,p+game.Player.transform.right*i*1.6f,10,damage*.7f,new Color(.35f,.91f,.59f));if(phase==2)game.Warn(p,2,delay,damage);
-            } else if(kind==CreatureKind.Leviathan) {
-                game.Notice("风暴汇聚 · 冲出水柱落点",2);game.Warn(p,2.8f,delay,damage);
-                for(int i=-1;i<=1;i++)game.Projectile(transform.position,p+game.Player.transform.right*i*2,12,damage*.7f,new Color(.37f,.73f,.9f));
-                if(phase==2)game.Warn(p-game.Player.transform.forward*3,2.5f,delay+.8f,damage);
-            } else if(kind==CreatureKind.Puffer)game.Warn(p,elite?1.7f:1.2f,delay+.2f,damage);
-            exposedUntil=Time.time+delay+1.65f;nextAttack=Time.time+(IsBoss?(phase==2?4.2f:5.4f):elite?4:5.6f);
+            AttackExecutions++;Vector3 p=game.Player.transform.position;float damage=IsBoss?14+Spec.island*1.2f:7+Spec.island*.7f;float delay=game.Run.easy?1.8f:1.15f;
+            game.Notice(DisplayName+" · "+ExpeditionContent.AttackNames[(int)Spec.attack]+"："+ExpeditionContent.Counters[(int)Spec.attack],2.4f);
+            if(Spec.id==117){game.Warn(p,2.6f,delay,damage);game.Warn(p+game.Player.transform.right*3,2.3f,delay+.7f,damage);if(phase==2)game.Warn(p-game.Player.transform.right*3,2.3f,delay+1.4f,damage);for(int i=-1;i<=1;i++)Bolt(p+Vector3.right*i*2,10,10);}
+            else switch(Spec.attack){
+                case AttackStyle.Bite:if(Vector3.Distance(transform.position,p)<3.5f)game.Warn(p,1.35f,.65f,damage);else Bolt(p,7,damage*.6f);break;
+                case AttackStyle.Charge:chargeDirection=(p-transform.position).normalized;chargeDirection.y=0;chargeUntil=Time.time+.75f;if(IsBoss){ThreatField.Line(game,transform.position,p,1.1f,delay,damage,Spec.color);}else{body.velocity=Vector3.up*3;game.Warn(p,1.5f,.75f,damage);}break;
+                case AttackStyle.Fan:for(int i=-2;i<=2;i++)Bolt(p+game.Player.transform.right*i*1.8f,8+Spec.island*.4f,damage*.7f);break;
+                case AttackStyle.Mortar:game.Warn(p,IsBoss?2.8f:1.7f,delay+.25f,damage);if(phase==2)game.Warn(p+game.Player.transform.forward*3,2,delay+.8f,damage);break;
+                case AttackStyle.Ring:ThreatField.Ring(game,transform.position,damage,Spec.color);break;
+                case AttackStyle.Beam:ThreatField.Line(game,transform.position+Vector3.up,p,IsBoss?1.15f:.6f,delay,damage,Spec.color);break;
+                case AttackStyle.Mine:ThreatField.Pool(game,p+game.Player.transform.forward*2,IsBoss?2.2f:1.3f,delay,damage*.45f,Spec.color);break;
+                case AttackStyle.Leap:game.Warn(p,IsBoss?2.6f:1.5f,delay,damage);if(!IsBoss){body.velocity=(p-transform.position)*1.1f+Vector3.up*6;launchUntil=Time.time+.8f;}break;
+                case AttackStyle.Spiral:for(int i=0;i<7;i++){float a=age+i*Mathf.PI*2/7;Bolt(transform.position+new Vector3(Mathf.Cos(a),.1f,Mathf.Sin(a))*10,7,damage*.6f);}Bolt(p,8,damage*.65f);break;
+                case AttackStyle.Pull:ThreatField.Vortex(game,p+Vector3.forward*2,IsBoss?4:2.3f,delay,damage,Spec.color);break;
+                case AttackStyle.Heal:healing=true;healAt=Time.time+1.4f;game.Effect(transform.position,Color.green,8,.08f);Bolt(p,8,damage*.5f);break;
+                case AttackStyle.Split:if(!Summoned)game.SpawnMinion(this);game.Warn(p,1.4f,delay,damage*.6f);break;
+                case AttackStyle.Boomerang:for(int i=-1;i<=1;i++)Bolt(p+game.Player.transform.right*i*2,9,damage*.65f,1.2f);break;
+                case AttackStyle.Burrow:game.Warn(p,1.9f,delay+.35f,damage);if(!IsBoss){var to=p+game.Player.transform.forward*2;to.y=game.World.GroundAt(to)+.8f;game.Effect(transform.position,Spec.color,10,.09f);transform.position=to;body.velocity=Vector3.up*2;}break;
+            }
+            if(IsBoss&&phase==2&&Spec.id!=117){var offset=game.Player.transform.right*(Mathf.Sin(age)>0?3:-3);game.Warn(p+offset,1.9f,delay+.65f,damage*.8f);}
+            exposedUntil=Time.time+delay+1.65f;
         }
-        public void Hit(float damage,bool weak=false,bool critical=false)
+        public void Slow(float seconds){slowUntil=Mathf.Max(slowUntil,Time.time+seconds);}
+        public void Stun(float seconds){stunUntil=Mathf.Max(stunUntil,Time.time+(IsBoss?seconds*.4f:seconds));healing=false;}
+        public void Hit(float damage,bool weak=false,bool critical=false,bool effects=true)
         {
-            if(dead||game.State!=VoyageState.Combat)return;lastWeak=weak;float mult=IsBoss&&!Exposed?.7f:1;if(weak)mult*=1.65f;health-=damage*mult;
-            game.UI.HitMarker(critical||weak,damage*mult);flash=.09f;SetTint(true);game.Effect(transform.position,new Color(.88f,.64f,.36f),4,.065f);
-            if(body)body.AddForce(game.Player.View.transform.forward*.65f+Vector3.up*.25f,ForceMode.Impulse);
-            if(weak&&IsBoss){stagger+=damage;if(stagger>maxHealth*.14f){stagger=0;exposedUntil=Time.time+3.2f;nextAttack=Time.time+3.2f;game.Notice("弱点击破！首领失衡 3 秒",2);}}
-            if(health<=0){dead=true;game.EnemyKilled(this);game.Effect(transform.position,new Color(.6f,.81f,.71f),15,.1f);Destroy(gameObject);}
+            if(dead||game.State!=VoyageState.Combat)return;lastWeak=weak;float mult=IsBoss&&!Exposed?.72f:1;
+            if(Spec.trait==SeaTrait.Armored&&!weak)mult*=.65f;if(weak)mult*=1.65f;if(health/maxHealth<.25f)mult*=1+game.Run.executeRelics*.25f;
+            health-=damage*mult;healing=false;
+            if(effects){game.UI.HitMarker(critical||weak,damage*mult);game.Audio.Cue(weak?"weak":"impact");flash=.09f;Tint(true);game.Effect(transform.position,Spec.color,5,.07f);if(game.Run.fireRelics>0)burnUntil=Time.time+2.5f;if(game.Run.iceRelics>0)Slow(1+game.Run.iceRelics*.4f);if(game.Run.shockRelics>0&&Random.value<.1f*game.Run.shockRelics)Stun(.55f);}
+            if(body)body.AddForce(game.Player.View.transform.forward*(1+game.Run.staggerRelics*.3f)+Vector3.up*.2f,ForceMode.Impulse);
+            stagger+=damage*(weak?1.6f:1)*(1+game.Run.staggerRelics*.2f);if(stagger>maxHealth*(IsBoss?.16f:.35f)&&Time.time>=staggerReady){stagger=0;staggerReady=Time.time+(IsBoss?7:1.3f);exposedUntil=Time.time+(IsBoss?3:1);nextAttack=Mathf.Max(nextAttack,Time.time+(IsBoss?1.3f:.8f));if(!IsBoss)Stun(.25f);}
+            if(health<=0){dead=true;if(Spec.trait==SeaTrait.Volatile)game.Warn(transform.position,1.8f,1.1f,10+Spec.island);game.EnemyKilled(this);game.Effect(transform.position,Spec.color,14,.09f);Destroy(gameObject);}
         }
     }
     public class SeaProjectile : MonoBehaviour
     {
         public GameDirector game;
         public Vector3 velocity;
-        public float damage;
+        public float damage,returnAfter;
+        public SeaTrait trait;
+        float age;bool returned;
         float life=8;
         void Update() {
             if(game.Paused)return;
             if(game.State!=VoyageState.Combat){Destroy(gameObject);return;}
+            age+=Time.deltaTime;if(returnAfter>0&&!returned&&age>returnAfter){returned=true;velocity=(game.Player.transform.position-transform.position).normalized*velocity.magnitude;}
             Vector3 prev=transform.position; transform.position+=velocity*Time.deltaTime;
             if(Physics.Linecast(prev,transform.position,SeaWorld.GroundMask)){game.Effect(transform.position,new Color(.63f,.75f,.7f),5,.05f);Destroy(gameObject);return;}
             Vector3 player=game.Player.transform.position;
             Vector3 delta=transform.position-prev;
             float f=delta.sqrMagnitude>0?Mathf.Clamp01(Vector3.Dot(player-prev,delta)/delta.sqrMagnitude):0;
-            if(Vector3.Distance(player,prev+delta*f)<.75f){game.Player.TakeDamage(damage);Destroy(gameObject);return;}
+            if(Vector3.Distance(player,prev+delta*f)<.75f){float before=game.Run.health;game.Player.TakeDamage(damage);if(game.Run.health<before)game.Player.ApplyStatus(trait);Destroy(gameObject);return;}
             life-=Time.deltaTime;if(life<0 || transform.position.y<-.5f)Destroy(gameObject);
         }
     }

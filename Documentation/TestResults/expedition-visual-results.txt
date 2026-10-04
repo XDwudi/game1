@@ -1,0 +1,33 @@
+PASS 108 normal species plus 11 bosses, excluding variants
+PASS all species have unique names and stable IDs
+PASS twelve anatomical families
+PASS fourteen primary attack mechanics
+PASS 23 purchasable equipment and supply offers plus 20 random perks
+PASS v0.2 checkpoint retains paid gear and wallet while migrating story
+PASS v0.2 catch retains its legacy identity and appraisal
+PASS captain stands on solid island terrain
+PASS accepting local story commission advances to research
+PASS story cannot advance without required samples
+PASS future island weapon cannot be bought early
+PASS insufficient coins cannot buy upgrades
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS throw restores physical velocity
+PASS species identity persists in bag
+PASS market pays exact appraised value
+PASS coin purchase charges exact price
+PASS random perk costs coins
+PASS local perk stock cannot be bought twice
+PASS distinct island 2 loads geometry
+PASS distinct island 3 loads geometry
+PASS distinct island 4 loads geometry
+PASS distinct island 5 loads geometry
+PASS distinct island 6 loads geometry
+PASS distinct island 7 loads geometry
+PASS distinct island 8 loads geometry
+PASS distinct island 9 loads geometry

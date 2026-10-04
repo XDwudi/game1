@@ -13,8 +13,8 @@ namespace Tidebreak
         public void Init(GameDirector director,CatchData data,Quaternion orientation)
         {
             game=director;Data=data;transform.rotation=orientation;
-            var rig=CreatureArt.Build(transform,data.kind,data.elite);
-            float size=data.quality==1?1.35f:1;rig.localScale=Vector3.one*size;
+            var rig=data.speciesId>=0?SpeciesArt.Build(transform,ExpeditionContent.Species[data.speciesId],data.elite):CreatureArt.Build(transform,data.kind,data.elite);
+            float size=data.quality==1?1.3f:1;rig.localScale*=size;
             foreach(var r in rig.GetComponentsInChildren<HitRegion>()){r.GetComponent<Collider>().enabled=false;Destroy(r.GetComponent<Collider>());Destroy(r);}
             if(data.quality==2)foreach(var r in rig.GetComponentsInChildren<Renderer>()){var block=new MaterialPropertyBlock();block.SetColor("_Color",new Color(1,.85f,.32f));r.SetPropertyBlock(block);}
             body=gameObject.AddComponent<Rigidbody>();body.mass=2;body.drag=.55f;body.angularDrag=.9f;body.collisionDetectionMode=CollisionDetectionMode.ContinuousDynamic;

@@ -1,0 +1,682 @@
+PASS 108 normal species plus 11 bosses, excluding variants
+PASS all species have unique names and stable IDs
+PASS twelve anatomical families
+PASS fourteen primary attack mechanics
+PASS 23 purchasable equipment and supply offers plus 20 random perks
+PASS captain stands on solid island terrain
+PASS accepting local story commission advances to research
+PASS story cannot advance without required samples
+PASS future island weapon cannot be bought early
+PASS insufficient coins cannot buy upgrades
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS throw restores physical velocity
+PASS species identity persists in bag
+PASS market pays exact appraised value
+PASS coin purchase charges exact price
+PASS random perk costs coins
+PASS local perk stock cannot be bought twice
+PASS weapon 0 accepts a trigger pull
+PASS weapon 0 spends its intended burst size
+PASS weapon 0 switch cancels reload without creating ammunition
+PASS weapon 0 reload restores its magazine
+PASS weapon 1 accepts a trigger pull
+PASS weapon 1 spends its intended burst size
+PASS weapon 1 switch cancels reload without creating ammunition
+PASS weapon 1 reload restores its magazine
+PASS weapon 2 accepts a trigger pull
+PASS weapon 2 spends its intended burst size
+PASS weapon 2 switch cancels reload without creating ammunition
+PASS weapon 2 reload restores its magazine
+PASS weapon 3 accepts a trigger pull
+PASS weapon 3 spends its intended burst size
+PASS weapon 3 switch cancels reload without creating ammunition
+PASS weapon 3 reload restores its magazine
+PASS weapon 4 accepts a trigger pull
+PASS weapon 4 spends its intended burst size
+PASS weapon 4 switch cancels reload without creating ammunition
+PASS weapon 4 reload restores its magazine
+PASS weapon 5 accepts a trigger pull
+PASS weapon 5 spends its intended burst size
+PASS weapon 5 switch cancels reload without creating ammunition
+PASS weapon 5 reload restores its magazine
+PASS automatic fire expands aiming cone
+PASS aiming cone recovers when trigger released
+PASS attack mechanic executes: Bite
+PASS attack mechanic executes: Charge
+PASS attack mechanic executes: Fan
+PASS attack mechanic executes: Mortar
+PASS attack mechanic executes: Ring
+PASS attack mechanic executes: Beam
+PASS attack mechanic executes: Mine
+PASS attack mechanic executes: Leap
+PASS attack mechanic executes: Spiral
+PASS attack mechanic executes: Pull
+PASS attack mechanic executes: Heal
+PASS attack mechanic executes: Split
+PASS attack mechanic executes: Boomerang
+PASS attack mechanic executes: Burrow
+PASS sustained stagger damage cannot permanently suppress boss attacks
+PASS anatomy 0 exposes a shootable weak point
+PASS anatomy 1 exposes a shootable weak point
+PASS anatomy 2 exposes a shootable weak point
+PASS anatomy 3 exposes a shootable weak point
+PASS anatomy 4 exposes a shootable weak point
+PASS anatomy 5 exposes a shootable weak point
+PASS anatomy 6 exposes a shootable weak point
+PASS anatomy 7 exposes a shootable weak point
+PASS anatomy 8 exposes a shootable weak point
+PASS anatomy 9 exposes a shootable weak point
+PASS anatomy 10 exposes a shootable weak point
+PASS anatomy 11 exposes a shootable weak point
+PASS beam telegraph permits reaction time
+PASS beam deals damage when countdown ends
+PASS invulnerable player does not inherit pool poison
+PASS medical supply heals once and consumes one item
+PASS empty medical inventory cannot heal
+PASS sonar consumes a charge and opens the exploration window
+PASS speed tonic consumes a charge and applies a timed effect
+PASS volatile death keeps its escape window active
+PASS volatile last enemy explodes before encounter resolves
+PASS story reaches island 1
+PASS island 1 walkable trail to guide
+PASS island 1 walkable trail to first relic
+PASS island 1 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS resume preserves story hand-in and licenses
+PASS story reaches island 2
+PASS island 2 walkable trail to guide
+PASS island 2 walkable trail to first relic
+PASS island 2 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 3
+PASS island 3 walkable trail to guide
+PASS island 3 walkable trail to first relic
+PASS island 3 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 4
+PASS island 4 walkable trail to guide
+PASS island 4 walkable trail to first relic
+PASS island 4 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 5
+PASS island 5 walkable trail to guide
+PASS island 5 walkable trail to first relic
+PASS island 5 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 6
+PASS island 6 walkable trail to guide
+PASS island 6 walkable trail to first relic
+PASS island 6 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 7
+PASS island 7 walkable trail to guide
+PASS island 7 walkable trail to first relic
+PASS island 7 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 8
+PASS island 8 walkable trail to guide
+PASS island 8 walkable trail to first relic
+PASS island 8 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS next island and equipment license unlock together
+PASS story, wallet and unlocks persist together
+PASS story reaches island 9
+PASS island 9 walkable trail to guide
+PASS island 9 walkable trail to first relic
+PASS island 9 walkable trail to second relic
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS water cast accepted
+PASS fishing produces a live local species
+PASS habitat and equipped lure constrain catch pool
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS ordinary kills do not award unsold catch coins
+PASS catch pickup succeeds
+PASS species identity persists in bag
+PASS local samples include two distinct species
+PASS sample research opens exploration objectives
+PASS first relic recovered through world interaction
+PASS second relic triggers local guardian encounter
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS guardian victory completes investigation
+PASS investigation grants boss access
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS boss second phase is reachable
+PASS boss drops story trophy without skipping hand-in
+PASS trophy hand-in completes island story
+PASS nine-island story reaches homecoming ending
+PASS revisiting early island preserves story completion
+PASS hidden cache puzzle awards ancient signal
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS optional Kraken branch completes
+PASS live camera ray damages target
+PASS encounter resolves with real weapon fire
+PASS optional white whale branch completes
+PASS species 0 has visible geometry and hit geometry
+PASS species 1 has visible geometry and hit geometry
+PASS species 2 has visible geometry and hit geometry
+PASS species 3 has visible geometry and hit geometry
+PASS species 4 has visible geometry and hit geometry
+PASS species 5 has visible geometry and hit geometry
+PASS species 6 has visible geometry and hit geometry
+PASS species 7 has visible geometry and hit geometry
+PASS species 8 has visible geometry and hit geometry
+PASS species 9 has visible geometry and hit geometry
+PASS species 10 has visible geometry and hit geometry
+PASS species 11 has visible geometry and hit geometry
+PASS species 12 has visible geometry and hit geometry
+PASS species 13 has visible geometry and hit geometry
+PASS species 14 has visible geometry and hit geometry
+PASS species 15 has visible geometry and hit geometry
+PASS species 16 has visible geometry and hit geometry
+PASS species 17 has visible geometry and hit geometry
+PASS species 18 has visible geometry and hit geometry
+PASS species 19 has visible geometry and hit geometry
+PASS species 20 has visible geometry and hit geometry
+PASS species 21 has visible geometry and hit geometry
+PASS species 22 has visible geometry and hit geometry
+PASS species 23 has visible geometry and hit geometry
+PASS species 24 has visible geometry and hit geometry
+PASS species 25 has visible geometry and hit geometry
+PASS species 26 has visible geometry and hit geometry
+PASS species 27 has visible geometry and hit geometry
+PASS species 28 has visible geometry and hit geometry
+PASS species 29 has visible geometry and hit geometry
+PASS species 30 has visible geometry and hit geometry
+PASS species 31 has visible geometry and hit geometry
+PASS species 32 has visible geometry and hit geometry
+PASS species 33 has visible geometry and hit geometry
+PASS species 34 has visible geometry and hit geometry
+PASS species 35 has visible geometry and hit geometry
+PASS species 36 has visible geometry and hit geometry
+PASS species 37 has visible geometry and hit geometry
+PASS species 38 has visible geometry and hit geometry
+PASS species 39 has visible geometry and hit geometry
+PASS species 40 has visible geometry and hit geometry
+PASS species 41 has visible geometry and hit geometry
+PASS species 42 has visible geometry and hit geometry
+PASS species 43 has visible geometry and hit geometry
+PASS species 44 has visible geometry and hit geometry
+PASS species 45 has visible geometry and hit geometry
+PASS species 46 has visible geometry and hit geometry
+PASS species 47 has visible geometry and hit geometry
+PASS species 48 has visible geometry and hit geometry
+PASS species 49 has visible geometry and hit geometry
+PASS species 50 has visible geometry and hit geometry
+PASS species 51 has visible geometry and hit geometry
+PASS species 52 has visible geometry and hit geometry
+PASS species 53 has visible geometry and hit geometry
+PASS species 54 has visible geometry and hit geometry
+PASS species 55 has visible geometry and hit geometry
+PASS species 56 has visible geometry and hit geometry
+PASS species 57 has visible geometry and hit geometry
+PASS species 58 has visible geometry and hit geometry
+PASS species 59 has visible geometry and hit geometry
+PASS species 60 has visible geometry and hit geometry
+PASS species 61 has visible geometry and hit geometry
+PASS species 62 has visible geometry and hit geometry
+PASS species 63 has visible geometry and hit geometry
+PASS species 64 has visible geometry and hit geometry
+PASS species 65 has visible geometry and hit geometry
+PASS species 66 has visible geometry and hit geometry
+PASS species 67 has visible geometry and hit geometry
+PASS species 68 has visible geometry and hit geometry
+PASS species 69 has visible geometry and hit geometry
+PASS species 70 has visible geometry and hit geometry
+PASS species 71 has visible geometry and hit geometry
+PASS species 72 has visible geometry and hit geometry
+PASS species 73 has visible geometry and hit geometry
+PASS species 74 has visible geometry and hit geometry
+PASS species 75 has visible geometry and hit geometry
+PASS species 76 has visible geometry and hit geometry
+PASS species 77 has visible geometry and hit geometry
+PASS species 78 has visible geometry and hit geometry
+PASS species 79 has visible geometry and hit geometry
+PASS species 80 has visible geometry and hit geometry
+PASS species 81 has visible geometry and hit geometry
+PASS species 82 has visible geometry and hit geometry
+PASS species 83 has visible geometry and hit geometry
+PASS species 84 has visible geometry and hit geometry
+PASS species 85 has visible geometry and hit geometry
+PASS species 86 has visible geometry and hit geometry
+PASS species 87 has visible geometry and hit geometry
+PASS species 88 has visible geometry and hit geometry
+PASS species 89 has visible geometry and hit geometry
+PASS species 90 has visible geometry and hit geometry
+PASS species 91 has visible geometry and hit geometry
+PASS species 92 has visible geometry and hit geometry
+PASS species 93 has visible geometry and hit geometry
+PASS species 94 has visible geometry and hit geometry
+PASS species 95 has visible geometry and hit geometry
+PASS species 96 has visible geometry and hit geometry
+PASS species 97 has visible geometry and hit geometry
+PASS species 98 has visible geometry and hit geometry
+PASS species 99 has visible geometry and hit geometry
+PASS species 100 has visible geometry and hit geometry
+PASS species 101 has visible geometry and hit geometry
+PASS species 102 has visible geometry and hit geometry
+PASS species 103 has visible geometry and hit geometry
+PASS species 104 has visible geometry and hit geometry
+PASS species 105 has visible geometry and hit geometry
+PASS species 106 has visible geometry and hit geometry
+PASS species 107 has visible geometry and hit geometry
+PASS species 108 has visible geometry and hit geometry
+PASS species 109 has visible geometry and hit geometry
+PASS species 110 has visible geometry and hit geometry
+PASS species 111 has visible geometry and hit geometry
+PASS species 112 has visible geometry and hit geometry
+PASS species 113 has visible geometry and hit geometry
+PASS species 114 has visible geometry and hit geometry
+PASS species 115 has visible geometry and hit geometry
+PASS species 116 has visible geometry and hit geometry
+PASS species 117 has visible geometry and hit geometry
+PASS species 118 has visible geometry and hit geometry
+PASS enemy damage applies without QA protection
+PASS dash protects during invulnerability window
+PASS permadeath clears active expedition
