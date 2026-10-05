@@ -129,6 +129,8 @@ namespace Tidebreak
                 int lastChild=Scenery.childCount;var pieces=new List<Transform>();for(int child=firstChild;child<lastChild;child++)pieces.Add(Scenery.GetChild(child));
                 var court=new GameObject(i==0?"Market courtyard":"Workshop courtyard").transform;court.SetParent(Scenery,false);court.position=courtyard;
                 foreach(var piece in pieces)piece.SetParent(court,true);court.rotation=Quaternion.Euler(0,Layout.MerchantYaw(i==0?2:3),0);
+                // Keep animated merchants outside the static scenery batch, after court placement.
+                foreach(var actor in court.GetComponentsInChildren<IslandActorMotion>())actor.transform.SetParent(transform,true);
             }
             Sign(Scenery,ChartPoint+Vector3.up*1.4f,"群岛航图","CHART / E    MAP / M",160,2.4f);
             Box("Chart pedestal",Scenery,ChartPoint+Vector3.up*.4f,new Vector3(.24f,1.2f,.24f),wood,true);
@@ -159,16 +161,7 @@ namespace Tidebreak
         void NPC(Vector3 pos,bool smith)
         {
             var p=new GameObject(smith?"Captain Rowan":"Fishmonger Miro").transform;p.SetParent(Scenery);p.position=pos;
-            Color skin=new Color(.7f,.49f,.31f),coat=smith?new Color(.2f,.3f,.35f):new Color(.39f,.43f,.26f);
-            for(int s=-1;s<=1;s+=2){Shape.Beam(p,new Vector3(s*.17f,.16f,0),new Vector3(s*.17f,.8f,0),.22f,iron);Box("Boot",p,new Vector3(s*.17f,.08f,.07f),new Vector3(.26f,.2f,.4f),iron);Shape.Beam(p,new Vector3(s*.38f,1.3f,0),new Vector3(s*.45f,.82f,.2f),.23f,coat);Shape.Part("Hand",PrimitiveType.Sphere,p,new Vector3(s*.45f,.8f,.22f),Vector3.one*.21f,skin);}
-            Shape.Part("Coat",PrimitiveType.Capsule,p,new Vector3(0,1.05f,0),new Vector3(.75f,.52f,.48f),coat);
-            Box("Apron",p,new Vector3(0,1.08f,.27f),new Vector3(.52f,.75f,.08f),orange);
-            Shape.Part("Face",PrimitiveType.Sphere,p,new Vector3(0,1.71f,0),new Vector3(.47f,.56f,.43f),skin);
-            Shape.Part("Nose",PrimitiveType.Sphere,p,new Vector3(0,1.72f,.25f),new Vector3(.13f,.15f,.18f),skin);
-            Shape.Part("Beard",PrimitiveType.Sphere,p,new Vector3(0,1.51f,.15f),new Vector3(.39f,.25f,.3f),smith?new Color(.26f,.22f,.19f):new Color(.67f,.66f,.54f));
-            for(int s=-1;s<=1;s+=2){Shape.Part("Eye",PrimitiveType.Sphere,p,new Vector3(s*.1f,1.81f,.195f),Vector3.one*.095f,ivory);Shape.Part("Pupil",PrimitiveType.Sphere,p,new Vector3(s*.1f,1.81f,.239f),Vector3.one*.04f,iron);}
-            Shape.Part("Hat brim",PrimitiveType.Cylinder,p,new Vector3(0,2,0),new Vector3(.74f,.035f,.64f),smith?orange:ivory);
-            Shape.Part("Hat",PrimitiveType.Cylinder,p,new Vector3(0,2.13f,0),new Vector3(.49f,.13f,.43f),smith?orange:ivory);
+            SailorModel.Build(p,Region,Definition.accent,smith?1:2);
         }
         void Sign(Transform parent,Vector3 pos,string title,string caption,float yaw,float width)
         {

@@ -67,39 +67,57 @@ namespace Tidebreak
         }
         static void Kraken(Transform rig)
         {
-            Color skin=new Color(.31f,.18f,.32f),light=new Color(.6f,.37f,.39f);
-            CoastalMesh.Tube("Tapered mantle",rig,new[]{new Vector3(0,-1,0),Vector3.zero,new Vector3(0,1.5f,-.3f),new Vector3(0,3.7f,-.8f),new Vector3(0,5,-1.2f)},new[]{.8f,2.1f,2.35f,1.5f,0},skin,light,16);
+            Color skin=new Color(.28f,.18f,.30f),light=new Color(.72f,.46f,.40f),ridge=new Color(.43f,.28f,.37f);
+            CreatureSculpt.Curve(rig,"Sculpted ancient mantle",new[]{new Vector3(0,-.72f,.05f),new Vector3(0,.05f,0),new Vector3(0,1.6f,-.15f),new Vector3(0,3.4f,-.57f),new Vector3(0,4.7f,-1.0f),new Vector3(0,5.05f,-1.2f)},new[]{.9f,1.9f,2.14f,1.69f,.72f,.01f},skin,light,28,5,.86f);
             var body=rig.gameObject.AddComponent<SphereCollider>();body.radius=2.3f;body.center=Vector3.up*1.3f;
-            for(int s=-1;s<=1;s+=2){Shape.Part("Old gold eye",PrimitiveType.Sphere,rig,new Vector3(s*1.4f,.72f,1.6f),new Vector3(.86f,.68f,.28f),new Color(.83f,.59f,.19f));Shape.Part("Slit pupil",PrimitiveType.Sphere,rig,new Vector3(s*1.4f,.72f,1.75f),new Vector3(.2f,.58f,.09f),new Color(.04f,.02f,.04f));}
+            for(int side=-1;side<=1;side+=2){
+                CreatureSculpt.Eye(rig,new Vector3(side*1.4f,.72f,1.6f),.69f,ridge,new Color(.88f,.64f,.24f),side);
+                CreatureSculpt.Curve(rig,"Heavy mantle brow",new[]{new Vector3(side*.34f,1.36f,1.72f),new Vector3(side*1.14f,1.62f,1.72f),new Vector3(side*1.91f,1.14f,1.34f)},new[]{.06f,.25f,.11f},ridge,skin,12,5);
+                CreatureSculpt.Fin(rig,"Mantle swimming fin",new Vector3(side*1.43f,2.1f,-.64f),new[]{new Vector3(side*.37f,4.4f,-1.1f),new Vector3(side*1.62f,3.91f,-.9f),new Vector3(side*2.77f,2.62f,-.81f),new Vector3(side*2.16f,1.24f,-.4f),new Vector3(side*1.57f,.69f,-.38f)},skin,light,.15f,.08f);
+                CreatureSculpt.Curve(rig,"Frontal mantle fold",new[]{new Vector3(side*.55f,-.65f,1.37f),new Vector3(side*.71f,-.21f,1.71f),new Vector3(side*.57f,.12f,1.75f)},new[]{.16f,.2f,.045f},ridge,light,10,4);
+            }
             for(int i=0;i<8;i++) {
                 var arm=new GameObject("Tentacle "+i).transform;arm.SetParent(rig,false);arm.localRotation=Quaternion.Euler(0,i*45,0);
-                var points=new Vector3[12];var radii=new float[12];
-                for(int j=0;j<12;j++){float t=j/11f;points[j]=new Vector3(1.2f+t*6.6f,-.7f+Mathf.Sin(t*4)*1.5f,t*t*1.6f);radii[j]=Mathf.Lerp(.65f,.035f,t);}
-                CoastalMesh.Tube("Continuous curling arm",arm,points,radii,skin,light,9);
-                for(int j=1;j<10;j++)for(int s=-1;s<=1;s+=2){float t=j/11f;CoastalMesh.Ring(arm,points[j]+new Vector3(0,.12f,s*radii[j]*.7f),radii[j]*.37f,.045f,light,Quaternion.Euler(70,0,0));}
+                var points=new Vector3[10];var radii=new float[10];
+                for(int j=0;j<10;j++){float t=j/9f;points[j]=new Vector3(1.2f+t*6.6f,-.7f+Mathf.Sin(t*4)*1.5f,t*t*1.6f);radii[j]=Mathf.Lerp(.64f,.022f,t);}
+                CreatureSculpt.Curve(arm,"Continuous curling arm",points,radii,skin,light,12,4,.91f);
+                for(int j=1;j<9;j++)for(int side=-1;side<=1;side+=2){
+                    float width=radii[j]*.29f;Vector3 at=points[j]+new Vector3(0,radii[j]*.76f,side*radii[j]*.45f);
+                    CreatureSculpt.Curve(arm,"Sculpted concave sucker",new[]{at,at+Vector3.up*width*.40f,at+Vector3.up*width*.54f},new[]{width*.61f,width,width*.7f},light,ridge,10,1);
+                }
             }
+            // The beak sits below the shootable organ; it never contributes a collider.
+            CreatureSculpt.Curve(rig,"Hooked obsidian beak",new[]{new Vector3(0,-.75f,1.43f),new Vector3(0,-.4f,1.8f),new Vector3(0,-.53f,2.01f)},new[]{.24f,.27f,.002f},new Color(.1f,.075f,.13f),ridge,12,5,.72f);
             WeakPoint(rig,new Vector3(0,.1f,1.85f),.48f);
         }
         static void Crab(Transform rig,Color? palette)
         {
-            Color shell=palette??new Color(.56f,.25f,.13f),rim=Color.Lerp(shell,new Color(.96f,.71f,.38f),.46f);
-            CreatureSurfaceArt.Form(rig,"Crab shell",new Vector3(0,.25f,0),new Vector3(4.4f,1.5f,3.3f),shell);
+            Color shell=palette??new Color(.56f,.25f,.13f),rim=Color.Lerp(shell,new Color(.96f,.71f,.38f),.46f),seam=Color.Lerp(shell,new Color(.1f,.13f,.14f),.65f);
+            var z=new[]{-1.54f,-1.3f,-.82f,-.15f,.58f,1.11f,1.48f};var x=new[]{.04f,1.12f,1.83f,2.15f,1.96f,1.25f,.13f};var y=new[]{.015f,.32f,.52f,.59f,.49f,.28f,.01f};var centres=new Vector3[z.Length];var widths=new Vector2[z.Length];for(int i=0;i<z.Length;i++){centres[i]=new Vector3(0,.27f,z[i]);widths[i]=new Vector2(x[i],y[i]);}
+            CreatureSculpt.Sections(rig,"Crab carved carapace",centres,widths,shell,rim,32,2);
+            CreatureSurfaceArt.Form(rig,"Crab underside shell",new Vector3(0,-.11f,.04f),new Vector3(3.53f,.66f,2.7f),rim);
             for(int side=-1;side<=1;side+=2){
-                CoastalMesh.Tube("Carapace ridge",rig,new[]{new Vector3(side*.2f,.93f,-1.12f),new Vector3(side*.91f,.91f,-.6f),new Vector3(side*1.35f,.76f,.3f),new Vector3(side*.7f,.74f,1.14f)},new[]{.018f,.031f,.033f,.012f},rim,shell,7);
-                for(int j=0;j<3;j++)CoastalMesh.Tube("Carapace edge tooth",rig,new[]{new Vector3(side*1.75f,.52f,-.6f+j*.54f),new Vector3(side*2.22f,.48f,-.78f+j*.57f)},new[]{.16f,.009f},shell,rim,6);
+                CreatureSculpt.Curve(rig,"Carapace raised ridge",new[]{new Vector3(side*.19f,.76f,-1.12f),new Vector3(side*.77f,.85f,-.58f),new Vector3(side*1.15f,.79f,.2f),new Vector3(side*.63f,.64f,1.01f)},new[]{.013f,.053f,.059f,.012f},rim,shell,8,4);
+                for(int j=0;j<4;j++)CreatureSculpt.Curve(rig,"Carapace edge tooth",new[]{new Vector3(side*(1.5f+Mathf.Sin(j*.8f)*.34f),.38f,-1.04f+j*.54f),new Vector3(side*(2.03f+Mathf.Sin(j*.8f)*.25f),.47f,-1.20f+j*.55f)},new[]{.18f,.005f},shell,rim,8,3);
+                CreatureSculpt.Curve(rig,"Shell lateral suture",new[]{new Vector3(side*1.47f,.66f,-.63f),new Vector3(side*1.82f,.61f,-.1f),new Vector3(side*1.65f,.56f,.59f)},new[]{.02f,.027f,.009f},seam,seam,6,4);
             }
             var c=rig.gameObject.AddComponent<BoxCollider>();c.size=new Vector3(4.2f,1.6f,3.1f);c.center=Vector3.up*.35f;
-            for(int s=-1;s<=1;s+=2) {
-                for(int i=0;i<4;i++){Vector3 a=new Vector3(s*1.5f,0,-1.1f+i*.6f),b=new Vector3(s*(2.7f+i*.1f),.3f,-2+i*1.1f),d=b+new Vector3(s*.55f,-1.1f,.2f);CoastalMesh.Tube("Articulated leg",rig,new[]{a,b,d},new[]{.25f,.17f,.035f},shell,rim,7);}
-                CoastalMesh.Tube("Claw arm",rig,new[]{new Vector3(s*1.6f,.15f,.8f),new Vector3(s*2.7f,.2f,2),new Vector3(s*2.4f,.55f,3.05f)},new[]{.34f,.38f,.44f},shell,rim,9);
-                CoastalMesh.Tube("Upper pincer",rig,new[]{new Vector3(s*2.4f,.55f,2.9f),new Vector3(s*2.8f,.65f,3.7f),new Vector3(s*2.45f,.6f,4.2f)},new[]{.46f,.3f,.015f},rim,shell,8);
-                CoastalMesh.Tube("Lower pincer",rig,new[]{new Vector3(s*2.4f,.4f,2.9f),new Vector3(s*2,.32f,3.5f),new Vector3(s*2.3f,.42f,3.9f)},new[]{.3f,.2f,0},rim,shell,7);
-                Shape.Beam(rig,new Vector3(s*.85f,.75f,1),new Vector3(s*.85f,1.5f,1.1f),.12f,shell);
-                Shape.Part("Eye",PrimitiveType.Sphere,rig,new Vector3(s*.85f,1.5f,1.1f),Vector3.one*.36f,new Color(.93f,.76f,.35f));Shape.Part("Pupil",PrimitiveType.Sphere,rig,new Vector3(s*.85f,1.5f,1.27f),Vector3.one*.17f,new Color(.06f,.07f,.035f));
+            for(int side=-1;side<=1;side+=2) {
+                for(int i=0;i<4;i++){
+                    Vector3 a=new Vector3(side*1.5f,0,-1.1f+i*.6f),b=new Vector3(side*(2.7f+i*.1f),.3f,-2+i*1.1f),foot=b+new Vector3(side*.55f,-1.1f,.2f);
+                    CreatureSculpt.Curve(rig,"Articulated leg",new[]{a,Vector3.Lerp(a,b,.45f),b,Vector3.Lerp(b,foot,.63f),foot},new[]{.21f,.22f,.135f,.1f,.009f},shell,rim,10,3,.73f);
+                }
+                CreatureSculpt.Curve(rig,"Claw arm",new[]{new Vector3(side*1.45f,.03f,.72f),new Vector3(side*2.28f,.01f,1.34f),new Vector3(side*2.68f,.19f,1.94f),new Vector3(side*2.4f,.51f,2.87f)},new[]{.27f,.26f,.33f,.44f},shell,rim,12,4,.80f);
+                CreatureSculpt.Curve(rig,"Upper pincer",new[]{new Vector3(side*2.41f,.55f,2.77f),new Vector3(side*2.67f,.63f,3.13f),new Vector3(side*2.82f,.63f,3.68f),new Vector3(side*2.47f,.58f,4.18f)},new[]{.43f,.41f,.23f,.006f},shell,rim,14,4,.72f);
+                CreatureSculpt.Curve(rig,"Lower pincer",new[]{new Vector3(side*2.35f,.38f,2.86f),new Vector3(side*2.02f,.32f,3.28f),new Vector3(side*2.04f,.39f,3.64f),new Vector3(side*2.31f,.43f,3.91f)},new[]{.31f,.25f,.15f,.005f},rim,shell,12,4,.77f);
+                for(int tooth=0;tooth<3;tooth++)CreatureSculpt.Curve(rig,"Pincer serrated tooth",new[]{new Vector3(side*(2.41f+tooth*.08f),.49f,3.22f+tooth*.2f),new Vector3(side*(2.23f+tooth*.09f),.47f,3.30f+tooth*.2f)},new[]{.078f,.003f},rim,shell,7,2);
+                CreatureSculpt.Curve(rig,"Armoured eye stalk",new[]{new Vector3(side*.73f,.63f,.91f),new Vector3(side*.85f,1.12f,1.1f),new Vector3(side*.85f,1.46f,1.14f)},new[]{.14f,.11f,.095f},shell,rim,10,4);
+                CreatureSculpt.Eye(rig,new Vector3(side*.85f,1.48f,1.15f),.34f,shell,new Color(.92f,.72f,.31f),side);
+                CreatureSculpt.Curve(rig,"Mandible mouth plate",new[]{new Vector3(side*.43f,.09f,1.34f),new Vector3(side*.3f,-.11f,1.51f),new Vector3(side*.12f,-.14f,1.49f)},new[]{.17f,.11f,.025f},rim,shell,10,4,.62f);
             }
             WeakPoint(rig,new Vector3(0,.3f,1.62f),.38f);
         }
-        static void WeakPoint(Transform p,Vector3 pos,float radius){var g=Shape.Part("Weak point",PrimitiveType.Sphere,p,pos,Vector3.one*radius*2,new Color(.6f,.9f,.61f),true,true);g.AddComponent<HitRegion>();}
+        static void WeakPoint(Transform p,Vector3 pos,float radius){var g=Shape.Part("Weak point",PrimitiveType.Sphere,p,pos,Vector3.one*radius*2,new Color(.6f,.9f,.61f),true,true);g.AddComponent<HitRegion>();CreatureSculpt.WeakOrgan(g);}
     }
     public class HitRegion : MonoBehaviour { }
 }

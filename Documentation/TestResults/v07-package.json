@@ -1,0 +1,65 @@
+{
+  "version": "0.7.0",
+  "package": "Tidebreak-v0.7.0-Windows-x64.zip",
+  "bytes": 37528610,
+  "sha256": "78FF54F397CE4E4E081121FFA52BB43D8ABDFE62E60888B26A380517CAF01E7F",
+  "archive_entries": 154,
+  "verified_files": 152,
+  "crc_check": "passed",
+  "required_files": [
+    "Release/Tidebreak.exe",
+    "Release/UnityPlayer.dll",
+    "Release/Tidebreak_Data/Managed/Assembly-CSharp.dll",
+    "Release/Tidebreak_Data/globalgamemanagers",
+    "Release/开始游戏.txt",
+    "Release/OFL-NotoSans.txt"
+  ],
+  "assembly_sha256": "CBBADDD1B98A149778322058DC7181BCDDAB75B3865DFA9FEA64396289127A52",
+  "exe_sha256": "C0EDE71D5ED303D3603A1C9722F8D31C832268D34248BFF7E1E2CAC448C6BCF6",
+  "runtime_evidence": {
+    "final-presentation": {
+      "pass": 531,
+      "fail": 0,
+      "assembly_sha256": "CBBADDD1B98A149778322058DC7181BCDDAB75B3865DFA9FEA64396289127A52",
+      "matches_delivery_assembly": true
+    },
+    "final-art-review": {
+      "pass": 135,
+      "fail": 0,
+      "assembly_sha256": "CBBADDD1B98A149778322058DC7181BCDDAB75B3865DFA9FEA64396289127A52",
+      "matches_delivery_assembly": true
+    },
+    "iteration4-systems": {
+      "pass": 362,
+      "fail": 0,
+      "assembly_sha256": "595F424B72C5BC4649C66E58B9BD4C04DE31B38037F753018DE1CE4AEC94A1AD",
+      "matches_delivery_assembly": false
+    },
+    "iteration4-campaign": {
+      "pass": 49,
+      "fail": 0,
+      "assembly_sha256": "595F424B72C5BC4649C66E58B9BD4C04DE31B38037F753018DE1CE4AEC94A1AD",
+      "matches_delivery_assembly": false
+    },
+    "iteration4-bosses": {
+      "pass": 76,
+      "fail": 0,
+      "assembly_sha256": "595F424B72C5BC4649C66E58B9BD4C04DE31B38037F753018DE1CE4AEC94A1AD",
+      "matches_delivery_assembly": false
+    },
+    "iteration4-negative": {
+      "pass": 88,
+      "fail": 0,
+      "assembly_sha256": "595F424B72C5BC4649C66E58B9BD4C04DE31B38037F753018DE1CE4AEC94A1AD",
+      "matches_delivery_assembly": false
+    },
+    "after-sculpture-whale": {
+      "pass": 8,
+      "fail": 0,
+      "assembly_sha256": "DD576E8701A1DD2AA01B5F0874FE6132E3DBB98E3D477C1822493F53DF3648BF",
+      "matches_delivery_assembly": false
+    }
+  },
+  "regression_scope": "Full gameplay suites ran on iteration 4; later production delta was a non-colliding weak-organ cartilage mesh, retested with all anatomy rays and a full whale battle. Final build then changes only QA capture and pixel validation. See QA-v07.md.",
+  "verified_utc": "2026-10-05T07:34:33.923952+00:00"
+}

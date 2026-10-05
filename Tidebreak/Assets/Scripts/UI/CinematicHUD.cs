@@ -34,9 +34,9 @@ namespace Tidebreak
                 cinemaSpeaker = Text(content, 190, 772, 1220, 28, "", 18, Gold, TextAlignmentOptions.Center);
                 cinemaSubtitle = Text(content, 150, 811, 1300, 65, "", 25, Cream, TextAlignmentOptions.Center);
                 cinemaSubtitle.lineSpacing = 8;
-                cinemaDocumentBack = Box(content, 1006, 235, 470, 350, new Color(.025f, .06f, .085f, .94f));
-                Box(cinemaDocumentBack.transform, 0, 0, 3, 350, Gold);
-                cinemaDocument = Text(cinemaDocumentBack.transform, 25, 26, 420, 310, "", 24, Cream);
+                cinemaDocumentBack = Plate(content, 1006, 235, 470, 350, Paper,true);
+                Stitch(cinemaDocumentBack.transform,25,18,420,new Color(PaperInk.r,PaperInk.g,PaperInk.b,.30f));
+                cinemaDocument = Text(cinemaDocumentBack.transform, 25, 32, 420, 300, "", 24, PaperInk);
                 cinemaDocument.lineSpacing = 14;
                 cinemaDocument.fontStyle = FontStyles.Italic;
                 cinemaProgress = Box(content, 76, 897, 1448, 3, Mint);

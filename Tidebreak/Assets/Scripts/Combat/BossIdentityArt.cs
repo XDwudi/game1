@@ -43,10 +43,13 @@ namespace Tidebreak
 
         static Transform Solid(Transform parent, string name, Vector3 at, Vector3 size, Color color,
             PrimitiveType shape = PrimitiveType.Sphere, bool glow = false)
-        { return Shape.Part(name, shape, parent, at, size, color, false, glow).transform; }
+        {
+            if(shape==PrimitiveType.Sphere)return CreatureSurfaceArt.Form(parent,name,at,size,color);
+            return Shape.Part(name, shape, parent, at, size, color, false, glow).transform;
+        }
 
         static Transform Tube(Transform parent, string name, Vector3[] points, float[] radii, Color color)
-        { return CoastalMesh.Tube(name, parent, points, radii, color, Color.Lerp(color, Bone, .22f), 7); }
+        { return CreatureSculpt.Curve(parent,name,points,radii,color,Color.Lerp(color,Bone,.22f),9,4); }
 
         static Transform Ring(Transform parent, string name, Vector3 at, float radius, float thickness,
             Color color, Quaternion rotation)

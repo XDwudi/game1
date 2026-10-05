@@ -257,9 +257,9 @@ namespace Tidebreak
         public void Notice(string text,float seconds){Message=text;MessageUntil=Time.unscaledTime+seconds;}
         public void Warn(Vector3 pos,float radius,float delay,float damage){pos.y=World.GroundAt(pos)+.035f;var g=new GameObject("Telegraphed strike");g.transform.SetParent(Hazards);g.transform.position=pos;var w=g.AddComponent<DeckWarning>();w.game=this;w.radius=radius;w.delay=delay;w.damage=damage;w.Init();}
         public void Projectile(Vector3 from,Vector3 to,float speed,float damage,Color color){var g=Shape.Part("Hostile projectile",PrimitiveType.Sphere,Hazards,from,Vector3.one*.4f,color,false,true);var p=g.AddComponent<SeaProjectile>();p.game=this;p.velocity=(to-from).normalized*speed;p.damage=damage;}
-        public void Splash(Vector3 point){Effect(point,new Color(.66f,.87f,.83f),20,.1f);var r=new GameObject("Water ripple").AddComponent<SurfaceRipple>();r.transform.position=new Vector3(point.x,-.35f,point.z);}
+        public void Splash(Vector3 point){if(Feedback)Feedback.Splash(point);var r=new GameObject("Water ripple").AddComponent<SurfaceRipple>();r.transform.position=new Vector3(point.x,-.35f,point.z);}
         public void Effect(Vector3 point,Color color,int count,float size){if(Feedback)Feedback.Burst(point,color,count,size);}
-        public void Tracer(Vector3 a,Vector3 b,Color color){var g=new GameObject("Tracer");g.transform.SetParent(Hazards);var l=g.AddComponent<LineRenderer>();l.positionCount=2;l.SetPosition(0,a);l.SetPosition(1,b);l.startWidth=.016f;l.endWidth=.006f;l.material=Shape.Mat(color,true);Destroy(g,.07f);}
+        public void Tracer(Vector3 a,Vector3 b,Color color){if(Feedback)Feedback.Tracer(a,b,color);}
         void ClearHazards(){if(Feedback)Feedback.Clear();if(Hazards)for(int i=Hazards.childCount-1;i>=0;i--)Destroy(Hazards.GetChild(i).gameObject);}
         void ClearEncounter(){ResetIslandMission();Charging=false;ClearFishing();foreach(var e in Enemies)if(e)Destroy(e.gameObject);Enemies.Clear();foreach(var f in Loot)if(f)Destroy(f.gameObject);Loot.Clear();if(Player)Player.HeldFish=null;ClearHazards();}
         void OnApplicationQuit(){CancelCinematic();Time.timeScale=1;if(Player&&(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue)){Player.StowHeld();Checkpoint(false);}SaveStore.Write("captain",Log);}

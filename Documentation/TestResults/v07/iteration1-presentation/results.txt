@@ -1,0 +1,362 @@
+PASS v07 opens actual workshop category 0 at (1600, 900)
+PASS v07 category 0 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price precision / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price handling / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price reload / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price scope / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price brake / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price arc / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price burst / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price harpoon / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price carbine / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price shotgun / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price weapon / (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available weapon at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available shotgun at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available carbine at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available harpoon at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available burst at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available arc at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available brake at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available scope at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available reload at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available handling at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available precision at (1600, 900)
+PASS shop-category-0-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 1 at (1600, 900)
+PASS v07 category 1 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price salvage / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bearing / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bait / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price chum / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure3 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure2 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure1 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bag / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price rod / (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available rod at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bag at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available lure1 at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available lure2 at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available lure3 at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available chum at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bait at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bearing at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available salvage at (1600, 900)
+PASS shop-category-1-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 2 at (1600, 900)
+PASS v07 category 2 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price dressing / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price tonic / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price boots / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price sonar / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price frost / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bomb / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price medkit / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price heal / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price hull / (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available hull at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available medkit at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bomb at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available frost at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available sonar at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available boots at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available tonic at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available dressing at (1600, 900)
+PASS shop-category-2-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 3 at (1600, 900)
+PASS v07 category 3 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic2 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic1 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic0 / (1600, 900)
+PASS shop-category-3-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 4 at (1600, 900)
+PASS v07 category 4 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone2 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone1 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone0 / (1600, 900)
+PASS shop-category-4-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 5 at (1600, 900)
+PASS v07 category 5 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price mastery0 / (1600, 900)
+PASS shop-category-5-1600x900 renders requested native pixel dimensions
+PASS v07 real weapon offer remains an enabled button at (1600, 900)
+FAIL v07 decorative graphics do not intercept the price/purchase bar at (1600, 900)
+PASS v07 clicking the priced card deducts exactly 85 coins at (1600, 900)
+PASS v07 insufficient funds keeps exact cost readable at (1600, 900)
+PASS shop-insufficient-funds-1600x900 renders requested native pixel dimensions
+PASS v07 fully upgraded offer cannot be bought again at (1600, 900)
+PASS shop-owned-and-maxed-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 0 at (1280, 720)
+PASS v07 category 0 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price precision / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price handling / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price reload / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price scope / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price brake / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price arc / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price burst / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price harpoon / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price carbine / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price shotgun / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price weapon / (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available weapon at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available shotgun at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available carbine at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available harpoon at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available burst at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available arc at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available brake at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available scope at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available reload at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available handling at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available precision at (1280, 720)
+PASS shop-category-0-1280x720 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 1 at (1280, 720)
+PASS v07 category 1 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price salvage / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bearing / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bait / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price chum / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure3 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure2 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure1 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bag / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price rod / (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available rod at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bag at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available lure1 at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available lure2 at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available lure3 at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available chum at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bait at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bearing at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available salvage at (1280, 720)
+PASS shop-category-1-1280x720 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 2 at (1280, 720)
+PASS v07 category 2 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price dressing / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price tonic / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price boots / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price sonar / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price frost / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bomb / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price medkit / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price heal / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price hull / (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available hull at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available medkit at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bomb at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available frost at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available sonar at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available boots at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available tonic at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available dressing at (1280, 720)
+PASS shop-category-2-1280x720 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 3 at (1280, 720)
+PASS v07 category 3 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic2 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic1 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic0 / (1280, 720)
+PASS shop-category-3-1280x720 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 4 at (1280, 720)
+PASS v07 category 4 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone2 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone1 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone0 / (1280, 720)
+PASS shop-category-4-1280x720 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 5 at (1280, 720)
+PASS v07 category 5 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price mastery0 / (1280, 720)
+PASS shop-category-5-1280x720 renders requested native pixel dimensions
+PASS v07 real weapon offer remains an enabled button at (1280, 720)
+FAIL v07 decorative graphics do not intercept the price/purchase bar at (1280, 720)
+PASS v07 clicking the priced card deducts exactly 85 coins at (1280, 720)
+PASS v07 insufficient funds keeps exact cost readable at (1280, 720)
+PASS shop-insufficient-funds-1280x720 renders requested native pixel dimensions
+PASS v07 fully upgraded offer cannot be bought again at (1280, 720)
+PASS shop-owned-and-maxed-1280x720 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 0 at (1280, 1024)
+PASS v07 category 0 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price precision / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price handling / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price reload / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price scope / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price brake / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price arc / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price burst / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price harpoon / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price carbine / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price shotgun / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price weapon / (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available weapon at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available shotgun at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available carbine at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available harpoon at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available burst at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available arc at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available brake at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available scope at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available reload at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available handling at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available precision at (1280, 1024)
+PASS shop-category-0-1280x1024 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 1 at (1280, 1024)
+PASS v07 category 1 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price salvage / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bearing / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bait / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price chum / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure3 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure2 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure1 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bag / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price rod / (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available rod at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bag at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available lure1 at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available lure2 at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available lure3 at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available chum at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bait at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bearing at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available salvage at (1280, 1024)
+PASS shop-category-1-1280x1024 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 2 at (1280, 1024)
+PASS v07 category 2 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price dressing / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price tonic / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price boots / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price sonar / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price frost / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bomb / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price medkit / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price heal / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price hull / (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available hull at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available medkit at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bomb at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available frost at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available sonar at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available boots at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available tonic at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available dressing at (1280, 1024)
+PASS shop-category-2-1280x1024 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 3 at (1280, 1024)
+PASS v07 category 3 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic2 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic1 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic0 / (1280, 1024)
+PASS shop-category-3-1280x1024 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 4 at (1280, 1024)
+PASS v07 category 4 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone2 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone1 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone0 / (1280, 1024)
+PASS shop-category-4-1280x1024 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 5 at (1280, 1024)
+PASS v07 category 5 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price mastery0 / (1280, 1024)
+PASS shop-category-5-1280x1024 renders requested native pixel dimensions
+PASS v07 real weapon offer remains an enabled button at (1280, 1024)
+FAIL v07 decorative graphics do not intercept the price/purchase bar at (1280, 1024)
+PASS v07 clicking the priced card deducts exactly 85 coins at (1280, 1024)
+PASS v07 insufficient funds keeps exact cost readable at (1280, 1024)
+PASS shop-insufficient-funds-1280x1024 renders requested native pixel dimensions
+PASS v07 fully upgraded offer cannot be bought again at (1280, 1024)
+PASS shop-owned-and-maxed-1280x1024 renders requested native pixel dimensions
+PASS v07 guide and two merchants have articulated models on island 1
+PASS v07 tailored model has valid articulated meshes: 守灯人 · 米罗
+PASS v07 animated actor remains outside static scenery batch: 守灯人 · 米罗
+PASS actor-1-守灯人-·-米罗 renders requested native pixel dimensions
+PASS v07 tailored model has valid articulated meshes: Captain Rowan
+PASS v07 animated actor remains outside static scenery batch: Captain Rowan
+PASS actor-1-Captain-Rowan renders requested native pixel dimensions
+PASS v07 tailored model has valid articulated meshes: Fishmonger Miro
+PASS v07 animated actor remains outside static scenery batch: Fishmonger Miro
+PASS actor-1-Fishmonger-Miro renders requested native pixel dimensions
+PASS v07 guide and two merchants have articulated models on island 6
+PASS v07 tailored model has valid articulated meshes: 冰海测绘员 · 伊芙
+PASS v07 animated actor remains outside static scenery batch: 冰海测绘员 · 伊芙
+PASS actor-6-冰海测绘员-·-伊芙 renders requested native pixel dimensions
+PASS v07 tailored model has valid articulated meshes: Captain Rowan
+PASS v07 animated actor remains outside static scenery batch: Captain Rowan
+PASS actor-6-Captain-Rowan renders requested native pixel dimensions
+PASS v07 tailored model has valid articulated meshes: Fishmonger Miro
+PASS v07 animated actor remains outside static scenery batch: Fishmonger Miro
+PASS actor-6-Fishmonger-Miro renders requested native pixel dimensions
+PASS v07 guide and two merchants have articulated models on island 7
+PASS v07 tailored model has valid articulated meshes: 失踪工程师 · 赛因
+PASS v07 animated actor remains outside static scenery batch: 失踪工程师 · 赛因
+PASS actor-7-失踪工程师-·-赛因 renders requested native pixel dimensions
+PASS v07 tailored model has valid articulated meshes: Captain Rowan
+PASS v07 animated actor remains outside static scenery batch: Captain Rowan
+PASS actor-7-Captain-Rowan renders requested native pixel dimensions
+PASS v07 tailored model has valid articulated meshes: Fishmonger Miro
+PASS v07 animated actor remains outside static scenery batch: Fishmonger Miro
+PASS actor-7-Fishmonger-Miro renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 0
+PASS v07 sculpture retains weak organ for species 0
+PASS sculpted-species-0-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 1
+PASS v07 sculpture retains weak organ for species 1
+PASS sculpted-species-1-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 2
+PASS v07 sculpture retains weak organ for species 2
+PASS sculpted-species-2-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 3
+PASS v07 sculpture retains weak organ for species 3
+PASS sculpted-species-3-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 4
+PASS v07 sculpture retains weak organ for species 4
+PASS sculpted-species-4-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 5
+PASS v07 sculpture retains weak organ for species 5
+PASS sculpted-species-5-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 6
+PASS v07 sculpture retains weak organ for species 6
+PASS sculpted-species-6-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 7
+PASS v07 sculpture retains weak organ for species 7
+PASS sculpted-species-7-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 8
+PASS v07 sculpture retains weak organ for species 8
+PASS sculpted-species-8-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 9
+PASS v07 sculpture retains weak organ for species 9
+PASS sculpted-species-9-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 10
+PASS v07 sculpture retains weak organ for species 10
+PASS sculpted-species-10-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 11
+PASS v07 sculpture retains weak organ for species 11
+PASS sculpted-species-11-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 108
+PASS v07 sculpture retains weak organ for species 108
+PASS sculpted-species-108-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 113
+PASS v07 sculpture retains weak organ for species 113
+PASS sculpted-species-113-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 117
+PASS v07 sculpture retains weak organ for species 117
+PASS sculpted-species-117-inspection renders requested native pixel dimensions
+PASS v07 sculpted anatomy renders for species 118
+PASS v07 sculpture retains weak organ for species 118
+PASS sculpted-species-118-inspection renders requested native pixel dimensions
+PASS v07 real Fire emits layered feedback for Revolver
+PASS effect-muzzle-Revolver renders requested native pixel dimensions
+PASS v07 real Fire emits layered feedback for Scattergun
+PASS effect-muzzle-Scattergun renders requested native pixel dimensions
+PASS v07 real Fire emits layered feedback for Harpoon
+PASS effect-muzzle-Harpoon renders requested native pixel dimensions
+PASS v07 real Fire emits layered feedback for Carbine
+PASS effect-muzzle-Carbine renders requested native pixel dimensions
+PASS v07 real Fire emits layered feedback for BurstRifle
+PASS effect-muzzle-BurstRifle renders requested native pixel dimensions
+PASS v07 real Fire emits layered feedback for ArcCaster
+PASS effect-muzzle-ArcCaster renders requested native pixel dimensions
+PASS effect-weak-kill-early renders requested native pixel dimensions
+PASS effect-weak-kill-decay renders requested native pixel dimensions
+PASS effect-splash-crown renders requested native pixel dimensions
+PASS v07 effect stress reuses emitters and renderers after warmup
+PASS v07 clear removes active particles on voyage reset

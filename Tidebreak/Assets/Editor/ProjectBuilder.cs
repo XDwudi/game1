@@ -17,7 +17,7 @@ namespace Tidebreak.Editor
         {
             AssetDatabase.Refresh();
             BuildFont();
-            PlayerSettings.companyName="XDwudi";PlayerSettings.productName="Tidebreak";PlayerSettings.bundleVersion="0.6.0";
+            PlayerSettings.companyName="XDwudi";PlayerSettings.productName="Tidebreak";PlayerSettings.bundleVersion="0.7.0";
             PlayerSettings.defaultScreenWidth=1600;PlayerSettings.defaultScreenHeight=900;
             PlayerSettings.fullScreenMode=FullScreenMode.Windowed;PlayerSettings.resizableWindow=true;PlayerSettings.runInBackground=true;
             PlayerSettings.colorSpace=ColorSpace.Linear;

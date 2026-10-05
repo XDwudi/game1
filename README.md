@@ -1,12 +1,12 @@
-# Tidebreak · 潮汐猎手 v0.6
+# Tidebreak · 潮汐猎手 v0.7
 
-单人第一人称 3D 海岛钓猎 roguelike，Windows x64，Unity **2021.3.16f1c1**。本版重做九岛地形与路径、地域生物战斗、金币研究和画面反馈，让换岛与停留探索都有新收获。
+单人第一人称 3D 海岛钓猎 roguelike，Windows x64，Unity **2021.3.16f1c1**。本版修复商店金币显示，重做航海手记风格界面、船员与生物网格、第一人称手套及分层攻击特效；保留九岛探索与金币研究成长。
 
-![v0.6 松风灯塔海岸与环行道路](Documentation/Images/v06-coast.png)
+![v0.7 金币工坊实机渲染](Documentation/Images/v07-shop.png)
 
 ## 开始游玩
 
-双击 `Builds/Release/Tidebreak.exe`。分发请使用完整的 `Tidebreak-v0.6.0-Windows-x64.zip`；无需升级 Unity，运行不需要账号或网络。
+双击 `Builds/Release/Tidebreak.exe`。分发请使用完整的 `Tidebreak-v0.7.0-Windows-x64.zip`；无需升级 Unity，运行不需要账号或网络。
 
 1. 找向导按 **E** 接委托，**J** 查看剧情、证据和当前目标。
 2. 码头按 **1** 拿鱼竿，蓄力并松开左键抛竿。咬钩后绿灯收线、红灯松手；鱼跃出水面后用枪击倒。
@@ -28,7 +28,17 @@
 | 急救 / 震爆弹 / 冰封瓶 / 声呐 / 药剂 | Z / X / V / C / G |
 | 暂停与保存返回 / 跳过过场 | Esc / Space或Esc |
 
-## v0.6 的主要变化
+## v0.7 的主要变化
+
+- **价格始终可读**：每张商品卡有独立金额条，解锁说明与余额不足提示另列；修正中文字体行高超过按钮文本区导致整行消失的问题。六页工坊均适用。
+- **统一航海手记界面**：暖色纸张、深海蓝绿、黄铜边线，配合折角、缝线、罗盘和装备图标；工坊、专精、研究、剧情及战斗 HUD 使用一致的视觉语言。
+- **人物重新建模**：真实截面网格组成脸部、帽檐、外套翻领、背带、手指和靴型；各地区服饰有区别，保留关节动画。第一人称换为曲面手套、指节与袖口。
+- **十二类生物的新轮廓**：重新制作鱼身鳃盖、厚翼、蟹钳与分节足、水母伞体与口腕、卷尾等；克拉肯的腕部、吸盘及白鲸的头颌、腹褶、鳍尾分别建模。弱点改为嵌入造型的虹膜器官，保留原有命中判定。
+- **分层射击反馈**：火药火焰、鱼叉压力环、电弧分叉、方向性火星、弱点破环、击杀碎屑和冠状水花；命中与受击提示重新设计，特效对象复用。
+
+截图、修复原因与范围见 [v0.7 更新说明](Documentation/RELEASE-v07.md)。以下保留前版的探索与成长内容。
+
+## 九岛探索与成长
 
 - **九岛重新规划地形**：岬角、环礁内湾、红树林水道、盐沙台地、残舰湾、峡湾栈桥、雷峰折道、火山环路和镜渊双翼；任务点、商店、证据点与高差分别布置，每岛有环路和捷径。
 - **钓获池区分地域**：每岛十二种原生生物，按拟饵有 78.6%–85.7% 原生种；少量迁徙种保留交叉。两种专属生物不会流入其他岛。普通物种仍由十二个体型家族、攻击和生态组合，并非新增一百套独立模型。
@@ -58,16 +68,18 @@
 
 ## 开发与验证
 
-本轮范围与实机截图见 [v0.6 更新说明](Documentation/RELEASE-v06.md)，具体证据与测试边界见 [验收记录](Documentation/QA-v06.md)。上一版的测试与分发记录保留在 [v0.5 更新说明](Documentation/RELEASE-v05.md)，不作为新版通过证据。
+本轮范围与实机截图见 [v0.7 更新说明](Documentation/RELEASE-v07.md)，具体证据、失败迭代与测试边界见 [验收记录](Documentation/QA-v07.md)。[v0.6 更新说明](Documentation/RELEASE-v06.md) 与 [v0.5 更新说明](Documentation/RELEASE-v05.md) 保留为历史，不作为新版通过证据。
 
-最终同一 Windows 构建通过新版 All 739 项、表现检查 135 项、十一场首领回归 76 项、错误操作回归 88 项，以及首岛至第二岛购买/保存流程 49 项，均无失败。独立生态模型另检查 342 项。各套件用途与自动操作限制分别记录，不能用断言数量代表真人游玩质量；分发包身份见 [打包校验](Documentation/TestResults/v06-package.json)。
+商店验收检查真实 TMP 字形、价格像素、屏幕边界、点击射线和实际扣款，并保存 1600×900、1280×720、1280×1024 实机画面。另执行模型、特效复用与实际战斗/成长回归；各轮结果与构建身份见验收记录，分发包身份见 [打包校验](Documentation/TestResults/v07-package.json)。自动检查数量不能代表真人游玩质量。
 
 Unity Hub 添加 `Tidebreak`，打开 `Assets/Scenes/Tidebreak.unity`。场景由 C# Editor API 生成。
 
 ```powershell
 python -X utf8 Tools/prepare_resources.py
 ./Tools/build.ps1
-./Tools/test_v06.ps1 -Mode All
+./Tools/test_v07.ps1 -Mode All
+./Tools/smoke.ps1 -ArtReview
+./Tools/test_v06.ps1 -Mode Systems
 ./Tools/test_v05.ps1 -Mode Bosses
 ./Tools/test_v05.ps1 -Mode Negative
 ./Tools/test_v05.ps1 -Mode Campaign
@@ -75,6 +87,6 @@ python -X utf8 Tools/v06_ecology_audit.py
 ./Tools/package.ps1
 ```
 
-首领回归使用正常受伤、真实弹药/装填/冲刺和有限补给；自动瞄准、已知解法及隔离任务夹具不代表真人完整试玩。v0.6 的新内容见 [生态与经济](Documentation/ECOLOGY-v06.md)、[美术](Documentation/ART-v06.md)，前版 [玩法](Documentation/DESIGN-v05.md)、[剧情](Documentation/STORY-v05.md)、[数值](Documentation/BALANCE-v05.md)、[音频](Documentation/AUDIO-v05.md) 保留为设计历史。本版仍为持续打磨的可玩开发版本，不把自动检查数量等同于商业品质认证。
+首领回归使用正常受伤、真实弹药/装填/冲刺和有限补给；自动瞄准、已知解法及隔离任务夹具不代表真人完整试玩。v0.6 的探索内容见 [生态与经济](Documentation/ECOLOGY-v06.md)、[美术](Documentation/ART-v06.md)，前版 [玩法](Documentation/DESIGN-v05.md)、[剧情](Documentation/STORY-v05.md)、[数值](Documentation/BALANCE-v05.md)、[音频](Documentation/AUDIO-v05.md) 保留为设计历史。本版仍为持续打磨的可玩开发版本，不把自动检查数量等同于商业品质认证。
 
 字体为 Noto Sans SC 子集，遵循 [SIL OFL](ThirdParty/OFL-NotoSans.txt)。[插画生成记录](Documentation/GENERATED-ART.txt) 保存原始提示词与来源。未使用参考游戏的模型、地图、音频或源码。

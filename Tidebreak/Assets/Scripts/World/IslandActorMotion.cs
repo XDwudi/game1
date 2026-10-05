@@ -10,6 +10,7 @@ namespace Tidebreak
         public Transform[] Eyes;
         public bool Speaking;
         Vector3 chestScale, bookPosition, mouthScale;
+        Vector3[] eyeScales;
         float phase, gesture, gazeYaw, gazePitch;
 
         public void Initialize(int island)
@@ -18,6 +19,7 @@ namespace Tidebreak
             if (Chest) chestScale = Chest.localScale;
             if (Book) bookPosition = Book.localPosition;
             if (Mouth) mouthScale = Mouth.localScale;
+            if (Eyes != null) { eyeScales=new Vector3[Eyes.Length]; for(int i=0;i<Eyes.Length;i++) if(Eyes[i])eyeScales[i]=Eyes[i].localScale; }
         }
 
         void LateUpdate()
@@ -46,8 +48,8 @@ namespace Tidebreak
             if (Book) { Book.localPosition = bookPosition + Vector3.up * Mathf.Sin(time * 1.8f) * .006f; Book.localRotation = Quaternion.Euler(-10, -10 + Mathf.Sin(time * .4f) * 2, 0); }
             if (Mouth) Mouth.localScale = Vector3.Scale(mouthScale, new Vector3(1, 1 + Mathf.Abs(Mathf.Sin(time * 12)) * gesture * 1.1f, 1));
             float blink = Mathf.Repeat(time, 4.7f);
-            if (Eyes != null) foreach (var eye in Eyes) if (eye)
-                eye.localScale = new Vector3(.066f, blink > 4.52f ? .009f : .066f, .055f);
+            if (Eyes != null && eyeScales != null) for(int i=0;i<Eyes.Length;i++)if(Eyes[i])
+                Eyes[i].localScale = Vector3.Scale(eyeScales[i],new Vector3(1,1,blink > 4.52f ? .12f : 1));
         }
     }
 }

@@ -35,11 +35,12 @@ namespace Tidebreak
             if(!talking)JournalTabs(p,0);
             float top=talking?281:326,height=talking?435:390;
             var pages=DialoguePages(NarrativeContent.Dialogue(r,game.MissionActive));pageIndex=Mathf.Clamp(pageIndex,0,pages.Length-1);
-            Box(p,80,top,855,height,Panel);Box(p,80,top,5,height,game.Island.accent);
-            Text(p,111,top+21,791,31,NarrativeContent.BeatLabel(r,game.MissionActive),18,Gold);
-            Text(p,111,top+79,790,height-141,pages[pageIndex],27,Cream);
-            Text(p,111,top+height-41,790,29,"航行记录  "+(pageIndex+1)+" / "+pages.Length,15,Muted,TextAlignmentOptions.Right);
-            Box(p,963,top,557,height,Panel);IslandIllustration(p,977,top+14,529,140,r.stage);
+            Plate(p,80,top,855,height,Paper,true);Box(p,96,top+22,2,height-44,new Color(PaperInk.r,PaperInk.g,PaperInk.b,.20f));
+            Text(p,121,top+21,771,31,NarrativeContent.BeatLabel(r,game.MissionActive),18,PaperInk);
+            Stitch(p,121,top+63,771,new Color(PaperInk.r,PaperInk.g,PaperInk.b,.28f));
+            Text(p,121,top+85,770,height-147,pages[pageIndex],27,PaperInk);
+            Text(p,121,top+height-41,770,29,"航行记录  "+(pageIndex+1)+" / "+pages.Length,15,PaperMuted,TextAlignmentOptions.Right);
+            Plate(p,963,top,557,height,Panel);IslandIllustration(p,977,top+14,529,140,r.stage);
             Text(p,989,top+172,505,27,"下一步 · "+game.Island.name,17,Gold);
             var rules=Text(p,989,top+216,505,height-239,r.questStep>=4?NarrativeContent.Aftermath(r.stage,r.storyChoice):r.questStep==3&&!r.bossCleared?BossNarrative.Teaching(107+r.stage):NarrativeContent.Instructions(r),19,Cream);
             rules.overflowMode=TextOverflowModes.Ellipsis;
@@ -59,7 +60,7 @@ namespace Tidebreak
             if(selectedStage==0)selectedStage=entries.Count>0?entries[entries.Count-1].Stage:game.Run.stage;
             var chosen=entries.FirstOrDefault(e=>e.Stage==selectedStage);
             for(int i=1;i<=9;i++){int stage=i;var entry=entries.FirstOrDefault(e=>e.Stage==stage);Button(p,80,329+(i-1)*46,382,37,entry!=null?i.ToString("00")+"  "+entry.Title:i.ToString("00")+"  尚未找到的记录",()=>ShowEvidenceJournal(stage),stage==selectedStage,entry!=null);}
-            Box(p,493,329,1027,411,new Color(.92f,.88f,.76f));Box(p,514,350,3,367,new Color(.57f,.37f,.2f,.4f));
+            Plate(p,493,329,1027,411,Paper,true);Box(p,514,350,3,367,new Color(.57f,.37f,.2f,.4f));
             Text(p,546,354,917,40,chosen!=null?chosen.Title:"让海岛留下更多故事",28,Ink);
             Text(p,546,421,917,270,chosen!=null?chosen.Text:"寻找每座岛上的隐藏现场。比较当事人留下的信件、记录与物件，作出有依据的判断。\n\n所有答案都在现场线索里，读错可以继续尝试。发现后，记录会留在这里。",25,Ink);
             Text(p,80,764,958,58,"地图上的第三处发现藏着一份证物。复访向导时，他也会回应你的发现。",18,Muted);
@@ -70,12 +71,12 @@ namespace Tidebreak
             var p=NewModal();int record=game.ResearchRecord;
             Header(p,"A COAST WORTH KNOWING / 生态笔记",game.Island.name+" · 三处不同的海",game.ResearchHint);
             JournalTabs(p,2);
-            Box(p,80,329,1440,113,new Color(.88f,.86f,.72f));
+            Plate(p,80,329,1440,113,Paper,true);
             Text(p,105,350,1390,73,"西  礁隙  ◇ ───────── 船长码头 / 湾心水道 ───────── ◇  海草  东\n转动视角，让浮漂真正落进不同水域；拿起当地鱼获，才算完成一次观察。",22,Ink,TextAlignmentOptions.Center);
             for(int i=0;i<3;i++){
                 float x=80+i*486;bool done=(record&(1<<i))!=0;int start=Mathf.Clamp(game.Run.stage-1,0,8)*12;
                 int found=game.Run.islandCaught.Count(id=>id>=start&&id<start+12&&(id-start)%3==i);
-                Box(p,x,464,464,252,Panel);Box(p,x,464,464,4,done?Mint:Gold);
+                Plate(p,x,464,464,252,Panel);Icon(p,x+390,477,47,done?NauticalMark.Seal:NauticalMark.Fish,done?Mint:Gold);
                 Text(p,x+23,485,416,37,(done?"◆ ":"◇ ")+GameDirector.HabitatNames[i],27,done?Mint:Cream);
                 Text(p,x+23,542,416,90,GameDirector.HabitatClues[i],22,Cream);
                 Text(p,x+23,659,416,32,(done?"已记录":"等待第一份样本")+"  ·  本趟收获 "+found+" / 4 种",18,Gold);

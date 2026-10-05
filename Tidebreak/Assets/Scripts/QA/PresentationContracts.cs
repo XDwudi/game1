@@ -145,27 +145,44 @@ namespace Tidebreak
             g.StartVoyage(); yield return null;
         }
 
-        void CapturePresentation(string name, int width, int height)
+        void CapturePresentation(string name, int width, int height, Action<Texture2D> inspect = null)
         {
             var camera = g.Player.View;
             var canvas = FindObjectsOfType<Canvas>().First(c => c.name == "Tidebreak UI");
             var mode = canvas.renderMode; var previousCamera = canvas.worldCamera; float plane = canvas.planeDistance;
             var previousTarget = camera.targetTexture; var previousActive = RenderTexture.active;
+            int previousMask = camera.cullingMask;
+            var layers = canvas.GetComponentsInChildren<Transform>(true).ToDictionary(t => t.gameObject, t => t.gameObject.layer);
+            var uiObject = new GameObject("QA overlay capture camera");
+            var uiCamera = uiObject.AddComponent<Camera>(); uiCamera.enabled = false;
+            uiCamera.orthographic = true; uiCamera.orthographicSize = height * .5f;
+            uiCamera.nearClipPlane = .01f; uiCamera.farClipPlane = 2;
+            uiCamera.clearFlags = CameraClearFlags.Depth; uiCamera.cullingMask = 1 << 31;
             var rt = RenderTexture.GetTemporary(width, height, 24, RenderTextureFormat.ARGB32);
             var texture = new Texture2D(width, height, TextureFormat.RGB24, false);
             try
             {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = camera; canvas.planeDistance = camera.nearClipPlane + .002f;
-                camera.targetTexture = rt; Canvas.ForceUpdateCanvases(); camera.Render(); RenderTexture.active = rt;
+                // Render the overlay separately: near-plane placement can clip TMP at
+                // narrow aspect ratios, and a hidden window can have a black backbuffer.
+                foreach (var entry in layers) entry.Key.layer = 31;
+                camera.cullingMask = previousMask & ~(1 << 31);
+                camera.targetTexture = rt; uiCamera.targetTexture = rt;
+                canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = uiCamera; canvas.planeDistance = 1;
+                Canvas.ForceUpdateCanvases();
+                foreach (var text in canvas.GetComponentsInChildren<TMPro.TMP_Text>()) text.ForceMeshUpdate();
+                Canvas.ForceUpdateCanvases(); camera.Render(); uiCamera.Render(); RenderTexture.active = rt;
                 texture.ReadPixels(new Rect(0, 0, width, height), 0, 0); texture.Apply();
+                if (inspect != null) inspect(texture);
                 File.WriteAllBytes(Path.Combine(output, name + ".png"), texture.EncodeToPNG());
                 Check(texture.width == width && texture.height == height, name + " renders requested native pixel dimensions");
             }
             finally
             {
-                camera.targetTexture = previousTarget; RenderTexture.active = previousActive;
+                camera.targetTexture = previousTarget; camera.cullingMask = previousMask; RenderTexture.active = previousActive;
                 canvas.renderMode = mode; canvas.worldCamera = previousCamera; canvas.planeDistance = plane;
-                RenderTexture.ReleaseTemporary(rt); Destroy(texture);
+                foreach (var entry in layers) if (entry.Key) entry.Key.layer = entry.Value;
+                Canvas.ForceUpdateCanvases();
+                uiCamera.targetTexture = null; Destroy(uiObject); RenderTexture.ReleaseTemporary(rt); Destroy(texture);
             }
         }
     }

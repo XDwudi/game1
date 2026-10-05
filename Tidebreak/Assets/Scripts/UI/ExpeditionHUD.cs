@@ -12,8 +12,8 @@ namespace Tidebreak
         RectTransform waypointPanel,navigationPanel;
         void UpdateExpeditionHUD()
         {
-            if(!supplies){navigationPanel=Rect("Voyage navigation",hud,26,181,348,92);Box(navigationPanel,0,0,348,92,new Color(Ink.r,Ink.g,Ink.b,.83f));supplies=Text(hud,338,827,900,21,"",12,Cream,TextAlignmentOptions.Center);navigator=Text(navigationPanel,16,10,316,75,"",15,Gold);navigator.overflowMode=TextOverflowModes.Ellipsis;
-                waypointPanel=Rect("World action bearing",hud,670,354,260,58);Box(waypointPanel,0,0,35,35,new Color(Ink.r,Ink.g,Ink.b,.73f));Box(waypointPanel,38,0,222,54,new Color(Ink.r,Ink.g,Ink.b,.8f));waypointGlyph=Text(waypointPanel,0,0,35,35,"◇",28,Gold,TextAlignmentOptions.Center);waypointLabel=Text(waypointPanel,44,3,210,48,"",14,Cream);waypointLabel.overflowMode=TextOverflowModes.Ellipsis;}
+            if(!supplies){navigationPanel=Rect("Voyage navigation",hud,26,181,348,92);Plate(navigationPanel,0,0,348,92,new Color(Ink.r,Ink.g,Ink.b,.87f));supplies=Text(hud,338,827,900,21,"",12,Cream,TextAlignmentOptions.Center);navigator=Text(navigationPanel,16,10,316,75,"",15,Gold);navigator.overflowMode=TextOverflowModes.Ellipsis;
+                waypointPanel=Rect("World action bearing",hud,670,354,260,58);Plate(waypointPanel,0,0,35,35,new Color(Ink.r,Ink.g,Ink.b,.83f));Plate(waypointPanel,38,0,222,54,new Color(Ink.r,Ink.g,Ink.b,.86f));waypointGlyph=Text(waypointPanel,0,0,35,35,"◇",25,Gold,TextAlignmentOptions.Center);waypointLabel=Text(waypointPanel,44,3,210,48,"",14,Cream);waypointLabel.overflowMode=TextOverflowModes.Ellipsis;}
             var r=game.Run;supplies.text="拟饵："+ExpeditionContent.Lures[r.selectedLure]+"    Z 急救 "+r.medkits+"   X 震爆 "+r.bombs+"   V 冰封 "+r.frostbombs+"   C 声呐 "+r.sonarCharges+"   G 加速 "+r.tonics;
             Vector3 goal=game.MissionTarget;string label=game.MissionTargetLabel;
             var mechanism=game.ActiveBossMechanism;
@@ -50,23 +50,32 @@ namespace Tidebreak
         }
         void BuildShopPage()
         {
-            var r=game.Run;var p=NewModal();Header(p,"ISLAND WORKSHOP / 金币工坊",game.Island.name+" · 装备许可证 "+r.maxIsland+" / 9","持有 "+r.coins+" 金币   ·   新岛屿开放新商品；所有装备与配件仍需金币购买");
+            var r=game.Run;var p=NewModal();WorkshopHeader(p);
             string[] tabs={"枪械与配件","钓具与拟饵","防护与补给","本岛随机库存","流派专精","岛屿专研"};
             for(int i=0;i<6;i++){int tab=i;Button(p,80+i*242,266,228,43,tabs[i],()=>{shopTab=tab;BuildShopPage();},shopTab==i);}
             if(shopTab==5){BuildMasteryStock(p);Button(p,1130,813,390,52,"返回岛屿  ESC",game.CloseShop,true);return;}
             if(shopTab==4){BuildKeystoneStock(p);Button(p,1130,813,390,52,"返回岛屿  ESC",game.CloseShop,true);return;}
-            if(shopTab<3){var items=ShopCatalog.All.Where(x=>x.category==shopTab).ToArray();for(int i=0;i<items.Length;i++){
-                var item=items[i];float x=80+i%4*364,y=327+i/4*158;Box(p,x,y,346,145,Panel);Text(p,x+16,y+12,314,31,item.name+(item.max<10&&item.max>1?" "+item.level(r)+" / "+item.max:""),21,Cream);Text(p,x+16,y+46,314,48,item.Description(r),14,Muted);
-                string locked=ShopCatalog.Lock(r,item);int price=game.Price(item.id);bool can=locked==""&&price>=0&&r.coins>=price;string action=locked!=""?locked:price<0?"已拥有 / 已满":price+" 金币 · "+(can?"购买":"金币不足");
-                Button(p,x+16,y+105,314,32,action,()=>game.Buy(item.id),can,can);
-            }}else {for(int i=0;i<3;i++){int slot=i;var relic=game.Choices[i];float x=80+i*485;Box(p,x,340,460,310,Panel);Text(p,x+24,368,410,43,relic.name,30,Gold);Text(p,x+24,430,410,110,relic.description,21,Muted);int price=game.Price("relic"+i);bool can=price>=0&&r.coins>=price;Button(p,x+24,575,410,49,price<0?"已购 / 属性已满":price+" 金币 · "+(can?"购买":"金币不足"),()=>game.Buy("relic"+slot),can,can);}Text(p,80,693,1400,58,"共 20 类随机配件，随航路逐步加入库存。每岛三件限购；返回旧岛不会重置已购记录。",19,Muted);}
+            if(shopTab<3){var items=ShopCatalog.All.Where(x=>x.category==shopTab).ToArray();for(int i=0;i<items.Length;i++)StockCard(p,80+i%4*364,327+i/4*158,items[i]);
+                Text(p,80,817,990,42,"先选一种打法，再补齐短板。新的发现，会打开更多装备与专研。",16,Muted);
+            }else {for(int i=0;i<3;i++){
+                    int slot=i;var relic=game.Choices[i];float x=80+i*485;
+                    Plate(p,x+4,340,460,413,new Color(0,0,0,.23f));Plate(p,x,336,460,413,Paper,true,"Workshop relic "+i);
+                    Icon(p,x+332,355,91,(NauticalMark)(i==0?(int)NauticalMark.Seal:i==1?(int)NauticalMark.Anchor:(int)NauticalMark.Compass),new Color(PaperInk.r,PaperInk.g,PaperInk.b,.65f));
+                    Text(p,x+25,359,291,25,"LOCAL FIND  /  本岛限量",13,PaperMuted);
+                    Text(p,x+24,406,380,43,relic.name,28,PaperInk).fontStyle=FontStyles.Bold;
+                    Stitch(p,x+25,466,407,new Color(PaperInk.r,PaperInk.g,PaperInk.b,.25f));
+                    Text(p,x+24,486,410,145,relic.description,22,PaperInk);
+                    int price=game.Price("relic"+i);bool can=price>=0&&r.coins>=price;
+                    Text(p,x+25,642,405,24,price<0?"已记录入本岛库存":can?"本岛限购一件 · 即刻生效":"还需 "+(price-r.coins)+" 金币",14,PaperMuted);
+                    PurchaseStrip(p,x+24,683,410,46,"relic"+i,price,price<0?"已购 / 属性已满":can?"购买":"金币不足",()=>game.Buy("relic"+slot),can);
+                }Text(p,80,775,1400,30,"共 20 类随机配件 · 每岛三件限购 · 返回旧岛不会重置已购记录",17,Muted);}
             Button(p,1130,813,390,52,"返回岛屿  ESC",game.CloseShop,true);
         }
         void BuildIslandMap()
         {
             var p=NewModal();Header(p,"THE NINE TIDES / 群岛航图","沿着他人留下的灯，找到自己的航路","交付潮核开启下一站；每座岛还有三处生态观察和一份值得带走的证物。");
             Color paper=new Color(.84f,.87f,.79f),chartInk=new Color(.17f,.33f,.33f);
-            Box(p,80,269,1440,421,paper);
+            Plate(p,80,269,1440,421,paper,true);
             for(int x=110;x<1500;x+=88)Box(p,x,279,1,397,new Color(chartInk.r,chartInk.g,chartInk.b,.12f));
             for(int y=282;y<684;y+=55)Box(p,93,y,1414,1,new Color(chartInk.r,chartInk.g,chartInk.b,.12f));
             Text(p,1290,290,194,61,"N  ↑\n九潮水道",16,chartInk,TextAlignmentOptions.Center);

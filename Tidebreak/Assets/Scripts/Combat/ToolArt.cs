@@ -19,11 +19,7 @@ namespace Tidebreak
         static void Hand(Transform p,Vector3 at,Quaternion rotation,bool left=false)
         {
             var r=new GameObject(left?"Left hand":"Right hand").transform;r.SetParent(p,false);r.localPosition=at;r.localRotation=rotation;
-            CoastalMesh.Tube("Jacket sleeve",r,new[]{new Vector3(0,-.46f,-.13f),new Vector3(0,-.16f,-.045f),Vector3.zero},new[]{.083f,.068f,.059f},Sleeve,Sleeve*.7f,8);
-            Part(r,"Cuff",new Vector3(0,-.035f,0),new Vector3(.14f,.085f,.13f),Sleeve*.65f);
-            var palm=Shape.MeshObject("Palm",r,new[]{new Vector3(-.047f,0,-.03f),new Vector3(.047f,0,-.03f),new Vector3(-.056f,.1f,-.024f),new Vector3(.056f,.1f,-.024f),new Vector3(-.047f,0,.038f),new Vector3(.047f,0,.038f),new Vector3(-.056f,.1f,.042f),new Vector3(.056f,.1f,.042f)},new[]{0,2,3,0,3,1,4,5,7,4,7,6,0,4,6,0,6,2,1,3,7,1,7,5,2,6,7,2,7,3,0,1,5,0,5,4},Skin);
-            for(int i=0;i<4;i++){float x=(i-1.5f)*.027f;CoastalMesh.Tube("Curled finger",r,new[]{new Vector3(x,.095f,.005f),new Vector3(x,.132f,.04f),new Vector3(x,.09f,.078f),new Vector3(x,.047f,.06f)},new[]{.017f,.016f,.014f,.012f},Skin,Skin*.82f,6);}
-            float side=left?-1:1;CoastalMesh.Tube("Thumb",r,new[]{new Vector3(side*.044f,.018f,.02f),new Vector3(side*.065f,.052f,.058f),new Vector3(side*.03f,.07f,.071f)},new[]{.023f,.02f,.014f},Skin,Skin*.82f,6);
+            SailorModel.FirstPersonHand(r,Sleeve,Skin,left);
         }
         public static GameObject Rod(Transform parent,out Transform tip,out Transform reel)
         {

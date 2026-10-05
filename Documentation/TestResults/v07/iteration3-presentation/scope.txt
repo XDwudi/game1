@@ -1,0 +1,1 @@
+Visual fixtures: preconfigured money/unlocks, model inspection cameras and scripted effect stress. Not a natural progression or human playtest. UI tests inspect actual TMP glyph geometry and screen bounds. Gameplay regressions are executed separately.

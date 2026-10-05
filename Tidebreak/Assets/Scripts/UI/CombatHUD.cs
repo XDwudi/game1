@@ -28,10 +28,11 @@ namespace Tidebreak
         void UpdateCombatReadability()
         {
             if(!reloadPanel){
-                reloadPanel=Rect("Tactical reload",hud,640,555,320,54);Box(reloadPanel,0,0,320,54,Panel);reloadLabel=Text(reloadPanel,8,4,304,25,"",15,Cream,TextAlignmentOptions.Center);
+                reloadPanel=Rect("Tactical reload",hud,640,555,320,54);Plate(reloadPanel,0,0,320,54,Panel);reloadLabel=Text(reloadPanel,8,3,304,28,"",15,Cream,TextAlignmentOptions.Center);
                 reloadFill=Bar(reloadPanel,18,37,284,6,Gold);reloadWindow=Box(reloadPanel,18+284*.55f,35,284*.17f,10,new Color(.3f,1,.7f,.45f));
                 mechanicPanel=Rect("Encounter action instrument",hud,1176,118,396,196);
-                Box(mechanicPanel,0,0,396,196,new Color(Ink.r,Ink.g,Ink.b,.91f));Box(mechanicPanel,0,0,3,196,Gold);
+                Plate(mechanicPanel,0,0,396,196,new Color(Ink.r,Ink.g,Ink.b,.94f));
+                Stitch(mechanicPanel,17,43,360,new Color(Brass.r,Brass.g,Brass.b,.48f));
                 mechanicTitle=Text(mechanicPanel,17,13,255,25,"",18,Gold);mechanicDetail=Text(mechanicPanel,280,14,99,25,"",14,Mint,TextAlignmentOptions.Right);
                 mechanicLabel=Text(mechanicPanel,17,47,362,70,"",17,Cream);mechanicLabel.overflowMode=TextOverflowModes.Ellipsis;
                 mechanicProgress=Bar(mechanicPanel,17,123,362,4,Mint);
@@ -111,9 +112,14 @@ namespace Tidebreak
             for(int a=0;a<3;a++){int selected=a;Button(p,80+a*300,324,280,37,"第 "+(a+1)+" 幕 · 岛屿 "+VoyageBuilds.Island(a)+" 解锁",()=>{keystoneAct=selected;BuildShopPage();},keystoneAct==a);}
             act=keystoneAct;
             for(int i=0;i<3;i++){int index=act*3+i;float x=80+i*486;bool own=r.HasKeystone(index),can=VoyageBuilds.CanBuy(r,index);
-                Box(p,x,382,464,316,Panel);Text(p,x+22,398,420,43,VoyageBuilds.Names[index],29,own?Mint:Gold);Text(p,x+22,462,420,141,VoyageBuilds.Descriptions[index],20,Cream);
-                string label=own?"已装配":r.HasActKeystone(act)?"本幕已选择另一专精":r.maxIsland<VoyageBuilds.Island(act)?"抵达第 "+VoyageBuilds.Island(act)+" 岛解锁":VoyageBuilds.Price(act)+" 金币 · "+(can?"购买专精":"金币不足");
-                Button(p,x+22,627,420,49,label,()=>game.BuyKeystone(index),can,can);
+                Plate(p,x,382,464,326,Paper,true,"Keystone field sheet "+index);
+                Icon(p,x+367,393,69,i==0?NauticalMark.Harpoon:i==1?NauticalMark.Coat:NauticalMark.Sonar,new Color(PaperInk.r,PaperInk.g,PaperInk.b,.67f));
+                Text(p,x+22,399,343,43,VoyageBuilds.Names[index],28,PaperInk).fontStyle=FontStyles.Bold;
+                Stitch(p,x+22,456,420,new Color(PaperInk.r,PaperInk.g,PaperInk.b,.25f));
+                Text(p,x+22,475,420,116,VoyageBuilds.Descriptions[index],20,PaperInk);
+                string locked=r.HasActKeystone(act)?"本幕已选择另一专精":r.maxIsland<VoyageBuilds.Island(act)?"抵达第 "+VoyageBuilds.Island(act)+" 岛解锁":"";
+                var requirement=Text(p,x+22,603,420,28,own?"已装配 · 当前流派核心":locked!=""?locked:"本幕三选一 · 请按自己的打法选择",15,PaperMuted);requirement.gameObject.name="Shop requirement keystone"+index;
+                PurchaseStrip(p,x+22,642,420,46,"keystone"+index,own?-1:VoyageBuilds.Price(act),own?"已装配":locked!=""?"待解锁":can?"购买专精":"金币不足",()=>game.BuyKeystone(index),can);
             }
             Text(p,80,723,1430,61,"每幕三选一，三个专精可以跨幕组合。先想好打法，再用金币购买。\n普通配件补足属性；专精决定你如何输出、躲避和生存。",19,Muted);
         }
