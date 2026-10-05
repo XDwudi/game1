@@ -95,6 +95,7 @@ namespace Tidebreak
                     Shape.Part("Bell mouth",PrimitiveType.Cylinder,marker.moving,new Vector3(0,-.75f,0),new Vector3(1.1f,.17f,1.1f),bone);
                     Shape.Beam(root,new Vector3(.8f,2.9f,0),new Vector3(.8f,.7f,0),.035f,wood);break;
                 case "brazier":
+                    var furnaceSolid=root.gameObject.AddComponent<CapsuleCollider>();furnaceSolid.radius=.68f;furnaceSolid.height=1.8f;furnaceSolid.center=Vector3.up*.9f;
                     Shape.Part("Sled bed",PrimitiveType.Cube,root,new Vector3(0,.35f,0),new Vector3(1.35f,.3f,1.8f),wood);
                     for(int side=-1;side<=1;side+=2)Shape.Beam(root,new Vector3(side*.65f,.1f,-1),new Vector3(side*.65f,.1f,1),.13f,metal);
                     Shape.Part("Mobile furnace",PrimitiveType.Cylinder,root,new Vector3(0,.95f,0),new Vector3(.8f,.6f,.8f),metal);
@@ -113,7 +114,22 @@ namespace Tidebreak
                     for(int i=0;i<4;i++){float a=i*Mathf.PI*.5f;Shape.Beam(root,Vector3.up*1.4f,new Vector3(Mathf.Cos(a)*.65f,1.4f+Mathf.Sin(a)*.65f,0),.045f,bone);}
                     break;
                 case "memory":
-                    for(int i=-1;i<=1;i++)Shape.Part("Prismatic memory shard",PrimitiveType.Cube,root,new Vector3(i*.35f,.55f+Mathf.Abs(i)*.16f,0),new Vector3(.2f,1,.18f),new Color(.64f,.65f,.85f),false,true).transform.localRotation=Quaternion.Euler(0,i*20,i*17);
+                case "false-memory":
+                    int shardCount=kind=="memory"?2:1;
+                    for(int i=0;i<shardCount;i++){
+                        float x=shardCount==2?(i==0?-.3f:.3f):0;
+                        CreatureSurfaceArt.Facet(root,"Prismatic footprint crystal",new Vector3(x,.72f,0),new Vector3(.3f,1.2f,.3f),color);
+                    }
+                    if(kind=="memory")CoastalMesh.Ring(root,Vector3.up*.5f,.64f,.035f,bone,Quaternion.identity);
+                    break;
+                case "relay":
+                    Shape.Beam(root,Vector3.zero,Vector3.up*1.3f,.12f,metal);
+                    for(int side=-1;side<=1;side+=2){Shape.Beam(root,new Vector3(side*.55f,.7f,0),new Vector3(side*.55f,1.8f,0),.12f,bone);CoastalMesh.Ring(root,new Vector3(side*.55f,1.8f,0),.25f,.05f,color,Quaternion.identity);}
+                    Shape.Beam(root,new Vector3(-.55f,1.5f,0),new Vector3(.55f,1.05f,0),.09f,color,true);
+                    break;
+                case "forge":
+                    CreatureSurfaceArt.Facet(root,"Basalt quench anvil",Vector3.up*.42f,new Vector3(2.1f,.85f,1.25f),metal);
+                    for(int side=-1;side<=1;side+=2)CoastalMesh.Ring(root,new Vector3(side*.9f,.83f,0),.35f,.06f,color,Quaternion.Euler(90,0,0));
                     break;
                 case "arm":
                     var points=new Vector3[18];var widths=new float[18];

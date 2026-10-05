@@ -1,0 +1,45 @@
+PASS v08 display controller finishes startup transition
+PASS v08 restart fixture exists from previous independent process
+PASS v08 independent restart applies persisted borderless mode before opening settings
+PASS v08 independent restart uses actual native desktop dimensions
+PASS v08 independent restart retains previous window dimensions
+PASS v08 opens settings through harbor button
+PASS v08 opens display page through settings tab
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-after-independent-restart native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display mode Windowed
+PASS v08 raycast and click actual display mode selector: Windowed
+PASS v08 actual Screen.fullScreenMode reaches Windowed and offers confirmation
+PASS v08 actual render dimensions match Windowed target (1600, 900)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1600x900
+PASS v08 display-Windowed-confirm native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display keep
+PASS v08 clicks keep for Windowed
+PASS v08 Windowed confirmation persists on disk
+PASS v08 restart can return to the persisted window size

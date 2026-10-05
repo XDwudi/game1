@@ -12,6 +12,7 @@ namespace Tidebreak
         public int Phase { get; private set; } = 1;
         public int Moves { get; private set; }
         public int GatesBroken { get; private set; }
+        public int SolvedPhaseMask { get; private set; }
         public BossMechanism Mechanism {get;private set;}
         public int SeveredArms { get {return bossIndex==9&&Mechanism?Mechanism.CompletedActions:0;} }
         public int SeveredArmMask { get {int mask=0;for(int i=0;i<SeveredArms;i++)mask|=1<<(i*2+1);return mask;} }
@@ -74,6 +75,7 @@ namespace Tidebreak
         }
         void MechanismSolved()
         {
+            SolvedPhaseMask|=1<<(Phase-1);
             GatesBroken+=Mechanism.CompletedActions;pending=null;
             recoveryUntil=Time.time+Mechanism.ExposureDuration;
             nextMove=Time.time+Mathf.Max(2,Mechanism.ExposureDuration*.55f);
@@ -95,69 +97,69 @@ namespace Tidebreak
             {
                 case 0:
                     if(move==0){Tell("裂钳交叉 · 离开两条橙色夹击线",1.15f,()=>{Line(lockedPosition,across,24,damage);Line(lockedPosition,Vector3.forward,24,damage);}); PreviewCross(p,across,1.15f);}
-                    else if(move==1)Tell("重钳三连 · 不要提前耗尽冲刺",.7f,()=>{for(int i=0;i<Phase+1;i++)game.Warn(lockedPosition+across*i*2,2, .55f+i*.5f,damage);});
-                    else Tell("巨蟹顿足 · 跳过低矮冲击环",.75f,()=>ThreatField.Ring(game,lockedPosition,damage,Color.yellow));
+                    else if(move==1)Tell("重钳三连 · 不要提前耗尽冲刺",.7f,()=>{for(int i=0;i<Phase+1;i++)EnemySkillFX.Warn(Owner,lockedPosition+across*i*2,2, .55f+i*.5f,damage);});
+                    else Tell("巨蟹顿足 · 跳过低矮冲击环",.75f,()=>ThreatField.Ring(game,lockedPosition,damage,Color.yellow,source:Owner));
                     break;
                 case 1:
-                    if(move==0)Tell("逆音双环 · 两次起跳，间隔留出落地",.8f,()=>{ThreatField.Ring(game,Owner.transform.position,damage,Color.cyan);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.magenta,2.3f);});
+                    if(move==0)Tell("逆音双环 · 两次起跳，间隔留出落地",.8f,()=>{ThreatField.Ring(game,Owner.transform.position,damage,Color.cyan,source:Owner);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.magenta,2.3f,source:Owner);});
                     else if(move==1)Tell("翼尖音刃 · 扇形间隙保持移动",1,()=>Fan(lockedPosition,7+Phase*2,damage*.6f,11));
-                    else Tell("静音水域 · 离开脚下的共鸣漩涡",.8f,()=>ThreatField.Vortex(game,lockedPosition,3.2f,1.1f,damage*.45f,Color.magenta));
+                    else Tell("静音水域 · 离开脚下的共鸣漩涡",.8f,()=>ThreatField.Vortex(game,lockedPosition,3.2f,1.1f,damage*.45f,Color.magenta,source:Owner));
                     break;
                 case 2:
-                    if(move==0)Tell("毒根追踪 · 三段尾迹，沿弧线撤离",.9f,()=>{for(int i=0;i<3;i++)ThreatField.Pool(game,lockedPosition+across*(i-1)*3,1.8f,.8f+i*.4f,damage*.38f,Color.green,SeaTrait.Venom);});
-                    else if(move==1)Tell("潜地猎杀 · 波纹锁定后再闪避",1,()=>{game.Warn(lockedPosition,3,.7f,damage*1.2f);game.Warn(lockedPosition+Vector3.forward*4,2.4f,1.6f,damage);});
+                    if(move==0)Tell("毒根追踪 · 三段尾迹，沿弧线撤离",.9f,()=>{for(int i=0;i<3;i++)ThreatField.Pool(game,lockedPosition+across*(i-1)*3,1.8f,.8f+i*.4f,damage*.38f,Color.green,SeaTrait.Venom,source:Owner);});
+                    else if(move==1)Tell("潜地猎杀 · 波纹锁定后再闪避",1,()=>{EnemySkillFX.Warn(Owner,lockedPosition,3,.7f,damage*1.2f);EnemySkillFX.Warn(Owner,lockedPosition+Vector3.forward*4,2.4f,1.6f,damage);});
                     else Tell("根须孵化 · 优先清理追猎幼体",1.2f,()=>{game.SpawnMinion(Owner);Fan(lockedPosition,3,damage*.6f,9);});
                     break;
                 case 3:
-                    if(move==0)Tell("日轮棋盘 · 在轰炸格之间换位",1,()=>{for(int x=-1;x<=1;x++)for(int z=-1;z<=1;z++)if((x+z+Phase)%2==0)game.Warn(lockedPosition+new Vector3(x*3.4f,0,z*3.4f),1.5f,.8f,damage);});
+                    if(move==0)Tell("日轮棋盘 · 在轰炸格之间换位",1,()=>{for(int x=-1;x<=1;x++)for(int z=-1;z<=1;z++)if((x+z+Phase)%2==0)EnemySkillFX.Warn(Owner,lockedPosition+new Vector3(x*3.4f,0,z*3.4f),1.5f,.8f,damage);});
                     else if(move==1)Tell("星轨折射 · 前后两道光线依次扫过",1,()=>{Line(lockedPosition,across,25,damage);DelayedLine(lockedPosition+Vector3.forward*3,across,25,damage,1.4f);});
-                    else Tell("龟甲震荡 · 准备跳跃与头部反击",.8f,()=>ThreatField.Ring(game,lockedPosition,damage,Color.yellow));
+                    else Tell("龟甲震荡 · 准备跳跃与头部反击",.8f,()=>ThreatField.Ring(game,lockedPosition,damage,Color.yellow,source:Owner));
                     break;
                 case 4:
-                    if(move==0)Tell("沉钟牵引 · 先冲出涡心，再留意回旋刃",1,()=>{ThreatField.Vortex(game,lockedPosition,4.2f,.8f,damage*.35f,Owner.Spec.color);Fan(lockedPosition,5,damage*.55f,9,true);});
+                    if(move==0)Tell("沉钟牵引 · 先冲出涡心，再留意回旋刃",1,()=>{ThreatField.Vortex(game,lockedPosition,4.2f,.8f,damage*.35f,Owner.Spec.color,source:Owner);Fan(lockedPosition,5,damage*.55f,9,true);});
                     else if(move==1)Tell("锚链绞杀 · 两条平行锁链留下中间通道",1,()=>{Line(lockedPosition+across*2.5f,Vector3.forward,30,damage);Line(lockedPosition-across*2.5f,Vector3.forward,30,damage);});
-                    else Tell("午夜钟声 · 波纹会折返",1.1f,()=>{ThreatField.Ring(game,Owner.transform.position,damage,Color.cyan);Fan(lockedPosition,3,damage*.5f,8,true);});
+                    else Tell("午夜钟声 · 波纹会折返",1.1f,()=>{ThreatField.Ring(game,Owner.transform.position,damage,Color.cyan,source:Owner);Fan(lockedPosition,3,damage*.5f,8,true);});
                     break;
                 case 5:
                     if(move==0){Tell("独角猎线 · 侧移离开锁定的冰脊",1.25f,()=>Line(lockedPosition,Vector3.forward,45,damage*1.2f));PreviewCross(p,Vector3.forward,1.25f,false);}
-                    else if(move==1)Tell("冰刺编织 · 旧站位将被冰封",.9f,()=>{for(int i=0;i<Phase+1;i++)game.Warn(lockedPosition+across*(i-1)*3,1.7f,.6f+i*.4f,damage);});
-                    else Tell("破冰落震 · 跳过落地潮环",1,()=>ThreatField.Ring(game,lockedPosition,damage,Color.cyan));
+                    else if(move==1)Tell("冰刺编织 · 旧站位将被冰封",.9f,()=>{for(int i=0;i<Phase+1;i++)EnemySkillFX.Warn(Owner,lockedPosition+across*(i-1)*3,1.7f,.6f+i*.4f,damage);});
+                    else Tell("破冰落震 · 跳过落地潮环",1,()=>ThreatField.Ring(game,lockedPosition,damage,Color.cyan,source:Owner));
                     break;
                 case 6:
                     if(move==0){Tell("雷极十字 · 离开交叉导线",1.25f,()=>{Line(lockedPosition,across,40,damage);DelayedLine(lockedPosition,Vector3.forward,40,damage,.9f);});PreviewCross(p,across,1.25f);}
-                    else if(move==1)Tell("电容脉冲 · 交错弹道之间穿行",1,()=>{Fan(lockedPosition,9,damage*.55f,10);ThreatField.Ring(game,lockedPosition+Vector3.forward*7,damage,Color.yellow);});
-                    else Tell("雷暴追针 · 先引雷，再换位",.8f,()=>{game.Warn(lockedPosition,2.1f,.65f,damage);game.Warn(lockedPosition-across*3,2,1.35f,damage);});
+                    else if(move==1)Tell("电容脉冲 · 交错弹道之间穿行",1,()=>{Fan(lockedPosition,9,damage*.55f,10);ThreatField.Ring(game,lockedPosition+Vector3.forward*7,damage,Color.yellow,source:Owner);});
+                    else Tell("雷暴追针 · 先引雷，再换位",.8f,()=>{EnemySkillFX.Warn(Owner,lockedPosition,2.1f,.65f,damage);EnemySkillFX.Warn(Owner,lockedPosition-across*3,2,1.35f,damage);});
                     break;
                 case 7:
-                    if(move==0)Tell("熔潮封路 · 三条岩浆沟之间保留退路",1,()=>{for(int i=-1;i<=1;i++)ThreatField.Pool(game,lockedPosition+across*i*4,1.7f,1.1f,damage*.5f,new Color(1,.3f,.08f));});
-                    else if(move==1)Tell("锻炉超压 · 第一击后继续移动",.8f,()=>{game.Warn(lockedPosition,3,.6f,damage);game.Warn(lockedPosition+across*4,2.5f,1.3f,damage);ThreatField.RingDelayed(game,lockedPosition,damage,Color.red,2.2f);});
+                    if(move==0)Tell("熔潮封路 · 三条岩浆沟之间保留退路",1,()=>{for(int i=-1;i<=1;i++)ThreatField.Pool(game,lockedPosition+across*i*4,1.7f,1.1f,damage*.5f,new Color(1,.3f,.08f),source:Owner);});
+                    else if(move==1)Tell("锻炉超压 · 第一击后继续移动",.8f,()=>{EnemySkillFX.Warn(Owner,lockedPosition,3,.6f,damage);EnemySkillFX.Warn(Owner,lockedPosition+across*4,2.5f,1.3f,damage);ThreatField.RingDelayed(game,lockedPosition,damage,Color.red,2.2f,source:Owner);});
                     else Tell("熔甲碎片 · 近距扇射后甲壳骤冷",1.2f,()=>Fan(lockedPosition,11,damage*.65f,13));
                     break;
                 case 8:
-                    if(move==0){var echoes=recentPositions.ToArray();Tell("镜渊记录 · 重演你最近四个站位，离开旧轨迹",1.1f,()=>{for(int i=0;i<echoes.Length;i++)game.Warn(echoes[i],2.4f,.5f+i*.45f,damage);});}
-                    else if(move==1)Tell("镜面对折 · 内外两层潮环",1,()=>{ThreatField.Ring(game,lockedPosition,damage,Color.cyan);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.magenta,1.6f);});
+                    if(move==0){var echoes=recentPositions.ToArray();Tell("镜渊记录 · 重演你最近四个站位，离开旧轨迹",1.1f,()=>{for(int i=0;i<echoes.Length;i++)EnemySkillFX.Warn(Owner,echoes[i],2.4f,.5f+i*.45f,damage);});}
+                    else if(move==1)Tell("镜面对折 · 内外两层潮环",1,()=>{ThreatField.Ring(game,lockedPosition,damage,Color.cyan,source:Owner);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.magenta,1.6f,source:Owner);});
                     else Tell("归航悖论 · 击退回声，争取关机窗口",1,()=>{game.SpawnMinion(Owner);if(game.Run.storyChoice==1)game.SpawnMinion(Owner);Fan(lockedPosition,5+Phase*2,damage*.55f,11);});
                     break;
                 case 9:
-                    if(move==0)Tell("八腕封海 · "+KrakenSlamCount+" 段拍岸，斩断登陆触腕可削减连击",1,()=>{for(int i=0;i<KrakenSlamCount;i++)game.Warn(lockedPosition+across*(i-1)*2.7f,2.2f,.6f+i*.45f,damage);});
-                    else if(move==1)Tell("墨潮吞岸 · 脱离墨涡，准备跳浪",1,()=>{ThreatField.Vortex(game,lockedPosition,4.3f,.8f,damage*.45f,new Color(.6f,.2f,.8f));ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.magenta,Phase==3?1.1f:1.9f);});
+                    if(move==0)Tell("八腕封海 · "+KrakenSlamCount+" 段拍岸，斩断登陆触腕可削减连击",1,()=>{for(int i=0;i<KrakenSlamCount;i++)EnemySkillFX.Warn(Owner,lockedPosition+across*(i-1)*2.7f,2.2f,.6f+i*.45f,damage);});
+                    else if(move==1)Tell("墨潮吞岸 · 脱离墨涡，准备跳浪",1,()=>{ThreatField.Vortex(game,lockedPosition,4.3f,.8f,damage*.45f,new Color(.6f,.2f,.8f),source:Owner);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.magenta,Phase==3?1.1f:1.9f,source:Owner);});
                     else Tell("古神怒目 · 交叉触腕后，眼部暴露",1.3f,()=>{Line(lockedPosition,across,45,damage);DelayedLine(lockedPosition,Vector3.forward,45,damage,1);if(Phase==3)Fan(lockedPosition,9,damage*.5f,12);});
                     break;
                 default:
                     if(move==0)Tell("白鲸猎线 · 蓝线追踪，变橙锁定后横向冲刺",.45f,()=>{TrackingBreach.Create(game,Owner.transform.position,damage*1.2f);if(Phase>=2)TrackingBreach.Create(game,Owner.transform.position+Vector3.right*(Phase==3?-14:14),damage,1.45f);});
-                    else if(move==1)Tell("鲸歌三拍 · 跳过第一拍，再处理回声",1,()=>{ThreatField.Ring(game,Owner.transform.position,damage,Color.cyan);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.white,2.1f);if(Phase==3)ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.cyan,3.4f);});
-                    else Tell("跃鲸碎冰 · 冰雨封路，留意返程回声",.8f,()=>{for(int i=-2;i<=2;i++)game.Warn(lockedPosition+across*i*2.5f,1.35f,.7f+Mathf.Abs(i)*.3f,damage);Fan(lockedPosition,3,damage*.5f,10,true);if(Phase==3)ThreatField.Vortex(game,lockedPosition,4,.8f,damage*.3f,Color.cyan);});
+                    else if(move==1)Tell("鲸歌三拍 · 跳过第一拍，再处理回声",1,()=>{ThreatField.Ring(game,Owner.transform.position,damage,Color.cyan,source:Owner);ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.white,2.1f,source:Owner);if(Phase==3)ThreatField.RingDelayed(game,Owner.transform.position,damage,Color.cyan,3.4f,source:Owner);});
+                    else Tell("跃鲸碎冰 · 冰雨封路，留意返程回声",.8f,()=>{for(int i=-2;i<=2;i++)EnemySkillFX.Warn(Owner,lockedPosition+across*i*2.5f,1.35f,.7f+Mathf.Abs(i)*.3f,damage,theme:SkillTheme.Frost);Fan(lockedPosition,3,damage*.5f,10,true);if(Phase==3)ThreatField.Vortex(game,lockedPosition,4,.8f,damage*.3f,Color.cyan,source:Owner);});
                     break;
             }
         }
         void PreviewCross(Vector3 p, Vector3 direction, float delay, bool cross=true)
         {
-            ThreatField.Line(game,p-direction*18,p+direction*18,.9f,delay+ .1f,0,new Color(1,.62f,.2f));
-            if(cross)ThreatField.Line(game,p-Vector3.forward*18,p+Vector3.forward*18,.9f,delay+.1f,0,new Color(1,.62f,.2f));
+            ThreatField.Line(game,p-direction*18,p+direction*18,.9f,delay+ .1f,0,new Color(1,.62f,.2f),source:Owner);
+            if(cross)ThreatField.Line(game,p-Vector3.forward*18,p+Vector3.forward*18,.9f,delay+.1f,0,new Color(1,.62f,.2f),source:Owner);
         }
         void Line(Vector3 p, Vector3 d, float length, float damage) { DelayedLine(p,d,length,damage,.25f); }
         void DelayedLine(Vector3 p,Vector3 d,float length,float damage,float delay)
-        { ThreatField.Line(game,p-d*length*.5f,p+d*length*.5f,1.15f,delay,damage,new Color(1,.36f,.22f)); }
+        { ThreatField.Line(game,p-d*length*.5f,p+d*length*.5f,1.15f,delay,damage,new Color(1,.36f,.22f),source:Owner); }
         void Fan(Vector3 target,int count,float damage,float speed,bool returns=false)
         { for(int i=0;i<count;i++){Vector3 dir=Quaternion.Euler(0,(i-(count-1)*.5f)*9,0)*(target-Owner.transform.position).normalized;Owner.EmitBolt(Owner.transform.position+dir*25,speed,damage,returns?1.6f:0); } }
         void ClearTargets(){foreach(var t in Targets)if(t)Destroy(t.gameObject);Targets.Clear();}

@@ -1,0 +1,9 @@
+display-window-before-switch: native framebuffer; Windowed; 1280x720
+display-Borderless-confirm: native framebuffer; FullScreenWindow; 2560x1440
+display-Exclusive-confirm: native framebuffer; ExclusiveFullScreen; 2560x1440
+display-Windowed-confirm: native framebuffer; Windowed; 1280x720
+display-Borderless-preview: native framebuffer; FullScreenWindow; 2560x1440
+display-timeout-restored: native framebuffer; Windowed; 1280x720
+display-Exclusive-preview: native framebuffer; ExclusiveFullScreen; 2560x1440
+display-paused-tab-restored: native framebuffer; Windowed; 1280x720
+display-Exclusive-preview-paused-escape: native framebuffer; ExclusiveFullScreen; 2560x1440

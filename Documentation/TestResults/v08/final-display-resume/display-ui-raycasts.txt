@@ -1,0 +1,2 @@
+Display mode Windowed mode=FullScreenWindow resolution=2560x1440 point=(2062.40, 635.20) top=Display mode Windowed
+Display keep mode=Windowed resolution=1600x900 point=(1162.50, 164.50) top=Display keep

@@ -4,13 +4,30 @@ namespace Tidebreak
 {
     public partial class SeaHUD
     {
+        string BossThreatLegend(Enemy boss)
+        {
+            switch(boss.Spec.id){
+                case 108:return "浪沫低环：跳跃   /   重钳落点：离开橙圈";
+                case 109:return "珊瑚音浪：连续跳跃   /   音刃：穿过弹道间隙";
+                case 110:return "毒根浊池：离开边界   /   已净化绿岸：安全";
+                case 111:return "盐晶光带：横移   /   晶簇落点：离开橙圈";
+                case 112:return "幽焰锁链：横移   /   吞岸旋流：向外冲刺";
+                case 113:return "冰脊猎线：横移   /   冰雨落点：离开橙圈";
+                case 114:return "雷柱落点：离开橙圈   /   导电光带：横移";
+                case 115:return "熔火喷口：离开橙圈   /   低矮熔潮：跳跃";
+                case 116:return "镜刃宽带：横移   /   回忆落点：取回后离开";
+                case 117:return "触腕拍岸：离开橙圈   /   墨浪低环：跳跃";
+                default:return "蓝线追踪 → 橙线锁定后横移   /   鲸歌低环：跳跃";
+            }
+        }
         RectTransform reloadPanel,mechanicPanel,mechanicMeterPanel;
         TextMeshProUGUI reloadLabel,mechanicLabel,buildStatus,mechanicTitle,mechanicMeterLabel,mechanicDetail;
         UnityEngine.UI.Image reloadWindow,reloadFill,mechanicProgress,mechanicMeterA,mechanicMeterB;
         static readonly string[] MechanismTitles={"引钳撞桩","音贝应答","净水造岸","折光破甲","拉钟截潮","护火破冰","导雷接地","双阀淬甲","逆行归忆","钓竿牵腕","声呐追鲸"};
-        static readonly string[] MechanismStrategies={"借重钳撞断系船桩。\n蓝线追踪，橙线锁定后侧闪。","先听完整乐谱，再依序回应。\n数字与贝壳亮灯给出同样信息。","把清水带到污染环。\n净化的绿圈也是安全地面。","让三面镜连续接通光路。\n沿光束寻找下一面反光镜。","用钟声打断浪潮蓄势。\n提前拉绳无效，成功拍次保留。","热炉需要有人伴行。\n补热时停船，落冰时暂离。","将电荷引入指定接地圈。\n先看路线，再领取电荷。","两阀分别控制温度与压力。\n安全区内才积累淬火进度。","你走过的路会成为战场。\n记录后逆行，取回足迹就离开。","用钓线牵制登陆触腕。\n平潮收线，红潮放线。","先发声呐，再二次定位。\n双环是真回波，单环是假象。"};
+        static readonly string[] MechanismStrategies={"借重钳撞断系船桩。\n蓝线追踪，橙线锁定后侧闪。","先听完整乐谱，再依序回应。\n数字与贝壳亮灯给出同样信息。","把清水带到污染环。\n净化的绿圈也是安全地面。","让三面镜连续接通光路。\n沿光束寻找下一面反光镜。","用钟声打断浪潮蓄势。\n提前拉绳无效，成功拍次保留。","护送热炉，补温融开封锁。\n换枪击碎冰锁；风雪回炉边。","先接电，再反相，最后接地。\n指定中继与接地台都有导线。","调节双阀，淬出脆甲。\n保持温压平衡，再射击破甲。","记录路线后逆行回收。\n双晶为真，单晶为镜面诱饵。","借平潮牵腕，红潮松线换侧。\n腕结上岸后换枪击碎。","辨认双环，交叉声呐确认。\n诱出破冰，锁定后横移。"};
         string MechanismInput(BossMechanism m)
         {
+            if(!string.IsNullOrEmpty(m.LateInput))return m.LateInput;
             switch(m.BossIndex){
                 case 0:return m.TargetLocked?"SHIFT · 现在侧闪":"WASD · 移至亮桩";
                 case 1:return m.Listening?"观察亮灯 · 聆听乐谱":"E · 回应音贝";
@@ -71,6 +88,7 @@ namespace Tidebreak
         }
         string CompactMechanicCue(BossMechanism m)
         {
+            if(!string.IsNullOrEmpty(m.LateBrief))return m.LateBrief;
             switch(m.BossIndex){
                 case 0:return m.TargetLocked?"重钳已锁定！\n立即横移，借撞击破桩。":"前往亮起的系船桩。\n蓝线追踪，变橙后侧闪。";
                 case 1:return m.Listening?m.Cue:"按乐谱次序回应音贝。\n"+m.Cue;
@@ -102,7 +120,7 @@ namespace Tidebreak
                 case 9:a=m.Carrying?m.CycleProgress:0;b=m.Carrying?m.Tension:0;label=m.Carrying?"收线 "+Mathf.RoundToInt(m.CycleProgress*100)+"% · 张力 "+Mathf.RoundToInt(m.Tension*100)+"%":"等待挂钩 · 瞄准触腕按 E";break;
                 case 10:a=m.StateStep==1?Mathf.Clamp01(1-m.ActionSeconds/12):m.StateStep==2?1:0;b=m.Progress;label=m.StateStep==2?"已引出破冰 · 蓝线变橙后横移，成功避开才保存观测":m.StateStep==1?"回波剩余 "+Mathf.Max(0,12-m.ActionSeconds).ToString("F1")+" 秒 · 识别双环":"观测 "+m.CompletedActions+" / "+m.RequiredActions+" · 免费声呐不消耗随身道具";break;
             }
-            mechanicMeterLabel.text=label;mechanicMeterA.fillAmount=Mathf.Clamp01(a);mechanicMeterB.fillAmount=Mathf.Clamp01(b);
+            mechanicMeterLabel.text=string.IsNullOrEmpty(m.LateMeter)?label:m.LateMeter;mechanicMeterA.fillAmount=Mathf.Clamp01(a);mechanicMeterB.fillAmount=Mathf.Clamp01(b);
             mechanicMeterA.color=m.BossIndex==5&&m.Heat<=20?new Color(1,.38f,.24f):Gold;
             mechanicMeterB.color=(m.BossIndex==9&&m.Tension>.7f)||(m.BossIndex==7&&m.Pressure>=65)?new Color(1,.38f,.24f):Mint;
         }

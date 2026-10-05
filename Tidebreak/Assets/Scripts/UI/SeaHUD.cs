@@ -103,7 +103,7 @@ namespace Tidebreak
             else Button(p,60,646,245,50,"船长手册",ShowManual);
             Button(p,320,646,245,50,"海洋图鉴",ShowJournal);
             Button(p,60,710,245,50,"设置",()=>ShowSettings(false));Button(p,320,710,245,50,"退出游戏",game.Quit);
-            Text(p,60,807,510,44,"九岛异境 · 岛屿专研 · 十一种巨物反制\nWIN 64   /   v0.7.0",13,Muted);
+            Text(p,60,807,510,44,"九岛异境 · 岛屿专研 · 十一种巨物反制\nWIN 64   /   v0.8.0",13,Muted);
             Text(p,1075,741,452,38,"PINEHAVEN",27,Cream,TextAlignmentOptions.Right).characterSpacing=4;
             Text(p,1075,786,452,43,"松风港  /  钓猎远征\n完成 "+game.Log.victories+" 次远征  ·  克拉肯 "+game.Log.krakens+" 次",15,Cream,TextAlignmentOptions.Right);
         }
@@ -141,19 +141,23 @@ namespace Tidebreak
         }
         public void ShowJournal(){BuildCodex();}
         public void ShowBag(){BuildBagPage();}
-        void ShowSettings(bool paused)
+        void ShowSettings(bool paused,bool display=false)
         {
-            settings=true;var p=NewModal();Header(p,"SHIP'S INSTRUMENTS   /   设置","按你的节奏航行","声音与镜头设置即时生效。所有机制同时提供文字和视觉提示。");
-            SettingSlider(p,80,281,"总音量",game.Log.volume,0,1,v=>{game.Log.volume=v;AudioListener.volume=v;},true);
-            SettingSlider(p,80,377,"音乐",game.Log.musicVolume,0,1,v=>game.Log.musicVolume=v,true);
-            SettingSlider(p,80,473,"动作与提示音",game.Log.effectsVolume,0,1,v=>game.Log.effectsVolume=v,true);
-            SettingSlider(p,80,569,"海浪与环境",game.Log.ambienceVolume,0,1,v=>game.Log.ambienceVolume=v,true);
-            SettingSlider(p,860,281,"鼠标灵敏度",game.Log.sensitivity,.3f,2,v=>game.Log.sensitivity=v,false);
-            SettingSlider(p,860,377,"视野角度",game.Log.fieldOfView,65,100,v=>game.Log.fieldOfView=v,false);
-            Button(p,860,481,316,51,"镜头震动："+(game.Log.shake?"开":"关"),()=>{game.Log.shake=!game.Log.shake;ShowSettings(paused);});
-            Button(p,1192,481,328,51,"步行起伏："+(game.Log.headBob?"开":"关"),()=>{game.Log.headBob=!game.Log.headBob;ShowSettings(paused);});
-            Button(p,860,554,660,51,"下次新远征："+(game.Log.easy?"轻松模式":"标准模式"),()=>{game.Log.easy=!game.Log.easy;ShowSettings(paused);});
-            Text(p,860,628,660,94,"轻松模式：受伤降低 35%，攻击预警延长，奖励不变。\n当前远征的难度保持原选择。\n降低视野起伏可改善长时间探索的舒适度。",19,Muted);
+            if(settings&&game.Display&&!game.Display.TryLeavePreview())return;
+            settings=true;var p=NewModal();Header(p,"SHIP'S INSTRUMENTS   /   设置","按你的节奏航行",display?"三种显示方式，自由切换。试用后保留更改；15 秒内未确认会自动恢复。":"声音与镜头设置即时生效。所有机制同时提供文字和视觉提示。");
+            Button(p,80,273,330,44,"声音与操作",()=>ShowSettings(paused),!display);
+            Button(p,427,273,330,44,"画面显示",()=>ShowSettings(paused,true),display);
+            if(display){BuildDisplaySettings(p,paused);return;}
+            SettingSlider(p,80,343,"总音量",game.Log.volume,0,1,v=>{game.Log.volume=v;AudioListener.volume=v;},true);
+            SettingSlider(p,80,434,"音乐",game.Log.musicVolume,0,1,v=>game.Log.musicVolume=v,true);
+            SettingSlider(p,80,525,"动作与提示音",game.Log.effectsVolume,0,1,v=>game.Log.effectsVolume=v,true);
+            SettingSlider(p,80,616,"海浪与环境",game.Log.ambienceVolume,0,1,v=>game.Log.ambienceVolume=v,true);
+            SettingSlider(p,860,343,"鼠标灵敏度",game.Log.sensitivity,.3f,2,v=>game.Log.sensitivity=v,false);
+            SettingSlider(p,860,434,"视野角度",game.Log.fieldOfView,65,100,v=>game.Log.fieldOfView=v,false);
+            Button(p,860,531,316,51,"镜头震动："+(game.Log.shake?"开":"关"),()=>{game.Log.shake=!game.Log.shake;ShowSettings(paused);});
+            Button(p,1192,531,328,51,"步行起伏："+(game.Log.headBob?"开":"关"),()=>{game.Log.headBob=!game.Log.headBob;ShowSettings(paused);});
+            Button(p,860,598,660,51,"下次新远征："+(game.Log.easy?"轻松模式":"标准模式"),()=>{game.Log.easy=!game.Log.easy;ShowSettings(paused);});
+            Text(p,860,670,660,78,"轻松模式：受伤降低 35%，攻击预警延长，奖励不变。\n当前远征的难度保持原选择。\n降低视野起伏可改善长时间探索的舒适度。",17,Muted);
             Button(p,80,775,420,60,"保存并返回",()=>{SaveStore.Write("captain",game.Log);settings=false;if(paused)ShowPause();else ShowHarbor();},true);
         }
         void SettingSlider(RectTransform p,float x,float y,string label,float value,float min,float max,Action<float> changed,bool percent)
@@ -165,6 +169,7 @@ namespace Tidebreak
         void Update()
         {
             if(game==null)return;
+            UpdateDisplaySettings();
             var r=game.Run;
             seaTitle.text=game.Island.name+"   /   "+r.stage.ToString("00");
             objective.text=game.QuestObjective;
@@ -190,7 +195,7 @@ namespace Tidebreak
             noticePanel.anchoredPosition=new Vector2(440,boss?-115:-118);
             if(boss&&(game.Message.StartsWith("远航手记")||game.Message.StartsWith("第 ")||game.Message.StartsWith("破招成功")||game.Message.StartsWith(boss.DisplayName+" 苏醒")))noticePanel.gameObject.SetActive(false);
             inventory.gameObject.SetActive(!boss);objective.gameObject.SetActive(!boss);explorationKeys.gameObject.SetActive(game.State!=VoyageState.Combat);voyageInfoBackground.rectTransform.sizeDelta=new Vector2(348,boss?47:148);
-            if(boss){seaTitle.text=game.Island.name+"  /  首领战";bossName.text=boss.DisplayName+"  /  阶段 "+boss.phase+" · "+(activeMechanism&&activeMechanism.Active?"反制":"破绽");bossFill.fillAmount=boss.health/boss.maxHealth;bossHealth.text=Mathf.CeilToInt(boss.health)+" / "+Mathf.CeilToInt(boss.maxHealth);objective.text=activeMechanism&&activeMechanism.Active?MechanismStrategies[activeMechanism.BossIndex]:"反制完成，核心可以攻击。\n保留闪避，应对反扑。";bossInstruction.text="圆环：跳跃  /  宽带：横移  /  落点：离开  /  漩涡：向外冲刺";}
+            if(boss){seaTitle.text=game.Island.name+"  /  首领战";bossName.text=boss.DisplayName+"  /  阶段 "+boss.phase+" · "+(activeMechanism&&activeMechanism.Active?"反制":"破绽");bossFill.fillAmount=boss.health/boss.maxHealth;bossHealth.text=Mathf.CeilToInt(boss.health)+" / "+Mathf.CeilToInt(boss.maxHealth);objective.text=activeMechanism&&activeMechanism.Active?MechanismStrategies[activeMechanism.BossIndex]:"反制完成，核心可以攻击。\n保留闪避，应对反扑。";bossInstruction.text=BossThreatLegend(boss);}
             crosshair.gameObject.SetActive(game.IsPlaying&&!game.Paused);
             float danger=-1;string dangerResponse="";
             if(game.State==VoyageState.Combat)for(int i=0;i<game.Hazards.childCount;i++) {
@@ -211,6 +216,9 @@ namespace Tidebreak
                     if(enemy)targetName.text=enemy.IsBoss?(enemy.Encounter&&enemy.Encounter.DamageFactor<=0?"◆ 核心封锁":rayHit.collider.GetComponent<HitRegion>()?"◇ 弱点":"装甲部位"):(rayHit.collider.GetComponent<HitRegion>()?"<color=#8CFFD1>弱点 · </color>":"")+(enemy.elite?"精英 · ":"")+(enemy.Spec.endemic?"专属 · ":"")+enemy.DisplayName+"   "+Mathf.CeilToInt(enemy.health)+" / "+Mathf.CeilToInt(enemy.maxHealth);
                 }
             }
+            // Mechanism targets use two lines; resolve their label before choosing
+            // the compact boss-anatomy layout, otherwise the second line is clipped.
+            UpdateCombatReadability();
             bool compactTarget=boss&&targetName.text.IndexOf('\n')<0;
             targetPanel.anchoredPosition=new Vector2(compactTarget?690:495,-487);
             targetPanel.sizeDelta=new Vector2(compactTarget?220:610,compactTarget?31:58);
@@ -218,7 +226,6 @@ namespace Tidebreak
             targetName.rectTransform.sizeDelta=new Vector2(compactTarget?200:590,compactTarget?25:50);targetName.fontSize=compactTarget?15:17;
             if(Time.unscaledTime>hitUntil){hit.color=Color.clear;damageNumber.text="";}
             damageOverlay.color=Color.clear;UpdateImpactPresentation(danger);
-            UpdateCombatReadability();
             targetPanel.gameObject.SetActive(!string.IsNullOrEmpty(targetName.text)&&game.IsPlaying);
             if(SaveStore.LastError!=null&&game.Paused&&!settings)notice.text="保存失败：请确保存档目录可写";
         }

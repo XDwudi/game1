@@ -1,0 +1,33 @@
+PASS boss 113 fixture begins without granted invulnerability
+PASS v08 frost escort arrives and thaws an actual shootable ice lock without granting automatic checkpoint progress
+PASS v08-frost-thawed-lock renders requested native pixel dimensions
+PASS v08 frost checkpoint only advances after actual camera-ray ice-lock destruction
+PASS boss 114 fixture begins without granted invulnerability
+PASS v08 late lightning charge starts with incorrect polarity that requires the relay
+PASS v08 taking unconverted charge directly to the correct ground pad cannot bypass polarity inversion
+PASS v08 relay E action converts the carried charge without granting the entire circuit
+PASS v08-lightning-polarity-relay renders requested native pixel dimensions
+PASS v08 converted charge grounds successfully and preserves a completed circuit
+PASS boss 115 fixture begins without granted invulnerability
+PASS v08 balanced forge exposes a real brittle plate but waiting on meter values grants no armor break
+PASS v08-cinder-brittle-plate renders requested native pixel dimensions
+PASS v08 actual plate fire completes one quench and resets heat for a distinct new valve cycle
+PASS boss 116 fixture begins without granted invulnerability
+PASS v08 mirror records the player-authored route and generates spatially separate false reflections in later phases
+PASS v08 no false reflection overlaps a required real footprint
+PASS v08 stepping into a false single-crystal reflection triggers a recoverable mirror-blade trap without collecting a true footprint
+PASS v08-mirror-false-footprint renders requested native pixel dimensions
+PASS v08 mirror trap recovery keeps the recorded route and permits actual reverse-route completion
+PASS boss 117 fixture begins without granted invulnerability
+PASS v08 Kraken correct rod tension exposes a binding but cannot count an unbroken arm as severed
+PASS v08-kraken-exposed-binding renders requested native pixel dimensions
+PASS v08 Kraken cannot solve the exposed binding by repeatedly hooking with the rod
+PASS v08 Kraken rod-to-gun action destroys the real binding and counts precisely one severed arm
+PASS v08 destroyed Kraken binding removes its label and leaves only real arm nodes
+PASS v08 aiming and hooking the old severed arm or its deleted target label cannot farm extra arm progress
+PASS boss 118 fixture begins without granted invulnerability
+PASS v08 late whale first correct bearing requires cross-observation rather than immediately granting a breach trial
+PASS v08 repeating the first whale station cannot fake a second bearing
+PASS v08-whale-cross-observation renders requested native pixel dimensions
+PASS v08 a different whale observation station starts the actual separately telegraphed breach with no free observation credit
+PASS v08 returning to a new voyage releases late boss targets and mechanism state

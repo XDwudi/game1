@@ -1,0 +1,330 @@
+PASS boss 113 fixture begins without granted invulnerability
+PASS v08 frost escort arrives and thaws an actual shootable ice lock without granting automatic checkpoint progress
+PASS v08 real walking keeps the captain outside the hot furnace and provides an unobstructed ice-lock weapon sightline
+PASS v08-frost-thawed-lock renders requested native pixel dimensions
+PASS v08 frost checkpoint only advances after actual camera-ray ice-lock destruction
+PASS boss 114 fixture begins without granted invulnerability
+PASS v08 late lightning charge starts with incorrect polarity that requires the relay
+PASS v08 taking unconverted charge directly to the correct ground pad cannot bypass polarity inversion
+PASS v08 relay E action converts the carried charge without granting the entire circuit
+PASS v08-lightning-polarity-relay renders requested native pixel dimensions
+PASS v08 converted charge grounds successfully and preserves a completed circuit
+PASS boss 115 fixture begins without granted invulnerability
+PASS v08 balanced forge exposes a real brittle plate but waiting on meter values grants no armor break
+PASS v08 sculpted brittle armor keeps precisely one unobstructed gameplay aiming hull
+PASS v08-cinder-brittle-plate renders requested native pixel dimensions
+PASS v08 actual plate fire completes one quench and resets heat for a distinct new valve cycle
+PASS boss 116 fixture begins without granted invulnerability
+PASS v08 mirror records the player-authored route and generates spatially separate false reflections in later phases
+PASS v08 no false reflection overlaps a required real footprint
+PASS v08 normal walking reaches the departure threshold before its navigation marker arrival tolerance, with no teleport or free collection
+PASS v08 normal walking folds back to the final recorded step and collects it in the correct reverse order
+PASS v08 stepping into a false single-crystal reflection triggers a recoverable mirror-blade trap without collecting a true footprint
+PASS v08-mirror-false-footprint renders requested native pixel dimensions
+PASS v08 mirror trap recovery keeps the recorded route and permits actual reverse-route completion
+PASS boss 117 fixture begins without granted invulnerability
+PASS v08 Kraken correct rod tension exposes a binding but cannot count an unbroken arm as severed
+PASS v08 sculpted Kraken wrist and suckers add no bullet-blocking decoration colliders
+PASS v08-kraken-exposed-binding renders requested native pixel dimensions
+PASS v08 Kraken cannot solve the exposed binding by repeatedly hooking with the rod
+PASS v08 Kraken rod-to-gun action destroys the real binding and counts precisely one severed arm
+PASS v08 destroyed Kraken binding removes its label and leaves only real arm nodes
+PASS v08 aiming and hooking the old severed arm or its deleted target label cannot farm extra arm progress
+PASS boss 118 fixture begins without granted invulnerability
+PASS v08 late whale first correct bearing requires cross-observation rather than immediately granting a breach trial
+PASS v08 repeating the first whale station cannot fake a second bearing
+PASS v08-whale-cross-observation renders requested native pixel dimensions
+PASS v08 a different whale observation station starts the actual separately telegraphed breach with no free observation credit
+PASS v08 returning to a new voyage releases late boss targets and mechanism state
+PASS v08 all 119 species explicitly resolve a skill theme from identity traits and ecology
+PASS v08 real catalogue uses all eleven effect themes
+PASS v08 each theme declares a different geometry and particle signature
+PASS v08 nine shared authored forms plus twenty reused dynamic wave meshes
+PASS v08 Tide strike keeps explicit theme and authoritative radius
+PASS skill-Tide-01-tell renders requested native pixel dimensions
+PASS v08 Tide visible premonition precedes damage
+PASS skill-Tide-02-release renders requested native pixel dimensions
+PASS v08 Tide real strike leaves a short themed release after hazard destruction
+PASS skill-Tide-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Tide expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Tide live projectile carries an explicit theme
+PASS v08 Coral strike keeps explicit theme and authoritative radius
+PASS skill-Coral-01-tell renders requested native pixel dimensions
+PASS v08 Coral visible premonition precedes damage
+PASS skill-Coral-02-release renders requested native pixel dimensions
+PASS v08 Coral real strike leaves a short themed release after hazard destruction
+PASS skill-Coral-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Coral expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Coral live projectile carries an explicit theme
+PASS v08 VenomRoot strike keeps explicit theme and authoritative radius
+PASS skill-VenomRoot-01-tell renders requested native pixel dimensions
+PASS v08 VenomRoot visible premonition precedes damage
+PASS skill-VenomRoot-02-release renders requested native pixel dimensions
+PASS v08 VenomRoot real strike leaves a short themed release after hazard destruction
+PASS skill-VenomRoot-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 VenomRoot expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 VenomRoot live projectile carries an explicit theme
+PASS v08 SaltCrystal strike keeps explicit theme and authoritative radius
+PASS skill-SaltCrystal-01-tell renders requested native pixel dimensions
+PASS v08 SaltCrystal visible premonition precedes damage
+PASS skill-SaltCrystal-02-release renders requested native pixel dimensions
+PASS v08 SaltCrystal real strike leaves a short themed release after hazard destruction
+PASS skill-SaltCrystal-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 SaltCrystal expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 SaltCrystal live projectile carries an explicit theme
+PASS v08 Wraith strike keeps explicit theme and authoritative radius
+PASS skill-Wraith-01-tell renders requested native pixel dimensions
+PASS v08 Wraith visible premonition precedes damage
+PASS skill-Wraith-02-release renders requested native pixel dimensions
+PASS v08 Wraith real strike leaves a short themed release after hazard destruction
+PASS skill-Wraith-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Wraith expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Wraith live projectile carries an explicit theme
+PASS v08 Frost strike keeps explicit theme and authoritative radius
+PASS skill-Frost-01-tell renders requested native pixel dimensions
+PASS v08 Frost visible premonition precedes damage
+PASS skill-Frost-02-release renders requested native pixel dimensions
+PASS v08 Frost real strike leaves a short themed release after hazard destruction
+PASS skill-Frost-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Frost expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Frost live projectile carries an explicit theme
+PASS v08 Lightning strike keeps explicit theme and authoritative radius
+PASS skill-Lightning-01-tell renders requested native pixel dimensions
+PASS v08 Lightning visible premonition precedes damage
+PASS skill-Lightning-02-release renders requested native pixel dimensions
+PASS v08 Lightning real strike leaves a short themed release after hazard destruction
+PASS skill-Lightning-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Lightning expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Lightning live projectile carries an explicit theme
+PASS v08 Cinder strike keeps explicit theme and authoritative radius
+PASS skill-Cinder-01-tell renders requested native pixel dimensions
+PASS v08 Cinder visible premonition precedes damage
+PASS skill-Cinder-02-release renders requested native pixel dimensions
+PASS v08 Cinder real strike leaves a short themed release after hazard destruction
+PASS skill-Cinder-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Cinder expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Cinder live projectile carries an explicit theme
+PASS v08 Mirror strike keeps explicit theme and authoritative radius
+PASS skill-Mirror-01-tell renders requested native pixel dimensions
+PASS v08 Mirror visible premonition precedes damage
+PASS skill-Mirror-02-release renders requested native pixel dimensions
+PASS v08 Mirror real strike leaves a short themed release after hazard destruction
+PASS skill-Mirror-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Mirror expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Mirror live projectile carries an explicit theme
+PASS v08 Ink strike keeps explicit theme and authoritative radius
+PASS skill-Ink-01-tell renders requested native pixel dimensions
+PASS v08 Ink visible premonition precedes damage
+PASS skill-Ink-02-release renders requested native pixel dimensions
+PASS v08 Ink real strike leaves a short themed release after hazard destruction
+PASS skill-Ink-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Ink expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Ink live projectile carries an explicit theme
+PASS v08 WhaleSong strike keeps explicit theme and authoritative radius
+PASS skill-WhaleSong-01-tell renders requested native pixel dimensions
+PASS v08 WhaleSong visible premonition precedes damage
+PASS skill-WhaleSong-02-release renders requested native pixel dimensions
+PASS v08 WhaleSong real strike leaves a short themed release after hazard destruction
+PASS skill-WhaleSong-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 WhaleSong expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 WhaleSong live projectile carries an explicit theme
+PASS v08 airborne mechanism/contact bursts preserve their supplied world-space height
+PASS v08 zero damage preview line does not emit an attacking lightning strike
+PASS v08 pause freezes authoritative countdown and visual particle/mesh lifecycle
+PASS v08 saturated visual pool never removes any of sixty authoritative hazards
+PASS v08 simultaneous skill releases share a short sound cooldown instead of stacking sixty impact sounds
+PASS v08 saturated skill effects reuse the fixed mesh and renderer budget
+PASS v08 decorations stay inside their explicit rendering budgets
+PASS skill-saturation-real-hazards renders requested native pixel dimensions
+PASS v08 explicit hazard clear removes every mesh lightning wave and particle residue
+PASS v08 live Bite attack emits its element with ability-specific motion
+PASS v08 live Charge attack emits its element with ability-specific motion
+PASS v08 live Fan attack emits its element with ability-specific motion
+PASS v08 live Mortar attack emits its element with ability-specific motion
+PASS v08 live Ring attack emits its element with ability-specific motion
+PASS v08 live Beam attack emits its element with ability-specific motion
+PASS v08 live Mine attack emits its element with ability-specific motion
+PASS v08 live Leap attack emits its element with ability-specific motion
+PASS v08 live Spiral attack emits its element with ability-specific motion
+PASS v08 live Pull attack emits its element with ability-specific motion
+PASS v08 live Heal attack emits its element with ability-specific motion
+PASS skill-real-attack-Heal renders requested native pixel dimensions
+PASS v08 live Split attack emits its element with ability-specific motion
+PASS skill-real-attack-Split renders requested native pixel dimensions
+PASS v08 live Boomerang attack emits its element with ability-specific motion
+PASS skill-real-attack-Boomerang renders requested native pixel dimensions
+PASS v08 live Burrow attack emits its element with ability-specific motion
+PASS skill-real-attack-Burrow renders requested native pixel dimensions
+PASS v08 voyage reset clears every themed enemy effect
+PASS v08 display controller finishes startup transition
+PASS v08 regular automation starts windowed even when earlier suites saved another mode
+PASS v08 opens settings through harbor button
+PASS v08 opens display page through settings tab
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1600x900
+PASS v08 display suite uses recognized test step
+PASS v08 display control becomes interactive after asynchronous transition: Display size 1280x720
+PASS v08 raycast and click the window resolution selector
+PASS v08 window size really changes before confirmation
+PASS v08 display control becomes interactive after asynchronous transition: Display keep
+PASS v08 confirms the actual window resize through UI
+PASS v08 display-window-before-switch native framebuffer has actual screen dimensions
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 display control becomes interactive after asynchronous transition: Display mode Borderless
+PASS v08 raycast and click actual display mode selector: Borderless
+PASS v08 actual Screen.fullScreenMode reaches Borderless and offers confirmation
+PASS v08 actual render dimensions match Borderless target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Borderless-confirm native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display keep
+PASS v08 clicks keep for Borderless
+PASS v08 Borderless confirmation persists on disk
+PASS v08 display control becomes interactive after asynchronous transition: Display mode Exclusive
+PASS v08 raycast and click actual display mode selector: Exclusive
+PASS v08 actual Screen.fullScreenMode reaches Exclusive and offers confirmation
+PASS v08 actual render dimensions match Exclusive target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Exclusive-confirm native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display keep
+PASS v08 clicks keep for Exclusive
+PASS v08 Exclusive confirmation persists on disk
+PASS v08 display control becomes interactive after asynchronous transition: Display mode Windowed
+PASS v08 raycast and click actual display mode selector: Windowed
+PASS v08 actual Screen.fullScreenMode reaches Windowed and offers confirmation
+PASS v08 actual render dimensions match Windowed target (1280, 720)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 display-Windowed-confirm native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display keep
+PASS v08 clicks keep for Windowed
+PASS v08 Windowed confirmation persists on disk
+PASS v08 returning from exclusive restores the original window dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display mode Borderless
+PASS v08 raycast and click actual display mode selector: Borderless
+PASS v08 actual Screen.fullScreenMode reaches Borderless and offers confirmation
+PASS v08 actual render dimensions match Borderless target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Borderless-preview native framebuffer has actual screen dimensions
+PASS v08 unconfirmed preview does not overwrite saved display settings
+PASS v08 unconfirmed display change actually reverts after countdown
+PASS v08 timed reversion restores exact window dimensions
+PASS v08 display-timeout-restored native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display mode Exclusive
+PASS v08 raycast and click actual display mode selector: Exclusive
+PASS v08 actual Screen.fullScreenMode reaches Exclusive and offers confirmation
+PASS v08 actual render dimensions match Exclusive target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Exclusive-preview native framebuffer has actual screen dimensions
+PASS v08 display control becomes interactive after asynchronous transition: Display revert
+PASS v08 clicks explicit restore control through the GraphicRaycaster
+PASS v08 explicit restore changes actual mode and dimensions
+PASS v08 disk CaptainLog reload retains last confirmed window setting
+PASS v08 invalid display mode and impossible window selection are rejected before changing the player
+PASS v08 rejected selections leave actual mode, dimensions and confirmation state intact
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 display control becomes interactive after asynchronous transition: Display return
+PASS v08 returns to harbor through saved settings footer

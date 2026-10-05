@@ -1,12 +1,12 @@
-# Tidebreak · 潮汐猎手 v0.7
+# Tidebreak · 潮汐猎手 v0.8
 
-单人第一人称 3D 海岛钓猎 roguelike，Windows x64，Unity **2021.3.16f1c1**。本版修复商店金币显示，重做航海手记风格界面、船员与生物网格、第一人称手套及分层攻击特效；保留九岛探索与金币研究成长。
+单人第一人称 3D 海岛钓猎 roguelike，Windows x64，Unity **2021.3.16f1c1**。本版深化后六场首领战，为敌人技能加入元素与生态特效，并提供三种显示模式；保留九岛探索、金币研究成长与航海手记界面。
 
-![v0.7 金币工坊实机渲染](Documentation/Images/v07-shop.png)
+![v0.8 雷电技能实机检查镜头](Documentation/Images/v08-lightning.png)
 
 ## 开始游玩
 
-双击 `Builds/Release/Tidebreak.exe`。分发请使用完整的 `Tidebreak-v0.7.0-Windows-x64.zip`；无需升级 Unity，运行不需要账号或网络。
+双击 `Builds/Release/Tidebreak.exe`。分发请使用完整的 `Tidebreak-v0.8.0-Windows-x64.zip`；无需升级 Unity，运行不需要账号或网络。进入「设置 → 画面显示」切换全屏、窗口全屏或窗口，确认后会记住选择。
 
 1. 找向导按 **E** 接委托，**J** 查看剧情、证据和当前目标。
 2. 码头按 **1** 拿鱼竿，蓄力并松开左键抛竿。咬钩后绿灯收线、红灯松手；鱼跃出水面后用枪击倒。
@@ -28,7 +28,16 @@
 | 急救 / 震爆弹 / 冰封瓶 / 声呐 / 药剂 | Z / X / V / C / G |
 | 暂停与保存返回 / 跳过过场 | Esc / Space或Esc |
 
-## v0.7 的主要变化
+## v0.8 的主要变化
+
+- **后期首领需要不同解法**：护炉融锁后射击、反相导电、双阀淬甲、逆行真假足迹、牵腕后换枪破结、双站声呐定位。阶段推进增加新的动作组合，行动栏同步提示下一步；错误操作可恢复。
+- **雷、火、潮有各自形态**：分叉闪电、旋动火舌、卷浪白沫，以及冰刺、毒根、盐晶、幽帆、镜片、墨腕和鲸歌声拱。119 条生物记录映射到 11 类主题库，结合 14 种攻击动作，并非 119 套独立粒子系统。
+- **读得懂的攻击节奏**：蓄势、释放和残留分开表现，细边界保留实际危险范围；效果、射线与伤害来自同一次攻击。冰锁、脆甲和腕结是可用真实枪械击破的战斗目标。
+- **三种显示方式**：独占全屏、无边框窗口全屏、窗口；15 秒内确认，否则恢复。窗口尺寸记忆和退出重启保留均纳入实际 Windows 播放器验收。
+
+细节见 [v0.8 更新说明](Documentation/RELEASE-v08.md) 与 [首领设计](Documentation/DESIGN-v08.md)。
+
+## 保留的 v0.7 美术与界面
 
 - **价格始终可读**：每张商品卡有独立金额条，解锁说明与余额不足提示另列；修正中文字体行高超过按钮文本区导致整行消失的问题。六页工坊均适用。
 - **统一航海手记界面**：暖色纸张、深海蓝绿、黄铜边线，配合折角、缝线、罗盘和装备图标；工坊、专精、研究、剧情及战斗 HUD 使用一致的视觉语言。
@@ -68,16 +77,19 @@
 
 ## 开发与验证
 
-本轮范围与实机截图见 [v0.7 更新说明](Documentation/RELEASE-v07.md)，具体证据、失败迭代与测试边界见 [验收记录](Documentation/QA-v07.md)。[v0.6 更新说明](Documentation/RELEASE-v06.md) 与 [v0.5 更新说明](Documentation/RELEASE-v05.md) 保留为历史，不作为新版通过证据。
+本轮范围与实机截图见 [v0.8 更新说明](Documentation/RELEASE-v08.md)，具体证据、失败迭代与测试边界见 [v0.8 验收记录](Documentation/QA-v08.md)。[v0.7](Documentation/RELEASE-v07.md)、[v0.6](Documentation/RELEASE-v06.md) 与 [v0.5](Documentation/RELEASE-v05.md) 保留为历史，不作为新版通过证据。
 
-商店验收检查真实 TMP 字形、价格像素、屏幕边界、点击射线和实际扣款，并保存 1600×900、1280×720、1280×1024 实机画面。另执行模型、特效复用与实际战斗/成长回归；各轮结果与构建身份见验收记录，分发包身份见 [打包校验](Documentation/TestResults/v07-package.json)。自动检查数量不能代表真人游玩质量。
+专项验收覆盖后期首领的真实枪击与错误动作、11 类主题的预告及释放、特效池压力与暂停清理、显示模式实际切换和跨进程重启。另回归完整首领战、自然成长、商店价格和表现。各轮结果、截图方式与构建身份见验收记录，分发包身份见 [打包校验](Documentation/TestResults/v08-package.json)。自动检查数量不能代表真人游玩质量。
 
 Unity Hub 添加 `Tidebreak`，打开 `Assets/Scenes/Tidebreak.unity`。场景由 C# Editor API 生成。
 
 ```powershell
 python -X utf8 Tools/prepare_resources.py
 ./Tools/build.ps1
-./Tools/test_v07.ps1 -Mode All
+./Tools/test_v08.ps1 -Mode All
+./Tools/test_v08.ps1 -Mode Display -DisplayStep SeedRestart
+./Tools/test_v08.ps1 -Mode Display -DisplayStep ResumeRestart
+./Tools/test_v07.ps1 -Mode UI
 ./Tools/smoke.ps1 -ArtReview
 ./Tools/test_v06.ps1 -Mode Systems
 ./Tools/test_v05.ps1 -Mode Bosses

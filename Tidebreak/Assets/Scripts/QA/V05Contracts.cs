@@ -99,17 +99,19 @@ namespace Tidebreak
                 case 2:action=!m.Carrying;m.SetActionHeld(m.Carrying);break;
                 case 3:{int index=0;while(index<3&&m.MirrorTurns[index]==m.MirrorSolution[index])index++;if(index<3){goal=m.Nodes[index].Position;action=true;}break;}
                 case 4:goal=m.Nodes[0].Position;action=m.TimingWindowOpen;break;
-                case 5:if(m.Heat<37)v05Heating=true;if(m.Heat>92)v05Heating=false;goal=m.Nodes[0].Position+Vector3.back*.8f;m.SetActionHeld(v05Heating);break;
-                case 6:action=!m.Carrying;break;
+                case 5:if(m.Heat<(m.StateStep==0?37:70))v05Heating=true;if(m.Heat>92)v05Heating=false;goal=m.Nodes[0].Position+new Vector3(-1.4f,0,-1.7f);m.SetActionHeld(v05Heating);break;
+                case 6:action=!m.Carrying||m.ChargeNeedsRelay;break;
                 case 7:{int index=m.Pressure>60?1:0;goal=m.Nodes[index].Position;action=index==1||m.Heat>43;break;}
                 case 8:if(m.StateStep==0)action=true;else if(m.StateStep==1){int n=m.RecordedRoute.Count;goal=new Vector3(n%2==0?6:-6,0,3+n*.8f);}break;
                 case 9:
+                    if(m.MechanismTarget){goal=m.MechanismTarget.transform.position+Vector3.back*4;break;}
                     g.Player.SetRod(true);goal=m.Carrying&&m.Phase>=2?m.PullPoint:m.HookPoint-Vector3.up*1.4f+Vector3.back*6;g.Player.AimAt(m.HookPoint);
                     if(!m.Carrying)m.UseAction();m.SetActionHeld(m.Carrying&&m.Braced&&!m.Surge&&m.Tension<.74f);break;
                 case 10:
                     // Explicitly omniscient regression driving in later phases:
                     // human players read the double-ring echo, not this property.
                     if(m.StateStep==1)goal=m.Nodes[m.CurrentTargetIndex+1].Position;
+                    if(m.StateStep==3)goal=m.Nodes[m.WhaleConfirmNode].Position;
                     action=m.StateStep!=2;break;
             }
             V05Move(goal,m.BossIndex!=0||!m.TargetLocked);
@@ -130,7 +132,11 @@ namespace Tidebreak
                     if(!solved){solved=true;actions+=mechanism.CompletedActions;failures=mechanism.Failures;v05Phases.Add(id+","+g.Run.seed+","+phase+","+F(Time.time-phaseStart)+","+mechanism.CompletedActions+","+mechanism.Failures);File.WriteAllLines(Path.Combine(output,"phases.csv"),v05Phases);yield return null;yield return new WaitForEndOfFrame();Capture("boss-"+id+"-mechanic-result-"+phase+"-view-phase-"+encounter.Phase);}
                     if(GameDirector.FlatDistance(g.Player.transform.position,path[patrol])<1)patrol=(patrol+1)%path.Length;V05Move(path[patrol]);
                 }
-                if(!mechanism.Active||mechanism.BossIndex!=9){
+                if(mechanism.Active&&mechanism.MechanismTarget&&mechanism.TargetVulnerable){
+                    g.Player.Equip(weapon);g.Player.AimAt(V08TargetAim(mechanism.MechanismTarget));if(g.Player.Fire())shots++;
+                    if(g.Player.QuickReloadAvailable&&g.Player.ReloadProgress>=.59f&&g.Player.ReloadProgress<=.67f)g.Player.Reload();
+                }
+                else if(!mechanism.Active||mechanism.BossIndex!=9){
                     g.Player.Equip(weapon);var minion=g.Enemies.FirstOrDefault(e=>e&&!e.IsBoss&&!e.dead);var target=minion?minion:boss;
                     float before=target.health;g.Player.AimAt(V05Aim(target));if(g.Player.Fire())shots++;if(target==boss&&(!boss||boss.health<before)){shotBoss=true;if((damageMask&(1<<(phase-1)))==0)Capture("boss-"+id+"-visible-hit-"+phase);damageMask|=1<<(phase-1);}
                     if(g.Player.QuickReloadAvailable&&g.Player.ReloadProgress>=.59f&&g.Player.ReloadProgress<=.67f)g.Player.Reload();
@@ -157,10 +163,11 @@ namespace Tidebreak
             damage+=Mathf.Max(0,previous-g.Run.health);bool victory=killed&&(g.State==VoyageState.Sailing||g.State==VoyageState.Victory);
             Check(shotBoss,"boss "+id+" receives actual camera-ray weapon damage");
             Check(damageMask==7,"boss "+id+" weapon ray reaches damageable anatomy in each phase, including surfaced whale");
-            Check(mask==7&&actions>=3,"boss "+id+" completes independent mechanisms in all three real phases");
+            Check(mask==7&&encounter.SolvedPhaseMask==7&&encounter.GatesBroken>=3,"boss "+id+" records actual mechanism-solved events in all three real phases");
             Check(victory,"boss "+id+" defeated with normal-speed movement, shared actions, real shooting and finite medicine; "+F(Time.time-begin)+" seconds");
             Check(g.Player.InvulnerableUntil!=float.PositiveInfinity,"boss "+id+" battle never enables test invulnerability");
             Capture("boss-"+id+"-outcome");
+            actions=encounter.GatesBroken;
             v05Telemetry.Add("boss,"+id+","+g.Run.seed+","+weapon+","+g.Run.weaponLevel+","+g.Run.hullLevel+","+F(Time.time-begin)+","+F(damage)+","+F(g.Run.health)+","+(medkits-g.Run.medkits)+","+shots+","+mask+","+actions+","+failures+","+(victory?"cleared":g.State.ToString()));
             File.WriteAllLines(Path.Combine(output,"combat.csv"),v05Telemetry);g.StartVoyage();yield return null;
         }
@@ -203,6 +210,8 @@ namespace Tidebreak
                 m.BeginPhase(3);At(m.Nodes[0].Position+Vector3.back*2.2f);yield return new WaitForSeconds(.3f);m.UseAction();
                 yield return V05WhaleEchoVisibility(m);
                 At(m.Nodes[m.CurrentTargetIndex+1].Position+Vector3.back*2.2f);yield return new WaitForSeconds(.3f);m.UseAction();
+                Check(m.StateStep==3,"late whale requires a second station before the breach, not a repeated first bearing");
+                At(m.Nodes[m.WhaleConfirmNode].Position+Vector3.back*2.2f);yield return new WaitForSeconds(.3f);m.UseAction();
                 float observation=Time.time;
                 while(m.StateStep==2&&m.ObservationLeg==0&&Time.time-observation<4){V05Move(g.Player.transform.position);yield return null;}
                 Check(m.StateStep==2&&m.ObservationLeg==1&&m.CompletedActions==0,"final whale phase requires a second separately locked return breach after evading the first");

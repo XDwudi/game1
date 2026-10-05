@@ -1,0 +1,1 @@
+Frost captain=(-15.79, 2.98, 6.94) furnace=(-14.84, 1.47, 8.90) target=(-12.74, 3.47, 8.65) hull=(-12.74, 3.47, 8.65) rayHit=Breakable core

@@ -3,7 +3,9 @@ namespace Tidebreak
 {
     public class ThreatField : MonoBehaviour
     {
-        GameDirector game;int type;Vector3 end;float radius,delay,damage,age,nextTick;Color color;LineRenderer line,border;bool hit;SeaTrait status;
+        GameDirector game;int type;Vector3 end;float radius,delay,damage,age,nextTick;Color color;LineRenderer line,border;bool hit;SeaTrait status;EnemySkillFX fx;float nextVisual;bool visualReleased;
+        public SkillTheme Theme {get;private set;}
+        public int VisualVariant {get;private set;}
         public int Kind {get{return type;}}
         public float Remaining {get{return Mathf.Max(0,delay-age);}}
         public Vector3 End {get{return end;}}
@@ -16,10 +18,10 @@ namespace Tidebreak
             if(type==1){float r=Mathf.Max(.2f,(age-delay)*6);return !hit&&distance>r-.6f&&distance<r+4.5f;}
             return distance<radius;
         }
-        static ThreatField Create(GameDirector g,int type,Vector3 p,Vector3 end,float radius,float delay,float damage,Color color)
+        static ThreatField Create(GameDirector g,int type,Vector3 p,Vector3 end,float radius,float delay,float damage,Color color,Enemy source,SkillTheme? theme)
         {
-            var obj=new GameObject("Telegraph "+type);obj.transform.SetParent(g.Hazards);obj.transform.position=p;var f=obj.AddComponent<ThreatField>();f.game=g;f.type=type;f.end=end;f.radius=radius;f.delay=delay;f.damage=damage;f.color=color;
-            f.line=obj.AddComponent<LineRenderer>();f.line.material=Shape.Mat(color,true);f.line.startWidth=f.line.endWidth=.055f;f.line.useWorldSpace=true;f.line.positionCount=type==0?2:48;f.line.loop=type!=0;
+            var obj=new GameObject("Telegraph "+type);obj.transform.SetParent(g.Hazards);obj.transform.position=p;var f=obj.AddComponent<ThreatField>();f.game=g;f.type=type;f.end=end;f.radius=radius;f.delay=delay;f.damage=damage;f.color=color;f.Theme=SkillThemes.Resolve(source,theme);f.VisualVariant=source?source.Spec.id:0;f.fx=EnemySkillFX.For(g);
+            f.line=obj.AddComponent<LineRenderer>();f.line.material=Shape.Mat(type==0?color:new Color(.52f,.3f,.1f),true);f.line.startWidth=f.line.endWidth=.055f;f.line.useWorldSpace=true;f.line.positionCount=type==0?2:48;f.line.loop=type!=0;
             if(type==0){var edges=new GameObject("Strike corridor boundary");edges.transform.SetParent(obj.transform,false);f.border=edges.AddComponent<LineRenderer>();f.border.material=Shape.Mat(new Color(1,.63f,.26f),true);f.border.startWidth=f.border.endWidth=.09f;f.border.useWorldSpace=true;f.border.loop=true;f.DrawCorridor();}
             return f;
         }
@@ -35,24 +37,32 @@ namespace Tidebreak
             Vector3 axis=end-transform.position;axis.y=0;Vector3 side=Vector3.Cross(axis.normalized,Vector3.up)*radius;
             for(int i=0;i<=segments;i++){float t=(float)i/segments;border.SetPosition(i,OnSurface(game.World,Vector3.Lerp(transform.position,end,t)+side));border.SetPosition(i+segments+1,OnSurface(game.World,Vector3.Lerp(end,transform.position,t)-side));}
         }
-        public static void Line(GameDirector g,Vector3 from,Vector3 to,float width,float delay,float damage,Color c){Create(g,0,from,to,width,delay,damage,c);}
-        public static void Ring(GameDirector g,Vector3 center,float damage,Color c){Create(g,1,center,center,1,.9f,damage,c);}
-        public static void RingDelayed(GameDirector g,Vector3 center,float damage,Color c,float delay){Create(g,1,center,center,1,delay,damage,c);}
-        public static void Pool(GameDirector g,Vector3 center,float radius,float delay,float damage,Color c,SeaTrait status=SeaTrait.None){Create(g,2,center,center,radius,delay,damage,c).status=status;}
-        public static void Vortex(GameDirector g,Vector3 center,float radius,float delay,float damage,Color c){Create(g,3,center,center,radius,delay,damage,c);}
+        public static void Line(GameDirector g,Vector3 from,Vector3 to,float width,float delay,float damage,Color c,Enemy source=null,SkillTheme? theme=null){Create(g,0,from,to,width,delay,damage,c,source,theme);}
+        public static void Ring(GameDirector g,Vector3 center,float damage,Color c,Enemy source=null,SkillTheme? theme=null){Create(g,1,center,center,1,.9f,damage,c,source,theme);}
+        public static void RingDelayed(GameDirector g,Vector3 center,float damage,Color c,float delay,Enemy source=null,SkillTheme? theme=null){Create(g,1,center,center,1,delay,damage,c,source,theme);}
+        public static void Pool(GameDirector g,Vector3 center,float radius,float delay,float damage,Color c,SeaTrait status=SeaTrait.None,Enemy source=null,SkillTheme? theme=null){Create(g,2,center,center,radius,delay,damage,c,source,theme??(source?(SkillTheme?)null:status==SeaTrait.Venom?SkillTheme.VenomRoot:status==SeaTrait.Frost?SkillTheme.Frost:(SkillTheme?)null)).status=status;}
+        public static void Vortex(GameDirector g,Vector3 center,float radius,float delay,float damage,Color c,Enemy source=null,SkillTheme? theme=null){Create(g,3,center,center,radius,delay,damage,c,source,theme);}
+        void UpdateVisual()
+        {
+            if(!visualReleased&&age>=delay){visualReleased=true;if(damage>0)fx.Release(Theme,transform.position,end,type==1?.65f:radius,type,VisualVariant);}
+            if(age<nextVisual)return;nextVisual=age+(type==1?.05f:.15f);
+            if(age<delay)fx.Tell(Theme,transform.position,end,radius,type,Mathf.Clamp01(age/Mathf.Max(.05f,delay)),VisualVariant);
+            else if(type!=0&&damage>0)fx.Sustain(Theme,transform.position,end,type==1?Mathf.Max(.2f,(age-delay)*6):radius,type,VisualVariant,age);
+        }
         void Update()
         {
             if(game.Paused)return;if(game.State!=VoyageState.Combat){Destroy(gameObject);return;}age+=Time.deltaTime;
+            UpdateVisual();
             var player=game.Player;Vector3 p=player.transform.position;
             if(type==0){Vector3 a=transform.position,b=end;a.y=game.World.GroundAt(a)+.13f;b.y=game.World.GroundAt(b)+.13f;
                 line.startWidth=line.endWidth=age<delay?Mathf.Lerp(.04f,radius*.35f,Mathf.Clamp01(age/delay)):radius*.85f;
                 Vector3 axis=b-a;axis.y=0;
-                if(age>=delay&&!hit){Vector3 flat=p-a;flat.y=0;float t=axis.sqrMagnitude>.01f?Mathf.Clamp01(Vector3.Dot(flat,axis)/axis.sqrMagnitude):0;bool threatened=(flat-axis*t).magnitude<radius;hit=true;if(threatened&&p.y-game.World.GroundAt(p)<2.8f)player.TakeDamage(damage,transform.position);game.Audio.Cue("beam");}if(age>delay+.3f)Destroy(gameObject);return;}
+                if(age>=delay&&!hit){Vector3 flat=p-a;flat.y=0;float t=axis.sqrMagnitude>.01f?Mathf.Clamp01(Vector3.Dot(flat,axis)/axis.sqrMagnitude):0;bool threatened=(flat-axis*t).magnitude<radius;hit=true;if(threatened&&p.y-game.World.GroundAt(p)<2.8f)player.TakeDamage(damage,transform.position);}if(age>delay+.3f)Destroy(gameObject);return;}
             float r=type==1?Mathf.Max(.2f,(age-delay)*6):radius;
             for(int i=0;i<48;i++){float a=i*Mathf.PI*2/48+ (type==3?age*1.5f:0);Vector3 at=transform.position+new Vector3(Mathf.Cos(a)*r,0,Mathf.Sin(a)*r);at.y=game.World.GroundAt(at)+.09f;line.SetPosition(i,at);}
             float distance=GameDirector.FlatDistance(p,transform.position);
             if(age<delay)return;
-            line.startWidth=line.endWidth=type==1?.2f:.11f;
+            line.startWidth=line.endWidth=type==1?.065f:.075f;
             if(type==1){float feet=p.y-1.6f;if(!hit&&Mathf.Abs(distance-r)<.6f&&feet<game.World.GroundAt(p)+.5f){hit=true;player.TakeDamage(damage,transform.position);}if(r>40)Destroy(gameObject);}
             else {if(distance<radius){if(type==3&&player.Motor.enabled){Vector3 toward=transform.position-p;toward.y=0;player.Motor.Move(toward.normalized*Time.deltaTime*2.5f);}if(Time.time>nextTick){nextTick=Time.time+1;float before=game.Run.health;player.TakeDamage(damage,transform.position);if(type==2&&game.Run.health<before)player.ApplyStatus(status);}}
                 if(age>delay+4.5f)Destroy(gameObject);}

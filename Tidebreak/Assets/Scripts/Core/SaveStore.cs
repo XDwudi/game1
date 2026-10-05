@@ -18,6 +18,8 @@ namespace Tidebreak
         public float fieldOfView = 75, musicVolume = .7f, effectsVolume = .85f, ambienceVolume = .7f;
         public bool headBob = true;
         public bool shake = true, easy;
+        public int displayVersion, displayMode;
+        public int windowWidth = 1600, windowHeight = 900;
     }
     public static class SaveStore
     {

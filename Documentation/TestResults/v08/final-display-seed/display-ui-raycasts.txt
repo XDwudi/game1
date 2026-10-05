@@ -1,0 +1,2 @@
+Display mode Borderless mode=Windowed resolution=1600x900 point=(800.00, 397.00) top=Display mode Borderless
+Display keep mode=FullScreenWindow resolution=2560x1440 point=(1860.00, 263.20) top=Display keep

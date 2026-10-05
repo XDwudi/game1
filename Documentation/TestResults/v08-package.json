@@ -1,0 +1,14 @@
+{
+  "version": "0.8.0",
+  "package": "Builds/Tidebreak-v0.8.0-Windows-x64.zip",
+  "archive_sha256": "D98592DCAD2E276986388AE194C6F6A53A7D05ABD84ED949C3EF2CC4E97922E3",
+  "archive_bytes": 37595246,
+  "files": 152,
+  "uncompressed_bytes": 89759656,
+  "crc_check": "all files passed",
+  "release_file_comparison": "every archived file matches final Release directory SHA256; no extra archive files",
+  "assembly_sha256": "CEE4131D4DEAF24DD19B2B71381FC23A57390CBBF7B3C627B5877760A94974B5",
+  "exe_sha256": "C0EDE71D5ED303D3603A1C9722F8D31C832268D34248BFF7E1E2CAC448C6BCF6",
+  "instructions_match": "Documentation/PLAY.txt",
+  "verified_utc": "2026-10-05T13:58:09.494732+00:00"
+}

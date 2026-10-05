@@ -1,0 +1,135 @@
+PASS model 0 decorative anatomy preserves its front-facing weak point ray
+PASS model 1 decorative anatomy preserves its front-facing weak point ray
+PASS model 2 decorative anatomy preserves its front-facing weak point ray
+PASS model 3 decorative anatomy preserves its front-facing weak point ray
+PASS model 4 decorative anatomy preserves its front-facing weak point ray
+PASS model 5 decorative anatomy preserves its front-facing weak point ray
+PASS model 6 decorative anatomy preserves its front-facing weak point ray
+PASS model 7 decorative anatomy preserves its front-facing weak point ray
+PASS model 8 decorative anatomy preserves its front-facing weak point ray
+PASS model 9 decorative anatomy preserves its front-facing weak point ray
+PASS model 10 decorative anatomy preserves its front-facing weak point ray
+PASS model 11 decorative anatomy preserves its front-facing weak point ray
+PASS model 108 decorative anatomy preserves its front-facing weak point ray
+PASS model 109 decorative anatomy preserves its front-facing weak point ray
+PASS model 110 decorative anatomy preserves its front-facing weak point ray
+PASS model 111 decorative anatomy preserves its front-facing weak point ray
+PASS model 112 decorative anatomy preserves its front-facing weak point ray
+PASS model 113 decorative anatomy preserves its front-facing weak point ray
+PASS model 114 decorative anatomy preserves its front-facing weak point ray
+PASS model 115 decorative anatomy preserves its front-facing weak point ray
+PASS model 116 decorative anatomy preserves its front-facing weak point ray
+PASS model 117 decorative anatomy preserves its front-facing weak point ray
+PASS model 118 decorative anatomy preserves its front-facing weak point ray
+PASS animation fixture contains its actual Faceted scales mesh
+PASS Faceted scales animates its local vertices instead of only rotating a rigid whole model
+PASS animation fixture contains its actual Continuous curling arm mesh
+PASS Continuous curling arm animates its local vertices instead of only rotating a rigid whole model
+PASS v06-ground-warning-full-range-1600x900 renders requested native pixel dimensions
+PASS v06-danger-and-left-damage-1600x900 renders requested native pixel dimensions
+PASS v06-weak-hit-confirmation-1600x900 renders requested native pixel dimensions
+PASS v06-carbine-firing-1600x900 renders requested native pixel dimensions
+PASS v06-carbine-magazine-withdrawn-1600x900 renders requested native pixel dimensions
+PASS v06-revolver-open-cylinder-1600x900 renders requested native pixel dimensions
+PASS v06-ground-warning-full-range-1280x720 renders requested native pixel dimensions
+PASS v06-danger-and-left-damage-1280x720 renders requested native pixel dimensions
+PASS v06-weak-hit-confirmation-1280x720 renders requested native pixel dimensions
+PASS v06-carbine-firing-1280x720 renders requested native pixel dimensions
+PASS v06-carbine-magazine-withdrawn-1280x720 renders requested native pixel dimensions
+PASS v06-revolver-open-cylinder-1280x720 renders requested native pixel dimensions
+PASS presentation-story-illustration-1600x900 renders requested native pixel dimensions
+PASS presentation-keystone-1600x900 renders requested native pixel dimensions
+PASS presentation-map-1600x900 renders requested native pixel dimensions
+PASS presentation-cinematic-13-1600x900 renders requested native pixel dimensions
+PASS presentation 1600x900 cinematic 13 restores camera exactly once
+PASS presentation-cinematic-12-1600x900 renders requested native pixel dimensions
+PASS presentation 1600x900 cinematic 12 restores camera exactly once
+PASS boss 111 has its animated identity signature
+PASS boss 111 signature geometry cannot intercept shots
+PASS boss 111 CreatureMotion changes its living pose at 1600x900
+PASS boss 111 retains a shootable weak point
+PASS boss 111 has an unobstructed actual pier sightline at 1600x900
+PASS boss 111 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-111-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-111-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 115 has its animated identity signature
+PASS boss 115 signature geometry cannot intercept shots
+PASS boss 115 CreatureMotion changes its living pose at 1600x900
+PASS boss 115 retains a shootable weak point
+PASS boss 115 has an unobstructed actual pier sightline at 1600x900
+PASS boss 115 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-115-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-115-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 116 has its animated identity signature
+PASS boss 116 signature geometry cannot intercept shots
+PASS boss 116 CreatureMotion changes its living pose at 1600x900
+PASS boss 116 retains a shootable weak point
+PASS boss 116 has an unobstructed actual pier sightline at 1600x900
+PASS boss 116 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-116-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-116-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 117 has its animated identity signature
+PASS boss 117 signature geometry cannot intercept shots
+PASS boss 117 CreatureMotion changes its living pose at 1600x900
+PASS boss 117 retains a shootable weak point
+PASS boss 117 has an unobstructed actual pier sightline at 1600x900
+PASS boss 117 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-117-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-117-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS boss 118 has its animated identity signature
+PASS boss 118 signature geometry cannot intercept shots
+PASS boss 118 CreatureMotion changes its living pose at 1600x900
+PASS boss 118 completes real sonar observations and opens exposure before presentation sightline at 1600x900
+PASS boss 118 retains a shootable weak point
+PASS boss 118 has an unobstructed actual pier sightline at 1600x900
+PASS boss 118 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-118-pier-1600x900 renders requested native pixel dimensions
+PASS presentation-boss-118-qa-three-quarter-1600x900 renders requested native pixel dimensions
+PASS presentation-story-illustration-1280x720 renders requested native pixel dimensions
+PASS presentation-keystone-1280x720 renders requested native pixel dimensions
+PASS presentation-map-1280x720 renders requested native pixel dimensions
+PASS presentation-cinematic-13-1280x720 renders requested native pixel dimensions
+PASS presentation 1280x720 cinematic 13 restores camera exactly once
+PASS presentation-cinematic-12-1280x720 renders requested native pixel dimensions
+PASS presentation 1280x720 cinematic 12 restores camera exactly once
+PASS boss 111 has its animated identity signature
+PASS boss 111 signature geometry cannot intercept shots
+PASS boss 111 CreatureMotion changes its living pose at 1280x720
+PASS boss 111 retains a shootable weak point
+PASS boss 111 has an unobstructed actual pier sightline at 1280x720
+PASS boss 111 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-111-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-111-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 115 has its animated identity signature
+PASS boss 115 signature geometry cannot intercept shots
+PASS boss 115 CreatureMotion changes its living pose at 1280x720
+PASS boss 115 retains a shootable weak point
+PASS boss 115 has an unobstructed actual pier sightline at 1280x720
+PASS boss 115 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-115-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-115-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 116 has its animated identity signature
+PASS boss 116 signature geometry cannot intercept shots
+PASS boss 116 CreatureMotion changes its living pose at 1280x720
+PASS boss 116 retains a shootable weak point
+PASS boss 116 has an unobstructed actual pier sightline at 1280x720
+PASS boss 116 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-116-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-116-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 117 has its animated identity signature
+PASS boss 117 signature geometry cannot intercept shots
+PASS boss 117 CreatureMotion changes its living pose at 1280x720
+PASS boss 117 retains a shootable weak point
+PASS boss 117 has an unobstructed actual pier sightline at 1280x720
+PASS boss 117 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-117-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-117-qa-three-quarter-1280x720 renders requested native pixel dimensions
+PASS boss 118 has its animated identity signature
+PASS boss 118 signature geometry cannot intercept shots
+PASS boss 118 CreatureMotion changes its living pose at 1280x720
+PASS boss 118 completes real sonar observations and opens exposure before presentation sightline at 1280x720
+PASS boss 118 retains a shootable weak point
+PASS boss 118 has an unobstructed actual pier sightline at 1280x720
+PASS boss 118 decorations preserve the direct frontal weak point ray
+PASS presentation-boss-118-pier-1280x720 renders requested native pixel dimensions
+PASS presentation-boss-118-qa-three-quarter-1280x720 renders requested native pixel dimensions

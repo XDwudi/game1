@@ -1,0 +1,78 @@
+{
+  "assembly_sha256": "CEE4131D4DEAF24DD19B2B71381FC23A57390CBBF7B3C627B5877760A94974B5",
+  "suites": [
+    {
+      "suite": "final-all",
+      "pass": 380,
+      "fail": 0,
+      "build_identity": "v08/final-all/build-identity.json",
+      "results": "v08/final-all/results.txt"
+    },
+    {
+      "suite": "final-art-review",
+      "pass": 135,
+      "fail": 0,
+      "build_identity": "v08/final-art-review/build-identity.json",
+      "results": "v08/final-art-review/results.txt"
+    },
+    {
+      "suite": "final-bosses",
+      "pass": 76,
+      "fail": 0,
+      "build_identity": "v08/final-bosses/build-identity.json",
+      "results": "v08/final-bosses/results.txt"
+    },
+    {
+      "suite": "final-campaign",
+      "pass": 49,
+      "fail": 0,
+      "build_identity": "v08/final-campaign/build-identity.json",
+      "results": "v08/final-campaign/results.txt"
+    },
+    {
+      "suite": "final-display-resume",
+      "pass": 45,
+      "fail": 0,
+      "build_identity": "v08/final-display-resume/build-identity.json",
+      "results": "v08/final-display-resume/results.txt"
+    },
+    {
+      "suite": "final-display-seed",
+      "pass": 42,
+      "fail": 0,
+      "build_identity": "v08/final-display-seed/build-identity.json",
+      "results": "v08/final-display-seed/results.txt"
+    },
+    {
+      "suite": "final-frost-normal",
+      "pass": 8,
+      "fail": 0,
+      "build_identity": "v08/final-frost-normal/build-identity.json",
+      "results": "v08/final-frost-normal/results.txt"
+    },
+    {
+      "suite": "final-negative",
+      "pass": 89,
+      "fail": 0,
+      "build_identity": "v08/final-negative/build-identity.json",
+      "results": "v08/final-negative/results.txt"
+    },
+    {
+      "suite": "final-shop-ui",
+      "pass": 435,
+      "fail": 0,
+      "build_identity": "v08/final-shop-ui/build-identity.json",
+      "results": "v08/final-shop-ui/results.txt"
+    },
+    {
+      "suite": "final-systems",
+      "pass": 362,
+      "fail": 0,
+      "build_identity": "v08/final-systems/build-identity.json",
+      "results": "v08/final-systems/results.txt"
+    }
+  ],
+  "total_pass": 1621,
+  "total_fail": 0,
+  "scope": "Scripted runtime checks with known routes and staged visuals; not a human blind playtest."
+}

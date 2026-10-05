@@ -1,0 +1,1 @@
+v0.8 automated integration fixtures. Boss counter tests use disclosed encounter/loadout fixtures; full finite-health battles and natural opening progression run in separate V05 suites. Effects screenshots are staged in the real Unity renderer. Display tests change actual Screen mode asynchronously. These are not human usability or completion-quality certifications.

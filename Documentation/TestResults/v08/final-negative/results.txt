@@ -1,0 +1,89 @@
+PASS v05 eleven different player-action briefs exist
+PASS boss 108 fixture begins without granted invulnerability
+PASS boss 108 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 108 shooting-only negative control actually fired
+PASS boss 108 fixture begins without granted invulnerability
+PASS boss 108 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 109 fixture begins without granted invulnerability
+PASS boss 109 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 109 shooting-only negative control actually fired
+PASS boss 109 fixture begins without granted invulnerability
+PASS boss 109 wrong location or missing tool cannot instantly progress a mechanism
+PASS wrong melody restarts playback without losing encounter access
+PASS boss 110 fixture begins without granted invulnerability
+PASS boss 110 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 110 shooting-only negative control actually fired
+PASS boss 110 fixture begins without granted invulnerability
+PASS boss 110 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 111 fixture begins without granted invulnerability
+PASS boss 111 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 111 shooting-only negative control actually fired
+PASS boss 111 fixture begins without granted invulnerability
+PASS boss 111 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 112 fixture begins without granted invulnerability
+PASS boss 112 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 112 shooting-only negative control actually fired
+PASS boss 112 fixture begins without granted invulnerability
+PASS boss 112 wrong location or missing tool cannot instantly progress a mechanism
+PASS bell rejects an early pull and remains retryable
+PASS boss 113 fixture begins without granted invulnerability
+PASS boss 113 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 113 shooting-only negative control actually fired
+PASS boss 113 fixture begins without granted invulnerability
+PASS boss 113 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 114 fixture begins without granted invulnerability
+PASS boss 114 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 114 shooting-only negative control actually fired
+PASS boss 114 fixture begins without granted invulnerability
+PASS boss 114 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 115 fixture begins without granted invulnerability
+PASS boss 115 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 115 shooting-only negative control actually fired
+PASS boss 115 fixture begins without granted invulnerability
+PASS boss 115 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 116 shooting-only negative control actually fired
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 wrong location or missing tool cannot instantly progress a mechanism
+PASS boss 117 fixture begins without granted invulnerability
+PASS boss 117 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 117 shooting-only negative control actually fired
+PASS boss 117 fixture begins without granted invulnerability
+PASS boss 117 wrong location or missing tool cannot instantly progress a mechanism
+PASS Kraken hook rejects gun equipment
+PASS Kraken holding through red-tide struggle breaks the line without granting an arm
+PASS Kraken broken line is retryable with the same free rod action
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 stationary shooting cannot bypass its required opening action; player state Combat
+PASS boss 118 shooting-only negative control actually fired
+PASS boss 118 fixture begins without granted invulnerability
+PASS boss 118 wrong location or missing tool cannot instantly progress a mechanism
+PASS normal walking cannot enter the solid sonar station (one metre with .03 skin tolerance)
+PASS whale phase 1 normal sonar action displays all three echo alternatives
+PASS whale phase 1 echo 0 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 echo 1 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 echo 1 ring 1 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 echo 2 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 1 displays one double-ring signal and two single-ring decoys
+PASS whale correct echo selection only starts its required breach-evasion trial
+PASS sonar selection creates a real unlocked blue breach warning
+PASS unlocked breach Sonar bearing has an actual blue material; effective shader _Color RGBA(0.250, 0.800, 1.000, 1.000)
+PASS unlocked breach Port boundary has an actual blue material; effective shader _Color RGBA(0.250, 0.800, 1.000, 1.000)
+PASS unlocked breach Starboard boundary has an actual blue material; effective shader _Color RGBA(0.250, 0.800, 1.000, 1.000)
+PASS breach changes to its locked warning before the real impact
+PASS locked breach Sonar bearing has an actual orange material; effective shader _Color RGBA(1.000, 0.450, 0.150, 1.000)
+PASS locked breach Port boundary has an actual orange material; effective shader _Color RGBA(1.000, 0.450, 0.150, 1.000)
+PASS locked breach Starboard boundary has an actual orange material; effective shader _Color RGBA(1.000, 0.450, 0.150, 1.000)
+PASS whale standing in the locked breach loses the attempted observation and permits a fresh sonar retry
+PASS whale phase 3 normal sonar action displays all three echo alternatives
+PASS whale phase 3 echo 0 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 echo 0 ring 1 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 echo 1 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 echo 2 ring 0 is readable from sonar station above terrain: 48/48 clear, 48/48 in view
+PASS whale phase 3 displays one double-ring signal and two single-ring decoys
+PASS late whale requires a second station before the breach, not a repeated first bearing
+PASS final whale phase requires a second separately locked return breach after evading the first
+PASS pausing between whale breach legs preserves the pending second-leg callback
+PASS dodging only the first whale leg and taking the return hit awards no observation and stays retryable
+PASS v05 new voyage releases boss controllers and mechanism props

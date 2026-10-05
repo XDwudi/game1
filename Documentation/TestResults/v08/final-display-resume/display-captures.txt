@@ -1,0 +1,2 @@
+display-after-independent-restart: native framebuffer; FullScreenWindow; 2560x1440
+display-Windowed-confirm: native framebuffer; Windowed; 1600x900

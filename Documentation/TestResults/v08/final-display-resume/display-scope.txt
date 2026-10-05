@@ -1,0 +1,1 @@
+Actual Windows player Screen.SetResolution transitions, GraphicRaycaster and Button event dispatch, pixel captures, timed reversion and isolated QA CaptainLog persistence. Step: ResumeRestart. These are scripted checks, not a human monitor inspection.

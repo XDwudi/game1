@@ -1,0 +1,118 @@
+PASS v08 all 119 species explicitly resolve a skill theme from identity traits and ecology
+PASS v08 real catalogue uses all eleven effect themes
+PASS v08 each theme declares a different geometry and particle signature
+PASS v08 nine shared authored forms plus twenty reused dynamic wave meshes
+PASS v08 Tide strike keeps explicit theme and authoritative radius
+PASS skill-Tide-01-tell renders requested native pixel dimensions
+PASS v08 Tide visible premonition precedes damage
+PASS skill-Tide-02-release renders requested native pixel dimensions
+PASS v08 Tide real strike leaves a short themed release after hazard destruction
+PASS skill-Tide-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Tide expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Tide live projectile carries an explicit theme
+PASS v08 Coral strike keeps explicit theme and authoritative radius
+PASS skill-Coral-01-tell renders requested native pixel dimensions
+PASS v08 Coral visible premonition precedes damage
+PASS skill-Coral-02-release renders requested native pixel dimensions
+PASS v08 Coral real strike leaves a short themed release after hazard destruction
+PASS skill-Coral-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Coral expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Coral live projectile carries an explicit theme
+PASS v08 VenomRoot strike keeps explicit theme and authoritative radius
+PASS skill-VenomRoot-01-tell renders requested native pixel dimensions
+PASS v08 VenomRoot visible premonition precedes damage
+PASS skill-VenomRoot-02-release renders requested native pixel dimensions
+PASS v08 VenomRoot real strike leaves a short themed release after hazard destruction
+PASS skill-VenomRoot-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 VenomRoot expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 VenomRoot live projectile carries an explicit theme
+PASS v08 SaltCrystal strike keeps explicit theme and authoritative radius
+PASS skill-SaltCrystal-01-tell renders requested native pixel dimensions
+PASS v08 SaltCrystal visible premonition precedes damage
+PASS skill-SaltCrystal-02-release renders requested native pixel dimensions
+PASS v08 SaltCrystal real strike leaves a short themed release after hazard destruction
+PASS skill-SaltCrystal-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 SaltCrystal expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 SaltCrystal live projectile carries an explicit theme
+PASS v08 Wraith strike keeps explicit theme and authoritative radius
+PASS skill-Wraith-01-tell renders requested native pixel dimensions
+PASS v08 Wraith visible premonition precedes damage
+PASS skill-Wraith-02-release renders requested native pixel dimensions
+PASS v08 Wraith real strike leaves a short themed release after hazard destruction
+PASS skill-Wraith-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Wraith expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Wraith live projectile carries an explicit theme
+PASS v08 Frost strike keeps explicit theme and authoritative radius
+PASS skill-Frost-01-tell renders requested native pixel dimensions
+PASS v08 Frost visible premonition precedes damage
+PASS skill-Frost-02-release renders requested native pixel dimensions
+PASS v08 Frost real strike leaves a short themed release after hazard destruction
+PASS skill-Frost-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Frost expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Frost live projectile carries an explicit theme
+PASS v08 Lightning strike keeps explicit theme and authoritative radius
+PASS skill-Lightning-01-tell renders requested native pixel dimensions
+PASS v08 Lightning visible premonition precedes damage
+PASS skill-Lightning-02-release renders requested native pixel dimensions
+PASS v08 Lightning real strike leaves a short themed release after hazard destruction
+PASS skill-Lightning-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Lightning expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Lightning live projectile carries an explicit theme
+PASS v08 Cinder strike keeps explicit theme and authoritative radius
+PASS skill-Cinder-01-tell renders requested native pixel dimensions
+PASS v08 Cinder visible premonition precedes damage
+PASS skill-Cinder-02-release renders requested native pixel dimensions
+PASS v08 Cinder real strike leaves a short themed release after hazard destruction
+PASS skill-Cinder-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Cinder expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Cinder live projectile carries an explicit theme
+PASS v08 Mirror strike keeps explicit theme and authoritative radius
+PASS skill-Mirror-01-tell renders requested native pixel dimensions
+PASS v08 Mirror visible premonition precedes damage
+PASS skill-Mirror-02-release renders requested native pixel dimensions
+PASS v08 Mirror real strike leaves a short themed release after hazard destruction
+PASS skill-Mirror-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Mirror expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Mirror live projectile carries an explicit theme
+PASS v08 Ink strike keeps explicit theme and authoritative radius
+PASS skill-Ink-01-tell renders requested native pixel dimensions
+PASS v08 Ink visible premonition precedes damage
+PASS skill-Ink-02-release renders requested native pixel dimensions
+PASS v08 Ink real strike leaves a short themed release after hazard destruction
+PASS skill-Ink-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 Ink expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 Ink live projectile carries an explicit theme
+PASS v08 WhaleSong strike keeps explicit theme and authoritative radius
+PASS skill-WhaleSong-01-tell renders requested native pixel dimensions
+PASS v08 WhaleSong visible premonition precedes damage
+PASS skill-WhaleSong-02-release renders requested native pixel dimensions
+PASS v08 WhaleSong real strike leaves a short themed release after hazard destruction
+PASS skill-WhaleSong-03-wave-and-ground renders requested native pixel dimensions
+PASS v08 WhaleSong expanding ground hazard carries terrain-following three dimensional wavefront
+PASS v08 WhaleSong live projectile carries an explicit theme
+PASS v08 zero damage preview line does not emit an attacking lightning strike
+PASS v08 pause freezes authoritative countdown and visual particle/mesh lifecycle
+PASS v08 saturated visual pool never removes any of sixty authoritative hazards
+PASS v08 saturated skill effects reuse the fixed mesh and renderer budget
+PASS v08 decorations stay inside their explicit rendering budgets
+PASS skill-saturation-real-hazards renders requested native pixel dimensions
+PASS v08 explicit hazard clear removes every mesh lightning wave and particle residue
+PASS v08 live Bite attack emits its element with ability-specific motion
+PASS v08 live Charge attack emits its element with ability-specific motion
+PASS v08 live Fan attack emits its element with ability-specific motion
+PASS v08 live Mortar attack emits its element with ability-specific motion
+PASS v08 live Ring attack emits its element with ability-specific motion
+PASS v08 live Beam attack emits its element with ability-specific motion
+PASS v08 live Mine attack emits its element with ability-specific motion
+PASS v08 live Leap attack emits its element with ability-specific motion
+PASS v08 live Spiral attack emits its element with ability-specific motion
+PASS v08 live Pull attack emits its element with ability-specific motion
+PASS v08 live Heal attack emits its element with ability-specific motion
+PASS skill-real-attack-Heal renders requested native pixel dimensions
+PASS v08 live Split attack emits its element with ability-specific motion
+PASS skill-real-attack-Split renders requested native pixel dimensions
+PASS v08 live Boomerang attack emits its element with ability-specific motion
+PASS skill-real-attack-Boomerang renders requested native pixel dimensions
+PASS v08 live Burrow attack emits its element with ability-specific motion
+PASS skill-real-attack-Burrow renders requested native pixel dimensions
+PASS v08 voyage reset clears every themed enemy effect

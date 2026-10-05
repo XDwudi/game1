@@ -100,10 +100,10 @@ namespace Tidebreak
                 else if(normalWindup==0&&(!Elite||Elite.Windup==0)&&Time.time>hopAt&&transform.position.y-game.World.GroundAt(transform.position)<1.25f){body.useGravity=true;Vector3 dir=to.magnitude<3&&Spec.attack!=AttackStyle.Bite?-to.normalized:LandDirection(to);float speed=Spec.speed*slow;body.velocity=dir*speed+Vector3.up*(Spec.body==BodyFamily.Crab?2.1f:3.8f);hopAt=Time.time+(Spec.trait==SeaTrait.Frenzy&&health<maxHealth*.5f?.6f:1.08f);}
                 float wind=Mathf.Clamp01(1-(nextAttack-Time.time)/.8f);rig.localEulerAngles=new Vector3(Mathf.Sin(age*7)*4-wind*18,0,Mathf.Sin(age*9)*8);
                 if(transform.position.y<-1.6f){var p=game.World.Layout.ProjectToRoute(transform.position);p.y=game.World.GroundAt(p)+1;transform.position=p;body.velocity=Vector3.up*2;}
-                if(Spec.trait==SeaTrait.Blinker&&Time.time>blinkAt){blinkAt=Time.time+7;Vector3 p=transform.position+transform.right*(Mathf.Sin(age)>0?3:-3);if(game.World.GroundAt(p)>0){game.Effect(transform.position,Spec.color,8,.1f);p.y=game.World.GroundAt(p)+1;transform.position=p;}}
+                if(Spec.trait==SeaTrait.Blinker&&Time.time>blinkAt){blinkAt=Time.time+7;Vector3 p=transform.position+transform.right*(Mathf.Sin(age)>0?3:-3);if(game.World.GroundAt(p)>0){EnemySkillFX.Burst(game,SkillTheme.Mirror,transform.position,.6f,Spec.id);p.y=game.World.GroundAt(p)+1;transform.position=p;}}
             }
             if(tail)tail.localRotation=Quaternion.Euler(0,Mathf.Sin(age*12)*22,0);
-            if(healing&&Time.time>healAt){healing=false;health=Mathf.Min(maxHealth,health+maxHealth*.12f);foreach(var e in game.Enemies)if(e!=this)e.health=Mathf.Min(e.maxHealth,e.health+e.maxHealth*.08f);game.Effect(transform.position,Color.green,14,.13f);}
+            if(healing&&Time.time>healAt){healing=false;health=Mathf.Min(maxHealth,health+maxHealth*.12f);foreach(var e in game.Enemies)if(e!=this)e.health=Mathf.Min(e.maxHealth,e.health+e.maxHealth*.08f);EnemySkillFX.For(game).Action(this,AttackStyle.Heal,transform.position);}
             if(!Encounter&&!Elite){
                 if(normalWindup>0&&Time.time>=normalWindup){normalWindup=0;Attack();normalRecovery=Time.time+.75f;nextAttack=Time.time+Mathf.Max(.9f,Spec.tempo*.86f-windupLength)/slow;}
                 else if(normalWindup==0&&Time.time>=nextAttack&&Time.time>launchUntil){attackAim=game.Player.transform.position;windupLength=(Spec.attack==AttackStyle.Charge||Spec.attack==AttackStyle.Leap?.9f:Spec.attack==AttackStyle.Heal||Spec.attack==AttackStyle.Split?1.25f:.7f)*(game.Run.easy?1.3f:1);normalWindup=Time.time+windupLength;game.Audio.ThreatTell(transform.position,false);}
@@ -114,31 +114,31 @@ namespace Tidebreak
         void Tint(bool hit)
         {for(int i=0;i<renderers.Length;i++)if(renderers[i]){properties.Clear();properties.SetColor("_Color",hit?new Color(1.7f,1.4f,1.15f):quality==2?new Color(1.4f,1.1f,.38f):baseTints[i]);renderers[i].SetPropertyBlock(properties);}}
         void Bolt(Vector3 target,float speed,float damage,float curve=0)
-        {var g=Shape.Part("Creature water bolt",PrimitiveType.Sphere,game.Hazards,transform.position+Vector3.up*.4f,Vector3.one*(IsBoss?.43f:.26f),Spec.color,false,true);var b=g.AddComponent<SeaProjectile>();b.game=game;b.velocity=(target-g.transform.position).normalized*speed;b.damage=damage;b.trait=Spec.trait;b.returnAfter=curve;}
+        {var g=Shape.Part("Creature water bolt",PrimitiveType.Sphere,game.Hazards,transform.position+Vector3.up*.4f,Vector3.one*(IsBoss?.43f:.26f),Spec.color,false,true);var b=g.AddComponent<SeaProjectile>();b.game=game;b.velocity=(target-g.transform.position).normalized*speed;b.damage=damage;b.trait=Spec.trait;b.returnAfter=curve;b.Theme=SkillThemes.ForSpecies(Spec);b.VisualVariant=Spec.id;}
         public void EmitBolt(Vector3 target,float speed,float damage,float curve=0){Bolt(target,speed,damage,curve);}
         public void Lunge(Vector3 target,float seconds){if(IsBoss||!body)return;chargeDirection=target-transform.position;chargeDirection.y=0;chargeDirection.Normalize();chargeUntil=Time.time+seconds;body.velocity=Vector3.up*2.6f;}
-        public void NotifyAttackExecuted(){AttackExecutions++;if(Motion)Motion.Attack();}
+        public void NotifyAttackExecuted(){AttackExecutions++;if(Motion)Motion.Attack();EnemySkillFX.For(game).Action(this,Spec.attack,transform.position);}
         void Attack()
         {
-            AttackExecutions++;if(Motion)Motion.Attack();Vector3 p=IsBoss?game.Player.transform.position:attackAim;float damage=IsBoss?14+CombatIsland*1.2f:12+CombatIsland*1.2f;float delay=game.Run.easy?1.8f:1.15f;
-            if(Spec.id==117){game.Warn(p,2.6f,delay,damage);game.Warn(p+game.Player.transform.right*3,2.3f,delay+.7f,damage);if(phase==2)game.Warn(p-game.Player.transform.right*3,2.3f,delay+1.4f,damage);for(int i=-1;i<=1;i++)Bolt(p+Vector3.right*i*2,10,10);}
+            AttackExecutions++;if(Motion)Motion.Attack();EnemySkillFX.For(game).Action(this,Spec.attack,transform.position);Vector3 p=IsBoss?game.Player.transform.position:attackAim;float damage=IsBoss?14+CombatIsland*1.2f:12+CombatIsland*1.2f;float delay=game.Run.easy?1.8f:1.15f;
+            if(Spec.id==117){EnemySkillFX.Warn(this,p,2.6f,delay,damage);EnemySkillFX.Warn(this,p+game.Player.transform.right*3,2.3f,delay+.7f,damage);if(phase==2)EnemySkillFX.Warn(this,p-game.Player.transform.right*3,2.3f,delay+1.4f,damage);for(int i=-1;i<=1;i++)Bolt(p+Vector3.right*i*2,10,10);}
             else switch(Spec.attack){
-                case AttackStyle.Bite:if(Vector3.Distance(transform.position,p)<3.5f)game.Warn(p,1.35f,.65f,damage);else Bolt(p,7,damage*.6f);break;
-                case AttackStyle.Charge:chargeDirection=(p-transform.position).normalized;chargeDirection.y=0;chargeUntil=Time.time+.75f;if(IsBoss){ThreatField.Line(game,transform.position,p,1.1f,delay,damage,Spec.color);}else{body.velocity=Vector3.up*3;game.Warn(p,1.5f,.75f,damage);}break;
+                case AttackStyle.Bite:if(Vector3.Distance(transform.position,p)<3.5f)EnemySkillFX.Warn(this,p,1.35f,.65f,damage);else Bolt(p,7,damage*.6f);break;
+                case AttackStyle.Charge:chargeDirection=(p-transform.position).normalized;chargeDirection.y=0;chargeUntil=Time.time+.75f;if(IsBoss){ThreatField.Line(game,transform.position,p,1.1f,delay,damage,Spec.color,source:this);}else{body.velocity=Vector3.up*3;EnemySkillFX.Warn(this,p,1.5f,.75f,damage);}break;
                 case AttackStyle.Fan:for(int i=-2;i<=2;i++)Bolt(p+game.Player.transform.right*i*1.8f,8+CombatIsland*.4f,damage*.7f);break;
-                case AttackStyle.Mortar:game.Warn(p,IsBoss?2.8f:1.7f,delay+.25f,damage);if(phase==2)game.Warn(p+game.Player.transform.forward*3,2,delay+.8f,damage);break;
-                case AttackStyle.Ring:ThreatField.Ring(game,transform.position,damage,Spec.color);break;
-                case AttackStyle.Beam:ThreatField.Line(game,transform.position+Vector3.up,p,IsBoss?1.15f:.6f,delay,damage,Spec.color);break;
-                case AttackStyle.Mine:ThreatField.Pool(game,p+game.Player.transform.forward*2,IsBoss?2.2f:1.3f,delay,damage*.45f,Spec.color,Spec.trait);break;
-                case AttackStyle.Leap:game.Warn(p,IsBoss?2.6f:1.5f,delay,damage);if(!IsBoss){body.velocity=(p-transform.position)*1.1f+Vector3.up*6;launchUntil=Time.time+.8f;}break;
+                case AttackStyle.Mortar:EnemySkillFX.Warn(this,p,IsBoss?2.8f:1.7f,delay+.25f,damage);if(phase==2)EnemySkillFX.Warn(this,p+game.Player.transform.forward*3,2,delay+.8f,damage);break;
+                case AttackStyle.Ring:ThreatField.Ring(game,transform.position,damage,Spec.color,source:this);break;
+                case AttackStyle.Beam:ThreatField.Line(game,transform.position+Vector3.up,p,IsBoss?1.15f:.6f,delay,damage,Spec.color,source:this);break;
+                case AttackStyle.Mine:ThreatField.Pool(game,p+game.Player.transform.forward*2,IsBoss?2.2f:1.3f,delay,damage*.45f,Spec.color,Spec.trait,source:this);break;
+                case AttackStyle.Leap:EnemySkillFX.Warn(this,p,IsBoss?2.6f:1.5f,delay,damage);if(!IsBoss){body.velocity=(p-transform.position)*1.1f+Vector3.up*6;launchUntil=Time.time+.8f;}break;
                 case AttackStyle.Spiral:for(int i=0;i<7;i++){float a=age+i*Mathf.PI*2/7;Bolt(transform.position+new Vector3(Mathf.Cos(a),.1f,Mathf.Sin(a))*10,7,damage*.6f);}Bolt(p,8,damage*.65f);break;
-                case AttackStyle.Pull:ThreatField.Vortex(game,p+Vector3.forward*2,IsBoss?4:2.3f,delay,damage,Spec.color);break;
-                case AttackStyle.Heal:healing=true;healAt=Time.time+1.4f;game.Effect(transform.position,Color.green,8,.08f);Bolt(p,8,damage*.5f);break;
-                case AttackStyle.Split:if(!Summoned)game.SpawnMinion(this);game.Warn(p,1.4f,delay,damage*.6f);break;
+                case AttackStyle.Pull:ThreatField.Vortex(game,p+Vector3.forward*2,IsBoss?4:2.3f,delay,damage,Spec.color,source:this);break;
+                case AttackStyle.Heal:healing=true;healAt=Time.time+1.4f;EnemySkillFX.For(game).Action(this,AttackStyle.Heal,transform.position);Bolt(p,8,damage*.5f);break;
+                case AttackStyle.Split:if(!Summoned)game.SpawnMinion(this);EnemySkillFX.Warn(this,p,1.4f,delay,damage*.6f);break;
                 case AttackStyle.Boomerang:for(int i=-1;i<=1;i++)Bolt(p+game.Player.transform.right*i*2,9,damage*.65f,1.2f);break;
-                case AttackStyle.Burrow:game.Warn(p,1.9f,delay+.35f,damage);if(!IsBoss){var to=p+game.Player.transform.forward*2;to.y=game.World.GroundAt(to)+.8f;game.Effect(transform.position,Spec.color,10,.09f);transform.position=to;body.velocity=Vector3.up*2;}break;
+                case AttackStyle.Burrow:EnemySkillFX.Warn(this,p,1.9f,delay+.35f,damage);if(!IsBoss){var to=p+game.Player.transform.forward*2;to.y=game.World.GroundAt(to)+.8f;EnemySkillFX.For(game).Action(this,AttackStyle.Burrow,transform.position);transform.position=to;body.velocity=Vector3.up*2;}break;
             }
-            if(IsBoss&&phase==2&&Spec.id!=117){var offset=game.Player.transform.right*(Mathf.Sin(age)>0?3:-3);game.Warn(p+offset,1.9f,delay+.65f,damage*.8f);}
+            if(IsBoss&&phase==2&&Spec.id!=117){var offset=game.Player.transform.right*(Mathf.Sin(age)>0?3:-3);EnemySkillFX.Warn(this,p+offset,1.9f,delay+.65f,damage*.8f);}
             exposedUntil=Time.time+delay+1.65f;
             if(Regional)Regional.AfterAttack(p);
         }
@@ -156,7 +156,7 @@ namespace Tidebreak
             // A shotgun volley is one physical impact; elites hold their ground while winding up.
             if(body&&Time.time>=impulseReady){impulseReady=Time.time+.16f;float poise=elite?(Elite&&Elite.Windup>0?.12f:.35f):1;body.AddForce((game.Player.View.transform.forward*(.9f+game.Run.staggerRelics*.3f)+Vector3.up*.1f)*poise,ForceMode.Impulse);}
             stagger+=applied*(weak?1.6f:1)*(1+game.Run.staggerRelics*.2f);if(stagger>maxHealth*(IsBoss?.2f:.45f)&&Time.time>=staggerReady){stagger=0;staggerReady=Time.time+(IsBoss?9:2.4f);exposedUntil=Time.time+(IsBoss?3:1);nextAttack=Mathf.Max(nextAttack,Time.time+(IsBoss?.5f:.5f));if(!IsBoss)Stun(.2f);}
-            if(health<=0){dead=true;if(Spec.trait==SeaTrait.Volatile)game.Warn(transform.position,1.8f,1.1f,10+CombatIsland);game.EnemyKilled(this);game.Effect(transform.position,Spec.color,14,.09f);Destroy(gameObject);}
+            if(health<=0){dead=true;if(Spec.trait==SeaTrait.Volatile)EnemySkillFX.Warn(this,transform.position,1.8f,1.1f,10+CombatIsland);game.EnemyKilled(this);game.Effect(transform.position,Spec.color,14,.09f);Destroy(gameObject);}
         }
     }
     public class SeaProjectile : MonoBehaviour
@@ -165,19 +165,22 @@ namespace Tidebreak
         public Vector3 velocity;
         public float damage,returnAfter;
         public SeaTrait trait;
+        public SkillTheme Theme=SkillTheme.Tide;public int VisualVariant;
+        EnemySkillFX fx;float nextVisual;
         float age;bool returned;Vector3 launchOrigin;
         float life=8;
-        void Start(){launchOrigin=transform.position;var trail=gameObject.AddComponent<TrailRenderer>();trail.time=.18f;trail.minVertexDistance=.08f;trail.startWidth=.13f;trail.endWidth=.015f;trail.sharedMaterial=Shape.Mat(new Color(1,.77f,.4f),true);trail.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;}
+        void Start(){launchOrigin=transform.position;fx=EnemySkillFX.For(game);var shell=GetComponent<Renderer>();if(shell)shell.enabled=false;var trail=gameObject.AddComponent<TrailRenderer>();trail.time=.18f;trail.minVertexDistance=.08f;trail.startWidth=.13f;trail.endWidth=.015f;trail.sharedMaterial=Shape.Mat(SkillThemes.ColorOf(Theme),true);trail.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;}
         void Update() {
             if(game.Paused)return;
             if(game.State!=VoyageState.Combat){Destroy(gameObject);return;}
             age+=Time.deltaTime;if(returnAfter>0&&!returned&&age>returnAfter){returned=true;velocity=(launchOrigin-transform.position).normalized*velocity.magnitude;}
             Vector3 prev=transform.position; transform.position+=velocity*Time.deltaTime;
-            if(Physics.Linecast(prev,transform.position,SeaWorld.GroundMask)){game.Effect(transform.position,new Color(.63f,.75f,.7f),5,.05f);Destroy(gameObject);return;}
+            if(age>=nextVisual){nextVisual=age+.075f;fx.Bolt(Theme,transform.position,velocity,VisualVariant,age);}
+            if(Physics.Linecast(prev,transform.position,SeaWorld.GroundMask)){EnemySkillFX.Burst(game,Theme,transform.position,.4f,VisualVariant);Destroy(gameObject);return;}
             Vector3 player=game.Player.transform.position;
             Vector3 delta=transform.position-prev;
             float f=delta.sqrMagnitude>0?Mathf.Clamp01(Vector3.Dot(player-prev,delta)/delta.sqrMagnitude):0;
-            if(Vector3.Distance(player,prev+delta*f)<.75f){float before=game.Run.health;game.Player.TakeDamage(damage,prev);if(game.Run.health<before)game.Player.ApplyStatus(trait);Destroy(gameObject);return;}
+            if(Vector3.Distance(player,prev+delta*f)<.75f){float before=game.Run.health;game.Player.TakeDamage(damage,prev);if(game.Run.health<before)game.Player.ApplyStatus(trait);EnemySkillFX.Burst(game,Theme,transform.position,.4f,VisualVariant);Destroy(gameObject);return;}
             life-=Time.deltaTime;if(life<0 || transform.position.y<-.5f)Destroy(gameObject);
         }
     }
@@ -185,33 +188,36 @@ namespace Tidebreak
     {
         public GameDirector game;
         public float radius, delay, damage;
+        public SkillTheme Theme=SkillTheme.Tide;public int VisualVariant;
+        EnemySkillFX fx;float nextVisual;
         float age;
         public float Remaining { get { return Mathf.Max(0,delay-age); } }
         Transform disk;
         Transform arm;
         LineRenderer boundary,progress;
         public void Init() {
+            fx=EnemySkillFX.For(game);
             boundary=gameObject.AddComponent<LineRenderer>();boundary.useWorldSpace=true;boundary.loop=true;boundary.positionCount=64;
             boundary.startWidth=boundary.endWidth=.095f;boundary.material=Shape.Mat(new Color(1,.36f,.18f),true);
             var obj=new GameObject("Strike countdown arc");obj.transform.SetParent(transform,false);progress=obj.AddComponent<LineRenderer>();progress.useWorldSpace=true;progress.startWidth=progress.endWidth=.16f;progress.material=Shape.Mat(new Color(1,.88f,.47f),true);
             for(int i=0;i<64;i++){float a=i*Mathf.PI*2/64;var p=transform.position+new Vector3(Mathf.Cos(a)*radius,0,Mathf.Sin(a)*radius);p.y=Mathf.Max(-.35f,game.World.GroundAt(p))+.1f;boundary.SetPosition(i,p);}
             // Four inward chevrons communicate the full hit radius from the first frame.
             for(int i=0;i<4;i++){float a=i*Mathf.PI*.5f;var p=transform.position+new Vector3(Mathf.Cos(a),0,Mathf.Sin(a))*radius*.73f;p.y=Mathf.Max(-.35f,game.World.GroundAt(p))+.11f;var mark=new GameObject("Strike radius chevron");mark.transform.SetParent(transform,false);var line=mark.AddComponent<LineRenderer>();line.material=boundary.sharedMaterial;line.startWidth=line.endWidth=.065f;line.positionCount=3;Vector3 radial=new Vector3(Mathf.Cos(a),0,Mathf.Sin(a)),side=Vector3.Cross(radial,Vector3.up);line.SetPosition(0,p+side*.22f+radial*.2f);line.SetPosition(1,p);line.SetPosition(2,p-side*.22f+radial*.2f);}
-            foreach(var e in game.Enemies)if(e&&e.kind==CreatureKind.Kraken) {
+            if(Theme==SkillTheme.Ink) {
                 arm=CoastalMesh.Tube("Descending Kraken arm",transform,new[]{new Vector3(0,-1,-1),new Vector3(0,2,-.7f),new Vector3(0,4,.2f),new Vector3(0,5,1)},new[]{.72f,.65f,.42f,.04f},new Color(.35f,.2f,.4f),new Color(.62f,.39f,.45f),9);
-                arm.localScale=Vector3.zero;break;
+                arm.localScale=Vector3.zero;
             }
         }
         void Update() {
             if(game.Paused)return;
             if(game.State!=VoyageState.Combat){Destroy(gameObject);return;}
-            age+=Time.deltaTime;int points=Mathf.Clamp(Mathf.CeilToInt(age/Mathf.Max(.1f,delay)*64),2,64);progress.positionCount=points;for(int i=0;i<points;i++)progress.SetPosition(i,boundary.GetPosition(i)+Vector3.up*.025f);
+            age+=Time.deltaTime;if(age>=nextVisual&&age<delay){nextVisual=age+.15f;fx.Tell(Theme,transform.position,transform.position,radius,2,Mathf.Clamp01(age/Mathf.Max(.05f,delay)),VisualVariant);}int points=Mathf.Clamp(Mathf.CeilToInt(age/Mathf.Max(.1f,delay)*64),2,64);progress.positionCount=points;for(int i=0;i<points;i++)progress.SetPosition(i,boundary.GetPosition(i)+Vector3.up*.025f);
             if(age>delay*.78f)Shape.TintLine(boundary,Color.Lerp(new Color(1,.2f,.12f),new Color(1,.83f,.5f),.5f+.5f*Mathf.Sin(age*32)));
             if(arm){arm.localScale=Vector3.one*Mathf.Clamp01(age/delay*2);arm.localRotation=Quaternion.Euler(Mathf.Lerp(-45,60,Mathf.Pow(age/delay,5)),0,0);}
             if(age<delay)return;
             Vector3 p=game.Player.transform.position-transform.position;p.y=0;
             if(p.magnitude<radius)game.Player.TakeDamage(damage,transform.position);
-            game.Effect(transform.position+Vector3.up*.4f,new Color(1,.45f,.22f),18,.23f);game.Audio.Cue("splash");Destroy(gameObject);
+            fx.Release(Theme,transform.position,transform.position,radius,2,VisualVariant);Destroy(gameObject);
         }
     }
     public class Fleck : MonoBehaviour

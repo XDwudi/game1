@@ -1,0 +1,2 @@
+display-Borderless-confirm: native framebuffer; FullScreenWindow; 2560x1440
+display-before-independent-restart: native framebuffer; FullScreenWindow; 2560x1440

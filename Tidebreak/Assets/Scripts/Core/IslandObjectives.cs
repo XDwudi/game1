@@ -315,14 +315,14 @@ namespace Tidebreak
             missionHeat=Mathf.Clamp(missionHeat+dt*(warm?19:-3.1f)-(supplying?dt*5:0),0,100);
             if(missionProgress>=5&&missionWave==0){missionWave++;SpawnMissionEnemy(2,false,SitePoint(1)+Vector3.forward*7);Notice("舱门开始松动 · 冰下守卫听见了供能声，离舱补热不会丢失解冻进度",4);}
             if(missionProgress>=12&&missionWave==1){missionWave++;SpawnMissionEnemy(8,true,SitePoint(1)+Vector3.left*7);Notice("舱内有人回应 · 继续解冻，留意新出现的冰海精英",4);}
-            if(Time.time>missionNextHazard){missionNextHazard=Time.time+6;Warn(Player.transform.position,2.2f,1.7f,13);Notice("碎冰将落下 · 留意落点，热芯仍在冷却",2);}
+            if(Time.time>missionNextHazard){missionNextHazard=Time.time+6;Warn(Player.transform.position,2.2f,1.7f,13,theme:SkillTheme.Frost);Notice("碎冰将落下 · 留意落点，热芯仍在冷却",2);}
             if(missionHeat<=0)FailIslandMission("热芯已经冷却 · 测温站备有替换热芯，沿途暖炉可以补热");
             else if(missionProgress>=18){Run.eventMask|=1;ReachMissionGoal();}
         }
 
         void TickRelay()
         {
-            if(Time.time>missionNextHazard){missionNextHazard=Time.time+Mathf.Max(2.7f,5-DeliveredCharges*.8f);Warn(Player.transform.position,2.1f,1.35f,17);}
+            if(Time.time>missionNextHazard){missionNextHazard=Time.time+Mathf.Max(2.7f,5-DeliveredCharges*.8f);Warn(Player.transform.position,2.1f,1.35f,17,theme:SkillTheme.Lightning);}
             if(missionPhase!=1)return;
             var ground=MissionRoutePoint(.5f);
             if(missionProgress==0&&FlatDistance(Player.transform.position,ground)<2.7f){missionDeadline+=4;missionProgress=1;Audio.Cue("sonar");Notice("接地完成 · 电荷稳定时间 +4 秒",2);}
@@ -333,7 +333,7 @@ namespace Tidebreak
         {
             missionHeat=Mathf.Max(0,missionHeat-dt*4.5f);missionPressure=Mathf.Max(0,missionPressure+dt*(missionHeat>40?3.1f:-2));
             if(missionHeat>=45&&missionHeat<=75&&missionPressure<85)missionProgress+=dt;
-            if(missionHeat>88||missionPressure>95){missionHeat=58;missionPressure=40;missionProgress=Mathf.Max(0,missionProgress-3);Warn(SitePoint(1),3.3f,1.1f,20);Notice("熔炉过载 · 躲开泄流；锻造进度退回三秒",3);}
+            if(missionHeat>88||missionPressure>95){missionHeat=58;missionPressure=40;missionProgress=Mathf.Max(0,missionProgress-3);Warn(SitePoint(1),3.3f,1.1f,20,theme:SkillTheme.Cinder);Notice("熔炉过载 · 躲开泄流；锻造进度退回三秒",3);}
             if(missionProgress>7&&missionWave==0){missionWave++;SpawnMissionEnemy(4,false,SitePoint(1)+Vector3.forward*8);}
             if(missionProgress>15&&missionWave==1){missionWave++;SpawnMissionEnemy(0,true,SitePoint(1)+Vector3.forward*8);}
             if(missionProgress>=22)ReachMissionGoal();
@@ -344,7 +344,7 @@ namespace Tidebreak
             int anchor=NextAnchor;
             if(FlatDistance(Player.transform.position,SitePoint(anchor))<2.9f)missionProgress+=dt;
             else missionProgress=Mathf.Max(0,missionProgress-dt*1.5f);
-            if(Time.time>missionNextHazard){missionNextHazard=Time.time+4.2f;ThreatField.Line(this,SitePoint(1-anchor)+Vector3.up*.5f,Player.transform.position,1,1.4f,19,new Color(.55f,.55f,1));}
+            if(Time.time>missionNextHazard){missionNextHazard=Time.time+4.2f;ThreatField.Line(this,SitePoint(1-anchor)+Vector3.up*.5f,Player.transform.position,1,1.4f,19,new Color(.55f,.55f,1),theme:SkillTheme.Mirror);}
             if(missionProgress<3)return;
             Run.eventMask|=1<<(10+anchor);missionProgress=0;Audio.Cue("discovery");Checkpoint(false);
             if(AnchorCount>=2)ReachMissionGoal();

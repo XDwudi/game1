@@ -1,0 +1,8 @@
+PASS v05 eleven different player-action briefs exist
+PASS boss 116 fixture begins without granted invulnerability
+PASS boss 116 receives actual camera-ray weapon damage
+PASS boss 116 weapon ray reaches damageable anatomy in each phase, including surfaced whale
+PASS boss 116 completes independent mechanisms in all three real phases
+PASS boss 116 defeated with normal-speed movement, shared actions, real shooting and finite medicine; 24.06 seconds
+PASS boss 116 battle never enables test invulnerability
+PASS v05 new voyage releases boss controllers and mechanism props

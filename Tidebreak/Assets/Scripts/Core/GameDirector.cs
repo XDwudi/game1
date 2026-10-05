@@ -17,6 +17,7 @@ namespace Tidebreak
         public SeaHUD UI;
         public SeaAudio Audio;
         public CombatFeedback Feedback;
+        public DisplaySettings Display;
         public readonly List<Enemy> Enemies=new List<Enemy>();
         public readonly List<FishLoot> Loot=new List<FishLoot>();
         public Relic[] Choices;
@@ -43,6 +44,7 @@ namespace Tidebreak
             if(Automation)SaveStore.DirectoryOverride=System.IO.Path.Combine(Application.temporaryCachePath,"TidebreakIslandQA");
             Application.targetFrameRate=90;QualitySettings.vSyncCount=0;
             Log=SaveStore.Read<CaptainLog>("captain")??new CaptainLog();
+            Display=gameObject.AddComponent<DisplaySettings>();Display.Init(Log,Automation);
             if(Log.fieldOfView<50){Log.fieldOfView=75;Log.musicVolume=.7f;Log.effectsVolume=.85f;Log.ambienceVolume=.7f;Log.headBob=true;}
             if(Log.discovered==null)Log.discovered=new bool[8];else if(Log.discovered.Length!=8)Array.Resize(ref Log.discovered,8);
             if(Log.goldDiscovered==null)Log.goldDiscovered=new bool[8];else if(Log.goldDiscovered.Length!=8)Array.Resize(ref Log.goldDiscovered,8);
@@ -52,18 +54,14 @@ namespace Tidebreak
             Hazards=new GameObject("Encounter effects").transform;
             Audio=gameObject.AddComponent<SeaAudio>();Audio.Init();Feedback=gameObject.AddComponent<CombatFeedback>();
             Player=new GameObject("Captain").AddComponent<AnglerController>();Player.Init(this);
+            EnemySkillFX.For(this); // Build bounded VFX resources during loading, before the first encounter.
             UI=gameObject.AddComponent<SeaHUD>();UI.Init(this);SetState(VoyageState.Harbor);
             if(Automation)gameObject.AddComponent<SmokePilot>();
         }
         void Update()
         {
             if(CinematicActive)return;
-            if(Input.GetKeyDown(KeyCode.Escape)) {
-                if(State==VoyageState.Harbor)UI.ShowHarbor();
-                else if(State==VoyageState.Dialogue)CloseDialogue();
-                else if(State==VoyageState.Shop||State==VoyageState.Route)CloseShop();
-                else if(State!=VoyageState.Victory&&State!=VoyageState.Defeat)TogglePause();
-            }
+            if(Input.GetKeyDown(KeyCode.Escape)&&!HandleEscapeNavigation())return;
             if(Paused)return;
             if(State==VoyageState.Dialogue)return;
             TickIslandMission();
@@ -89,6 +87,15 @@ namespace Tidebreak
             }
             if(State==VoyageState.Fishing&&!Automation)TickFishing(Input.GetMouseButton(0),Time.deltaTime);
             if(State==VoyageState.Fishing&&Input.GetKeyDown(KeyCode.Q))CancelFishing();
+        }
+        public bool HandleEscapeNavigation()
+        {
+            if(CinematicActive||Display&&!Display.TryLeavePreview())return false;
+            if(State==VoyageState.Harbor)UI.ShowHarbor();
+            else if(State==VoyageState.Dialogue)CloseDialogue();
+            else if(State==VoyageState.Shop||State==VoyageState.Route)CloseShop();
+            else if(State!=VoyageState.Victory&&State!=VoyageState.Defeat)TogglePause();
+            return true;
         }
         void SetRegion(int region)
         {
@@ -255,12 +262,12 @@ namespace Tidebreak
         public void TogglePause(){Paused=!Paused;Time.timeScale=Paused?0:1;Cursor.lockState=Paused?CursorLockMode.None:(IsPlaying&&!Automation?CursorLockMode.Locked:CursorLockMode.None);Cursor.visible=Paused||!IsPlaying||Automation;if(Paused)UI.ShowPause();else UI.ShowState();}
         public void SetState(VoyageState state){State=state;Cursor.lockState=IsPlaying&&!Automation?CursorLockMode.Locked:CursorLockMode.None;Cursor.visible=!IsPlaying||Automation;UI.ShowState();}
         public void Notice(string text,float seconds){Message=text;MessageUntil=Time.unscaledTime+seconds;}
-        public void Warn(Vector3 pos,float radius,float delay,float damage){pos.y=World.GroundAt(pos)+.035f;var g=new GameObject("Telegraphed strike");g.transform.SetParent(Hazards);g.transform.position=pos;var w=g.AddComponent<DeckWarning>();w.game=this;w.radius=radius;w.delay=delay;w.damage=damage;w.Init();}
-        public void Projectile(Vector3 from,Vector3 to,float speed,float damage,Color color){var g=Shape.Part("Hostile projectile",PrimitiveType.Sphere,Hazards,from,Vector3.one*.4f,color,false,true);var p=g.AddComponent<SeaProjectile>();p.game=this;p.velocity=(to-from).normalized*speed;p.damage=damage;}
+        public void Warn(Vector3 pos,float radius,float delay,float damage,Enemy source=null,SkillTheme? theme=null){pos.y=World.GroundAt(pos)+.035f;var g=new GameObject("Telegraphed strike");g.transform.SetParent(Hazards);g.transform.position=pos;var w=g.AddComponent<DeckWarning>();w.game=this;w.radius=radius;w.delay=delay;w.damage=damage;w.Theme=SkillThemes.Resolve(source,theme);w.VisualVariant=source?source.Spec.id:0;w.Init();}
+        public void Projectile(Vector3 from,Vector3 to,float speed,float damage,Color color,Enemy source=null,SkillTheme? theme=null){var g=Shape.Part("Hostile projectile",PrimitiveType.Sphere,Hazards,from,Vector3.one*.4f,color,false,true);var p=g.AddComponent<SeaProjectile>();p.game=this;p.velocity=(to-from).normalized*speed;p.damage=damage;p.Theme=SkillThemes.Resolve(source,theme);p.VisualVariant=source?source.Spec.id:0;}
         public void Splash(Vector3 point){if(Feedback)Feedback.Splash(point);var r=new GameObject("Water ripple").AddComponent<SurfaceRipple>();r.transform.position=new Vector3(point.x,-.35f,point.z);}
         public void Effect(Vector3 point,Color color,int count,float size){if(Feedback)Feedback.Burst(point,color,count,size);}
         public void Tracer(Vector3 a,Vector3 b,Color color){if(Feedback)Feedback.Tracer(a,b,color);}
-        void ClearHazards(){if(Feedback)Feedback.Clear();if(Hazards)for(int i=Hazards.childCount-1;i>=0;i--)Destroy(Hazards.GetChild(i).gameObject);}
+        void ClearHazards(){EnemySkillFX.ClearFor(this);if(Feedback)Feedback.Clear();if(Hazards)for(int i=Hazards.childCount-1;i>=0;i--)Destroy(Hazards.GetChild(i).gameObject);}
         void ClearEncounter(){ResetIslandMission();Charging=false;ClearFishing();foreach(var e in Enemies)if(e)Destroy(e.gameObject);Enemies.Clear();foreach(var f in Loot)if(f)Destroy(f.gameObject);Loot.Clear();if(Player)Player.HeldFish=null;ClearHazards();}
         void OnApplicationQuit(){CancelCinematic();Time.timeScale=1;if(Player&&(IsPlaying||State==VoyageState.Shop||State==VoyageState.Route||State==VoyageState.Dialogue)){Player.StowHeld();Checkpoint(false);}SaveStore.Write("captain",Log);}
         public void Quit(){SaveStore.Write("captain",Log);Application.Quit();}

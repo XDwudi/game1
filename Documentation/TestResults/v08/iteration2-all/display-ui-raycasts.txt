@@ -1,0 +1,12 @@
+Display size 1280x720 mode=Windowed resolution=1600x900 point=(205.00, 227.50) top=Display size 1280x720
+Display keep mode=Windowed resolution=1280x720 point=(930.00, 131.60) top=Display keep
+Display mode Borderless mode=Windowed resolution=1280x720 point=(640.00, 317.60) top=Display mode Borderless
+Display keep mode=FullScreenWindow resolution=2560x1440 point=(1860.00, 263.20) top=Display keep
+Display mode Exclusive mode=FullScreenWindow resolution=2560x1440 point=(497.60, 635.20) top=Display mode Exclusive
+Display keep mode=ExclusiveFullScreen resolution=2560x1440 point=(1860.00, 263.20) top=Display keep
+Display mode Windowed mode=ExclusiveFullScreen resolution=2560x1440 point=(2062.40, 635.20) top=Display mode Windowed
+Display keep mode=Windowed resolution=1280x720 point=(930.00, 131.60) top=Display keep
+Display mode Borderless mode=Windowed resolution=1280x720 point=(640.00, 317.60) top=Display mode Borderless
+Display mode Exclusive mode=Windowed resolution=1280x720 point=(248.80, 317.60) top=Display mode Exclusive
+Display revert mode=ExclusiveFullScreen resolution=2560x1440 point=(2251.20, 263.20) top=Display revert
+Display return mode=Windowed resolution=1280x720 point=(232.00, 68.00) top=Display return

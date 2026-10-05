@@ -55,6 +55,7 @@ namespace Tidebreak
         {
             g=GameDirector.Instance;output=Path.GetFullPath(Path.Combine(Application.dataPath,"../../Artifacts/ExpeditionQA"));Directory.CreateDirectory(output);Application.logMessageReceived+=LogError;visual=Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakVisual")>=0;startTime=Time.realtimeSinceStartup;
             yield return new WaitForSecondsRealtime(1);Capture("harbor");
+            if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakV08")>=0){yield return V08Contracts();Finish();yield break;}
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakV07")>=0){yield return V07Contracts();Finish();yield break;}
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakV06")>=0){yield return V06Contracts();Finish();yield break;}
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-tidebreakV05")>=0){yield return V05Contracts();Finish();yield break;}

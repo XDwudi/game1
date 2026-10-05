@@ -1,0 +1,435 @@
+PASS v07 opens actual workshop category 0 at (1600, 900)
+PASS v07 category 0 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price precision / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price handling / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price reload / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price scope / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price brake / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price arc / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price burst / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price harpoon / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price carbine / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price shotgun / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price weapon / (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available weapon at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available shotgun at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available carbine at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available harpoon at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available burst at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available arc at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available brake at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available scope at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available reload at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available handling at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available precision at (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price weapon / 1600x900
+PASS shop-category-0-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 1 at (1600, 900)
+PASS v07 category 1 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price salvage / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bearing / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bait / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price chum / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure3 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure2 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure1 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bag / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price rod / (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available rod at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bag at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available lure1 at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available lure2 at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available lure3 at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available chum at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bait at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bearing at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available salvage at (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price salvage / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bearing / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bait / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price chum / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure3 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure2 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure1 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bag / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price rod / 1600x900
+PASS shop-category-1-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 2 at (1600, 900)
+PASS v07 category 2 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price dressing / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price tonic / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price boots / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price sonar / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price frost / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bomb / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price medkit / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price heal / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price hull / (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available hull at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available medkit at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available bomb at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available frost at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available sonar at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available boots at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available tonic at (1600, 900)
+PASS v07 catalogue amount remains visible for locked/available dressing at (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price dressing / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price tonic / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price boots / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price sonar / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price frost / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bomb / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price medkit / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price hull / 1600x900
+PASS shop-category-2-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 3 at (1600, 900)
+PASS v07 category 3 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic2 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic1 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic0 / (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic2 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic1 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic0 / 1600x900
+PASS shop-category-3-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 4 at (1600, 900)
+PASS v07 category 4 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone2 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone1 / (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone0 / (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone2 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone1 / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone0 / 1600x900
+PASS shop-category-4-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 5 at (1600, 900)
+PASS v07 category 5 contains independent visible coin prices at (1600, 900)
+PASS v07 amount or owned-state glyphs fit and render: Shop price mastery0 / (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price mastery0 / 1600x900
+PASS shop-category-5-1600x900 renders requested native pixel dimensions
+PASS v07 real weapon offer remains an enabled button at (1600, 900)
+PASS v07 decorative graphics do not intercept the price/purchase bar at (1600, 900)
+PASS v07 clicking the priced card deducts exactly 85 coins at (1600, 900)
+PASS v07 insufficient funds keeps exact cost readable at (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price weapon / 1600x900
+PASS shop-insufficient-funds-1600x900 renders requested native pixel dimensions
+PASS v07 fully upgraded offer cannot be bought again at (1600, 900)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1600x900
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1600x900
+PASS shop-owned-and-maxed-1600x900 renders requested native pixel dimensions
+PASS v07 opens actual workshop category 0 at (1280, 720)
+PASS v07 category 0 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price precision / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price handling / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price reload / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price scope / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price brake / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price arc / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price burst / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price harpoon / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price carbine / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price shotgun / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price weapon / (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available weapon at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available shotgun at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available carbine at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available harpoon at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available burst at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available arc at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available brake at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available scope at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available reload at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available handling at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available precision at (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price weapon / 1280x720
+PASS shop-category-0-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 1 at (1280, 720)
+PASS v07 category 1 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price salvage / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bearing / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bait / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price chum / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure3 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure2 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure1 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bag / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price rod / (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available rod at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bag at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available lure1 at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available lure2 at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available lure3 at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available chum at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bait at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bearing at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available salvage at (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price salvage / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bearing / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bait / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price chum / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure3 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure2 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure1 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bag / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price rod / 1280x720
+PASS shop-category-1-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 2 at (1280, 720)
+PASS v07 category 2 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price dressing / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price tonic / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price boots / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price sonar / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price frost / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bomb / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price medkit / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price heal / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price hull / (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available hull at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available medkit at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available bomb at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available frost at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available sonar at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available boots at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available tonic at (1280, 720)
+PASS v07 catalogue amount remains visible for locked/available dressing at (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price dressing / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price tonic / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price boots / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price sonar / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price frost / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bomb / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price medkit / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price hull / 1280x720
+PASS shop-category-2-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 3 at (1280, 720)
+PASS v07 category 3 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic2 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic1 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic0 / (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic2 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic1 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic0 / 1280x720
+PASS shop-category-3-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 4 at (1280, 720)
+PASS v07 category 4 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone2 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone1 / (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone0 / (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone2 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone1 / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone0 / 1280x720
+PASS shop-category-4-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 5 at (1280, 720)
+PASS v07 category 5 contains independent visible coin prices at (1280, 720)
+PASS v07 amount or owned-state glyphs fit and render: Shop price mastery0 / (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price mastery0 / 1280x720
+PASS shop-category-5-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 real weapon offer remains an enabled button at (1280, 720)
+PASS v07 decorative graphics do not intercept the price/purchase bar at (1280, 720)
+PASS v07 clicking the priced card deducts exactly 85 coins at (1280, 720)
+PASS v07 insufficient funds keeps exact cost readable at (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price weapon / 1280x720
+PASS shop-insufficient-funds-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 fully upgraded offer cannot be bought again at (1280, 720)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1280x720
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1280x720
+PASS shop-owned-and-maxed-1280x720 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 0 at (1280, 1024)
+PASS v07 category 0 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price precision / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price handling / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price reload / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price scope / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price brake / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price arc / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price burst / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price harpoon / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price carbine / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price shotgun / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price weapon / (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available weapon at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available shotgun at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available carbine at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available harpoon at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available burst at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available arc at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available brake at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available scope at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available reload at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available handling at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available precision at (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price weapon / 1280x1024
+PASS shop-category-0-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 1 at (1280, 1024)
+PASS v07 category 1 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price salvage / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bearing / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bait / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price chum / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure3 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure2 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price lure1 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bag / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price rod / (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available rod at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bag at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available lure1 at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available lure2 at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available lure3 at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available chum at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bait at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bearing at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available salvage at (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price salvage / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bearing / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bait / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price chum / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure3 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure2 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price lure1 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bag / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price rod / 1280x1024
+PASS shop-category-1-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 2 at (1280, 1024)
+PASS v07 category 2 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price dressing / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price tonic / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price boots / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price sonar / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price frost / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price bomb / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price medkit / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price heal / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price hull / (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available hull at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available medkit at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available bomb at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available frost at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available sonar at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available boots at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available tonic at (1280, 1024)
+PASS v07 catalogue amount remains visible for locked/available dressing at (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price dressing / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price tonic / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price boots / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price sonar / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price frost / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price bomb / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price medkit / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price hull / 1280x1024
+PASS shop-category-2-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 3 at (1280, 1024)
+PASS v07 category 3 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic2 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic1 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price relic0 / (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic2 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic1 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price relic0 / 1280x1024
+PASS shop-category-3-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 4 at (1280, 1024)
+PASS v07 category 4 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone2 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone1 / (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price keystone0 / (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone2 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone1 / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price keystone0 / 1280x1024
+PASS shop-category-4-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 opens actual workshop category 5 at (1280, 1024)
+PASS v07 category 5 contains independent visible coin prices at (1280, 1024)
+PASS v07 amount or owned-state glyphs fit and render: Shop price mastery0 / (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price mastery0 / 1280x1024
+PASS shop-category-5-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 real weapon offer remains an enabled button at (1280, 1024)
+PASS v07 decorative graphics do not intercept the price/purchase bar at (1280, 1024)
+PASS v07 clicking the priced card deducts exactly 85 coins at (1280, 1024)
+PASS v07 insufficient funds keeps exact cost readable at (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price weapon / 1280x1024
+PASS shop-insufficient-funds-1280x1024 captures the native overlay framebuffer at requested dimensions
+PASS v07 fully upgraded offer cannot be bought again at (1280, 1024)
+PASS v07 rendered price region contains readable light glyph pixels: Shop price precision / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price handling / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price reload / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price scope / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price brake / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price arc / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price burst / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price harpoon / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price carbine / 1280x1024
+PASS v07 rendered price region contains readable light glyph pixels: Shop price shotgun / 1280x1024
+PASS shop-owned-and-maxed-1280x1024 captures the native overlay framebuffer at requested dimensions

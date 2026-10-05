@@ -1,0 +1,156 @@
+PASS v08 display controller finishes startup transition
+PASS v08 regular automation starts windowed even when earlier suites saved another mode
+PASS v08 opens settings through harbor button
+PASS v08 opens display page through settings tab
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1600x900
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1600x900
+PASS v08 display suite uses recognized test step
+PASS v08 raycast and click the window resolution selector
+PASS v08 window size really changes before confirmation
+PASS v08 confirms the actual window resize through UI
+PASS v08 display-window-before-switch native framebuffer has actual screen dimensions
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 raycast and click actual display mode selector: Borderless
+PASS v08 actual Screen.fullScreenMode reaches Borderless and offers confirmation
+PASS v08 actual render dimensions match Borderless target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Borderless-confirm native framebuffer has actual screen dimensions
+PASS v08 clicks keep for Borderless
+PASS v08 Borderless confirmation persists on disk
+PASS v08 raycast and click actual display mode selector: Exclusive
+PASS v08 actual Screen.fullScreenMode reaches Exclusive and offers confirmation
+PASS v08 actual render dimensions match Exclusive target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Exclusive-confirm native framebuffer has actual screen dimensions
+PASS v08 clicks keep for Exclusive
+PASS v08 Exclusive confirmation persists on disk
+PASS v08 raycast and click actual display mode selector: Windowed
+PASS v08 actual Screen.fullScreenMode reaches Windowed and offers confirmation
+PASS v08 actual render dimensions match Windowed target (1280, 720)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 display-Windowed-confirm native framebuffer has actual screen dimensions
+PASS v08 clicks keep for Windowed
+PASS v08 Windowed confirmation persists on disk
+PASS v08 returning from exclusive restores the original window dimensions
+PASS v08 raycast and click actual display mode selector: Borderless
+PASS v08 actual Screen.fullScreenMode reaches Borderless and offers confirmation
+PASS v08 actual render dimensions match Borderless target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display revert label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display keep label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display status / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display current / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 2560x1440
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 2560x1440
+PASS v08 display-Borderless-preview native framebuffer has actual screen dimensions
+PASS v08 unconfirmed preview does not overwrite saved display settings
+PASS v08 unconfirmed display change actually reverts after countdown
+PASS v08 timed reversion restores exact window dimensions
+PASS v08 display-timeout-restored native framebuffer has actual screen dimensions
+FAIL v08 raycast and click actual display mode selector: Exclusive
+FAIL v08 actual Screen.fullScreenMode reaches Exclusive and offers confirmation
+FAIL v08 actual render dimensions match Exclusive target (2560, 1440)
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 display-Exclusive-preview native framebuffer has actual screen dimensions
+FAIL v08 clicks explicit restore control through the GraphicRaycaster
+PASS v08 explicit restore changes actual mode and dimensions
+PASS v08 disk CaptainLog reload retains last confirmed window setting
+PASS v08 display label remains on screen with rendered glyphs: Display return label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display status / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1920x1080 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1600x900 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display size 1280x720 label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display window hint / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display current / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Windowed label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Windowed / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Borderless label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Borderless / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display mode Exclusive label / 1280x720
+PASS v08 display label remains on screen with rendered glyphs: Display title Exclusive / 1280x720
+PASS v08 returns to harbor through saved settings footer
